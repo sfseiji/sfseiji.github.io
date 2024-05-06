@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+
+body {
+  background-color: #f4f9ff;
+  color: #333;
+  font-size: 0.875rem;
+}
+
+/* サイト全体のコンテンツ幅を設定 */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* 中のコンテンツ部分の最大幅を設定 */
+.inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.section-title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/*-------------------------------------------
+ヘッダー
+-------------------------------------------*/
+#header {
+  margin-top: 60px;
+}
+
+#header .site-title {
+  width: 160px;
+  line-height: 1px;
+  margin-bottom: 15px;
+}
+
+
+/*-------------------------------------------
+Mainvisual
+-------------------------------------------*/
+#mainvisual {
+  margin-bottom: 60px;
+}
+
+/*-------------------------------------------
+Index
+-------------------------------------------*/
+#index {
+  background-color: #fff;
+  padding: 30px 0;
+  margin-bottom: 60px;
+}
+
+#index .index-list {
+  margin-left: 20px;
+}
+
+#index .index-list li {
+  margin-bottom: 20px;
+}
+
+/* リストの最後は下にマージンをつけない */
+#index .index-list li:last-child {
+  margin-bottom: 0;
+}
+
+/*-------------------------------------------
+Detail
+-------------------------------------------*/
+#detail {
+  margin-bottom: 100px;
+}
+
+#detail .content {
+  display: flex;
+  align-items: flex-start;
+}
+
+#detail .content .title {
+  font-size: 1.125rem;
+  font-weight: bold;
+}
+
+#detail .content .img {
+  width: 270px;
+  margin-right: 60px;
+}
+
+#detail .content .text p {
+  margin-bottom: 20px;
+}
