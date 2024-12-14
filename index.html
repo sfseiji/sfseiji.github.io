@@ -37,6 +37,14 @@
          .navbar-nav .nav-item {
             margin-right: 20px;
         }
+        .carousel-item {
+            height: 500px; /* 必要に応じて高さ調整 */
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 画像がカルーセルのサイズに合わせて調整されるように */
+        }
     </style>
 </head>
 <body>
@@ -51,25 +59,25 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="news.html">News</a>
+                        <a class="nav-link" href="pages/news.html">News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="myself.html">About Me</a>
+                        <a class="nav-link" href="pages/myself.html">About Me</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="research.html">Research</a>
+                        <a class="nav-link" href="pages/research.html">Research</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="group.html">Group Members</a>
+                        <a class="nav-link" href="pages/group.html">Group Members</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="projects.html">Projects</a>
+                        <a class="nav-link" href="pages/projects.html">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="teaching.html">Teaching</a>
+                        <a class="nav-link" href="pages/teaching.html">Teaching</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="personal.html">Personal</a>
+                        <a class="nav-link" href="pages/personal.html">Personal</a>
                     </li>
                 </ul>
                 <div class="social-icons">
@@ -122,5 +130,52 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="cover_photo/comet.jpg" class="d-block w-100" alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="cover_photo/gnz7q.jpg" class="d-block w-100" alt="Image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="cover_photo/jcmt.jpg" class="d-block w-100" alt="Image 3">
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var images = ['comet.jpg', 'gnz7q.jpg', 'jcmt.jpg']; // 画像ファイル名の配列
+        var dir = 'directory/'; // 画像が保存されているディレクトリ
+
+        // 画像をランダムに選択してカルーセルにセットする関数
+        function setupCarousel(images, dir) {
+            var carouselInner = document.querySelector('.carousel-inner');
+            carouselInner.innerHTML = ''; // 既存のコンテンツをクリア
+            images.sort(() => Math.random() - 0.5); // 配列をシャッフル
+
+            images.forEach((image, index) => {
+                var div = document.createElement('div');
+                div.className = 'carousel-item' + (index === 0 ? ' active' : '');
+                var img = document.createElement('img');
+                img.src = dir + image;
+                img.className = 'd-block w-100';
+                img.alt = 'Image';
+                div.appendChild(img);
+                carouselInner.appendChild(div);
+            });
+        }
+
+        setupCarousel(images, dir);
+
+        // 5秒ごとにカルーセルを自動的に切り替える
+        $('.carousel').carousel({
+            interval: 5000
+        });
+    });
+    </script>
+
 </body>
 </html>
