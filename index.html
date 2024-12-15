@@ -409,8 +409,8 @@
         <div class="container my-4">
             <h2 class="section-title" style="font-family: 'Times New Roman', Times, serif; font-style: italic; text-align: center;">- Large Programs -</h2>
             <div class="row project-item">
-                <div class="col-md-4 logo-panel">
-                    <img src="project_logo/alma/alpine.jpg" alt="Logo 1" class="img-fluid">
+                <div class="col-md-3 logo-panel">
+                    <img src="project_logo/alma/alpine.jpg" alt="Logo 1" class="img-fluid" data-text="ALPINE">
                     <img src="project_logo/alma/alcs.jpg" alt="Logo 2" class="img-fluid">
                 </div>
                 <div class="col-7">
@@ -473,7 +473,7 @@
         logo.addEventListener('mouseover', function() {
             const text = this.getAttribute('data-text'); // Ensure data-text is defined in your HTML on each logo img
             const projectImage = this.closest('.project-item').querySelector('.image-panel .overlay');
-            projectImage.innerHTML = `<p>${test test test...}</p>`; // Adding text dynamically
+            projectImage.innerHTML = `<p>${text}</p>`; // Correct variable name used
             projectImage.style.opacity = 1;
             projectImage.style.visibility = 'visible';
         });
