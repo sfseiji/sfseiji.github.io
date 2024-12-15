@@ -188,8 +188,6 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.5s ease, visibility 0.5s ease;
-            text-decoration: none; /* Removes underline from links */
-            font-size: 20px; /* Increases the font size */
         }
 
         .project-image:hover .overlay {
@@ -197,10 +195,10 @@
             visibility: visible;
         }
 
-        .project-image .overlay a {
-            color: white; /* Sets the text color to white */
-            font-size: 20px; /* Increases the font size */
-            text-decoration: none; /* Removes underline from links */
+        .project-image .overlay a, .project-item .overlay a {
+            color: white; /* Ensures the text color is white */
+            text-decoration: none; /* Removes underline from the link */
+            font-size: 20px; /* Adjusts the font size */
         }
 
         .logos {
