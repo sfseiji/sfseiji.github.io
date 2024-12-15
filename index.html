@@ -168,28 +168,30 @@
         .project-image .overlay {
             position: absolute;
             top: 0;
+            right: 0;
             bottom: 0;
             left: 0;
-            right: 0;
-            height: 100%;
-            width: 100%;
-            opacity: 0;
-            transition: .5s ease;
             background-color: rgba(0, 0, 0, 0.7);
             color: white;
+            opacity: 0;
+            transition: opacity 0.5s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
         }
 
         .project-image:hover .overlay {
             opacity: 1;
         }
 
-        .overlay .text {
-            color: white;
-            font-size: 16px;
+        .logos img {
+            margin-bottom: 10px;  /* Space between logos */
+        }
+
+        .logos {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
     </style>
 </head>
@@ -360,15 +362,38 @@
             <h2 class="section-title" style="font-family: 'Times New Roman', Times, serif; font-style: italic; text-align: center;">- Large Programs -</h2>
             <div class="row">
                 <div class="col-md-7 project-image" data-project="project1">
-                    <img src="research_image/alma2.jpeg" alt="Project 1" class="img-fluid">
-                    <div class="overlay">
-                        <div class="text">Project 2.1, Project 2.2, Project 2.3</div>
+                    <div class="row">
+                        <div class="col-6 logos">
+                            <img src="path-to-logo1.jpg" alt="Logo 1" class="img-fluid">
+                            <img src="path-to-logo2.jpg" alt="Logo 2" class="img-fluid">
+                        </div>
+                        <div class="col-6">
+                            <img src="research_image/alma2.jpeg" alt="Project 1" class="img-fluid">
+                            <div class="overlay">
+                                <div class="text">Project 2.1, Project 2.2, Project 2.3</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-7 project-image" data-project="project2">
-                    <img src="research_image/jwst.jpeg" alt="Project 2" class="img-fluid">
-                    <div class="overlay">
-                        <div class="text">Project 3.1, Project 3.2, Project 3.3</div>
+                    <div class="row">
+                        <div class="col-6">
+                            <img src="research_image/jwst.jpeg" alt="Project 2" class="img-fluid">
+                            <div class="overlay">
+                                <div class="text">Project 3.1, Project 3.2, Project 3.3</div>
+                            </div>
+                        </div>
+                        <div class="col-6 logos">
+                            <!-- Assuming there are 6 logos arranged in 3 columns x 2 rows -->
+                            <div class="row">
+                                <div class="col-4"><img src="path-to-logo3.jpg" alt="Logo 3" class="img-fluid"></div>
+                                <div class="col-4"><img src="path-to-logo4.jpg" alt="Logo 4" class="img-fluid"></div>
+                                <div class="col-4"><img src="path-to-logo5.jpg" alt="Logo 5" class="img-fluid"></div>
+                                <div class="col-4"><img src="path-to-logo6.jpg" alt="Logo 6" class="img-fluid"></div>
+                                <div class="col-4"><img src="path-to-logo7.jpg" alt="Logo 7" class="img-fluid"></div>
+                                <div class="col-4"><img src="path-to-logo8.jpg" alt="Logo 8" class="img-fluid"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
