@@ -174,26 +174,30 @@
             margin-left: 20px; /* Adds space between logos and image */
         }
 
-        .project-image .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s ease, visibility 0.5s ease;
+        .project-image .overlay a {
+            color: white; /* Sets the text color to white */
+            font-size: 20px; /* Increases the font size */
+            text-decoration: none; /* Removes underline from links */
         }
 
-        .project-image:hover .overlay {
+        .project-item .overlay {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.7); /* Darken the background */
+            color: white;
+            text-align: center; /* Ensures text is centered */
+            font-size: 20px; /* Adjust font size as needed */
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .project-item:hover .overlay {
             opacity: 1;
             visibility: visible;
         }
+
         .logos {
             display: flex;
             flex-direction: column;
@@ -231,20 +235,13 @@
             display: block; /* Ensures the image uses the full container width */
         }
 
-        .project-item .overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-            color: white;
+        .project-image:hover .overlay {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            visibility: hidden;
+            justify-content: center; /* Center content horizontally */
+            align-items: center; /* Center content vertically */
+            background-color: rgba(0,0,0,0.8); /* Darken the background to improve visibility */
+            opacity: 1;
+            visibility: visible;
         }
         .logo {
             cursor: pointer;
