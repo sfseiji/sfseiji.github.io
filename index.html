@@ -165,26 +165,35 @@
             transition: transform 0.5s ease;
         }
 
+        .project-item {
+            position: relative; /* Ensure the overlay can be absolutely positioned within */
+        }
+
+        .project-item img {
+            float: right; /* Align the image to the right */
+            margin-left: 20px; /* Adds space between logos and image */
+        }
+
         .project-image .overlay {
             position: absolute;
             top: 0;
-            right: 0;
-            bottom: 0;
             left: 0;
-            background-color: rgba(0, 0, 0, 0.8);  // Darken the overlay
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.5s, visibility 0.5s;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
         }
 
         .project-image:hover .overlay {
             opacity: 1;
             visibility: visible;
         }
-
         .logos {
             display: flex;
             flex-direction: column;
@@ -409,34 +418,38 @@
         <div class="container my-4">
             <h2 class="section-title" style="font-family: 'Times New Roman', Times, serif; font-style: italic; text-align: center;">- Large Programs -</h2>
                 <div class="row">
-                    <div class="col-md-3 logos d-flex flex-column align-items-center justify-content-center">
-                        <img src="project_logo/alma/alpine.jpg" alt="Logo 1" class="img-fluid" data-text="Project 1.1 Description" data-link="https://sfseiji.github.io/pages/projects.html">
-                        <img src="project_logo/alma/alcs.jpg" alt="Logo 2" class="img-fluid" data-text="Project 1.2 Description" data-link="https://sfseiji.github.io/pages/projects.html">
-                    </div>
-                    <div class="col-md-7">
-                        <img src="research_image/alma2.jpeg" alt="Project 1" class="img-fluid" style="float:right;">
-                        <div class="overlay">
-                            <div class="text"><a href="https://sfseiji.github.io/pages/projects.html" id="project-link1" target="_blank">Learn more about ALMA projects</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12 project-image" data-project="project2">
-                    <div class="row">
-                        <div class="col-6">
-                            <img src="research_image/jwst.jpeg" alt="Project 2" class="img-fluid">
-                            <div class="overlay">
-                               <div class="text"><a href="https://sfseiji.github.io/pages/projects.html" id="project-link2" target="_blank">Learn more about JWST projects</a></div>
+                    <div class="col-md-12 project-item" data-project="project1">
+                        <div class="row">
+                            <div class="col-md-3 logos d-flex flex-column align-items-center justify-content-center">
+                                <img src="project_logo/alma/alpine.jpg" alt="Logo 1" class="img-fluid">
+                                <img src="project_logo/alma/alcs.jpg" alt="Logo 2" class="img-fluid">
+                            </div>
+                            <div class="col-md-9">
+                                <img src="research_image/alma2.jpeg" alt="Project 1" class="img-fluid" style="float:right;">
+                                <div class="overlay">
+                                    <a href="https://sfseiji.github.io/pages/projects.html" target="_blank">Learn more about ALMA projects</a>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-6 logos">
-                            <!-- Assuming there are 6 logos arranged in 3 columns x 2 rows -->
-                            <div class="row">
-                                <div class="col-4"><img src="project_logo/jwst/CEERS.png" alt="Logo 3" class="img-fluid"></div>
-                                <div class="col-4"><img src="path-to-logo4.jpg" alt="Logo 4" class="img-fluid"></div>
-                                <div class="col-4"><img src="path-to-logo5.jpg" alt="Logo 5" class="img-fluid"></div>
-                                <div class="col-4"><img src="path-to-logo6.jpg" alt="Logo 6" class="img-fluid"></div>
-                                <div class="col-4"><img src="path-to-logo7.jpg" alt="Logo 7" class="img-fluid"></div>
-                                <div class="col-4"><img src="path-to-logo8.jpg" alt="Logo 8" class="img-fluid"></div>
+                    </div>
+                    <div class="col-md-12 project-image" data-project="project2">
+                        <div class="row">
+                            <div class="col-6">
+                                <img src="research_image/jwst.jpeg" alt="Project 2" class="img-fluid">
+                                <div class="overlay">
+                                   <div class="text"><a href="https://sfseiji.github.io/pages/projects.html" id="project-link2" target="_blank">Learn more about JWST projects</a></div>
+                                </div>
+                            </div>
+                            <div class="col-6 logos">
+                                <!-- Assuming there are 6 logos arranged in 3 columns x 2 rows -->
+                                <div class="row">
+                                    <div class="col-4"><img src="project_logo/jwst/CEERS.png" alt="Logo 3" class="img-fluid"></div>
+                                    <div class="col-4"><img src="path-to-logo4.jpg" alt="Logo 4" class="img-fluid"></div>
+                                    <div class="col-4"><img src="path-to-logo5.jpg" alt="Logo 5" class="img-fluid"></div>
+                                    <div class="col-4"><img src="path-to-logo6.jpg" alt="Logo 6" class="img-fluid"></div>
+                                    <div class="col-4"><img src="path-to-logo7.jpg" alt="Logo 7" class="img-fluid"></div>
+                                    <div class="col-4"><img src="path-to-logo8.jpg" alt="Logo 8" class="img-fluid"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -490,5 +503,19 @@
             align-items: flex-start; /* Align logos to the top if necessary */
         }
     </style>
+    <script>
+    document.querySelectorAll('.project-item').forEach(item => {
+        item.addEventListener('mouseover', function() {
+            const overlay = this.querySelector('.overlay');
+            overlay.style.opacity = 1;
+            overlay.style.visibility = 'visible';
+        });
+        item.addEventListener('mouseout', function() {
+            const overlay = this.querySelector('.overlay');
+            overlay.style.opacity = 0;
+            overlay.style.visibility = 'hidden';
+        });
+    });
+    </script>
 </body>
 </html>
