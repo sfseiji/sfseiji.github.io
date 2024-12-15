@@ -468,27 +468,5 @@
             </div>
     </section>
     <!-- JavaScript: Above <body> -->
-    <script>
-document.addEventListener('DOMContentLoaded', function() {
-    const logos = document.querySelectorAll('.logos img');
-    logos.forEach(logo => {
-        logo.addEventListener('mouseover', function() {
-            const text = this.getAttribute('data-text');
-            const link = this.getAttribute('data-link');
-            const overlayText = this.closest('.project-image').querySelector('.overlay .text a');
-            overlayText.textContent = text;
-            overlayText.href = link; // Update link dynamically
-            this.closest('.project-image').querySelector('.overlay').style.opacity = 1;
-            this.closest('.project-image').querySelector('.overlay').style.visibility = 'visible';
-        });
-
-        logo.addEventListener('mouseout', function() {
-            const overlay = this.closest('.project-image').querySelector('.overlay');
-            overlay.style.opacity = 0;
-            overlay.style.visibility = 'hidden';
-        });
-    });
-});
-    </script>
 </body>
 </html>
