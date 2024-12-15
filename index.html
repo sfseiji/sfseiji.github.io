@@ -172,13 +172,12 @@
             bottom: 0;
             left: 0;
             background-color: rgba(0, 0, 0, 0.8);  // Darken the overlay
-            color: white;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.5s, visibility 0.5s;
             display: flex;
             align-items: center;
             justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.5s, visibility 0.5s;
         }
 
         .project-image:hover .overlay {
@@ -186,14 +185,14 @@
             visibility: visible;
         }
 
-        .logos img {
-            margin-bottom: 10px;  /* Space between logos */
-        }
-
         .logos {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: center;  // Center logos vertically
+            align-items: center;  // Center logos horizontally in their column
+        }
+        .logos img {
+            margin-bottom: 10px;  /* Space between logos */
         }
         .project-item .logo-panel {
             display: flex;
