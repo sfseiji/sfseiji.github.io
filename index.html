@@ -457,19 +457,19 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <script>
-    document.querySelectorAll('.logo').forEach(logo => {
+    document.querySelectorAll('.project-item .logo-panel img').forEach(logo => {
         logo.addEventListener('mouseover', function() {
-            const text = this.getAttribute('data-text');
-            const overlay = this.closest('.project-item').querySelector('.overlay');
-            overlay.innerHTML = `<p>${text}</p>`;
-            overlay.style.opacity = 1;
-            overlay.style.visibility = 'visible';
+            const text = this.getAttribute('data-text'); // Ensure data-text is defined in your HTML on each logo img
+            const projectImage = this.closest('.project-item').querySelector('.image-panel .overlay');
+            projectImage.innerHTML = `<p>${text}</p>`; // Adding text dynamically
+            projectImage.style.opacity = 1;
+            projectImage.style.visibility = 'visible';
         });
 
         logo.addEventListener('mouseout', function() {
-            const overlay = this.closest('.project-item').querySelector('.overlay');
-            overlay.style.opacity = 0;
-            overlay.style.visibility = 'hidden';
+            const projectImage = this.closest('.project-item').querySelector('.image-panel .overlay');
+            projectImage.style.opacity = 0;
+            projectImage.style.visibility = 'hidden';
         });
     });
     </script>
