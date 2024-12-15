@@ -111,6 +111,22 @@
         #research .carousel-item .col-md-4 {
             padding-top: 20px; /* Add padding to align the start of the text with the image's top if needed */
         }
+        .carousel-control-prev, .carousel-control-next {
+            width: 5%;  /* Makes the clickable area narrower */
+            z-index: 2; /* Ensure the arrows are above other content */
+        }
+
+        .carousel-control-prev {
+            left: 0; /* Aligns the left arrow to the very edge of the carousel */
+        }
+
+        .carousel-control-next {
+            right: 0; /* Aligns the right arrow to the very edge of the carousel */
+        }
+
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-size: 100%; /* Adjust the size of the arrow icons if needed */
+        }
     </style>
 </head>
 <body>
