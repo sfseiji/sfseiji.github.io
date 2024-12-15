@@ -193,6 +193,42 @@
             flex-direction: column;
             justify-content: center;
         }
+        .project-item .logo-panel {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center logos vertically */
+            justify-content: center; /* Space logos evenly */
+        }
+
+        .project-item .image-panel {
+            position: relative;
+        }
+
+        .project-item .project-image {
+            width: 100%;
+            display: block; /* Ensures the image uses the full container width */
+        }
+
+        .project-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            visibility: hidden;
+        }
+
+        .logo {
+            cursor: pointer;
+            margin-bottom: 10px; /* Space between logos */
+        }
     </style>
 </head>
 <body>
