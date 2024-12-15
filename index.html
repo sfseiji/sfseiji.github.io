@@ -98,6 +98,24 @@
         .carousel-indicators .active {
             background-color: #000;  /* Color of the active dot */
         }
+        #research .carousel-item .row {
+            margin: 0;
+            align-items: center; /* Vertically center the content of the row */
+        }
+
+        #research .carousel-item img {
+            width: 100%; /* Ensure the image uses the full width of its container */
+            height: auto; /* Maintain aspect ratio */
+            object-fit: cover; /* Ensure the image covers the area without distortion */
+        }
+
+        #research .carousel {
+            border: 2px solid #ddd; /* Example border */
+            border-radius: 8px; /* Rounded corners */
+            padding: 20px;
+            background-color: #f9f9f9; /* Light background for the whole carousel */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Optional: adds shadow for depth */
+        }
     </style>
 </head>
 <body>
@@ -172,10 +190,10 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="row">
-                        <div class="col-md-4">
-                            <img src="research_image/smacs0723.png" class="d-block w-100" alt="Research Topic 1">
+                        <div class="col-md-8"> <!-- 70% width for image -->
+                            <img src="research_image/smacs0723.png" class="d-block w-100 align-middle" alt="Research Topic 1">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-4">
                             <h3>Research Topic 1</h3>
                             <p>Brief description of research topic 1...</p>
                         </div>
@@ -194,14 +212,22 @@
                 </div>
                 <!-- More carousel items as needed -->
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#researchCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#researchCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#researchCarousel" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#researchCarousel" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#researchCarousel" data-bs-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <!-- Carousel items here -->
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#researchCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#researchCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
         </div>
     </section>
     <!-- Remaining sections -->
