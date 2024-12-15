@@ -409,18 +409,15 @@
     <section id="projects">
         <div class="container my-4">
             <h2 class="section-title" style="font-family: 'Times New Roman', Times, serif; font-style: italic; text-align: center;">- Large Programs -</h2>
-            <div class="row">
-                <div class="col-md-12 project-image" data-project="project1">
-                    <div class="row">
-                        <div class="col-md-2 logos">
-                            <img src="project_logo/alma/alpine.jpg" alt="Logo 1" class="img-fluid" data-text="Project 1.1 Description">
-                            <img src="project_logo/alma/alcs.jpg" alt="Logo 2" class="img-fluid" data-text="Project 1.2 Description">
-                        </div>
-                        <div class="col-7">
-                            <img src="research_image/alma2.jpeg" alt="Project 1" class="img-fluid">
-                            <div class="overlay">
-                                <div class="text">Project 3.1, Project 3.2, Project 3.3</div>
-                            </div>
+                <div class="row">
+                    <div class="col-md-3 logos d-flex flex-column align-items-center justify-content-center">
+                        <img src="project_logo/alma/alpine.jpg" alt="Logo 1" class="img-fluid" data-text="Project 1.1 Description" data-link="https://sfseiji.github.io/pages/projects.html">
+                        <img src="project_logo/alma/alcs.jpg" alt="Logo 2" class="img-fluid" data-text="Project 1.2 Description" data-link="https://sfseiji.github.io/pages/projects.html">
+                    </div>
+                    <div class="col-md-7">
+                        <img src="research_image/alma2.jpeg" alt="Project 1" class="img-fluid">
+                        <div class="overlay">
+                            <div class="text"><a href="#" id="https://sfseiji.github.io/pages/projects.html" target="_blank">Learn more about ALMA projects</a></div>
                         </div>
                     </div>
                 </div>
@@ -429,7 +426,7 @@
                         <div class="col-6">
                             <img src="research_image/jwst.jpeg" alt="Project 2" class="img-fluid">
                             <div class="overlay">
-                                <div class="text">Project 3.1, Project 3.2, Project 3.3</div>
+                               <div class="text"><a href="#" id="https://sfseiji.github.io/pages/projects.html" target="_blank">Learn more about JWST projects</a></div>
                             </div>
                         </div>
                         <div class="col-6 logos">
@@ -473,21 +470,26 @@
     </section>
     <!-- JavaScript: Above <body> -->
     <script>
-    document.querySelectorAll('.project-item .logo-panel img').forEach(logo => {
+document.addEventListener('DOMContentLoaded', function() {
+    const logos = document.querySelectorAll('.logos img');
+    logos.forEach(logo => {
         logo.addEventListener('mouseover', function() {
-            const text = this.getAttribute('data-text'); // Ensure data-text is defined in your HTML on each logo img
-            const projectImage = this.closest('.project-item').querySelector('.image-panel .overlay');
-            projectImage.innerHTML = `<p>${text}</p>`; // Correct variable name used
-            projectImage.style.opacity = 1;
-            projectImage.style.visibility = 'visible';
+            const text = this.getAttribute('data-text');
+            const link = this.getAttribute('data-link');
+            const overlayText = this.closest('.project-image').querySelector('.overlay .text a');
+            overlayText.textContent = text;
+            overlayText.href = link; // Update link dynamically
+            this.closest('.project-image').querySelector('.overlay').style.opacity = 1;
+            this.closest('.project-image').querySelector('.overlay').style.visibility = 'visible';
         });
 
         logo.addEventListener('mouseout', function() {
-            const projectImage = this.closest('.project-item').querySelector('.image-panel .overlay');
-            projectImage.style.opacity = 0;
-            projectImage.style.visibility = 'hidden';
+            const overlay = this.closest('.project-image').querySelector('.overlay');
+            overlay.style.opacity = 0;
+            overlay.style.visibility = 'hidden';
         });
     });
+});
     </script>
 </body>
 </html>
