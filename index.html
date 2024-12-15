@@ -80,21 +80,14 @@
             font-size: 1.2rem; /* Slightly smaller than the position title */
             color: #999; /* Optional: consistent color */
         }
-        #research .carousel-item .col-md-4 {
-            display: flex;
-            justify-content: center; /* Center content horizontally */
-            align-items: center; /* Center content vertically */
-        }
-
-        #research img {
-            max-width: 70%; /* Adjust size to prevent edge-to-edge stretching */
-            height: auto; /* Maintain aspect ratio */
-        }
-        #research .carousel-item {
-            background-color: black; /* White background for each slide */
-            margin: 15px;
-            border-radius: 5px; /* Rounded corners for each item */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Soft shadow for each item */
+        #research {
+            width: 70%;  /* Sets the width of the section to 70% of its container's width */
+            margin: auto;  /* Centers the section horizontally within its container */
+            overflow: hidden;  /* Ensures nothing spills outside the section */
+            padding: 20px;  /* Optional: Adds padding inside the section for spacing */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);  /* Optional: Adds shadow for depth */
+            border-radius: 10px;  /* Optional: Rounds the corners */
+            background-color: #fff;  /* Optional: Sets a background color */
         }
     </style>
 </head>
