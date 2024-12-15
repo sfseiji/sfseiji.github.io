@@ -457,15 +457,19 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <script>
-    document.querySelectorAll('.project-image').forEach(item => {
-        item.addEventListener('click', function() {
-            const project = this.getAttribute('data-project');
-            // Define your URL mapping based on project data attribute
-            const urlMapping = {
-                project1: 'https://sfseiji.github.io/pages/projects.html',
-                project2: 'https://sfseiji.github.io/pages/projects.html'
-            };
-            window.location.href = urlMapping[project];
+    document.querySelectorAll('.logo').forEach(logo => {
+        logo.addEventListener('mouseover', function() {
+            const text = this.getAttribute('data-text');
+            const overlay = this.closest('.project-item').querySelector('.overlay');
+            overlay.innerHTML = `<p>${text}</p>`;
+            overlay.style.opacity = 1;
+            overlay.style.visibility = 'visible';
+        });
+
+        logo.addEventListener('mouseout', function() {
+            const overlay = this.closest('.project-item').querySelector('.overlay');
+            overlay.style.opacity = 0;
+            overlay.style.visibility = 'hidden';
         });
     });
     </script>
