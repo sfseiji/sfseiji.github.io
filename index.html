@@ -200,8 +200,20 @@
             justify-content: center; /* Space logos evenly */
         }
 
-        .project-item .image-panel {
-            position: relative;
+        .project-item .image-panel .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); // Ensure this is visible
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0; // Initial state is fully transparent
+            visibility: hidden; // Initially not visible
+            transition: opacity 0.5s, visibility 0.5s; // Smooth transition for visibility and opacity
         }
 
         .project-item .project-image {
