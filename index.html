@@ -261,6 +261,12 @@
         #personal {
             margin-top: 40px; /* Adjust this value to increase or decrease the space */
         }
+        .photo-grid img {
+            display: block; /* Ensure images are block-level elements to accept margin */
+            width: calc(25% - 10px); /* Adjust width to fit 4 images per row accounting for margin */
+            margin: 5px; /* This applies margin to all sides, adjust as necessary for spacing */
+            vertical-align: middle;
+        }
     </style>
 </head>
 <body>
