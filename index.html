@@ -573,16 +573,15 @@
         </div>
     </section>
 
-    <section id="personal" style="margin-top: 40px; padding: 20px; background-color: #f9f9f9; border-radius: 10px; width: 90%; margin: 40px auto;">
+    <section id="personal" style="margin-top: 40px; padding: 20px; background-color: rgba(249, 249, 249, 0.9); border-radius: 10px; width: 90%; margin: 40px auto;">
         <h2 class="section-title" style="font-family: 'Times New Roman', Times, serif; font-style: italic; text-align: center; margin-bottom: 20px;">Personal</h2>
-        <div class="container">
-            <div class="row" id="imageGallery">
-                <!-- Images will be loaded here by JavaScript -->
-            </div>
+        <div class="container" id="image-container">
+            <!-- Images will be loaded here by JavaScript -->
         </div>
         <div style="text-align: center; margin-top: 20px;">
             <a href="pages/personal.html" class="btn btn-info">Learn More</a>
         </div>
+        <p style="font-size: 0.75rem; text-align: center; margin-top: 10px;">I enjoy exploring the world's remote corners, capturing the beauty of nature through my lens.</p>
     </section>
     <!-- JavaScript: Above <body> -->
     <script>
@@ -612,6 +611,7 @@
             const img = document.createElement('img');
             img.src = `personal/${image}`; // Update the path as necessary
             img.className = 'img-fluid';
+            img.style = 'width: 100%; height: auto;'; // Ensure responsiveness and full column width
             img.alt = 'Personal Image'; // Alternative text for accessibility
             colDiv.appendChild(img);
             gallery.appendChild(colDiv);
