@@ -597,12 +597,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            fetch('https://api.adsabs.harvard.edu/v1/search/query?q=author:"Fujimoto, S"&sort=date desc&fl=title,year,bibcode,author', {
-                method: 'GET',
-                headers: {
-                    'Authorization': 'Bearer ugAXP2zuUbNjRQNKGZ10HoeGL5oQH6XZID8AZc6x'
-                }
-            })
+            fetch('/api/publications')  // これがサーバー側のAPIエンドポイント
             .then(response => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');
