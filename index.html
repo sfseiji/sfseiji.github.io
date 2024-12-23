@@ -576,20 +576,8 @@
     <section id="personal" style="margin-top: 40px; padding: 20px; background-color: #f9f9f9; border-radius: 10px; width: 90%; margin: 40px auto;">
         <h2 class="section-title" style="font-family: 'Times New Roman', Times, serif; font-style: italic; text-align: center; margin-bottom: 20px;">Personal</h2>
         <div class="container">
-            <div class="row">
-                <!-- Example of a 4x3 grid -->
-                <div class="col-md-3"><img src="personal/bahareiya1.jpg" alt="Description 1" class="img-fluid"></div>
-                <div class="col-md-3"><img src="personal/bahareiya2.jpg" alt="Description 2" class="img-fluid"></div>
-                <div class="col-md-3"><img src="personal/florence.jpg" alt="Description 3" class="img-fluid"></div>
-                <div class="col-md-3"><img src="personal/maunakea.jpg" alt="Description 4" class="img-fluid"></div>
-                <div class="col-md-3"><img src="personal/losangeles.jpg" alt="Description 5" class="img-fluid"></div>
-                <div class="col-md-3"><img src="personal/deepforest.jpg" alt="Description 6" class="img-fluid"></div>
-                <div class="col-md-3"><img src="personal/onsen.jpg" alt="Description 7" class="img-fluid"></div>
-                <div class="col-md-3"><img src="personal/pisa.jpg" alt="Description 8" class="img-fluid"></div>
-                <div class="col-md-3"><img src="personal/sahara.jpg" alt="Description 9" class="img-fluid"></div>
-                <div class="col-md-3"><img src="personal/sanmarino.jpg" alt="Description 10" class="img-fluid"></div>
-                <div class="col-md-3"><img src="personal/camping.jpg" alt="Description 11" class="img-fluid"></div>
-                <div class="col-md-3"><img src="personal/comet.jpg" alt="Description 12" class="img-fluid"></div>
+            <div class="row" id="imageGallery">
+                <!-- Images will be loaded here by JavaScript -->
             </div>
         </div>
         <div style="text-align: center; margin-top: 20px;">
@@ -611,5 +599,22 @@
         });
     });
     </script>
+    <script>
+        // Example array of image filenames
+        const images = ["personal/bahareiya1.jpg", "personal/bahareiya2.jpg", "personal/florence.jpg", "personal/maunakea.jpg"]; // Add more images as needed
+        const gallery = document.getElementById('imageGallery');
+
+        images.forEach(image => {
+            const colDiv = document.createElement('div');
+            colDiv.className = 'col-md-3 mb-4'; // This sets each image in a 4x3 grid
+            const img = document.createElement('img');
+            img.src = `personal/${image}`; // Update the path as necessary
+            img.className = 'img-fluid';
+            img.alt = 'Personal Image'; // Alternative text for accessibility
+            colDiv.appendChild(img);
+            gallery.appendChild(colDiv);
+        });
+    </script>
+
 </body>
 </html>
