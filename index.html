@@ -596,33 +596,39 @@
     </script>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        fetch('/api/publications')
-            .then(response => response.json())
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('https://api.adsabs.harvard.edu/v1/search/query?q=author:"Fujimoto, S"&sort=date desc&fl=title,year,bibcode,author', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ugAXP2zuUbNjRQNKGZ10HoeGL5oQH6XZID8AZc6x'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
-                const publicationsContainer = document.getElementById('publications');
-                data.response.docs.forEach(doc => {
-                    const article = document.createElement('article');
-                    const title = document.createElement('h3');
-                    const link = document.createElement('a');
-                    const summary = document.createElement('p');
-
-                    link.href = `https://ui.adsabs.harvard.edu/abs/${doc.bibcode}/abstract`;
-                    link.textContent = doc.title.join("; ");
-                    title.appendChild(link);
-
-                    summary.textContent = `${doc.year} - Read more`;
-                    
-                    article.appendChild(title);
-                    article.appendChild(summary);
-                    publicationsContainer.appendChild(article);
+                const publicationsContent = document.getElementById('publicationsContent');
+                publicationsContent.innerHTML = ''; // Clear previous content
+                data.response.docs.forEach((doc, index) => {
+                    const publicationDiv = document.createElement('div');
+                    publicationDiv.innerHTML = `
+                        <article>
+                            <h3 style="font-size: 1.2rem;"><a href="https://ui.adsabs.harvard.edu/abs/${doc.bibcode}" target="_blank">${doc.title[0]}</a></h3>
+                            <p>${doc.author.join(', ')} (${doc.year})</p>
+                        </article>
+                    `;
+                    publicationsContent.appendChild(publicationDiv);
                 });
             })
             .catch(error => {
                 console.error('Error loading publications:', error);
-                document.getElementById('publications').innerHTML = '<p>Error loading publications.</p>';
+                const publicationsContent = document.getElementById('publicationsContent');
+                publicationsContent.innerHTML = '<p>Error loading publications.</p>';
             });
-    });
+        });
     </script>
 
 
