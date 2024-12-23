@@ -554,24 +554,17 @@
             </div>
         </div>
 
-        <div id="publications" style="width: 40%; padding: 5px; background-color: #999; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.7); overflow-y: auto; max-height: 300px;">
+        <section id="publications" style="width: 40%; padding: 5px; background-color: #999; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.7); overflow-y: auto; max-height: 300px;">
             <div style="border-bottom: 2px solid #ccc; margin-bottom: 10px;">
                 <h2 style="font-size: 1.5rem;">Recent Publications</h2>
             </div>
-            <article>
-                <h3 style="font-size: 1.2rem;"><a href="https://sfseiji.github.io/pages/news.html">Publication1</a></h3>
-                <p>Summary of the publication... <a href="https://sfseiji.github.io/pages/news.html">Read more</a></p>
-            </article>
-            <article>
-                <h3 style="font-size: 1.2rem;"><a href="https://sfseiji.github.io/pages/news.html">Publication2</a></h3>
-                <p>Summary of the publication... <a href="https://sfseiji.github.io/pages/news.html">Read more</a></p>
-            </article>
-            <!-- Additional publication items -->
-            <div style="text-align: center; padding-top: 10px;">
-                <a href="link-to-all-publications">More</a>
+            <div id="publication-list">
+                <!-- Publications will be loaded here by JavaScript -->
             </div>
-        </div>
-    </section>
+            <div style="text-align: center; padding-top: 10px;">
+                <a href="https://ui.adsabs.harvard.edu/search/filter_database_fq_database=OR&filter_database_fq_database=database%3A%22astronomy%22&format=SHORT&fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3A%22astronomy%22)&q=author%3A(%22fujimoto%2Cseiji%22)%20AND%20pubdate%3A%5B2015-01%20TO%20*%5D&sort=score%20desc%2C%20bibcode%20desc&unprocessed_parameter=adsobj_query&unprocessed_parameter=qform&p_=0">More</a>
+            </div>
+        </section>
 
     <section id="personal" style="margin-top: 80px; padding: 20px; background-color: rgba(249, 249, 249, 0.2); border-radius: 10px; width: 90%;margin-left: auto;margin-right: auto;">
         <h2 class="section-title" style="font-family: 'Times New Roman', Times, serif; font-style: italic; text-align: center; margin-bottom: 20px;">- Personal -</h2>
@@ -600,6 +593,38 @@
         });
     });
     </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchPublications();
+    });
+
+    function fetchPublications() {
+        const apiKey = 'XVl8txEZsOPPIvsK0DOgv0dJ9rmxatSNw6yLzi3f';
+        const queryUrl = 'https://api.adsabs.harvard.edu/v1/search/query?q=author:"fujimoto,seiji"&sort=date desc&fl=title,author,bibcode,pubdate&rows=5';
+
+        fetch(queryUrl, {
+            headers: { 'Authorization': 'Bearer ' + apiKey }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const publications = data.response.docs;
+            const publicationList = document.getElementById('publication-list');
+            publicationList.innerHTML = ''; // Clear existing entries
+
+            publications.forEach(pub => {
+                const article = document.createElement('div');
+                article.innerHTML = `
+                    <h3 style="font-size: 1.2rem;"><a href="https://ui.adsabs.harvard.edu/abs/${pub.bibcode}/abstract">${pub.title[0]}</a></h3>
+                    <p>Published on: ${pub.pubdate}</p>
+                `;
+                publicationList.appendChild(article);
+            });
+        })
+        .catch(error => console.error('Error fetching publications:', error));
+    }
+    </script>
+    
     <script>
         // Example array of image filenames
         const images = ["bahareiya1.jpg", "bahareiya2.jpg", "florence.jpg", "maunakea.jpg", 
