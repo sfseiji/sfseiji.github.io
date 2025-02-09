@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - Seiji Fujimoto</title>
+  <title>Group Members - Seiji Fujimoto</title>
   <!-- CSS: Bootstrap, Devicon, Font Awesome -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -36,123 +36,153 @@
       color: white;
       text-align: center;
     }
-        .social-icons i {
-            font-size: 2em;
-        }
-        .social-icons {
-            text-align: center;
-            padding: 20px;
-        }
-        .social-icons a {
-            margin: 0 10px;
-            color: #333;
-        }
-        .social-icons a:hover {
-            color: #007bff;
-        }
-        .project-logos img {
-            width: 150px;
-            margin: 10px;
-        }
-        .project-title {
-            text-decoration: underline;
-            margin-bottom: 5px;
-        }
-        .navbar-nav .nav-item {
-            margin-right: 20px;
-        }
-        .carousel-item {
-            height: 500px;
-        }
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    .list-group-item {
-      background-color: transparent;
+    /* 共通のナビゲーション・ソーシャルアイコン関連 */
+    .social-icons i {
+      font-size: 2em;
+    }
+    .social-icons {
+      text-align: center;
+      padding: 20px;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      color: #333;
+    }
+    .social-icons a:hover {
+      color: #007bff;
+    }
+    .navbar-nav .nav-item {
+      margin-right: 20px;
+    }
+    /* Divider (細い水平線) */
+    .divider {
+      margin: 20px auto;  /* 上下の余白は必要に応じて調整 */
+      width: 80%;         /* 横幅はお好みで */
+      text-align: center;
+    }
+    .divider .line {
       border: none;
-      padding: 0.5rem 0;
-      color: #f1f1f1;
+      border-top: 1px solid #ccc;  /* 薄いグレー */
+      margin: 5px 0;
     }
-    /* リンクボタンなどの色調整 */
-    .btn-info {
-      margin-bottom: 20px;
+    /* メンバー表示用のスタイル */
+    .member-row {
+      margin-bottom: 40px;
+      align-items: center;
     }
-  .lead {
-    font-size: 1rem; /* デフォルトが1.25remなどの場合、1remに下げる */
-    color: #ddd;
-  }
+    .member-bio {
+      text-align: left;
+      color: #ddd;
+    }
+    /* About container (全体の横幅調整など、必要に応じて) */
     .about-container {
-      max-width: 95%; /* 例として横幅を90%に設定。必要に応じて調整してください。 */
-      color: white;
+      max-width: 95%;
     }
-
-
   </style>
 </head>
 <body>
   <!-- 固定背景画像 -->
   <div class="full-bg-image"></div>
   
-  <!-- ナビゲーションバー（index.htmlと同様） -->
-<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="https://sfseiji.github.io/">Seiji Fujimoto</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-            aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/news.html">News</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="../pages/about.html">About Me</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/research.html">Research</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/members.html">Group Members</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/projects.html">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/teaching.html">Teaching</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/job.html">Job Opportunity</a>
-        </li>
-      </ul>
-      <div class="social-icons">
-        <a href="https://twitter.com/sfseiji" target="_blank" title="Twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://scholar.google.co.jp/citations?user=lnAouJ4AAAAJ&hl=en" target="_blank"
-           title="Google Scholar">
-          <i class="fas fa-graduation-cap"></i>
-        </a>
-        <a href="https://ui.adsabs.harvard.edu/search/filter_database_fq_database=OR&filter_database_fq_database=database%3A%22astronomy%22&format=SHORT&fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3A%22astronomy%22)&q=author%3A(%22fujimoto%2Cseiji%22)%20AND%20pubdate%3A%5B2015-01%20TO%20*%5D&sort=score%20desc%2C%20bibcode%20desc&unprocessed_parameter=adsobj_query&unprocessed_parameter=qform&p_=0"
-           target="_blank" title="Publications on ADS">
-          <i class="fas fa-book"></i>
-        </a>
+  <!-- ナビゲーションバー（他ページと同様） -->
+  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="https://sfseiji.github.io/">Seiji Fujimoto</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/news.html">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/about.html">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/research.html">Research</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="../pages/members.html">Group Members</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/teaching.html">Teaching</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/job.html">Job Opportunity</a>
+          </li>
+        </ul>
+        <div class="social-icons">
+          <a href="https://twitter.com/sfseiji" target="_blank" title="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="https://scholar.google.co.jp/citations?user=lnAouJ4AAAAJ&hl=en" target="_blank"
+             title="Google Scholar">
+            <i class="fas fa-graduation-cap"></i>
+          </a>
+          <a href="https://ui.adsabs.harvard.edu/" target="_blank" title="Publications on ADS">
+            <i class="fas fa-book"></i>
+          </a>
+        </div>
       </div>
     </div>
+  </nav>
+  
+  <!-- Group Members Heading -->
+  <div class="container my-4 about-container">
+    <h1 class="text-center">Group Members</h1>
   </div>
-</nav>
-
-    <div class="container my-4">
-        <h1>Group Members</h1>
-        (under construction...)
-        <!-- Page-specific content goes here -->
+  
+  <!-- Postdoc セクション -->
+  <div class="container my-4 about-container">
+    <h2 class="text-center">Postdoc</h2>
+    <div class="divider">
+      <hr class="line">
+      <hr class="line">
     </div>
-    <!-- JavaScript: Above <body> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
+    <!-- サンプルの Postdoc メンバー -->
+    <div class="row member-row">
+      <!-- 左側：画像 -->
+      <div class="col-md-3 text-center">
+        <img src="../images/postdoc1.jpg" alt="Postdoc Name" class="img-fluid rounded">
+      </div>
+      <!-- 右側：Bio -->
+      <div class="col-md-9 member-bio">
+        <h3>Dr. Jane Doe</h3>
+        <p><strong>PhD:</strong> 2018, University of Tokyo</p>
+        <p><strong>Interests:</strong> Extragalactic Astronomy, ALMA Observations, Cosmology</p>
+      </div>
+    </div>
+    <!-- ここに他の Postdoc メンバーも追加可能 -->
+  </div>
+  
+  <!-- PhD Students セクション -->
+  <div class="container my-4 about-container">
+    <h2 class="text-center">PhD Students</h2>
+    <div class="divider">
+      <hr class="line">
+      <hr class="line">
+    </div>
+    <!-- サンプルの PhD 学生 -->
+    <div class="row member-row">
+      <!-- 左側：画像 -->
+      <div class="col-md-3 text-center">
+        <img src="../images/phd1.jpg" alt="PhD Student Name" class="img-fluid rounded">
+      </div>
+      <!-- 右側：Bio -->
+      <div class="col-md-9 member-bio">
+        <h3>John Smith</h3>
+        <p><strong>PhD:</strong> Expected 2025, University of Toronto</p>
+        <p><strong>Interests:</strong> Galaxy Formation, JWST Observations, Stellar Populations</p>
+      </div>
+    </div>
+    <!-- ここに他の PhD 学生も追加可能 -->
+  </div>
+  
 </body>
 </html>
