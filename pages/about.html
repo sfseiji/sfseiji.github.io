@@ -93,6 +93,16 @@
     font-size: 1rem; /* デフォルトが1.25remなどの場合、1remに下げる */
     color: #ddd;
   }
+  .divider {
+    margin: 50px auto;  /* 上下の余白はお好みで調整 */
+    width: 50%;         /* 横幅は必要に応じて調整 */
+    text-align: center;
+  }
+  .divider .line {
+    border: none;
+    border-top: 1px solid #ccc;  /* 薄いグレーの線 */
+    margin: 5px 0;
+  }
 
   </style>
 </head>
@@ -171,6 +181,12 @@
       </div>
     </div>
   </section>
+
+<!-- Divider: 2本の細い水平線 -->
+<div class="divider">
+  <hr class="line">
+  <hr class="line">
+</div>
   
   <!-- CV セクション：LaTeXソースをWeb表示向けに変換 -->
   <section id="cv">
@@ -291,6 +307,12 @@
       
     </div>
   </section>
+
+<!-- Divider: 2本の細い水平線 -->
+<div class="divider">
+  <hr class="line">
+  <hr class="line">
+</div>
   
 <!-- Publication セクション (CVセクションと同じフォーマット) -->
   <section id="cv">
