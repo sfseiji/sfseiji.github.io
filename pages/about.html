@@ -116,13 +116,13 @@
 
 .carousel-indicators {
   position: absolute;
-  bottom: 10px; /* 位置調整 */
+  bottom: 20px; /* 位置を少し上に */
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
-  gap: 10px; /* インジケーターの間隔 */
-  z-index: 10; /* インジケーターがスライドの上に表示されるようにする */
+  gap: 10px;
+  z-index: 15; /* 10から15に上げる */
 }
 
 .carousel-indicators button {
@@ -205,18 +205,18 @@
       <div class="col-md-5 text-center">
        　<!-- <img id="slideshow" src="../self/square.jpeg" class="img-fluid rounded" alt="Seiji Fujimoto" style="max-width: 90%;"> -->
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <!--　修正: `carousel-indicators` を `carousel-inner` の前に配置 -->
+          <!-- インジケーター -->
           <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6" aria-label="Slide 7"></button>
           </div>
 
-          <!-- 修正: `carousel-inner` を `carousel-indicators` の後に配置 -->
+          <!-- スライド -->
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="../self/square.jpeg" class="d-block w-100" alt="...">
@@ -241,7 +241,7 @@
             </div>            
           </div>
 
-          <!-- スライドの左右移動ボタン -->
+          <!-- ナビゲーションボタン -->
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
