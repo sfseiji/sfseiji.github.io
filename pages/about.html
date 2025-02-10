@@ -126,26 +126,31 @@
     overflow: hidden; /* はみ出し防止 */
 }
 
+/* 正方形の画像はそのまま */
 .square-img {
-    object-fit: contain; /* 正方形の画像はそのまま */
+    object-fit: contain !important;
+    aspect-ratio: 1/1; /* 正方形を維持 */
 }
 
+/* 横長の画像は適切にトリミング */
 .wide-img {
-    object-fit: cover; /* 横長の画像は適切にトリミング */
+    object-fit: cover;
 }
 
+/* インジケーター（バー）の位置を中央に */
 .carousel-indicators {
     position: absolute;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 10px;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: center;
     gap: 5px;
     z-index: 15;
-    max-width: 100%; /* 幅を全体に適用 */
+    max-width: 100%;
 }
 
+/* インジケーターのボタン */
 .carousel-indicators button {
     background-color: grey;
     width: 20px;
@@ -157,11 +162,14 @@
     border: none;
 }
 
+/* アクティブなスライドのインジケーター */
 .carousel-indicators .active {
     background-color: white !important;
     opacity: 1;
     width: 30px;
 }
+
+
   </style>
 </head>
 <body>
