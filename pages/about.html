@@ -107,6 +107,29 @@
 .about-container {
   max-width: 95%; /* 例として横幅を90%に設定。必要に応じて調整してください。 */
 }
+  /* 固定高さのスライドショー画像 */
+      #slideshow {
+        height: 400px;      /* 画像の縦サイズを400pxに固定 */
+        width: auto;
+        object-fit: cover;  /* 画像がコンテナに収まるように、必要な部分は切り抜く */
+      }
+      
+.carousel-indicators button {
+  background-color: grey; /* 非アクティブ時の色 */
+  width: 12px;
+  height: 12px;
+  border-radius: 50%; /* 丸いインジケーター */
+  margin: 0 5px;
+  opacity: 0.5; /* 透明度を少し高めに */
+  transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.carousel-indicators .active {
+  background-color: white !important; /* アクティブなスライドの色を白くする */
+  opacity: 1; /* アクティブ時の透明度をなくす */
+  width: 14px; /* アクティブ時は少し大きく */
+  height: 14px;
+}
 
   </style>
 </head>
