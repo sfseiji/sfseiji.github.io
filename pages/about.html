@@ -125,6 +125,13 @@
     overflow: hidden; /* はみ出し防止 */
 }
 
+.square-img {
+    object-fit: contain; /* 正方形の画像はそのまま */
+}
+
+.wide-img {
+    object-fit: cover; /* 横長の画像は適切にトリミング */
+}
 
 .carousel-indicators {
     position: absolute;
@@ -231,13 +238,13 @@
           <!-- スライド -->
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img src="../self/square.jpeg" class="d-block w-100" alt="...">
+              <img src="../self/square.jpeg" class="d-block w-100　square-img" alt="...">
             </div>
             <div class="carousel-item">
-              <img src="../self/austin.jpg" class="d-block w-100" alt="...">
+              <img src="../self/austin.jpg" class="d-block w-100 wide-img" alt="...">
             </div>
             <div class="carousel-item">
-              <img src="../self/ddcw.jpg" class="d-block w-100" alt="...">
+              <img src="../self/ddcw.jpg" class="d-block w-100 wide-img" alt="...">
             </div>
             <div class="carousel-item">
               <img src="../self/austin3.jpg" class="d-block w-100" alt="...">
