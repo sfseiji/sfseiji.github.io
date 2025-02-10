@@ -19,7 +19,7 @@
       margin: 0;
       font-family: 'Times New Roman', Times, serif;
     }
-    /* 固定背景画像 */
+    /* 固定背景画像：半透明感を出すために brightness を調整 */
     .full-bg-image {
       background: url('../personal/pisa.jpg') no-repeat center center fixed;
       background-size: cover;
@@ -31,7 +31,7 @@
       left: 0;
       z-index: -10;
     }
-    /* セクション共通 */
+    /* セクション全体 */
     section {
       padding: 100px 0;
       color: white;
@@ -55,17 +55,22 @@
     .social-icons a:hover {
       color: #007bff;
     }
-    /* ニュースリスト用スタイル */
+    /* Newsリスト用スタイル（背景や枠なし） */
     .news-list {
       max-width: 95%;
       margin: auto;
       text-align: left;
+      background-color: transparent; /* 透明 */
+    }
+    .news-list .list-group-item {
+      background-color: transparent;
+      border: none;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.15); /* 薄い水平線 */
     }
     .news-item {
       display: flex;
       align-items: center;
-      padding: 0.5rem 0;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .news-date {
       width: 100px;
@@ -122,7 +127,7 @@
     <div class="container news-list my-4">
       <h1 class="text-center">News</h1>
       <ul class="list-group">
-         <!-- 以下、最新ニュースを20件リストアップ -->
+         <!-- ニュース項目は最新順に約20件 -->
          <li class="list-group-item news-item">
             <div class="news-date">Feb 2025</div>
             <div class="news-content">
@@ -137,6 +142,7 @@
               <a href="https://ui.adsabs.harvard.edu/abs/2025XXXXXX" target="_blank">View on ADS</a>
             </div>
          </li>
+         <!-- 以下、架空のニュース項目を計20件ほど追加 -->
          <li class="list-group-item news-item">
             <div class="news-date">Dec 2024</div>
             <div class="news-content">
