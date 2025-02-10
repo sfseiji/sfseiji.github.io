@@ -122,6 +122,7 @@
   display: flex;
   justify-content: center;
   gap: 10px; /* インジケーターの間隔 */
+  z-index: 10; /* インジケーターがスライドの上に表示されるようにする */
 }
 
 .carousel-indicators button {
@@ -204,7 +205,7 @@
       <div class="col-md-5 text-center">
        　<!-- <img id="slideshow" src="../self/square.jpeg" class="img-fluid rounded" alt="Seiji Fujimoto" style="max-width: 90%;"> -->
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <!--ここを追加：スライドインジケーター -->
+          <!--　修正: `carousel-indicators` を `carousel-inner` の前に配置 -->
           <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
@@ -214,7 +215,8 @@
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"></button>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6"></button>
           </div>
-          <!-- ここがスライド本体 -->
+
+          <!-- 修正: `carousel-inner` を `carousel-indicators` の後に配置 -->
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img src="../self/square.jpeg" class="d-block w-100" alt="...">
@@ -239,7 +241,7 @@
             </div>            
           </div>
 
-          <!-- 🔹 ここも追加：スライドの左右移動ボタン -->
+          <!-- スライドの左右移動ボタン -->
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
