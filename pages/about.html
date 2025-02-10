@@ -115,22 +115,20 @@
       }
       
 .carousel-indicators button {
-  background-color: grey; /* 非アクティブ時の色 */
-  width: 12px;
-  height: 12px;
-  border-radius: 50%; /* 丸いインジケーター */
+  background-color: grey;
+  width: 30px;
+  height: 5px;
+  border-radius: 5px;
   margin: 0 5px;
-  opacity: 0.5; /* 透明度を少し高めに */
-  transition: opacity 0.3s ease, background-color 0.3s ease;
+  opacity: 0.5;
+  transition: width 0.3s ease, opacity 0.3s ease;
 }
 
 .carousel-indicators .active {
-  background-color: white !important; /* アクティブなスライドの色を白くする */
-  opacity: 1; /* アクティブ時の透明度をなくす */
-  width: 14px; /* アクティブ時は少し大きく */
-  height: 14px;
+  background-color: white !important;
+  opacity: 1;
+  width: 50px; /* アクティブなスライドのバーを長く */
 }
-
   </style>
 </head>
 <body>
