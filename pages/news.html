@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - Seiji Fujimoto</title>
+  <title>News - Seiji Fujimoto</title>
   <!-- CSS: Bootstrap, Devicon, Font Awesome -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -21,9 +21,9 @@
     }
     /* 固定背景画像 */
     .full-bg-image {
-      background: url('../personal/bahareiya2.jpg') no-repeat center center fixed;
+      background: url('../personal/toronto.jpg') no-repeat center center fixed;
       background-size: cover;
-      filter: brightness(50%);
+      filter: brightness(40%);
       position: fixed;
       width: 100%;
       height: 100%;
@@ -31,122 +31,241 @@
       left: 0;
       z-index: -10;
     }
+    /* セクション共通 */
     section {
       padding: 100px 0;
       color: white;
       text-align: center;
     }
-        .social-icons i {
-            font-size: 2em;
-        }
-        .social-icons {
-            text-align: center;
-            padding: 20px;
-        }
-        .social-icons a {
-            margin: 0 10px;
-            color: #333;
-        }
-        .social-icons a:hover {
-            color: #007bff;
-        }
-        .project-logos img {
-            width: 150px;
-            margin: 10px;
-        }
-        .project-title {
-            text-decoration: underline;
-            margin-bottom: 5px;
-        }
-        .navbar-nav .nav-item {
-            margin-right: 20px;
-        }
-        .carousel-item {
-            height: 500px;
-        }
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    .list-group-item {
-      background-color: transparent;
-      border: none;
+    /* ナビゲーションバーとソーシャルアイコン */
+    .navbar-nav .nav-item {
+      margin-right: 20px;
+    }
+    .social-icons i {
+      font-size: 2em;
+    }
+    .social-icons {
+      text-align: center;
+      padding: 20px;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      color: #333;
+    }
+    .social-icons a:hover {
+      color: #007bff;
+    }
+    /* ニュースリスト用スタイル */
+    .news-list {
+      max-width: 95%;
+      margin: auto;
+      text-align: left;
+    }
+    .news-item {
+      display: flex;
+      align-items: center;
       padding: 0.5rem 0;
-      color: #f1f1f1;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    /* リンクボタンなどの色調整 */
-    .btn-info {
-      margin-bottom: 20px;
+    .news-date {
+      width: 100px;
+      font-weight: bold;
+      color: #fff;
     }
-  .lead {
-    font-size: 1rem; /* デフォルトが1.25remなどの場合、1remに下げる */
-    color: #ddd;
-  }
-
+    .news-content {
+      flex: 1;
+      color: #ddd;
+    }
+    .news-content a {
+      color: #66b3ff;
+      text-decoration: underline;
+    }
+    .news-content a:hover {
+      color: #99ccff;
+    }
   </style>
 </head>
 <body>
   <!-- 固定背景画像 -->
   <div class="full-bg-image"></div>
   
-  <!-- ナビゲーションバー（index.htmlと同様） -->
-<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="https://sfseiji.github.io/">Seiji Fujimoto</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-            aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/news.html">News</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="../pages/about.html">About Me</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/research.html">Research</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/members.html">Group Members</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/projects.html">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/teaching.html">Teaching</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="../pages/job.html">Job Opportunity</a>
-        </li>
-      </ul>
-      <div class="social-icons">
-        <a href="https://twitter.com/sfseiji" target="_blank" title="Twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://scholar.google.co.jp/citations?user=lnAouJ4AAAAJ&hl=en" target="_blank"
-           title="Google Scholar">
-          <i class="fas fa-graduation-cap"></i>
-        </a>
-        <a href="https://ui.adsabs.harvard.edu/search/filter_database_fq_database=OR&filter_database_fq_database=database%3A%22astronomy%22&format=SHORT&fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3A%22astronomy%22)&q=author%3A(%22fujimoto%2Cseiji%22)%20AND%20pubdate%3A%5B2015-01%20TO%20*%5D&sort=score%20desc%2C%20bibcode%20desc&unprocessed_parameter=adsobj_query&unprocessed_parameter=qform&p_=0"
-           target="_blank" title="Publications on ADS">
-          <i class="fas fa-book"></i>
-        </a>
+  <!-- ナビゲーションバー（他ページと同様） -->
+  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="https://sfseiji.github.io/">Seiji Fujimoto</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           <li class="nav-item"><a class="nav-link active" href="../pages/news.html">News</a></li>
+           <li class="nav-item"><a class="nav-link" href="../pages/about.html">About Me</a></li>
+           <li class="nav-item"><a class="nav-link" href="../pages/research.html">Research</a></li>
+           <li class="nav-item"><a class="nav-link" href="../pages/members.html">Group Members</a></li>
+           <li class="nav-item"><a class="nav-link" href="../pages/projects.html">Projects</a></li>
+           <li class="nav-item"><a class="nav-link" href="../pages/teaching.html">Teaching</a></li>
+           <li class="nav-item"><a class="nav-link" href="../pages/job.html">Job Opportunity</a></li>
+         </ul>
+         <div class="social-icons">
+           <a href="https://twitter.com/sfseiji" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+           <a href="https://scholar.google.co.jp/citations?user=lnAouJ4AAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+           <a href="https://ui.adsabs.harvard.edu/" target="_blank" title="Publications on ADS"><i class="fas fa-book"></i></a>
+         </div>
       </div>
     </div>
-  </div>
-</nav>
-    <div class="container my-4">
-        <h1>News</h1>
-        (under construction...)
-        <!-- Page-specific content goes here -->
+  </nav>
+  
+  <!-- News Section -->
+  <section id="news">
+    <div class="container news-list my-4">
+      <h1 class="text-center">News</h1>
+      <ul class="list-group">
+         <!-- 以下、最新ニュースを20件リストアップ -->
+         <li class="list-group-item news-item">
+            <div class="news-date">Feb 2025</div>
+            <div class="news-content">
+              Presented at the 2025 International Astronomical Conference. 
+              <a href="https://example.com/conference2025" target="_blank">Details</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Jan 2025</div>
+            <div class="news-content">
+              Published a new paper in ApJ. 
+              <a href="https://ui.adsabs.harvard.edu/abs/2025XXXXXX" target="_blank">View on ADS</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Dec 2024</div>
+            <div class="news-content">
+              A new postdoc joined our group. 
+              <a href="https://example.com/postdoc" target="_blank">Profile</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Nov 2024</div>
+            <div class="news-content">
+              Presented at the 2024 European Astrophysics Symposium. 
+              <a href="https://example.com/symposium2024" target="_blank">Details</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Oct 2024</div>
+            <div class="news-content">
+              Published new results on galaxy evolution. 
+              <a href="https://ui.adsabs.harvard.edu/abs/2024YYYYYY" target="_blank">View on ADS</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Sep 2024</div>
+            <div class="news-content">
+              Hosted a workshop on multi-wavelength astronomy. 
+              <a href="https://example.com/workshop2024" target="_blank">Details</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Aug 2024</div>
+            <div class="news-content">
+              A new PhD student joined our group. 
+              <a href="https://example.com/phd2024" target="_blank">Profile</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Jul 2024</div>
+            <div class="news-content">
+              Presented at the 2024 Summer School on Extragalactic Astronomy. 
+              <a href="https://example.com/summerschool2024" target="_blank">Details</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Jun 2024</div>
+            <div class="news-content">
+              Published a collaborative paper on galaxy clusters. 
+              <a href="https://ui.adsabs.harvard.edu/abs/2024ZZZZZZ" target="_blank">View on ADS</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">May 2024</div>
+            <div class="news-content">
+              Participated in a joint seminar on cosmic reionization. 
+              <a href="https://example.com/seminar2024" target="_blank">Details</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Apr 2024</div>
+            <div class="news-content">
+              Received funding for a new JWST project. 
+              <a href="https://example.com/funding2024" target="_blank">More info</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Mar 2024</div>
+            <div class="news-content">
+              Published an article on the evolution of galaxies. 
+              <a href="https://ui.adsabs.harvard.edu/abs/2024AAAAAA" target="_blank">View on ADS</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Feb 2024</div>
+            <div class="news-content">
+              Hosted a virtual conference on star formation. 
+              <a href="https://example.com/virtualconf2024" target="_blank">Details</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Jan 2024</div>
+            <div class="news-content">
+              Published new findings on cosmic dust properties. 
+              <a href="https://ui.adsabs.harvard.edu/abs/2024BBBBBB" target="_blank">View on ADS</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Dec 2023</div>
+            <div class="news-content">
+              Attended the 2023 International Astrophysics Symposium. 
+              <a href="https://example.com/symposium2023" target="_blank">Details</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Nov 2023</div>
+            <div class="news-content">
+              Published a collaborative paper on high-redshift galaxies. 
+              <a href="https://ui.adsabs.harvard.edu/abs/2023CCCCCC" target="_blank">View on ADS</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Oct 2023</div>
+            <div class="news-content">
+              Presented at the 2023 Annual Research Meeting. 
+              <a href="https://example.com/annualmeeting2023" target="_blank">Details</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Sep 2023</div>
+            <div class="news-content">
+              A new postdoc joined our group. 
+              <a href="https://example.com/newpostdoc2023" target="_blank">Profile</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Aug 2023</div>
+            <div class="news-content">
+              Published a paper on the impact of cosmic reionization. 
+              <a href="https://ui.adsabs.harvard.edu/abs/2023DDDDDD" target="_blank">View on ADS</a>
+            </div>
+         </li>
+         <li class="list-group-item news-item">
+            <div class="news-date">Jul 2023</div>
+            <div class="news-content">
+              Welcomed a new PhD student to our group. 
+              <a href="https://example.com/newphd2023" target="_blank">Profile</a>
+            </div>
+         </li>
+      </ul>
     </div>
-    <!-- JavaScript: Above <body> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
+  </section>
+  
 </body>
 </html>
