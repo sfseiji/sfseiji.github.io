@@ -114,6 +114,16 @@
         object-fit: cover;  /* 画像がコンテナに収まるように、必要な部分は切り抜く */
       }
 
+.carousel-indicators {
+  position: absolute;
+  bottom: 10px; /* 位置調整 */
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* インジケーターの間隔 */
+}
+
 .carousel-indicators button {
   background-color: grey;
   width: 30px;
@@ -122,6 +132,7 @@
   margin: 0 5px;
   opacity: 0.5;
   transition: width 0.3s ease, opacity 0.3s ease;
+  border: none;
 }
 
 .carousel-indicators .active {
@@ -191,7 +202,35 @@
       <div class="row align-items-center">
         <!-- 左側：写真 -->
       <div class="col-md-5 text-center">
-        <img id="slideshow" src="../self/square.jpeg" class="img-fluid rounded" alt="Seiji Fujimoto" style="max-width: 90%;">
+       　<!-- <img id="slideshow" src="../self/square.jpeg" class="img-fluid rounded" alt="Seiji Fujimoto" style="max-width: 90%;"> -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <!-- 🔹 ここを追加：スライドインジケーター -->
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+          </div>
+
+          <!-- 🔹 ここがスライド本体 -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="../self/square.jpeg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="../self/river.jpg" class="d-block w-100" alt="...">
+            </div>
+          </div>
+
+          <!-- 🔹 ここも追加：スライドの左右移動ボタン -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </div>
         <!-- 右側：自己紹介テキスト -->
         <div class="col-md-7 text-center">
@@ -439,26 +478,6 @@
 
   </ul>
 </div>
-
-<script>
-$(document).ready(function(){
-    // スライドショー用の画像のパスを配列に格納
-    var images = [
-       "../self/river.jpg",
-       "../self/square.jpeg"
-    ];
-    var current = 0;
-    
-    // 5秒ごとに画像を切り替え（5000ミリ秒）
-    setInterval(function(){
-        current = (current + 1) % images.length;
-        $("#slideshow").fadeOut(500, function(){
-            $(this).attr("src", images[current]).fadeIn(500);
-        });
-    }, 5000);
-});
-</script>
-
 
 
 </body>
