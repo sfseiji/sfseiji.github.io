@@ -168,9 +168,9 @@
     <div class="container my-4">
       <div class="row align-items-center">
         <!-- 左側：写真 -->
-        <div class="col-md-5 text-center">
-          <img src="../self/river.jpg" class="img-fluid rounded" alt="Seiji Fujimoto" style="max-width: 90%;">
-        </div>
+      <div class="col-md-5 text-center">
+        <img id="slideshow" src="../self/river.jpg" class="img-fluid rounded" alt="Seiji Fujimoto" style="max-width: 90%;">
+      </div>
         <!-- 右側：自己紹介テキスト -->
         <div class="col-md-7 text-center">
       <h1>Short Biography</h1>
@@ -207,7 +207,7 @@
         <h3>Work Experience</h3>
         <ul class="list-group">
           <li class="list-group-item">
-            <strong>2025–present:</strong> Assistant Professor (PI), University of Toronto, Canada
+            <strong>2025–present:</strong> Assistant Professor, University of Toronto, Canada
           </li>
           <li class="list-group-item">
             <strong>2022–2025:</strong> NASA Hubble Fellow, UT Austin, USA
@@ -417,6 +417,27 @@
 
   </ul>
 </div>
+
+<script>
+$(document).ready(function(){
+    // スライドショー用の画像のパスを配列に格納
+    var images = [
+       "../self/river.jpg",
+       "../self/square.jpeg"
+    ];
+    var current = 0;
+    
+    // 5秒ごとに画像を切り替え（5000ミリ秒）
+    setInterval(function(){
+        current = (current + 1) % images.length;
+        $("#slideshow").fadeOut(500, function(){
+            $(this).attr("src", images[current]).fadeIn(500);
+        });
+    }, 5000);
+});
+</script>
+
+
 
 </body>
 </html>
