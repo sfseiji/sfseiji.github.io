@@ -271,6 +271,12 @@
             width: 100%; /* Make the image fill the container */
             display: block; /* Ensures no extra space below the image */
         }
+        /* 固定高さのスライドショー画像 */
+        #slideshow {
+          height: 400px;      /* 画像の縦サイズを400pxに固定 */
+          width: auto;
+          object-fit: cover;  /* 画像がコンテナに収まるように、必要な部分は切り抜く */
+        }
     </style>
 </head>
 <body>
