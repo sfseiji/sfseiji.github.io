@@ -107,13 +107,25 @@
 .about-container {
   max-width: 95%; /* 例として横幅を90%に設定。必要に応じて調整してください。 */
 }
-  /* 固定高さのスライドショー画像 */
-      #slideshow {
-        height: 400px;      /* 画像の縦サイズを400pxに固定 */
-        width: auto;
-        object-fit: cover;  /* 画像がコンテナに収まるように、必要な部分は切り抜く */
-      }
 
+.carousel-item {
+    height: 400px; /* 画像の高さを調整して横長に */
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* 画像の横幅を活かしつつ、トリミングを最小限に */
+}
+
+.carousel-inner {
+    aspect-ratio: 11 / 9; /* より横長の比率 */
+    max-width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .carousel-indicators {
   position: absolute;
   bottom: 15px;
