@@ -108,24 +108,24 @@
   max-width: 95%; /* 例として横幅を90%に設定。必要に応じて調整してください。 */
 }
 
+
 .carousel-item {
-    height: 400px; /* 画像の高さを調整して横長に */
+    height: 400px; /* 縦のトリミング範囲を調整し、横に広げる */
 }
 
 .carousel-item img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* 画像の横幅を活かしつつ、トリミングを最小限に */
+    object-fit: cover; /* 正方形ではなく、横長のトリミングに調整 */
 }
 
 .carousel-inner {
-    aspect-ratio: 11 / 9; /* より横長の比率 */
+    width: 100%;
     max-width: 100%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    overflow: hidden; /* はみ出し防止 */
 }
+
+
 .carousel-indicators {
   position: absolute;
   bottom: 15px;
@@ -143,7 +143,7 @@
 
 .carousel-indicators button {
   background-color: grey;
-  width: 20px; /* 幅を小さく */
+  width: 30px; /* 幅を小さく */
   height: 4px; /* 高さを調整 */
   border-radius: 4px;
   margin: 0 3px; /* インジケーターの間隔を縮小 */
