@@ -116,21 +116,25 @@
 
 .carousel-indicators {
   position: absolute;
-  bottom: 20px; /* 位置を少し上に */
+  bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  z-index: 15; /* 10から15に上げる */
+  justify-content: flex-start;
+  gap: 5px;
+  z-index: 15;
+  max-width: 90%; /* 横幅を制限 */
+  overflow-x: auto; /* 横スクロールを許可 */
+  white-space: nowrap; /* 折り返しを防ぐ */
+  padding-bottom: 5px; /* スクロールバー調整 */
 }
 
 .carousel-indicators button {
   background-color: grey;
-  width: 30px;
-  height: 5px;
-  border-radius: 5px;
-  margin: 0 5px;
+  width: 20px; /* 幅を小さく */
+  height: 4px; /* 高さを調整 */
+  border-radius: 4px;
+  margin: 0 3px; /* インジケーターの間隔を縮小 */
   opacity: 0.5;
   transition: width 0.3s ease, opacity 0.3s ease;
   border: none;
@@ -139,7 +143,7 @@
 .carousel-indicators .active {
   background-color: white !important;
   opacity: 1;
-  width: 50px; /* アクティブなスライドのバーを長く */
+  width: 30px; /* アクティブなスライドのバーを長く */
 }
 
   </style>
