@@ -89,50 +89,53 @@
     color: #ddd;
   }
 
-  .venus-gallery-wrap {
-    width: 100%;
-    max-width: 950px;
-    margin: 36px auto 12px auto;
-    overflow-x: auto;
-    overflow-y: hidden;
-    padding-bottom: 6px;
-    border-bottom: 3px solid #444;
-    box-shadow: 0 10px 32px rgba(0,0,0,0.18);
-    background: rgba(12,12,12,0.15);
-    /* スクロールバーもカスタム可 */
-  }
-  .venus-gallery {
-    display: flex;
-    flex-direction: row;
-    gap: 14px;
-    align-items: center;
-    min-height: 180px;
-  }
-  .venus-gallery img {
-    height: 250px;
-    min-width: 310px;
-    max-width: 340px;
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 2px 18px rgba(0,0,0,0.23);
-    border: 2px solid #222;
-    background: #111;
-    transition: transform 0.22s;
-  }
-  .venus-gallery img:hover {
-    transform: scale(1.06);
-    z-index: 2;
-    border-color: #007bff;
-  }
+.venus-gallery-wrap {
+  width: 100%;
+  max-width: 1425px;  /* 950px × 1.5 ≒ 1425px */
+  margin: 44px auto 16px auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #444;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.18);
+  background: rgba(12,12,12,0.15);
+}
 
-  /* スマホ対応 */
-  @media (max-width:700px) {
-    .venus-gallery img {
-      height: 32vw;
-      min-width: 58vw;
-      max-width: 88vw;
-    }
+.venus-gallery {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+  min-height: 270px;
+}
+
+.venus-gallery img {
+  height: 375px;            /* 250 × 1.5 */
+  min-width: 465px;         /* 310 × 1.5 */
+  max-width: 510px;         /* 340 × 1.5 */
+  object-fit: cover;
+  border-radius: 24px;
+  box-shadow: 0 2px 24px rgba(0,0,0,0.24);
+  border: 2.5px solid #222;
+  background: #111;
+  transition: transform 0.22s;
+}
+
+.venus-gallery img:hover {
+  transform: scale(1.06);
+  z-index: 2;
+  border-color: #007bff;
+}
+
+/* モバイル用（自動で縮小表示） */
+@media (max-width:700px) {
+  .venus-gallery-wrap { max-width: 98vw; }
+  .venus-gallery img {
+    height: 48vw;              /* 元32vw×1.5 */
+    min-width: 87vw;
+    max-width: 132vw;
   }
+}
 
 
   </style>
@@ -212,7 +215,7 @@
   <!-- 本文 -->
 <div class="venus-content" style="max-width:750px;margin:0 auto;padding:0 12px 52px 12px;font-size:1.07rem;line-height:1.8;color:#e4e4e4;">
   <p>
-    <b>VENUS</b> (Vast Exploration for Nascent Unexplored Sources) is a Cycle 4–5 multi-epoch treasury program with JWST, the second largest JWST program ever approved, led by PI Seiji Fujimoto (U.Toronto) and co-PI Dan Coe (STScI). VENUS aims to unlock the faintest and most distant galaxies, black holes, and lensed stars in the earliest epoch of the universe, maximally leveraging the gravitational lensing effect.
+    <b>VENUS</b> (Vast Exploration for Nascent Unexplored Sources) is a total of ~300hrs Cycle 4–5 multi-epoch large treasury program with JWST, the second largest JWST program ever approved, led by PI Seiji Fujimoto (U.Toronto) and co-PI Dan Coe (STScI). VENUS aims to unlock the faintest and most distant galaxies, black holes, and lensed stars in the earliest epoch of the universe, maximally leveraging the gravitational lensing effect.
   </p>
   <p>
     The survey targets 60 massive galaxy clusters, using homogeneous NIRCam 10-filter imaging (to ~28 mag) and coordinated NIRISS imaging, creating a uniquely wide time-domain lensing field. In the second epoch, the best 10 clusters receive deep NIRCam and NIRSpec/MSA spectroscopy, allowing the program to systematically confirm and study faint high-redshift sources, from the onset of star formation at z>14, to the lowest-mass black holes in early galaxies. 
