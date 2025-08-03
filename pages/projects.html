@@ -423,6 +423,52 @@
   </div>
 
 
+
+
+
+<!-- Google Maps API 読み込み -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi5OF_PdwmOU1IwURby9Y1AzmDG4K9Mjw"></script>
+<div id="collabMap" style="width:100%; height:600px; margin: 30px 0;"></div>
+<script>
+const collaborators = [
+  { institute: "University of Toronto", name: "Seiji Fujimoto" },
+  { institute: "Max Planck Institute for Astronomy", name: "Benedetta Vulcani" },
+  // ...
+];
+const geocoder = new google.maps.Geocoder();
+const map = new google.maps.Map(document.getElementById('collabMap'), {
+  center: {lat: 20, lng: 0},
+  zoom: 2,
+  mapTypeId: 'roadmap',
+  streetViewControl: false,
+  mapTypeControl: false,
+});
+
+collaborators.forEach((collab) => {
+  geocoder.geocode({ address: collab.institute }, (results, status) => {
+    if (status === 'OK') {
+      new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location,
+        title: collab.name + " (" + collab.institute + ")"
+      });
+    }
+  });
+});
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- JavaScript: Above <body> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
