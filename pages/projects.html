@@ -423,17 +423,83 @@
   </div>
 
 
-
-
+<!-- Collaboration Network Header and Description -->
+<div class="container mt-5 mb-4">
+  <h3 class="text-center text-white" style="font-family:'Times New Roman', Times, serif; font-style:italic;">
+    Collaboration Network
+  </h3>
+  <p class="lead text-center" style="color:#dee2e6;">
+    This map shows the global distribution of collaborators and institutes involved in our research projects since 2015.
+  </p>
+</div>
+ 
 
 <!-- Google Maps API 読み込み -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDi5OF_PdwmOU1IwURby9Y1AzmDG4K9Mjw"></script>
 <div id="collabMap" style="width:100%; height:600px; margin: 30px 0;"></div>
 <script>
-const collaborators = [
-  { institute: "University of Toronto", name: "Seiji Fujimoto" },
-  { institute: "Max Planck Institute for Astronomy", name: "Benedetta Vulcani" },
-  // ...
+const collaboratorInstitutes = [
+  "University of Toronto",
+  "Space Telescope Science Institute",
+  "National Astronomical Observatory of Japan (NAOJ)",
+  "University of Texas at Austin",
+  "University of Tokyo",
+  "Waseda University",
+  "Johns Hopkins University",
+  "University of Arizona",
+  "Scuola Normale Superiore, Pisa",
+  "Ben-Gurion University of the Negev",
+  "Centre de Recherche Astrophysique de Lyon",
+  "University of Copenhagen, Niels Bohr Institute",
+  "Technical University of Denmark-DTU Space",
+  "Harvard University",
+  "CNRS, Laboratoire d'Astrophysique de Marseille",
+  "University of Geneva, Department of Astronomy",
+  "Chulalongkorn University",
+  "Kapteyn Astronomical Institute",
+  "University of Western Australia",
+  "Cosmic Dawn Center, Niels Bohr Institute",
+  "Swinburne University of Technology",
+  "Yale University",
+  "Max Planck Institute for Astronomy",
+  "University of Colorado at Boulder",
+  "University of Massachusetts - Amherst",
+  "Princeton University",
+  "Leiden Observatory / Universiteit Leiden",
+  "University of Wisconsin - Madison",
+  "University of California - Santa Barbara",
+  "Texas A & M University",
+  "INAF - Osservatorio Astronomico di Roma",
+  "Chiba University",
+  "Centro de Astrobiologia - CAB",
+  "Universita di Firenze",
+  "Complutense University of Madrid",
+  "California Institute of Technology",
+  "California Institute of Technology, IPAC",
+  "University of Missouri - Columbia",
+  "Rochester Institute of Technology",
+  "Liverpool John Moores University",
+  "Massachusetts Institute of Technology",
+  "ESA, European Space Astronomy Centre",
+  "National Institute of Astrophysics, Optics and Electronics",
+  "Purple Mountain Observatory, CAS",
+  "Max-Planck-Institut fur extraterrestrische Physik",
+  "University of Maryland",
+  "University of California - Los Angeles",
+  "Tufts University",
+  "University of Pittsburgh",
+  "NOIRLab",
+  "Pennsylvania State University",
+  "University of Zurich",
+  "Kavli Institute for the Physics and Mathematics of the Universe",
+  "Peking University",
+  "Institute of Science and Technology Austria",
+  "Academia Sinica, Institute of Astronomy and Astrophysics",
+  "Chalmers University of Technology",
+  "York University",
+  "University of California - Santa Cruz",
+  "Sapienza Università di Roma",
+  "Wellesley College"
 ];
 const geocoder = new google.maps.Geocoder();
 const map = new google.maps.Map(document.getElementById('collabMap'), {
@@ -444,7 +510,7 @@ const map = new google.maps.Map(document.getElementById('collabMap'), {
   mapTypeControl: false,
 });
 
-collaborators.forEach((collab) => {
+collaboratorInstitutes.forEach((collab) => {
   geocoder.geocode({ address: collab.institute }, (results, status) => {
     if (status === 'OK') {
       new google.maps.Marker({
