@@ -281,21 +281,23 @@
             display: block; /* Ensures no extra space below the image */
         }
 
+        /* ###Highlight projects### */
         #highlight-projects .container {
           gap: 3vw;
-          margin-top: 20px;
+          margin-top: 40px;  /* アイコン上部の余白を増やす */
         }
 
         .highlight-circle {
           position: relative;
-          width: 170px;
-          height: 170px;
+          width: 255px;    /* 170px × 1.5 ≒ 255px */
+          height: 255px;
           border-radius: 50%;
           overflow: hidden;
-          transition: transform 0.4s cubic-bezier(.25,1.3,.5,1), box-shadow 0.3s;
+          transition: transform 0.45s cubic-bezier(.25,1.3,.5,1), box-shadow 0.35s;
           cursor: pointer;
-          box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+          box-shadow: 0 2px 16px rgba(0,0,0,0.18);
           flex-shrink: 0;
+          margin-bottom: 10px;
         }
 
         .highlight-circle img {
@@ -307,22 +309,24 @@
           transition: filter 0.3s;
         }
 
+        /* ラベル：中央に */
         .highlight-label {
           position: absolute;
-          bottom: 18px;
-          left: 0;
-          width: 100%;
+          top: 50%;
+          left: 50%;
+          width: 90%;
+          transform: translate(-50%, -50%);
           text-align: center;
-          font-size: 1.25em;
+          font-size: 2rem;
           font-weight: bold;
           letter-spacing: 1px;
           color: #fff;
           opacity: 0;
-          transform: translateY(20px);
           transition: opacity 0.25s, transform 0.25s;
           pointer-events: none;
-          text-shadow: 0 2px 8px #000, 0 0 6px #000;
+          text-shadow: 0 2px 16px #000, 0 0 8px #000;
           font-family: 'Times New Roman', serif;
+          z-index: 2;
         }
 
         .highlight-circle::after {
@@ -330,7 +334,7 @@
           display: block;
           position: absolute;
           inset: 0;
-          background: rgba(0,0,0,0.35);
+          background: rgba(0,0,0,0.38);
           opacity: 0;
           transition: opacity 0.3s;
           border-radius: 50%;
@@ -339,13 +343,13 @@
 
         .highlight-circle:hover,
         .highlight-circle:focus {
-          transform: scale(1.18) !important;
-          z-index: 2;
+          transform: scale(2.0) !important; /* 拡大2倍 */
+          z-index: 3;
         }
 
         .highlight-circle:hover img,
         .highlight-circle:focus img {
-          filter: brightness(0.72) blur(0.5px);
+          filter: brightness(0.62) blur(0.7px);
         }
 
         .highlight-circle:hover::after,
@@ -356,7 +360,6 @@
         .highlight-circle:hover .highlight-label,
         .highlight-circle:focus .highlight-label {
           opacity: 1;
-          transform: translateY(0);
         }
 
 
@@ -559,9 +562,10 @@
 <!-- Highlight Projects Section -->
 <section id="highlight-projects" class="my-5">
   <h2 class="section-title" style="font-family:'Times New Roman',serif;font-style:italic; text-align:center;">－ Highlight Projects －</h2>
+  <div style="height:28px;"></div> <!-- タイトルと画像の間に余白 -->
   <div class="container d-flex justify-content-center align-items-center" style="gap:3vw;">
     <div class="highlight-circle" data-label="VENUS" data-url="pages/venus.html">
-      <img src="research_image/venus.jpg" alt="VENUS">
+      <img src="research_image/venus_cut2.png" alt="VENUS">
       <div class="highlight-label">VENUS</div>
     </div>
     <div class="highlight-circle" data-label="Cosmic Grapes" data-url="pages/grapes.html">
