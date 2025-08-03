@@ -280,6 +280,86 @@
             width: 100%; /* Make the image fill the container */
             display: block; /* Ensures no extra space below the image */
         }
+
+        #highlight-projects .container {
+          gap: 3vw;
+          margin-top: 20px;
+        }
+
+        .highlight-circle {
+          position: relative;
+          width: 170px;
+          height: 170px;
+          border-radius: 50%;
+          overflow: hidden;
+          transition: transform 0.4s cubic-bezier(.25,1.3,.5,1), box-shadow 0.3s;
+          cursor: pointer;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+          flex-shrink: 0;
+        }
+
+        .highlight-circle img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          border-radius: 50%;
+          display: block;
+          transition: filter 0.3s;
+        }
+
+        .highlight-label {
+          position: absolute;
+          bottom: 18px;
+          left: 0;
+          width: 100%;
+          text-align: center;
+          font-size: 1.25em;
+          font-weight: bold;
+          letter-spacing: 1px;
+          color: #fff;
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.25s, transform 0.25s;
+          pointer-events: none;
+          text-shadow: 0 2px 8px #000, 0 0 6px #000;
+          font-family: 'Times New Roman', serif;
+        }
+
+        .highlight-circle::after {
+          content: "";
+          display: block;
+          position: absolute;
+          inset: 0;
+          background: rgba(0,0,0,0.35);
+          opacity: 0;
+          transition: opacity 0.3s;
+          border-radius: 50%;
+          z-index: 1;
+        }
+
+        .highlight-circle:hover,
+        .highlight-circle:focus {
+          transform: scale(1.18) !important;
+          z-index: 2;
+        }
+
+        .highlight-circle:hover img,
+        .highlight-circle:focus img {
+          filter: brightness(0.72) blur(0.5px);
+        }
+
+        .highlight-circle:hover::after,
+        .highlight-circle:focus::after {
+          opacity: 1;
+        }
+
+        .highlight-circle:hover .highlight-label,
+        .highlight-circle:focus .highlight-label {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+
     </style>
 </head>
 <body>
@@ -475,6 +555,31 @@
                     <span class="visually-hidden">Next</span>
                 </button>
         </div>
+
+<!-- Highlight Projects Section -->
+<section id="highlight-projects" class="my-5">
+  <h2 class="section-title" style="font-family:'Times New Roman',serif;font-style:italic; text-align:center;">－ Highlight Projects －</h2>
+  <div class="container d-flex justify-content-center align-items-center" style="gap:3vw;">
+    <div class="highlight-circle" data-label="VENUS" data-url="pages/venus.html">
+      <img src="highlight/venus.jpg" alt="VENUS">
+      <div class="highlight-label">VENUS</div>
+    </div>
+    <div class="highlight-circle" data-label="Cosmic Grapes" data-url="pages/grapes.html">
+      <img src="highlight/Cosmic_Grapes.png" alt="Cosmic Grapes">
+      <div class="highlight-label">Cosmic Grapes</div>
+    </div>
+    <div class="highlight-circle" data-label="GNz7q" data-url="pages/gnz7q.html">
+      <img src="highlight/gnz7q.jpeg" alt="GNz7q">
+      <div class="highlight-label">GNz7q</div>
+    </div>
+    <div class="highlight-circle" data-label="GLIMPSE-D" data-url="pages/glimpse.html">
+      <img src="highlight/glimpse.jpg" alt="GLIMPSE-D">
+      <div class="highlight-label">GLIMPSE-D</div>
+    </div>
+  </div>
+</section>
+
+
     </section>
     <section id="projects">
         <div class="container my-4">
@@ -662,6 +767,20 @@
             gallery.appendChild(colDiv);
         });
     </script>
+
+
+    <script>
+    // クリックでラベルごとにページ遷移
+    document.querySelectorAll('.highlight-circle').forEach(circle => {
+    circle.addEventListener('click', function() {
+    const url = this.dataset.url;
+    if(url) window.open(url, '_blank');
+  });
+  // ラベルも左から表示（標準で中央になるが、必要なら細かく演出可能）
+});
+
+    </script>
+
 
 </body>
 </html>
