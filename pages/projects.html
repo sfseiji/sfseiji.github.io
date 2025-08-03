@@ -21,7 +21,7 @@
     }
     /* 固定背景画像 */
     .full-bg-image {
-      background: url('../personal/bahareiya2.jpg') no-repeat center center fixed;
+      background: url('../personal/onsen.jpg') no-repeat center center fixed;
       background-size: cover;
       filter: brightness(50%);
       position: fixed;
@@ -139,11 +139,75 @@
     </div>
   </div>
 </nav>
-    <div class="container my-4">
-        <h1>Projects & Collaborations</h1>
-        (under construction...)
-        <!-- Page-specific content goes here -->
+  <div class="container my-5">
+    <h2 class="text-center mb-4" style="font-family:'Times New Roman',serif;font-style:italic;">- JWST Projects -</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+      <!-- 1 project card -->
+      <div class="col">
+        <div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#fff;">
+          <img src="../project_logo/jwst/CEERS.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="CEERS">
+          <div class="card-body">
+            <h5 class="card-title">CEERS</h5>
+            <p class="card-text mb-1"><strong>PI:</strong> Steven L. Finkelstein</p>
+            <p class="card-text" style="font-size:0.97em;">Cosmic Evolution Early Release Science Survey: Mapping the formation and evolution of galaxies with JWST NIRCam/NIRSpec.</p>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <a href="https://ceers.github.io/" class="btn btn-sm btn-info" target="_blank">Project Page</a>
+          </div>
+        </div>
+      </div>
+      <!-- 他のJWSTプロジェクトも同様に追加 -->
+      <div class="col">
+        <div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#fff;">
+          <img src="../project_logo/jwst/NGDEEP.jpg" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="NGDEEP">
+          <div class="card-body">
+            <h5 class="card-title">NGDEEP</h5>
+            <p class="card-text mb-1"><strong>PI:</strong> Jane Doe</p>
+            <p class="card-text" style="font-size:0.97em;">Next Generation Deep Extragalactic Exploratory Public survey with JWST NIRCam.</p>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <a href="https://ngdeep.example.com/" class="btn btn-sm btn-info" target="_blank">Project Page</a>
+          </div>
+        </div>
+      </div>
+      <!-- ...他のカードも繰り返し... -->
     </div>
+
+    <!-- ALMA Projects Section -->
+    <h2 class="text-center mb-4 mt-5" style="font-family:'Times New Roman',serif;font-style:italic;">- ALMA Projects -</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+      <div class="col">
+        <div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#fff;">
+          <img src="../project_logo/alma/alpine.jpg" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="ALPINE">
+          <div class="card-body">
+            <h5 class="card-title">ALPINE</h5>
+            <p class="card-text mb-1"><strong>PI:</strong> Andreas Faisst</p>
+            <p class="card-text" style="font-size:0.97em;">ALMA Large Program to Investigate [CII] at Early times. A survey of dust and gas in distant galaxies.</p>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <a href="https://irfu.cea.fr/Projets/ALPINE/" class="btn btn-sm btn-info" target="_blank">Project Page</a>
+          </div>
+        </div>
+      </div>
+      <!-- 他のALMAプロジェクトも同様に追加 -->
+      <div class="col">
+        <div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#fff;">
+          <img src="../project_logo/alma/cristal.jpeg" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="CRISTAL">
+          <div class="card-body">
+            <h5 class="card-title">CRISTAL</h5>
+            <p class="card-text mb-1"><strong>PI:</strong> John Smith</p>
+            <p class="card-text" style="font-size:0.97em;">[CII] Resolved ISM in Star-forming galaxies with ALMA. Spatially resolved study of gas at high redshift.</p>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <a href="https://cristal.example.com/" class="btn btn-sm btn-info" target="_blank">Project Page</a>
+          </div>
+        </div>
+      </div>
+      <!-- ...他のカードも繰り返し... -->
+    </div>
+  </div>
+
+
     <!-- JavaScript: Above <body> -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
