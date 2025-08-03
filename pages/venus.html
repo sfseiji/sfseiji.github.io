@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VENUS - Seiji Fujimoto</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- CSS: Bootstrap, Devicon, Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -17,19 +20,20 @@
     }
     .venus-hero {
       width: 100%;
-      max-height: 420px;
+      max-width: 900px;
+      max-height: 400px;
       object-fit: cover;
       display: block;
-      margin-bottom: 0;
+      margin: 0 auto 0 auto;
       border-bottom: 4px solid #444;
-      box-shadow: 0 10px 32px rgba(0,0,0,0.26);
+      box-shadow: 0 10px 32px rgba(0,0,0,0.22);
     }
     .venus-title {
       text-align: center;
       font-size: 2.5rem;
       font-weight: bold;
       letter-spacing: 0.04em;
-      margin: 34px 0 16px 0;
+      margin: 36px 0 14px 0;
       color: #fff;
       text-shadow: 0 2px 12px #000, 0 0 2px #000;
       font-family: 'Times New Roman', serif;
@@ -44,62 +48,79 @@
     .venus-content {
       max-width: 750px;
       margin: 0 auto;
-      padding: 0 12px 48px 12px;
-      font-size: 1.09rem;
+      padding: 0 12px 52px 12px;
+      font-size: 1.08rem;
       line-height: 1.8;
       color: #e4e4e4;
+    }
+    .navbar-nav .nav-item {
+      margin-right: 20px;
     }
     .navbar-dark .navbar-nav .nav-link.active {
       color: #fff !important;
       font-weight: bold;
     }
     .navbar-dark .navbar-brand {
-      font-size: 1.2rem;
-      letter-spacing: 0.06em;
+      font-size: 1.18rem;
+      letter-spacing: 0.07em;
     }
     .social-icons i {
       font-size: 2em;
     }
     .social-icons {
       text-align: center;
-      padding: 10px 0 10px 10px;
+      padding: 20px;
     }
     .social-icons a {
       margin: 0 10px;
-      color: #ccc;
+      color: #333;
     }
     .social-icons a:hover {
       color: #007bff;
     }
     @media (max-width: 700px) {
-      .venus-hero { max-height: 36vw; min-height: 180px; }
-      .venus-title { font-size: 1.45rem; }
-      .venus-catch { font-size: 1.01rem; }
-      .venus-content { font-size: 0.97rem; }
+      .venus-hero { max-width: 100vw; max-height: 32vw; min-height: 160px; }
+      .venus-title { font-size: 1.32rem; }
+      .venus-catch { font-size: 0.99rem; }
+      .venus-content { font-size: 0.96rem; }
       .navbar-brand { font-size: 1.07rem !important; }
+      .navbar-nav .nav-item { margin-right: 7px; }
     }
   </style>
 </head>
 <body>
-  <!-- ヘッダー・ナビゲーションバー -->
+  <!-- ヘッダー・ナビバー（index.html完全コピー） -->
   <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="https://sfseiji.github.io/">Seiji Fujimoto</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-        aria-label="Toggle navigation">
+              data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+              aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/news.html">News</a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/about.html">About Me</a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/members.html">Members</a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/research.html">Research</a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/projects.html">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/teaching.html">Teaching</a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/job.html">Job Opportunity</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/news.html">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/about.html">About Me</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/members.html">Members</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/research.html">Research</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/teaching.html">Teaching</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../pages/job.html">Job Opportunity</a>
+          </li>
         </ul>
         <div class="social-icons">
           <a href="https://twitter.com/sfseiji" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
