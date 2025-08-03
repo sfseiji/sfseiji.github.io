@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VENUS - Seiji Fujimoto</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body, html {
+      background: #111;
+      color: #dee2e6;
+      font-family: 'Times New Roman', Times, serif;
+      margin: 0;
+      padding: 0;
+    }
+    .venus-hero {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      display: block;
+      margin-bottom: 0;
+      border-bottom: 4px solid #444;
+      box-shadow: 0 10px 32px rgba(0,0,0,0.26);
+    }
+    .venus-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      letter-spacing: 0.04em;
+      margin: 34px 0 16px 0;
+      color: #fff;
+      text-shadow: 0 2px 12px #000, 0 0 2px #000;
+      font-family: 'Times New Roman', serif;
+    }
+    .venus-catch {
+      text-align: center;
+      font-size: 1.15rem;
+      color: #adb5bd;
+      margin-bottom: 32px;
+      letter-spacing: 0.12em;
+    }
+    .venus-content {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 0 12px 48px 12px;
+      font-size: 1.09rem;
+      line-height: 1.8;
+      color: #e4e4e4;
+    }
+    .navbar-dark .navbar-nav .nav-link.active {
+      color: #fff !important;
+      font-weight: bold;
+    }
+    .navbar-dark .navbar-brand {
+      font-size: 1.2rem;
+      letter-spacing: 0.06em;
+    }
+    .social-icons i {
+      font-size: 2em;
+    }
+    .social-icons {
+      text-align: center;
+      padding: 10px 0 10px 10px;
+    }
+    .social-icons a {
+      margin: 0 10px;
+      color: #ccc;
+    }
+    .social-icons a:hover {
+      color: #007bff;
+    }
+    @media (max-width: 700px) {
+      .venus-hero { max-height: 36vw; min-height: 180px; }
+      .venus-title { font-size: 1.45rem; }
+      .venus-catch { font-size: 1.01rem; }
+      .venus-content { font-size: 0.97rem; }
+      .navbar-brand { font-size: 1.07rem !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- ヘッダー・ナビゲーションバー -->
+  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="https://sfseiji.github.io/">Seiji Fujimoto</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pages/news.html">News</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pages/about.html">About Me</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pages/members.html">Members</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pages/research.html">Research</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pages/projects.html">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pages/teaching.html">Teaching</a></li>
+          <li class="nav-item"><a class="nav-link" href="../pages/job.html">Job Opportunity</a></li>
+        </ul>
+        <div class="social-icons">
+          <a href="https://twitter.com/sfseiji" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="https://scholar.google.co.jp/citations?user=lnAouJ4AAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+          <a href="https://ui.adsabs.harvard.edu/search/filter_database_fq_database=OR&filter_database_fq_database=database%3A%22astronomy%22&format=SHORT&fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3A%22astronomy%22)&q=author%3A(%22fujimoto%2Cseiji%22)%20AND%20pubdate%3A%5B2015-01%20TO%20*%5D&sort=score%20desc%2C%20bibcode%20desc&unprocessed_parameter=adsobj_query&unprocessed_parameter=qform&p_=0" target="_blank" title="Publications on ADS"><i class="fas fa-book"></i></a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- メインコンテンツ -->
+  <img src="../research_image/venus_cut.png" alt="VENUS Project" class="venus-hero">
+
+  <div class="venus-title">VENUS</div>
+  <div class="venus-catch">Vast Exploration for Nascent Unexplored Sources</div>
+
+  <div class="venus-content">
+    <p>
+      The VENUS (Vast Exploration for Nascent Unexplored Sources) project is an international initiative to unveil the most distant and faint galaxies in the early universe. Utilizing the power of gravitational lensing and the latest advances in space telescopes, VENUS seeks to push the observational frontier to record-breaking depths and study the cosmic dawn.
+    </p>
+    <p>
+      By combining wide-area surveys with deep spectroscopic follow-up, VENUS is designed to identify the earliest galaxies, characterize their physical properties, and understand the processes that governed the formation of stars and black holes in the universe's first billion years.
+    </p>
+    <p>
+      This project brings together collaborators from across the globe, employing novel data analysis techniques and fostering open, community-driven science. VENUS not only expands our view of the cosmos, but also provides an invaluable legacy for future astronomical research.
+    </p>
+    <!-- 必要ならパラグラフを追加 -->
+  </div>
+</body>
+</html>
