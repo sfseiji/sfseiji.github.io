@@ -89,6 +89,52 @@
     color: #ddd;
   }
 
+  .venus-gallery-wrap {
+    width: 100%;
+    max-width: 950px;
+    margin: 36px auto 12px auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 6px;
+    border-bottom: 3px solid #444;
+    box-shadow: 0 10px 32px rgba(0,0,0,0.18);
+    background: rgba(12,12,12,0.15);
+    /* スクロールバーもカスタム可 */
+  }
+  .venus-gallery {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    align-items: center;
+    min-height: 180px;
+  }
+  .venus-gallery img {
+    height: 250px;
+    min-width: 310px;
+    max-width: 340px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 2px 18px rgba(0,0,0,0.23);
+    border: 2px solid #222;
+    background: #111;
+    transition: transform 0.22s;
+  }
+  .venus-gallery img:hover {
+    transform: scale(1.06);
+    z-index: 2;
+    border-color: #007bff;
+  }
+
+  /* スマホ対応 */
+  @media (max-width:700px) {
+    .venus-gallery img {
+      height: 32vw;
+      min-width: 58vw;
+      max-width: 88vw;
+    }
+  }
+
+
   </style>
 </head>
 <body>
@@ -145,9 +191,18 @@
 <!-- メインコンテンツ -->
 <div class="container" style="max-width:900px; margin:48px auto 0 auto; padding:0 12px;">
   <!-- 画像を中央に -->
-  <img src="../research_image/venus_cut.png" alt="VENUS Project"
-    style="display:block; margin: 0 auto 0 auto; max-width:100%; max-height:400px; object-fit:cover; border-bottom:4px solid #444; box-shadow:0 10px 32px rgba(0,0,0,0.22);">
-  
+  <!-- 横スクロール式ギャラリー -->
+  <div class="venus-gallery-wrap">
+    <div class="venus-gallery">
+      <img src="../research_image/clusters/a2744.jpg" alt="VENUS 1">
+      <img src="../research_image/clusters/elgordo.png" alt="VENUS 2">
+      <img src="../research_image/clusters/macs0416.jpg" alt="VENUS 3">
+      <img src="../research_image/clusters/plckg165.jpg" alt="VENUS 4">
+      <img src="../research_image/clusters/smacs0723.png" alt="VENUS 5">
+      <img src="../research_image/clusters/spt0615.jpg" alt="VENUS 6">
+    </div>
+  </div>
+
   <!-- タイトル・キャッチコピー -->
   <h1 style="text-align:center;font-size:2.2rem;font-weight:bold;letter-spacing:0.04em;color:#fff;text-shadow:0 2px 12px #000,0 0 2px #000;margin:32px 0 12px 0;font-family:'Times New Roman',serif;">VENUS</h1>
   <div style="text-align:center;font-size:1.13rem;color:#adb5bd;margin-bottom:30px;letter-spacing:0.11em;">
