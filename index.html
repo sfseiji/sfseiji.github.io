@@ -366,6 +366,56 @@
           opacity: 1;
         }
 
+        @media (max-width: 700px) {
+          section {
+            padding: 36px 0 24px 0;
+          }
+          #research, #projects .container, #personal {
+            width: 98% !important;
+            padding: 2vw !important;
+            min-width: 0;
+          }
+          .section-title {
+            font-size: 1.18rem !important;
+          }
+          #highlight-projects .container {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 30px 0 !important;
+          }
+          .highlight-circle {
+            width: 32vw !important;
+            height: 32vw !important;
+            min-width: 88px; max-width: 155px;
+            min-height: 88px; max-height: 155px;
+            margin-bottom: 14px;
+          }
+          .carousel-item {
+            height: auto !important;
+            min-height: 140px;
+          }
+          #research .carousel-item img {
+            max-height: 135px;
+            object-fit: cover;
+          }
+          #content {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 14px;
+          }
+          #news, #publications {
+            width: 98% !important;
+            max-width: 460px;
+            margin: 0 auto;
+            min-width: 0;
+          }
+          .photo-container {
+            width: 47% !important;
+            margin: 1vw 0.5vw !important;
+            padding: 0 !important;
+          }
+        }
+                
 
     </style>
 </head>
