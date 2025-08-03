@@ -325,7 +325,10 @@
           opacity: 0;
           transition: opacity 0.25s, transform 0.25s;
           pointer-events: none;
-          text-shadow: 0 2px 16px #000, 0 0 8px #000;
+          text-shadow:
+            0 2px 12px #000,        /* くっきり黒影（画像背景でも映える） */
+            0 0 2px #000,
+            1px 1px 0 #333;         /* シャープな黒影も少し */
           font-family: 'Times New Roman', serif;
           z-index: 2;
         }
