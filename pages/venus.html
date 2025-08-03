@@ -10,126 +10,132 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <style>
     body, html {
-      background: #111;
-      color: #dee2e6;
-      font-family: 'Times New Roman', Times, serif;
+      height: 100%;
       margin: 0;
-      padding: 0;
+      font-family: 'Times New Roman', Times, serif;
     }
-    .venus-hero {
+    /* 固定背景画像 */
+    .full-bg-image {
+      background: url('../personal/bahareiya2.jpg') no-repeat center center fixed;
+      background-size: cover;
+      filter: brightness(50%);
+      position: fixed;
       width: 100%;
-      max-width: 900px;
-      max-height: 400px;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto 0 auto;
-      border-bottom: 4px solid #444;
-      box-shadow: 0 10px 32px rgba(0,0,0,0.22);
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -10;
     }
-    .venus-title {
+    section {
+      padding: 100px 0;
+      color: white;
       text-align: center;
-      font-size: 2.5rem;
-      font-weight: bold;
-      letter-spacing: 0.04em;
-      margin: 36px 0 14px 0;
-      color: #fff;
-      text-shadow: 0 2px 12px #000, 0 0 2px #000;
-      font-family: 'Times New Roman', serif;
     }
-    .venus-catch {
-      text-align: center;
-      font-size: 1.15rem;
-      color: #adb5bd;
-      margin-bottom: 32px;
-      letter-spacing: 0.12em;
+        .social-icons i {
+            font-size: 2em;
+        }
+        .social-icons {
+            text-align: center;
+            padding: 20px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            color: #333;
+        }
+        .social-icons a:hover {
+            color: #007bff;
+        }
+        .project-logos img {
+            width: 150px;
+            margin: 10px;
+        }
+        .project-title {
+            text-decoration: underline;
+            margin-bottom: 5px;
+        }
+        .navbar-nav .nav-item {
+            margin-right: 20px;
+        }
+        .carousel-item {
+            height: 500px;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    .list-group-item {
+      background-color: transparent;
+      border: none;
+      padding: 0.5rem 0;
+      color: #f1f1f1;
     }
-    .venus-content {
-      max-width: 750px;
-      margin: 0 auto;
-      padding: 0 12px 52px 12px;
-      font-size: 1.08rem;
-      line-height: 1.8;
-      color: #e4e4e4;
+    /* リンクボタンなどの色調整 */
+    .btn-info {
+      margin-bottom: 20px;
     }
-    .navbar-nav .nav-item {
-      margin-right: 20px;
-    }
-    .navbar-dark .navbar-nav .nav-link.active {
-      color: #fff !important;
-      font-weight: bold;
-    }
-    .navbar-dark .navbar-brand {
-      font-size: 1.18rem;
-      letter-spacing: 0.07em;
-    }
-    .social-icons i {
-      font-size: 2em;
-    }
-    .social-icons {
-      text-align: center;
-      padding: 20px;
-    }
-    .social-icons a {
-      margin: 0 10px;
-      color: #333;
-    }
-    .social-icons a:hover {
-      color: #007bff;
-    }
-    @media (max-width: 700px) {
-      .venus-hero { max-width: 100vw; max-height: 32vw; min-height: 160px; }
-      .venus-title { font-size: 1.32rem; }
-      .venus-catch { font-size: 0.99rem; }
-      .venus-content { font-size: 0.96rem; }
-      .navbar-brand { font-size: 1.07rem !important; }
-      .navbar-nav .nav-item { margin-right: 7px; }
-    }
+  .lead {
+    font-size: 1rem; /* デフォルトが1.25remなどの場合、1remに下げる */
+    color: #ddd;
+  }
+
   </style>
 </head>
 <body>
-  <!-- ヘッダー・ナビバー（index.html完全コピー） -->
-  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="https://sfseiji.github.io/">Seiji Fujimoto</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-              aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" href="../pages/news.html">News</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../pages/about.html">About Me</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../pages/members.html">Members</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../pages/research.html">Research</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../pages/projects.html">Projects</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../pages/teaching.html">Teaching</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../pages/job.html">Job Opportunity</a>
-          </li>
-        </ul>
-        <div class="social-icons">
-          <a href="https://twitter.com/sfseiji" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="https://scholar.google.co.jp/citations?user=lnAouJ4AAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-          <a href="https://ui.adsabs.harvard.edu/search/filter_database_fq_database=OR&filter_database_fq_database=database%3A%22astronomy%22&format=SHORT&fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3A%22astronomy%22)&q=author%3A(%22fujimoto%2Cseiji%22)%20AND%20pubdate%3A%5B2015-01%20TO%20*%5D&sort=score%20desc%2C%20bibcode%20desc&unprocessed_parameter=adsobj_query&unprocessed_parameter=qform&p_=0" target="_blank" title="Publications on ADS"><i class="fas fa-book"></i></a>
+    <div class="full-bg-image"></div>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://sfseiji.github.io/">Seiji Fujimoto</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/news.html">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/about.html">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/members.html">Members</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/research.html">Research</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/projects.html">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pages/teaching.html">Teaching</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="pages/job.html">Job Opportunity</a>
+                    </li>
+                </ul>
+                <div class="social-icons">
+                    <a href="https://twitter.com/sfseiji" target="_blank" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://scholar.google.co.jp/citations?user=lnAouJ4AAAAJ&hl=en" target="_blank"
+                        title="Google Scholar">
+                        <i class="fas fa-graduation-cap"></i>
+                    </a>
+                    <a href="https://ui.adsabs.harvard.edu/search/filter_database_fq_database=OR&filter_database_fq_database=database%3A%22astronomy%22&format=SHORT&fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3A%22astronomy%22)&q=author%3A(%22fujimoto%2Cseiji%22)%20AND%20pubdate%3A%5B2015-01%20TO%20*%5D&sort=score%20desc%2C%20bibcode%20desc&unprocessed_parameter=adsobj_query&unprocessed_parameter=qform&p_=0" target="_blank"
+                        title="Publications on ADS">
+                        <i class="fas fa-book"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
   <!-- メインコンテンツ -->
   <img src="../research_image/venus_cut2.png" alt="VENUS Project" class="venus-hero">
