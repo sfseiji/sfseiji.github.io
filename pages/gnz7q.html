@@ -32,11 +32,21 @@
       left: 0;
       z-index: -10;
     }
-    .cosmicgrapes-image {
+    .navbar {
+      padding-top: 0.25rem !important;
+      padding-bottom: 0.25rem !important;
+      min-height: 30px;
+    }
+    .navbar-nav .nav-item { margin-right: 20px; }
+    .social-icons i { font-size: 2em; }
+    .social-icons { text-align: center; padding: 20px; }
+    .social-icons a { margin: 0 10px; color: #333; }
+    .social-icons a:hover { color: #007bff; }
+    .gnz7q-image {
       display: block;
       margin: 44px auto 22px auto;
       width: 95%;
-      max-width: 1000px;
+      max-width: 1200px;
       min-width: 260px;
       border-radius: 14px;
       box-shadow: 0 10px 32px rgba(0,0,0,0.18);
@@ -70,7 +80,7 @@
       color: #e4e4e4;
     }
     @media (max-width: 900px) {
-      .cosmicgrapes-image { width: 95%; }
+      .gnz7q-image { width: 95%; }
       .project-title { font-size: 1.37rem; }
       .project-catch { font-size: 1.01rem; }
       .project-content { font-size: 0.98rem; }
@@ -78,12 +88,60 @@
   </style>
 </head>
 <body>
-  <div class="full-bg-image"></div>
+    <div class="full-bg-image"></div>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="https://sfseiji.github.io/">Seiji Fujimoto</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="members.html">Members</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="research.html">Research</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="teaching.html">Teaching</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="job.html">Job Opportunity</a>
+                    </li>
+                </ul>
+                <div class="social-icons">
+                    <a href="https://twitter.com/sfseiji" target="_blank" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://scholar.google.co.jp/citations?user=lnAouJ4AAAAJ&hl=en" target="_blank"
+                        title="Google Scholar">
+                        <i class="fas fa-graduation-cap"></i>
+                    </a>
+                    <a href="https://ui.adsabs.harvard.edu/search/filter_database_fq_database=OR&filter_database_fq_database=database%3A%22astronomy%22&format=SHORT&fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3A%22astronomy%22)&q=author%3A(%22fujimoto%2Cseiji%22)%20AND%20pubdate%3A%5B2015-01%20TO%20*%5D&sort=score%20desc%2C%20bibcode%20desc&unprocessed_parameter=adsobj_query&unprocessed_parameter=qform&p_=0" target="_blank"
+                        title="Publications on ADS">
+                        <i class="fas fa-book"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
   <!-- メインコンテンツ -->
   <div class="container" style="max-width:900px; margin:48px auto 0 auto; padding:0 12px;">
     <!-- 画像：1枚だけ、横幅95%で中央表示 -->
-    <img src="../research_image/gnz7q_full.jpeg" alt="GNz7q" class="cosmicgrapes-image">
+    <img src="../research_image/gnz7q_full.jpeg" alt="GNz7q" class="gnz7q-image">
 
     <!-- タイトル・キャッチコピー -->
     <h1 class="project-title">GNz7q</h1>
