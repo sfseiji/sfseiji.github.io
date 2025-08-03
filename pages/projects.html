@@ -510,13 +510,13 @@ const map = new google.maps.Map(document.getElementById('collabMap'), {
   mapTypeControl: false,
 });
 
-collaboratorInstitutes.forEach((collab) => {
-  geocoder.geocode({ address: collab.institute }, (results, status) => {
+collaboratorInstitutes.forEach((institute) => {
+  geocoder.geocode({ address: institute }, (results, status) => {
     if (status === 'OK') {
       new google.maps.Marker({
         map: map,
         position: results[0].geometry.location,
-        title: collab.name + " (" + collab.institute + ")"
+        title: institute
       });
     }
   });
