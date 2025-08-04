@@ -184,6 +184,10 @@
             position: relative; /* Ensure the overlay can be absolutely positioned within */
         }
 
+        .project-item .row {
+          align-items: center;
+        }
+
         .project-item img {
             float: right; /* Align the image to the right */
             margin-left: 20px; /* Adds space between logos and image */
@@ -217,10 +221,11 @@
         }
 
         .logos {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;  // Center logos vertically
-            align-items: center;  // Center logos horizontally in their column
+          display: flex;
+          flex-direction: column;
+          justify-content: center;  /* 縦方向中央揃え */
+          align-items: center;      /* 横方向中央揃え */
+          height: 100%;             /* 親の高さに合わせる */
         }
         .logos img {
             margin-bottom: 10px;  /* Space between logos */
