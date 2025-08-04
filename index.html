@@ -220,6 +220,12 @@
             font-size: 20px; /* Adjusts the font size */
         }
 
+        .project-item .overlay .text {
+          text-align: center;
+          font-size: 20px;
+          width: 100%;
+        }
+
         .logos {
           display: flex;
           flex-direction: column;
@@ -228,7 +234,13 @@
           height: 100%;             /* 親の高さに合わせる */
         }
         .logos img {
-            margin-bottom: 10px;  /* Space between logos */
+          max-height: 80px;
+          max-width: 150px;
+          object-fit: contain;
+          margin-bottom: 10px;
+          background-color: white; /* optional, 背景が黒なので白を推奨 */
+          padding: 4px;            /* optional, ロゴの内側スペース */
+          border-radius: 4px;      /* optional, 角丸 */
         }
         .project-item .logo-panel {
             display: flex;
