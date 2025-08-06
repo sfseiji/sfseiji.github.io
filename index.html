@@ -784,34 +784,12 @@
         });
     </script>
 
-
-
-
 <!-- Contact Section -->
 <section id="contact" style="background: rgba(0,0,0,0.55); padding: 60px 0 50px 0; color: #fff;">
   <div class="container" style="max-width:1100px;">
     <h2 class="section-title" style="font-family: 'Times New Roman', Times, serif; font-style: italic; text-align: center; font-weight: bold;">Contact</h2>
     <div class="row mt-4">
-      <!-- 左：フォーム -->
-      <div class="col-md-6 mb-4">
-        <form action="mailto:seiji.fujimoto@utoronto.ca" method="POST" enctype="text/plain" style="background: rgba(255,255,255,0.07); border-radius: 8px; padding: 22px 22px 18px 22px; box-shadow: 0 2px 14px rgba(0,0,0,0.11);">
-          <div class="mb-3">
-            <label for="name" class="form-label" style="color:#eee;">Your Name</label>
-            <input type="text" class="form-control" id="name" name="Name" required>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label" style="color:#eee;">Your Email</label>
-            <input type="email" class="form-control" id="email" name="Email" required>
-          </div>
-          <div class="mb-3">
-            <label for="message" class="form-label" style="color:#eee;">Message</label>
-            <textarea class="form-control" id="message" name="Message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-info">Send Message</button>
-          <div style="font-size:0.91em; color:#bbb; margin-top:8px;">※このフォームはご利用のメールアプリが起動し、メール送信となります。</div>
-        </form>
-      </div>
-      <!-- 右：住所＋地図 -->
+      <!-- 左：住所＋地図 -->
       <div class="col-md-6 mb-4" style="display: flex; flex-direction: column; align-items: center; justify-content: start;">
         <div style="background:rgba(255,255,255,0.08); border-radius:8px; padding:20px; margin-bottom:20px; width:100%;">
           <strong>Office Address</strong><br>
@@ -828,10 +806,39 @@
           </iframe>
         </div>
       </div>
+      <!-- 右：問い合わせフォーム -->
+      <div class="col-md-6 mb-4">
+        <form id="mailForm" style="background: rgba(255,255,255,0.07); border-radius: 8px; padding: 22px 22px 18px 22px; box-shadow: 0 2px 14px rgba(0,0,0,0.11);">
+          <div class="mb-3">
+            <label for="cf_name" class="form-label" style="color:#eee;">Your Name</label>
+            <input type="text" class="form-control" id="cf_name" required>
+          </div>
+          <div class="mb-3">
+            <label for="cf_title" class="form-label" style="color:#eee;">Title</label>
+            <input type="text" class="form-control" id="cf_title" required>
+          </div>
+          <div class="mb-3">
+            <label for="cf_body" class="form-label" style="color:#eee;">Message</label>
+            <textarea class="form-control" id="cf_body" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-info">Send Message</button>
+          <div style="font-size:0.91em; color:#bbb; margin-top:8px;">※このフォームはご利用のメールアプリが起動し、メール送信となります。</div>
+        </form>
+        <script>
+        document.getElementById('mailForm').addEventListener('submit', function(e){
+          e.preventDefault();
+          const name = document.getElementById('cf_name').value.trim();
+          const title = document.getElementById('cf_title').value.trim();
+          const body = document.getElementById('cf_body').value.trim();
+          const subject = encodeURIComponent(name + ': ' + title);
+          const mailbody = encodeURIComponent(body);
+          window.location.href = `mailto:seiji.fujimoto@utoronto.ca?subject=${subject}&body=${mailbody}`;
+        });
+        </script>
+      </div>
     </div>
   </div>
 </section>
-
 
 
 
