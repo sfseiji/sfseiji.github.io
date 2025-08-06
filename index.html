@@ -455,8 +455,14 @@
   border-radius: 6px;
   background: rgba(0,0,0,0.17);
 }
-.project-thumb img {
-  transition: filter 0.18s;
+/* 画像を自然な比率で */
+.project-thumb img,
+.container-fluid img {
+  height: auto !important;
+  object-fit: contain !important;
+  background: #eee;
+  border-radius: 8px;
+  margin-bottom: 0;
 }
 .project-thumb:hover img {
   filter: blur(1.3px) brightness(0.62);
@@ -684,6 +690,9 @@
       </div>
     </section>
 
+<section id="projects">
+  <div class="container my-4">
+    <h2 class="section-title" style="font-family:'Times New Roman',Times,serif;font-style:italic;text-align:center;">Collaborations</h2>
 <div class="row justify-content-center">
   <!-- ALMA -->
   <div class="col-md-5 d-flex flex-column align-items-center mb-4">
@@ -731,7 +740,7 @@
     </div>
   </div>
 </div>
-
+</section>
     <!-- Images will be loaded here by JavaScript -->
     <section id="personal" style="margin-top: 80px; padding: 20px; background-color: rgba(249, 249, 249, 0.2); border-radius: 10px; width: 90%;margin-left: auto;margin-right: auto;">
         <h2 class="section-title" style="font-family: 'Times New Roman', Times, serif; font-style: italic; text-align: center; margin-bottom: 20px;">Personal</h2>
