@@ -420,6 +420,48 @@
           }
         }
 
+.project-thumb {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 14px;
+}
+.project-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.68);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s;
+  font-size: 1.19rem;
+  font-weight: bold;
+  z-index: 2;
+}
+.project-thumb:hover .project-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+.project-overlay-text {
+  color: #fff;
+  text-shadow: 0 2px 12px #000;
+  font-size: 1.11rem;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  background: rgba(0,0,0,0.17);
+}
+.project-thumb img {
+  transition: filter 0.18s;
+}
+.project-thumb:hover img {
+  filter: blur(1.3px) brightness(0.62);
+}
+
 
     </style>
 </head>
@@ -642,61 +684,56 @@
       </div>
     </section>
 
-    <section id="projects">
-        <div class="container my-4">
-            <h2 class="section-title" style="font-family: 'Times New Roman', Times, serif; font-style: italic; text-align: center;">Collaborations</h2>
-                <div class="row">
-                    <div class="col-md-12 project-image" data-project="project2">
-                        <div class="row">
-                            <div class="col-4 logos">
-                                <!-- Assuming there are 6 logos arranged in 3 columns x 3 rows -->
-                                <div class="row">
-                                    <div class="col-4"><img src="project_logo/jwst/CEERS.png" alt="Logo 4" class="img-fluid"></div>
-                                    <div class="col-4"><img src="project_logo/jwst/ngdeep.jpg" alt="Logo 5" class="img-fluid"></div>
-                                    <div class="col-4"><img src="project_logo/jwst/cosmos-web2.jpg" alt="Logo 6" class="img-fluid"></div>
-                                    <div class="col-4"><img src="project_logo/jwst/UNCOVER.png" alt="Logo 7" class="img-fluid"></div>
-                                    <div class="col-4"><img src="project_logo/jwst/megascience.png" alt="Logo 8" class="img-fluid"></div>
-                                    <div class="col-4"><img src="project_logo/jwst/glimpse2.png" alt="Logo 10" class="img-fluid"></div>
-                                    <div class="col-4"><img src="project_logo/jwst/canucs.png" alt="Logo 9" class="img-fluid"></div>
-                                    <div class="col-4"><img src="project_logo/jwst/magnif.png" alt="Logo 11" class="img-fluid"></div>
-                                    <div class="col-4"><img src="project_logo/jwst/FRESCO.png" alt="Logo 10" class="img-fluid"></div>
-                                    <div class="col-4"><img src="project_logo/jwst/cosmos3d.png" alt="Logo 12" class="img-fluid"></div>
-                                    <!-- <div class="col-4"><img src="project_logo/jwst/poppies.png" alt="Logo 13" class="img-fluid"></div> -->
-                                    <!-- <div class="col-4"><img src="project_logo/jwst/caper.png" alt="Logo 14" class="img-fluid"></div> -->
-                                    <div class="col-4"><img src="project_logo/jwst/meow.png" alt="Logo 13" class="img-fluid"></div> 
-                                    <div class="col-4"><img src="project_logo/jwst/dja.png" alt="Logo 15" class="img-fluid"></div>
-                                </div>
-                            </div>
-                            <div class="col-7">
-                                <img src="research_image/jwst.jpeg" alt="Project 2" class="img-fluid">
-                                <div class="overlay">
-                                    <div class="text"><a href="https://sfseiji.github.io/pages/projects.html" id="project-link2" target="_blank">Learn more about JWST collaborations</a></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 project-item" data-project="project1">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <img src="research_image/alma2.jpeg" alt="Project 1" class="img-fluid">
-                                <div class="overlay">
-                                    <div class="text"><a href="https://sfseiji.github.io/pages/projects.html" id="project-link1" target="_blank">Learn more about ALMA collaborations</a></div>
-                                </div>
-                            </div>
-                            <div class="col-3 logos" style="margin-right: 45px; margin-left: 45px;">
-                                <div class="row">
-                                    <img src="project_logo/alma/alpine.jpg" alt="Logo 1" class="img-fluid">
-                                    <img src="project_logo/alma/cristal.jpeg" alt="Logo 2" class="img-fluid">
-                                    <img src="project_logo/alma/alcs.jpg" alt="Logo 3" class="img-fluid">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </section>
-
+<section id="projects">
+  <div class="container my-4">
+    <h2 class="section-title" style="font-family:'Times New Roman',Times,serif;font-style:italic;text-align:center;">Collaborations</h2>
+    <div class="row justify-content-center">
+      <!-- ALMA画像 -->
+      <div class="col-md-5 d-flex flex-column align-items-center mb-4">
+        <div class="project-thumb position-relative alma-thumb" style="width:100%;max-width:360px;">
+          <img src="research_image/alma2.jpeg" alt="ALMA Project" class="img-fluid rounded w-100" style="object-fit:cover;">
+          <div class="project-overlay" id="almaOverlay">
+            <a href="https://sfseiji.github.io/pages/projects.html" target="_blank" class="project-overlay-text">
+              Learn more about ALMA collaborations
+            </a>
+          </div>
+        </div>
+        <!-- ALMA ロゴ -->
+        <div class="d-flex justify-content-center flex-wrap gap-3 mt-3">
+          <img src="project_logo/alma/alpine.jpg" alt="ALPINE" style="width:65px;max-width:70px;">
+          <img src="project_logo/alma/cristal.jpeg" alt="CRISTAL" style="width:65px;max-width:70px;">
+          <img src="project_logo/alma/alcs.jpg" alt="ALCS" style="width:65px;max-width:70px;">
+        </div>
+      </div>
+      <!-- JWST画像 -->
+      <div class="col-md-5 d-flex flex-column align-items-center mb-4">
+        <div class="project-thumb position-relative jwst-thumb" style="width:100%;max-width:360px;">
+          <img src="research_image/jwst.jpeg" alt="JWST Project" class="img-fluid rounded w-100" style="object-fit:cover;">
+          <div class="project-overlay" id="jwstOverlay">
+            <a href="https://sfseiji.github.io/pages/projects.html" target="_blank" class="project-overlay-text">
+              Learn more about JWST collaborations
+            </a>
+          </div>
+        </div>
+        <!-- JWST ロゴ -->
+        <div class="d-flex justify-content-center flex-wrap gap-3 mt-3">
+          <img src="project_logo/jwst/CEERS.png" alt="CEERS" style="width:55px;max-width:60px;">
+          <img src="project_logo/jwst/ngdeep.jpg" alt="NGDEEP" style="width:55px;max-width:60px;">
+          <img src="project_logo/jwst/cosmos-web2.jpg" alt="COSMOS-Web" style="width:55px;max-width:60px;">
+          <img src="project_logo/jwst/UNCOVER.png" alt="UNCOVER" style="width:55px;max-width:60px;">
+          <img src="project_logo/jwst/megascience.png" alt="MegaScience" style="width:55px;max-width:60px;">
+          <img src="project_logo/jwst/glimpse2.png" alt="GLIMPSE" style="width:55px;max-width:60px;">
+          <img src="project_logo/jwst/canucs.png" alt="CANUCS" style="width:55px;max-width:60px;">
+          <img src="project_logo/jwst/magnif.png" alt="MAGNIF" style="width:55px;max-width:60px;">
+          <img src="project_logo/jwst/FRESCO.png" alt="FRESCO" style="width:55px;max-width:60px;">
+          <img src="project_logo/jwst/cosmos3d.png" alt="COSMOS3D" style="width:55px;max-width:60px;">
+          <img src="project_logo/jwst/meow.png" alt="MEOW" style="width:55px;max-width:60px;">
+          <img src="project_logo/jwst/dja.png" alt="DJA" style="width:55px;max-width:60px;">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
     <!-- Images will be loaded here by JavaScript -->
     <section id="personal" style="margin-top: 80px; padding: 20px; background-color: rgba(249, 249, 249, 0.2); border-radius: 10px; width: 90%;margin-left: auto;margin-right: auto;">
         <h2 class="section-title" style="font-family: 'Times New Roman', Times, serif; font-style: italic; text-align: center; margin-bottom: 20px;">Personal</h2>
