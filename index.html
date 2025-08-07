@@ -370,6 +370,16 @@
           opacity: 1;
         }
 
+.highlight-circle.active .highlight-label,
+.highlight-circle:hover .highlight-label {
+  opacity: 1;
+}
+.highlight-circle.active::after,
+.highlight-circle:hover::after {
+  opacity: 1;
+}
+
+
         @media (max-width: 700px) {
           section {
             padding: 36px 0 24px 0;
