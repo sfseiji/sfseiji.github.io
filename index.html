@@ -468,6 +468,30 @@
   filter: blur(1.3px) brightness(0.62);
 }
 
+@media (max-width: 700px) {
+  .section-title {
+    font-size: 2rem !important;
+    line-height: 2.3rem !important;
+    margin-bottom: 18px !important;
+  }
+  h2.section-title {
+    font-size: 2.2rem !important;
+    line-height: 2.4rem !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .highlight-circle {
+    width: 64vw !important;
+    height: 64vw !important;
+    min-width: 135px !important; max-width: 220px !important;
+    min-height: 135px !important; max-height: 220px !important;
+    margin-bottom: 24px !important;
+  }
+  #highlight-projects .container {
+    gap: 8vw !important;
+  }
+}
 
     </style>
 </head>
@@ -893,6 +917,40 @@
   // ラベルも左から表示（標準で中央になるが、必要なら細かく演出可能）
 });
 
+</script>
+
+<script>
+function isMobile() {
+  return window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+}
+
+if (isMobile()) {
+  document.querySelectorAll('.highlight-circle').forEach(circle => {
+    circle.classList.remove('hover-scale'); // 念のため
+  });
+  // intersection observer
+  const observer = new window.IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.transform = "scale(1.25)";
+        entry.target.style.transition = "transform 0.55s cubic-bezier(.25,1.2,.5,1)";
+      } else {
+        entry.target.style.transform = "scale(1)";
+      }
+    });
+  }, { threshold: 0.4 });
+  document.querySelectorAll('.highlight-circle').forEach(el => observer.observe(el));
+} else {
+  // PCは通常のhover
+  document.querySelectorAll('.highlight-circle').forEach(circle => {
+    circle.addEventListener('mouseenter', function(){
+      this.style.transform = 'scale(1.5)';
+    });
+    circle.addEventListener('mouseleave', function(){
+      this.style.transform = 'scale(1)';
+    });
+  });
+}
 </script>
 
 <!-- ページ末尾・</body>直前にコピペ -->
