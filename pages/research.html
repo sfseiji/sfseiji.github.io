@@ -156,6 +156,25 @@
   filter: invert(1) brightness(2.5);
 }
 
+.project-highlight-row {
+  box-shadow: 0 2px 18px rgba(0,0,0,0.10);
+  margin-bottom: 32px;
+  transition: box-shadow 0.2s;
+}
+.project-highlight-row:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.21);
+}
+@media (max-width: 900px) {
+  #highlight-details .row {
+    flex-direction: column !important;
+  }
+  #highlight-details img {
+    margin-bottom: 14px;
+    max-width: 96vw !important;
+  }
+  .project-subtitle { font-size: 1.14rem !important;}
+}
+
   </style>
 </head>
 <body>
@@ -272,6 +291,70 @@
     style="border:none; background:#161616; display:block;">
   </iframe>
 </div>
+
+
+<!-- 下に追加: ハイライトプロジェクト詳細セクション -->
+<section id="highlight-details" class="my-5">
+  <h2 class="section-title" style="font-size:2.1rem; font-family:'Times New Roman',serif; font-style:italic;">Project Spotlights</h2>
+  <div style="max-width:1050px;margin:34px auto 0 auto;">
+    
+    <!-- 1. VENUS -->
+    <div class="row align-items-center mb-5 project-highlight-row" style="background:rgba(255,255,255,0.08); border-radius:16px;">
+      <div class="col-md-5 text-center p-3">
+        <img src="research_image/venus_cut2.png" alt="VENUS" style="max-width:270px;width:95%;border-radius:13px;box-shadow:0 2px 16px #1118;">
+      </div>
+      <div class="col-md-7 p-3 text-md-start text-center">
+        <h3 class="project-subtitle" style="font-size:1.35rem;font-weight:bold;color:#ffe;">VENUS</h3>
+        <div style="font-size:1.05rem;color:#e2e2e2;line-height:1.7;">
+          VENUS is the second largest JWST program, a multi-epoch treasury survey led by Seiji Fujimoto (PI) and Dan Coe (co-PI), targeting 60 massive galaxy clusters to capture the faintest galaxies, black holes, and supernovae at z~4–20 with unprecedented depth and spatial resolution.
+        </div>
+        <a href="pages/venus.html" class="btn btn-info mt-3" target="_blank" style="min-width:140px;">Learn More</a>
+      </div>
+    </div>
+
+    <!-- 2. Cosmic Grapes -->
+    <div class="row align-items-center mb-5 project-highlight-row" style="background:rgba(255,255,255,0.08); border-radius:16px;">
+      <div class="col-md-5 text-center p-3">
+        <img src="research_image/Cosmic_Grapes.png" alt="Cosmic Grapes" style="max-width:270px;width:95%;border-radius:13px;box-shadow:0 2px 16px #1118;">
+      </div>
+      <div class="col-md-7 p-3 text-md-start text-center">
+        <h3 class="project-subtitle" style="font-size:1.35rem;font-weight:bold;color:#ffe;">Cosmic Grapes</h3>
+        <div style="font-size:1.05rem;color:#e2e2e2;line-height:1.7;">
+          Cosmic Grapes is a record-breaking lensed galaxy system at z=6.07, revealed by deep JWST, ALMA, and VLT/MUSE follow-up, allowing us to spatially resolve chemical enrichment, mass, and dynamics on &lt;10 pc scales at cosmic dawn.
+        </div>
+        <a href="pages/grapes.html" class="btn btn-info mt-3" target="_blank" style="min-width:140px;">Learn More</a>
+      </div>
+    </div>
+
+    <!-- 3. GNz7q -->
+    <div class="row align-items-center mb-5 project-highlight-row" style="background:rgba(255,255,255,0.08); border-radius:16px;">
+      <div class="col-md-5 text-center p-3">
+        <img src="research_image/gnz7q.jpeg" alt="GNz7q" style="max-width:270px;width:95%;border-radius:13px;box-shadow:0 2px 16px #1118;">
+      </div>
+      <div class="col-md-7 p-3 text-md-start text-center">
+        <h3 class="project-subtitle" style="font-size:1.35rem;font-weight:bold;color:#ffe;">GNz7q</h3>
+        <div style="font-size:1.05rem;color:#e2e2e2;line-height:1.7;">
+          GNz7q is a rare hybrid system discovered at z=7.189 that bridges galaxies and quasars, providing the first glimpse of a growing black hole embedded in a dusty galaxy less than 800 million years after the Big Bang.
+        </div>
+        <a href="pages/gnz7q.html" class="btn btn-info mt-3" target="_blank" style="min-width:140px;">Learn More</a>
+      </div>
+    </div>
+
+    <!-- 4. GLIMPSE-D -->
+    <div class="row align-items-center mb-4 project-highlight-row" style="background:rgba(255,255,255,0.08); border-radius:16px;">
+      <div class="col-md-5 text-center p-3">
+        <img src="research_image/glimpse.jpg" alt="GLIMPSE-D" style="max-width:270px;width:95%;border-radius:13px;box-shadow:0 2px 16px #1118;">
+      </div>
+      <div class="col-md-7 p-3 text-md-start text-center">
+        <h3 class="project-subtitle" style="font-size:1.35rem;font-weight:bold;color:#ffe;">GLIMPSE-D</h3>
+        <div style="font-size:1.05rem;color:#e2e2e2;line-height:1.7;">
+          The GLIMPSE-D program uses ultra-deep JWST and HST imaging of lensing clusters to uncover the faintest, most extreme galaxies, possibly powered by Population III stars at z&gt;6, offering a new window onto the cosmic dawn.
+        </div>
+        <a href="pages/glimpse.html" class="btn btn-info mt-3" target="_blank" style="min-width:140px;">Learn More</a>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ページ末尾・</body>直前にコピペ -->
 <footer style="width:100%; background:rgba(0,0,0,0.35); padding:15px 0 8px 0; text-align:center; color:#bbb; font-size:0.99rem; letter-spacing:0.01em; margin-top:20px; position:relative;">
