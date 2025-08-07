@@ -131,7 +131,30 @@
       .project-content { font-size: 0.98rem; }
     }
 
+.features {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 36px;     /* アイコン間の余白。好みで調整 */
+  margin: 24px 0 36px 0;
+  padding: 0;
+  list-style: none;
+}
 
+.features li {
+  text-align: center;
+  flex: 0 0 auto;
+  max-width: 180px; /* アイコン＋テキストの幅（好みで） */
+}
+
+.feature-icon {
+  display: block;
+  margin: 0 auto 10px auto;
+  width: 48px;
+  height: auto;
+  max-width: 70px;
+}
 
   </style>
 </head>
@@ -204,37 +227,28 @@
   </p>
 
 
-    <section id="three" class="wrapper style3 special">
-      <div class="inner">
-        <header class="major">
-          <h2>Key probes</h2>
-        </header>
-        <ul class="features">
-          <li>   
-            <img src="../research_image/icon/icon_galaxy.png" alt="Earliest galaxies icon" class="feature-icon" />
-            <h3>Earliest galaxies</h3>
-            <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-          </li>
-          <li>   
-            <img src="../research_image/icon/icon_star.png" alt="Earliest star clusters icon" class="feature-icon" />
-            <h3>Earliest star clusters</h3>
-            <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-          </li>
-          <li>   
-            <img src="../research_image/icon/icon_bh.png" alt="Earliest blackholes icon" class="feature-icon" />
-            <h3>Earliest Black Holes</h3>
-            <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-          </li>
-          <li>   
-            <img src="../research_image/icon/icon_sn.png" alt="Earliest supernovae icon" class="feature-icon" />
-            <h3>Earliest supernovae</h3>
-            <p>Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat.</p>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-
+<ul class="features">
+  <li>   
+    <img src="../research_image/icon/icon_galaxy.png" alt="Earliest galaxies icon" class="feature-icon" />
+    <h3>Galaxies</h3>
+    <p> Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat. </p>
+  </li>
+  <li>   
+    <img src="../research_image/icon/icon_star.png" alt="Earliest galaxies icon" class="feature-icon" />
+    <h3>Stars & star clusters</h3>
+    <p> Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat. </p>
+  </li>
+  <li>   
+    <img src="../research_image/icon/icon_bh.png" alt="Earliest galaxies icon" class="feature-icon" />
+    <h3>Blackholes</h3>
+    <p> Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat. </p>
+  </li>
+  <li>   
+    <img src="../research_image/icon/icon_sn.png" alt="Earliest galaxies icon" class="feature-icon" />
+    <h3>Supernovae</h3>
+    <p> Augue consectetur sed interdum imperdiet et ipsum. Mauris lorem tincidunt nullam amet leo Aenean ligula consequat consequat. </p>
+  </li>
+</ul>
 
   </div>
 </div>
