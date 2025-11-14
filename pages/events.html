@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Events - Seiji Fujimoto</title>
 
-  <!-- CSS: Bootstrap, Devicon, Font Awesome -->
+  <!-- CSS & JS Libraries -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
         crossorigin="anonymous">
@@ -21,6 +21,8 @@
       margin: 0;
       font-family: 'Times New Roman', Times, serif;
     }
+
+    /* 背景設定 */
     .full-bg-image {
       background: url('../personal/matsushima.jpg') no-repeat center center fixed;
       background-size: cover;
@@ -32,51 +34,58 @@
       left: 0;
       z-index: -10;
     }
+
     section {
       padding: 100px 0;
       color: white;
       text-align: center;
     }
+
     .navbar {
       padding-top: 0.25rem !important;
       padding-bottom: 0.25rem !important;
       min-height: 30px;
     }
-    .navbar-nav .nav-item {
-      margin-right: 20px;
-    }
-    .social-icons i {
-      font-size: 2em;
-    }
-    .social-icons a {
-      margin: 0 10px;
-      color: #333;
-    }
-    .social-icons a:hover {
-      color: #007bff;
-    }
-    .weekly-schedule {
-      text-align: left;
-      max-width: 700px;
+    .navbar-nav .nav-item { margin-right: 20px; }
+
+    .social-icons i { font-size: 2em; }
+    .social-icons a { margin: 0 10px; color: #333; }
+    .social-icons a:hover { color: #007bff; }
+
+    /* Table スタイル */
+    .schedule-table {
+      width: 90%;
+      max-width: 900px;
       margin: 40px auto;
       background: rgba(255,255,255,0.08);
+      border-collapse: collapse;
       border-radius: 10px;
-      padding: 20px 30px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.2);
     }
-    .weekly-schedule h3 {
-      text-align: center;
-      font-style: italic;
-      color: #fff;
-      margin-bottom: 20px;
-    }
-    .weekly-schedule p {
+
+    .schedule-table th, .schedule-table td {
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       color: #ddd;
-      line-height: 1.7;
       font-size: 1rem;
     }
+
+    .schedule-table th {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .schedule-table tr:hover {
+      background-color: rgba(255,255,255,0.08);
+    }
+
+    /* Photo gallery */
     .photo-gallery {
-      margin-top: 50px;
+      margin-top: 60px;
     }
     .photo-caption {
       color: #ccc;
@@ -95,6 +104,7 @@
     .gallery-img:hover {
       transform: scale(1.05);
     }
+
     footer {
       width:100%;
       background:rgba(0,0,0,0.35);
@@ -105,6 +115,13 @@
       letter-spacing:0.01em;
       margin-top:20px;
       position:relative;
+    }
+
+    @media (max-width: 768px) {
+      .schedule-table th, .schedule-table td {
+        font-size: 0.9rem;
+        padding: 10px;
+      }
     }
   </style>
 </head>
@@ -117,8 +134,8 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="https://sfseiji.github.io/">Seiji Fujimoto</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-              aria-label="Toggle navigation">
+              data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+              aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -145,23 +162,56 @@
   <section id="weekly">
     <div class="container">
       <h1 class="text-center text-white mb-4">Weekly Events</h1>
-      <div class="weekly-schedule">
-        <h3>Weekly Schedule</h3>
-        <p>
-          <strong>Monday:</strong> 11:30–12:00 Astro-ph @ IdeaLab <br>
-          <strong>Tuesday:</strong> 11:30–12:00 Astro-ph @ IdeaLab, 13:10–14:00 TASTY talk @ Cody Hall (seminar for internal members & visitors) <br>
-          <strong>Wednesday:</strong> 14:00–15:00 Colloquium @ Cody Hall, 15:30–16:00 Astro-ph @ AB lounge <br>
-          <strong>Thursday:</strong> 11:00–12:30 High-z Joint Group Meeting @ AB88, 13:00–14:00 Office hours @ AB226, 15:30–16:00 Astro-ph @ IdeaLab <br>
-          <strong>Friday:</strong> 14:30–15:30 Group Meeting @ CITA Bridge, 15:30–16:00 Astro-ph @ AB lounge
-        </p>
-      </div>
+
+      <table class="schedule-table">
+        <thead>
+          <tr>
+            <th style="width: 120px;">Day</th>
+            <th>Schedule</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Monday</strong></td>
+            <td>11:30–12:00 <em>Astro-ph</em> @ IdeaLab</td>
+          </tr>
+          <tr>
+            <td><strong>Tuesday</strong></td>
+            <td>
+              11:30–12:00 <em>Astro-ph</em> @ IdeaLab <br>
+              13:10–14:00 <em>TASTY talk</em> @ Cody Hall (seminar for internal members & visitors)
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Wednesday</strong></td>
+            <td>
+              14:00–15:00 <em>Colloquium</em> @ Cody Hall <br>
+              15:30–16:00 <em>Astro-ph</em> @ AB lounge
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Thursday</strong></td>
+            <td>
+              11:00–12:30 <em>High-z Joint Group Meeting</em> @ AB88 <br>
+              13:00–14:00 <em>Office hours</em> @ AB226 <br>
+              15:30–16:00 <em>Astro-ph</em> @ IdeaLab
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Friday</strong></td>
+            <td>
+              14:30–15:30 <em>Group Meeting</em> @ CITA Bridge <br>
+              15:30–16:00 <em>Astro-ph</em> @ AB lounge
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
   <!-- Photo Gallery -->
   <section id="photos">
     <div class="container photo-gallery">
-      <h2 class="text-center text-white mb-4" style="font-family:'Times New Roman',serif;font-style:italic;">Recent Highlights</h2>
       <div class="row justify-content-center g-4">
         <div class="col-md-4 col-sm-10 text-center">
           <img src="../events/tasty_talk.jpg" alt="TASTY talk by Dr. Binjing Wang" class="gallery-img">
