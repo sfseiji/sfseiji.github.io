@@ -129,13 +129,14 @@
 /* 横スクロール対応ギャラリー */
 .scroll-gallery {
   display: flex;
-  flex-wrap: nowrap;           /* 折り返し禁止 */
-  overflow-x: auto;            /* 横スクロール */
+  flex-wrap: nowrap;
+  overflow-x: auto;
   overflow-y: hidden;
-  gap: 24px;                   /* 各写真間のスペース */
-  padding: 20px 12px;
+  gap: 24px;
+  padding: 20px 8vw;            /* ←左右に余白 */
   scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch; /* iOSでの慣性スクロール */
+  -webkit-overflow-scrolling: touch;
+  justify-content: flex-start;
 }
 
 .scroll-gallery::-webkit-scrollbar {
