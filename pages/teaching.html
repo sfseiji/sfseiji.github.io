@@ -5,21 +5,28 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Teaching - Seiji Fujimoto</title>
-  <!-- CSS: Bootstrap, Devicon, Font Awesome -->
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- JavaScript Libraries -->
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
   <style>
-    body, html {
+    html, body {
       height: 100%;
       margin: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
       font-family: 'Times New Roman', Times, serif;
     }
-    /* 固定背景画像 */
+
     .full-bg-image {
       background: url('../personal/uto.png') no-repeat center center fixed;
       background-size: cover;
@@ -31,148 +38,170 @@
       left: 0;
       z-index: -10;
     }
-    section {
-      padding: 100px 0;
-      color: white;
-      text-align: center;
+
+    .site-main {
+      flex: 1 0 auto;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 70px 0 40px 0;
     }
-        .social-icons i {
-            font-size: 2em;
-        }
-        .social-icons {
-            text-align: center;
-            padding: 20px;
-        }
-        .social-icons a {
-            margin: 0 10px;
-            color: #333;
-        }
-        .social-icons a:hover {
-            color: #007bff;
-        }
-        .project-logos img {
-            width: 150px;
-            margin: 10px;
-        }
-        .project-title {
-            text-decoration: underline;
-            margin-bottom: 5px;
-        }
-      .navbar {
-        padding-top: 0.25rem !important;
-        padding-bottom: 0.25rem !important;
-        min-height: 30px; /* 好みで調整、元デフォルトは56px以上 */
-      }
-        .navbar-nav .nav-item {
-            margin-right: 20px;
-        }
-        .carousel-item {
-            height: 500px;
-        }
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+
+    .teaching-wrapper {
+      width: min(900px, 92%);
+      color: white;
+      background: rgba(0, 0, 0, 0.42);
+      border-radius: 12px;
+      padding: 32px 28px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+    }
+
+    .social-icons i {
+      font-size: 2em;
+    }
+
+    .social-icons {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      color: #333;
+    }
+
+    .social-icons a:hover {
+      color: #007bff;
+    }
+
+    .navbar {
+      padding-top: 0.25rem !important;
+      padding-bottom: 0.25rem !important;
+      min-height: 30px;
+    }
+
+    .navbar-nav .nav-item {
+      margin-right: 20px;
+    }
+
     .list-group-item {
       background-color: transparent;
       border: none;
-      padding: 0.5rem 0;
+      padding: 0.6rem 0;
       color: #f1f1f1;
+      line-height: 1.7;
     }
-    /* リンクボタンなどの色調整 */
+
     .btn-info {
       margin-bottom: 20px;
     }
-  .lead {
-    font-size: 1rem; /* デフォルトが1.25remなどの場合、1remに下げる */
-    color: #ddd;
-  }
 
-html, body {
-  height: 100%;
-  margin: 0;
-}
+    .lead {
+      font-size: 1rem;
+      color: #ddd;
+    }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  font-family: 'Times New Roman', Times, serif;
-}
+    .teaching-title {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
 
-.site-main {
-  flex: 1 0 auto;
-}
+    .teaching-subtitle {
+      text-align: center;
+      color: #aaa;
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
+    }
 
-.site-footer {
-  flex-shrink: 0;
-  width: 100%;
-  background: rgba(0,0,0,0.35);
-  padding: 15px 0 8px 0;
-  text-align: center;
-  color: #bbb;
-  font-size: 0.99rem;
-  letter-spacing: 0.01em;
-  margin-top: 20px;
-  position: relative;
-}
+    .section-heading {
+      color: #fff;
+      margin-top: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
 
+    .office-hours {
+      color: #ddd;
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+
+    .site-footer {
+      flex-shrink: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.35);
+      padding: 15px 0 8px 0;
+      text-align: center;
+      color: #bbb;
+      font-size: 0.99rem;
+      letter-spacing: 0.01em;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 700px) {
+      .site-main {
+        padding: 50px 0 24px 0;
+      }
+
+      .teaching-wrapper {
+        width: 95%;
+        padding: 22px 18px;
+      }
+    }
   </style>
 </head>
 
 <body data-root=".." data-page="teaching" data-updated="April 2026">
-    <div class="full-bg-image"></div>    
+  <div class="full-bg-image"></div>
 
-    <div id="site-header"></div>
-
+  <div id="site-header"></div>
 
   <main class="site-main">
+    <div class="teaching-wrapper">
+      <h1 class="teaching-title">Teaching</h1>
 
-  <div class="container my-4">
-    <h1 class="text-center text-white">Teaching</h1>
-    <p class="lead text-center" style="color:#aaa;">
-      Thank you for your interest in my courses.<br>
-      This page is under construction and will be updated as more teaching assignments are confirmed.<br>
-    </p>
-    </p>
-    <hr style="border-color:#bbb;">
-    <h3 class="text-white">Undergraduate Course (2026-2027)</h3>
-    <ul class="list-group mb-3" style="background:transparent;">
-      <li class="list-group-item">
-        <strong>AST121H (AST121H1: Origin and Evolution of the Universe)</strong><br>
-        This course explores the origin of the Universe and its contents, including chemical elements, stars, galaxies, and life.<br>
-        It is intended for undergraduate students in science and engineering programs, with an enrollment of up to 150 students.
-      </li>
-    </ul>
+      <p class="teaching-subtitle">
+        Thank you for your interest in my courses.<br>
+        This page is under construction and will be updated as more teaching assignments are confirmed.
+      </p>
 
-    <hr style="border-color:#bbb;">
-    <h3 class="text-white">Graduate Course</h3>
-    <ul class="list-group mb-3" style="background:transparent;">
-      <li class="list-group-item">
-        <strong>AST 1501 / 1500 (Graduate Research in Astronomy & Astrophysics)</strong><br>
-        I am opening AST 1501 / 1500 for graduate students.<br>
-        If you are interested in enrolling or have any questions about the content, please feel free to <a href="mailto:seiji.fujimoto@utoronto.ca">contact me</a>.
-      </li>
-    </ul>
-    <hr style="border-color:#bbb;">
-    <h3 class="text-white">Office Hours</h3>
-    <p class="lead">
-      Time: Thursdays, 13:00–14:00<br>
-      Office: AB226 
-    </p>
-    <hr style="border-color:#bbb;">
-  </div>
-      <!-- JavaScript: Above <body> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
+      <hr style="border-color:#bbb;">
 
+      <h3 class="section-heading">Undergraduate Course (2026-2027)</h3>
+      <ul class="list-group mb-3" style="background:transparent;">
+        <li class="list-group-item">
+          <strong>AST121H (AST121H1: Origin and Evolution of the Universe)</strong><br>
+          This course explores the origin and evolution of the Universe, including the formation of chemical elements, stars, galaxies, and life.<br>
+          It is designed for undergraduate students in science and engineering programs, with a maximum enrollment of 150 students.
+        </li>
+      </ul>
+
+      <hr style="border-color:#bbb;">
+
+      <h3 class="section-heading">Graduate Course</h3>
+      <ul class="list-group mb-3" style="background:transparent;">
+        <li class="list-group-item">
+          <strong>AST 1501 / 1500 (Graduate Research in Astronomy &amp; Astrophysics)</strong><br>
+          I am opening AST 1501 / 1500 for graduate students.<br>
+          If you are interested in enrolling or have any questions about the content, please feel free to
+          <a href="mailto:seiji.fujimoto@utoronto.ca">contact me</a>.
+        </li>
+      </ul>
+
+      <hr style="border-color:#bbb;">
+
+      <h3 class="section-heading">Office Hours</h3>
+      <p class="office-hours">
+        Time: Thursdays, 13:00–14:00<br>
+        Office: AB226
+      </p>
+
+      <hr style="border-color:#bbb;">
+    </div>
   </main>
 
-<div id="site-footer"></div>
-<script src="../site-shell.js"></script>
+  <div id="site-footer"></div>
 
-
+  <script src="../site-shell.js"></script>
 </body>
 </html>
