@@ -95,39 +95,11 @@
     }
   </style>
 </head>
-<body>
-  <!-- 固定背景画像 -->
-  <div class="full-bg-image"></div>
-  
-  <!-- ナビゲーションバー（他ページと同様） -->
-  <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="https://sfseiji.github.io/">Seiji Fujimoto</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-              data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
-              aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-           <li class="nav-item"><a class="nav-link active" href="../pages/news.html">News</a></li>
-           <li class="nav-item"><a class="nav-link" href="../pages/about.html">About Me</a></li>
-           <li class="nav-item"><a class="nav-link" href="../pages/members.html">Members</a></li>
-           <li class="nav-item"><a class="nav-link" href="../pages/research.html">Research</a></li>
-           <li class="nav-item"><a class="nav-link" href="../pages/projects.html">Projects</a></li>
-           <li class="nav-item"><a class="nav-link" href="../pages/teaching.html">Teaching</a></li>
-          <li class="nav-item"><a class="nav-link" href="../pages/events.html">Events</a></li>
-           <li class="nav-item"><a class="nav-link" href="../pages/job.html">Job Opportunity</a></li>
-         </ul>
-         <div class="social-icons">
-           <a href="https://twitter.com/sfseiji" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-           <a href="https://scholar.google.co.jp/citations?user=lnAouJ4AAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-           <a href="https://ui.adsabs.harvard.edu/" target="_blank" title="Publications on ADS"><i class="fas fa-book"></i></a>
-         </div>
-      </div>
-    </div>
-  </nav>
-  
+
+<body data-root="." data-page="home" data-updated="April 2026">
+    <div class="full-bg-image"></div>    
+    <div id="site-header"></div>
+
   <!-- News Section -->
   <section id="news">
     <div class="container news-list my-4">
@@ -263,12 +235,8 @@
     </div>
   </section>
   
-<!-- ページ末尾・</body>直前にコピペ -->
-<footer style="width:100%; background:rgba(0,0,0,0.35); padding:15px 0 8px 0; text-align:center; color:#bbb; font-size:0.99rem; letter-spacing:0.01em; margin-top:20px; position:relative;">
-  <div>
-    © 2025 Seiji Fujimoto, in collaboration with OpenAI GPT-4.1/5. Last updated: August 2025.
-  </div>
-</footer>
+<div id="site-footer"></div>
+<script src="./site-shell.js"></script>
   
 </body>
 </html>
