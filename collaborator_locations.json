@@ -1,0 +1,292 @@
+[
+  {
+    "name": "The Johns Hopkins University",
+    "lat": 39.3299013,
+    "lng": -76.6205177
+  },
+  {
+    "name": "University of Toronto",
+    "lat": 43.663487,
+    "lng": -79.3958273
+  },
+  {
+    "name": "Universidad de Cantabria",
+    "lat": 43.471704,
+    "lng": -3.8019739
+  },
+  {
+    "name": "Stockholm University",
+    "lat": 59.3652343,
+    "lng": 18.0550487
+  },
+  {
+    "name": "University of Illinois Urbana - Champaign",
+    "lat": 40.0985023,
+    "lng": -88.2290783
+  },
+  {
+    "name": "University of Texas at Austin",
+    "lat": 30.2850284,
+    "lng": -97.7335226
+  },
+  {
+    "name": "Ben Gurion University",
+    "lat": 31.261426,
+    "lng": 34.7995546
+  },
+  {
+    "name": "Universidad de La Serena, La Serena, Chile",
+    "lat": -29.9058174,
+    "lng": -71.2501308
+  },
+  {
+    "name": "Institut d'Astrophysique de Paris",
+    "lat": 48.8350222,
+    "lng": 2.3352853
+  },
+  {
+    "name": "Pontificia Universidad Católica de Chile",
+    "lat": -33.4413488,
+    "lng": -70.6406454
+  },
+  {
+    "name": "University of Pittsburgh",
+    "lat": 40.4444842,
+    "lng": -79.9612831
+  },
+  {
+    "name": "European Space Astronomy Centre",
+    "lat": 40.444747,
+    "lng": -3.952537
+  },
+  {
+    "name": "University of Ljubljana",
+    "lat": 46.0491938,
+    "lng": 14.5041552
+  },
+  {
+    "name": "Space Telescope Science Institute, Baltimore, MD, USA",
+    "lat": 39.3327417,
+    "lng": -76.6233669
+  },
+  {
+    "name": "University of Copenhagen",
+    "lat": 55.6801409,
+    "lng": 12.5715182
+  },
+  {
+    "name": "University of Nova Gorica",
+    "lat": 45.94226099999999,
+    "lng": 13.6395425
+  },
+  {
+    "name": "University of Manchester",
+    "lat": 53.4656853,
+    "lng": -2.232706
+  },
+  {
+    "name": "University of California - Berkeley",
+    "lat": 37.8712141,
+    "lng": -122.255463
+  },
+  {
+    "name": "Canadian Institute for Theoretical Astrophysics",
+    "lat": 43.6604569,
+    "lng": -79.3984962
+  },
+  {
+    "name": "University of Arizona",
+    "lat": 32.2318981,
+    "lng": -110.9535407
+  },
+  {
+    "name": "Kapteyn Astronomical Institute, Groningen, Netherlands",
+    "lat": 53.2400817,
+    "lng": 6.534250399999999
+  },
+  {
+    "name": "Instituto de Física de Cantabria",
+    "lat": 43.4716312,
+    "lng": -3.8022593
+  },
+  {
+    "name": "NOIRLab, Tucson, AZ, USA",
+    "lat": 32.2333545,
+    "lng": -110.9478901
+  },
+  {
+    "name": "Harvard University",
+    "lat": 42.3744368,
+    "lng": -71.1182488
+  },
+  {
+    "name": "California Institute of Technology",
+    "lat": 34.1376576,
+    "lng": -118.125269
+  },
+  {
+    "name": "Chiba University",
+    "lat": 35.6277755,
+    "lng": 140.1031276
+  },
+  {
+    "name": "Instituto de Astrofísica de Canarias",
+    "lat": 28.4743514,
+    "lng": -16.3089357
+  },
+  {
+    "name": "Shawnee State University",
+    "lat": 38.7313546,
+    "lng": -82.9919621
+  },
+  {
+    "name": "University of Tokyo",
+    "lat": 35.7147555,
+    "lng": 139.761332
+  },
+  {
+    "name": "University of Tsukuba",
+    "lat": 36.1112342,
+    "lng": 140.1007171
+  },
+  {
+    "name": "National Astronomical Observatory of Japan",
+    "lat": 35.6752525,
+    "lng": 139.538775
+  },
+  {
+    "name": "Pekin University",
+    "lat": 39.986913,
+    "lng": 116.3058739
+  },
+  {
+    "name": "Instituto de Astrofísica de Andalucía",
+    "lat": 37.1617806,
+    "lng": -3.5902299
+  },
+  {
+    "name": "Rochester Institute of Technology",
+    "lat": 43.0847317,
+    "lng": -77.6715248
+  },
+  {
+    "name": "University of Washington",
+    "lat": 47.6565919,
+    "lng": -122.3126783
+  },
+  {
+    "name": "Chalmers University",
+    "lat": 57.6893689,
+    "lng": 11.9740947
+  },
+  {
+    "name": "Universidad de Chile",
+    "lat": -33.4445098,
+    "lng": -70.6508623
+  },
+  {
+    "name": "Swinburne University of Technology",
+    "lat": -37.8226155,
+    "lng": 145.0377384
+  },
+  {
+    "name": "Massachusetts Institute of Technology",
+    "lat": 42.360091,
+    "lng": -71.09416
+  },
+  {
+    "name": "Federal University of Rio de Janeiro",
+    "lat": -22.8674532,
+    "lng": -43.2151914
+  },
+  {
+    "name": "Technical University of Denmark",
+    "lat": 55.7860512,
+    "lng": 12.5233698
+  },
+  {
+    "name": "Tufts University",
+    "lat": 42.4085371,
+    "lng": -71.1182729
+  },
+  {
+    "name": "Institute of Science and Technology Austria",
+    "lat": 48.309901,
+    "lng": 16.259172
+  },
+  {
+    "name": "Saint Mary's University",
+    "lat": 44.6313301,
+    "lng": -63.581457
+  },
+  {
+    "name": "INAF - Bologna",
+    "lat": 44.494887,
+    "lng": 11.3426163
+  },
+  {
+    "name": "York University",
+    "lat": 43.7734535,
+    "lng": -79.50186839999999
+  },
+  {
+    "name": "Arizona State University",
+    "lat": 33.4229975,
+    "lng": -111.9278306
+  },
+  {
+    "name": "Texas A&M University",
+    "lat": 30.6186625,
+    "lng": -96.3364251
+  },
+  {
+    "name": "Centre de Recherche Astrophysique de Lyon",
+    "lat": 45.764043,
+    "lng": 4.835659
+  },
+  {
+    "name": "University of Maryland",
+    "lat": 38.9869183,
+    "lng": -76.9425543
+  },
+  {
+    "name": "NASA Goddard Space Flight Center",
+    "lat": 38.9976657,
+    "lng": -76.85253589999999
+  },
+  {
+    "name": "University of Geneva",
+    "lat": 46.199444,
+    "lng": 6.1451157
+  },
+  {
+    "name": "Università di Roma La Sapienza",
+    "lat": 41.9037626,
+    "lng": 12.5144384
+  },
+  {
+    "name": "University of California – Los Angeles",
+    "lat": 34.0699182,
+    "lng": -118.4438495
+  },
+  {
+    "name": "University of Massachusetts Amherst",
+    "lat": 42.38655809999999,
+    "lng": -72.5314278
+  },
+  {
+    "name": "NRC Herzberg Institute of Astrophysics, Victoria, BC, Canada",
+    "lat": 48.5197617,
+    "lng": -123.418355
+  },
+  {
+    "name": "Uppsala Astronomical Observatory",
+    "lat": 59.85856380000001,
+    "lng": 17.6389267
+  },
+  {
+    "name": "INAF - Roma",
+    "lat": 41.9225091,
+    "lng": 12.4524232
+  }
+]
