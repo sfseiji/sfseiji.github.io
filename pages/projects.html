@@ -469,7 +469,7 @@ async function initCollabMap() {
   const bounds = new google.maps.LatLngBounds();
 
   try {
-    const response = await fetch('./collaborator_locations.json', {
+    const response = await fetch('../collaborator_locations.json', {
       cache: 'no-cache'
     });
 
