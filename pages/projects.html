@@ -448,7 +448,8 @@ async function initCollabMap() {
     mapTypeId: 'roadmap',
     streetViewControl: false,
     mapTypeControl: false,
-    fullscreenControl: true
+    fullscreenControl: true,
+    mapId: 'DEMO_MAP_ID'
   });
 
   const infoWindow = new google.maps.InfoWindow();
@@ -481,7 +482,7 @@ async function initCollabMap() {
 
       const position = { lat: item.lat, lng: item.lng };
 
-      const marker = new google.maps.Marker({
+      const marker = new google.maps.marker.AdvancedMarkerElement({
         map: map,
         position: position,
         title: item.name
@@ -523,7 +524,7 @@ async function initCollabMap() {
 </script>
 
 <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrPu_3XJ6nPeNcfznEGlFlDmmcMamQNmw&callback=initCollabMap">
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrPu_3XJ6nPeNcfznEGlFlDmmcMamQNmw&v=weekly&libraries=marker&callback=initCollabMap">
 </script>
 
 
