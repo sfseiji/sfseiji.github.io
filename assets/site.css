@@ -1,14 +1,23 @@
 /* Shared site styles — extracted from project sub-pages and a few common rules.
    Loaded automatically from every page (after Bootstrap). */
 
-/* ----- Footer placement: natural flow at the end of the document. -----
-   Footer simply sits after the last section in normal block flow. On short
-   pages the area below the footer is empty; on long pages you scroll to see it.
-   No flex / no absolute positioning, so iframes & layout never collapse. */
+/* ----- Sticky footer: always at the bottom of the page. -----
+   Flex column on body lets margin-top:auto push the footer to the bottom.
+   - Short pages: footer sits at the viewport bottom.
+   - Long pages: footer is at the end of all content; scroll to see it.
+   `body > * { flex-shrink: 0 }` prevents iframe parents from collapsing.
+   `height: auto` overrides per-page `body,html { height: 100% }`. */
 html { height: auto; }
-body { height: auto; margin: 0; }
+body {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: 100vh;
+  margin: 0;
+}
+body > * { flex-shrink: 0; }
 #site-footer {
-  margin-top: 40px;     /* breathing room above the footer */
+  margin-top: auto;
 }
 
 /* ----- Generic transparent list-group items used in news & project paper lists ----- */
