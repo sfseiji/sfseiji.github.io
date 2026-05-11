@@ -132,10 +132,9 @@
     overflow: hidden; /* はみ出し防止 */
 }
 
-/* 正方形の画像はそのまま */
+/* 正方形画像（正方形コンテナにフィット、全体表示） */
 .square-img {
     object-fit: contain !important;
-    aspect-ratio: 1/1; /* 正方形を維持 */
 }
 
 /* 横長の画像は縦を 280px に合わせ、横はクロップせず全体を表示 */
@@ -212,7 +211,7 @@
               <img loading="lazy" src="../self/square.jpeg" class="d-block w-100 square-img" alt="Seiji at the University of Toronto, Bahareiya 1">
             </div>
             <div class="carousel-item">
-              <img loading="lazy" src="../self/austin.jpg" class="d-block w-100 square-img" alt="Seiji at UT Austin">
+              <img loading="lazy" src="../self/austin.jpg" class="d-block w-100 wide-img" alt="Seiji at UT Austin">
             </div>
             <div class="carousel-item">
               <img loading="lazy" src="../self/ddcw.jpg" class="d-block w-100 wide-img" alt="Seiji at the DAWN Center, Copenhagen">
@@ -522,6 +521,7 @@
 
   </ul>
 </div>
+</section>
 
 <div id="site-footer"></div>
 <script src="../site-shell.js"></script>
