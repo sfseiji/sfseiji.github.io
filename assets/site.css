@@ -1,0 +1,66 @@
+/* Shared site styles — extracted from project sub-pages and a few common rules.
+   Loaded automatically by site-shell.js from every page. */
+
+/* ----- Generic transparent list-group items used in news & project paper lists ----- */
+.list-group-item {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem 0;
+  color: #f1f1f1;
+}
+.list-group-item a {
+  color: #66b3ff;
+  text-decoration: underline;
+}
+.list-group-item a:hover {
+  color: #99ccff;
+}
+
+/* ----- Common project-page tweaks (re-declared identically on 4 sub-pages) ----- */
+.social-icons i {
+  font-size: 2em;
+}
+.social-icons {
+  text-align: center;
+  padding: 20px;
+}
+.social-icons a {
+  margin: 0 10px;
+  color: #333;
+}
+.social-icons a:hover {
+  color: #007bff;
+}
+.project-logos img {
+  width: 150px;
+  margin: 10px;
+}
+.project-title {
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+.navbar {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+  min-height: 30px;
+}
+.navbar-nav .nav-item {
+  margin-right: 20px;
+}
+.carousel-item {
+  height: 500px;
+}
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ----- Buttons + lead text default tone ----- */
+.btn-info {
+  margin-bottom: 20px;
+}
+.lead {
+  font-size: 1rem;
+  color: #ddd;
+}
