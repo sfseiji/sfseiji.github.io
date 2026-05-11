@@ -67,7 +67,14 @@
         .navbar-nav .nav-item {
             margin-right: 20px;
         }
-        /* carousel sizing moved below to a single block */
+        .carousel-item {
+            height: 500px;
+        }
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
     /* CV表示エリアのスタイル */
     .cv-section {
       text-align: left;
@@ -108,32 +115,32 @@
 }
 
 
-/* ----- About carousel image sizing -----
-   Width is the constraint; height auto-scales so the full image is visible
-   without cropping. Carousel-item height matches the active image's
-   height (since the image determines the box). */
 .carousel-item {
-    height: auto;
+    height: 400px; /* 縦のトリミング範囲を調整し、横に広げる */
 }
+
 .carousel-item img {
     width: 100%;
-    height: auto;
-    max-height: 360px;       /* don't let portrait/square images get too tall */
-    object-fit: contain;
-    display: block;
-    margin: 0 auto;
+    height: 100%;
+    object-fit: cover; /* 画像が枠いっぱいに収まるように調整 */
+    aspect-ratio: auto; /* 画像の比率を元のまま維持 */
 }
 
 .carousel-inner {
     width: 100%;
     max-width: 100%;
-    overflow: hidden;
+    overflow: hidden; /* はみ出し防止 */
 }
 
-/* legacy class names kept for backwards-compat — both behave the same */
-.square-img,
-.wide-img {
+/* 正方形の画像はそのまま */
+.square-img {
     object-fit: contain !important;
+    aspect-ratio: 1/1; /* 正方形を維持 */
+}
+
+/* 横長の画像は適切にトリミング */
+.wide-img {
+    object-fit: cover;
 }
 
 /* インジケーター（バー）の位置を中央に */
@@ -183,7 +190,7 @@
     <div class="container my-4">
       <div class="row align-items-center">
         <!-- 左側：写真 -->
-      <div class="col-md-4 text-center">
+      <div class="col-md-5 text-center">
        　<!-- <img loading="lazy" id="slideshow" src="../self/square.jpeg" class="img-fluid rounded" alt="Seiji Fujimoto" style="max-width: 90%;"> -->
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
           <!-- インジケーター -->
@@ -205,7 +212,7 @@
               <img loading="lazy" src="../self/square.jpeg" class="d-block w-100 square-img" alt="Seiji at the University of Toronto, Bahareiya 1">
             </div>
             <div class="carousel-item">
-              <img loading="lazy" src="../self/austin.jpg" class="d-block w-100 wide-img" alt="Seiji at UT Austin">
+              <img loading="lazy" src="../self/austin.jpg" class="d-block w-100 square-img" alt="Seiji at UT Austin">
             </div>
             <div class="carousel-item">
               <img loading="lazy" src="../self/ddcw.jpg" class="d-block w-100 wide-img" alt="Seiji at the DAWN Center, Copenhagen">
