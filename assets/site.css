@@ -3,12 +3,15 @@
 
 /* ----- Sticky footer: pin #site-footer to the viewport bottom on short pages ----- */
 /* Uses position: absolute, not flex on body — keeps iframes / replaced
-   elements from collapsing inside the otherwise-flex body container. */
-html { height: 100%; }
+   elements from collapsing inside an otherwise-flex body container.
+   Override per-page `body,html { height:100% }` so the body GROWS with
+   content; otherwise the footer (bottom:0) overlaps long pages. */
+html { min-height: 100%; height: auto; }
 body {
   position: relative;
+  height: auto;             /* override per-page height:100% */
   min-height: 100vh;
-  padding-bottom: 80px;   /* leave room for the footer */
+  padding-bottom: 80px;     /* leave room for the absolute footer */
   margin: 0;
   box-sizing: border-box;
 }
