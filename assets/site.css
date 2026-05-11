@@ -1,5 +1,16 @@
 /* Shared site styles — extracted from project sub-pages and a few common rules.
-   Loaded automatically by site-shell.js from every page. */
+   Loaded automatically from every page (after Bootstrap). */
+
+/* ----- Sticky footer: pin #site-footer to the viewport bottom on short pages ----- */
+html { height: 100%; }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+#site-footer {
+  margin-top: auto;
+}
 
 /* ----- Generic transparent list-group items used in news & project paper lists ----- */
 .list-group-item {
