@@ -700,7 +700,7 @@
             <div class="project-thumb position-relative alma-thumb" style="width:100%;max-width:360px;">
               <img loading="lazy" src="research_image/alma2.jpeg" alt="ALMA Project" class="img-fluid rounded w-100" style="object-fit:cover;">
               <div class="project-overlay">
-                <a href="https://sfseiji.github.io/pages/projects.html" target="_blank" class="project-overlay-text">
+                <a href="pages/projects.html" class="project-overlay-text">
                   Learn more about ALMA collaborations
                 </a>
               </div>
@@ -717,7 +717,7 @@
             <div class="project-thumb position-relative jwst-thumb" style="width:100%;max-width:360px;">
               <img loading="lazy" src="research_image/jwst.jpeg" alt="JWST Project" class="img-fluid w-100" style="object-fit:cover;">
               <div class="project-overlay">
-                <a href="https://sfseiji.github.io/pages/projects.html" target="_blank" class="project-overlay-text">
+                <a href="pages/projects.html" class="project-overlay-text">
                   Learn more about JWST collaborations
                 </a>
               </div>
@@ -856,7 +856,7 @@
     document.querySelectorAll('.highlight-circle').forEach(circle => {
     circle.addEventListener('click', function() {
     const url = this.dataset.url;
-    if(url) window.open(url, '_blank');
+    if(url) window.location.href = url;
   });
   // ラベルも左から表示（標準で中央になるが、必要なら細かく演出可能）
 });
