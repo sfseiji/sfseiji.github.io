@@ -2,14 +2,21 @@
    Loaded automatically from every page (after Bootstrap). */
 
 /* ----- Sticky footer: pin #site-footer to the viewport bottom on short pages ----- */
+/* Uses position: absolute, not flex on body — keeps iframes / replaced
+   elements from collapsing inside the otherwise-flex body container. */
 html { height: 100%; }
 body {
-  display: flex;
-  flex-direction: column;
+  position: relative;
   min-height: 100vh;
+  padding-bottom: 80px;   /* leave room for the footer */
+  margin: 0;
+  box-sizing: border-box;
 }
 #site-footer {
-  margin-top: auto;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 /* ----- Generic transparent list-group items used in news & project paper lists ----- */
