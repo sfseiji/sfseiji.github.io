@@ -29,7 +29,7 @@ function setActiveNav() {
   });
 }
 
-function setFooterMeta() {
+async function setFooterMeta() {
   const yearEl = document.getElementById('footer-year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
@@ -37,11 +37,34 @@ function setFooterMeta() {
 
   const updatedTextEl = document.getElementById('last-updated-text');
   const updatedWrapEl = document.getElementById('footer-updated-wrap');
-  const updatedValue = document.body.dataset.updated || "";
+  if (!updatedTextEl || !updatedWrapEl) return;
 
-  if (updatedTextEl && updatedWrapEl) {
-    if (updatedValue.trim() !== "") {
-      updatedTextEl.textContent = updatedValue;
+  // Pull the last-commit date once per session and cache it.
+  const CACHE_KEY = "sfseiji_last_commit";
+  const REPO = "sfseiji/sfseiji.github.io";
+  const formatDate = (iso) => {
+    const d = new Date(iso);
+    return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+  };
+
+  try {
+    let cached = sessionStorage.getItem(CACHE_KEY);
+    if (cached) {
+      updatedTextEl.textContent = formatDate(cached);
+      return;
+    }
+    const res = await fetch(`https://api.github.com/repos/${REPO}/commits?per_page=1`, { cache: "no-cache" });
+    if (!res.ok) throw new Error(`status ${res.status}`);
+    const data = await res.json();
+    const iso = data?.[0]?.commit?.author?.date;
+    if (!iso) throw new Error("missing commit date");
+    sessionStorage.setItem(CACHE_KEY, iso);
+    updatedTextEl.textContent = formatDate(iso);
+  } catch (e) {
+    // Fall back to per-page data-updated, then hide if neither is available.
+    const fallback = (document.body.dataset.updated || "").trim();
+    if (fallback) {
+      updatedTextEl.textContent = fallback;
     } else {
       updatedWrapEl.style.display = "none";
     }
