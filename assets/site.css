@@ -39,7 +39,6 @@ body::before{
   content:"";position:fixed;inset:0;z-index:-2;
   background:url('/personal/maunakea.jpg') center/cover no-repeat;
 }
-body[data-page="home"]::before{background-image:url('/cover_photo/comet.jpg')}
 body[data-page="research"]::before{background-image:url('/personal/bahareiya2.jpg')}
 body[data-page="about"]::before{background-image:url('/personal/bahareiya1.jpg')}
 body[data-page="members"]::before{background-image:url('/personal/toronto.jpg')}
