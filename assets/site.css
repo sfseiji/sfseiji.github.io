@@ -24,16 +24,26 @@ body{
 body > *{flex-shrink:0}
 #site-footer{margin-top:auto}
 h1,h2,h3,h4,h5,.brand{font-family:var(--font-display)}
+/* Cleaner line breaking: balanced headings, no single-word orphans in prose */
+h1,h2,h3{text-wrap:balance}
+p,.sec-lead,.note,.pillar span,.rcard p,.hl p,.prog p{text-wrap:pretty}
 a{color:inherit}
 .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
 
-/* Faint fixed photo behind everything: a dark starry observatory shot so
-   pages read as "deep sky at night" rather than flat black. */
+/* Faint fixed photo behind everything, a different personal shot per page
+   (selected via body[data-page]); dark enough to stay in the background. */
 body::before{
   content:"";position:fixed;inset:0;z-index:-10;
-  background:url('../personal/maunakea.jpg') center/cover no-repeat;
-  filter:brightness(.30) saturate(.9);
+  background:url('/personal/maunakea.jpg') center/cover no-repeat;
+  filter:brightness(.32) saturate(.9);
 }
+body[data-page="research"]::before{background-image:url('/personal/bahareiya2.jpg')}
+body[data-page="about"]::before{background-image:url('/personal/bahareiya1.jpg')}
+body[data-page="members"]::before{background-image:url('/personal/toronto.jpg')}
+body[data-page="projects"]::before{background-image:url('/personal/onsen.jpg')}
+body[data-page="teaching"]::before{background-image:url('/personal/uto.png')}
+body[data-page="news"]::before{background-image:url('/personal/pisa.jpg')}
+body[data-page="job"]::before{background-image:url('/personal/stone.jpg')}
 body::after{
   content:"";position:fixed;inset:0;z-index:-9;
   background:linear-gradient(180deg,rgba(7,11,21,.72) 0%,rgba(7,11,21,.82) 100%);
