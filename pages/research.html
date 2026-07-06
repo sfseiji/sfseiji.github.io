@@ -100,7 +100,7 @@
       <div class="pub-head">
         <div>
           <h2 class="sec-title">Publications</h2>
-          <p class="sec-lead" style="margin-bottom:0">Every paper from Seiji and the group, refreshed automatically.</p>
+          <p class="sec-lead" style="margin-bottom:0">Every paper from Seiji and the group.</p>
         </div>
         <div class="statbar" id="statbar"></div>
       </div>
@@ -116,8 +116,7 @@
       <div id="publist"></div>
       <button class="showmore" id="more" style="display:none">Show more</button>
       <p class="note">"led by …" marks papers first-authored by group students and postdocs (supervised or co-supervised at the time of publication).
-        Data: curated ADS library + Google Scholar citations, refreshed automatically. Last update: <span id="gen"></span>.
-        PDF list: <a href="../pdf/Publication_Fujimoto.pdf" target="_blank" style="color:var(--accent)">Publication_Fujimoto.pdf</a>.</p>
+        A full PDF list is also available: <a href="../pdf/Publication_Fujimoto.pdf" target="_blank" style="color:var(--accent)">Publication_Fujimoto.pdf</a>.</p>
     </div>
   </section>
 
@@ -126,6 +125,9 @@
   <script>
   let DATA=null, filter='group', query='', shown=40;
   const monthName=m=>m?['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m]:'';
+  // Escape text before injecting into innerHTML: some titles contain "<" / ">"
+  // (e.g. "at 4<z<6") that the browser would otherwise parse as tags.
+  const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
   fetch('../data/publications.json').then(r=>r.json()).then(d=>{DATA=d;init();}).catch(()=>{
     document.getElementById('publist').innerHTML='<p style="color:var(--muted)">Could not load the publication database. See the <a href="../pdf/Publication_Fujimoto.pdf" style="color:var(--accent)">PDF list</a> instead.</p>';
@@ -135,7 +137,6 @@
     const s=DATA.stats;
     document.getElementById('statbar').textContent=
       `${s.n_total} papers · ${s.n_first_author} first author · ${s.n_student_led} led by students & postdocs`;
-    document.getElementById('gen').textContent=DATA.generated;
     render();
   }
   function match(p){
@@ -152,7 +153,7 @@
     let b='';
     if(p.new)b+=`<span class="badge new">new</span>`;
     if(p.category==='first')b+=`<span class="badge first">${p.submitted?'first author · submitted':'first author'}</span>`;
-    if(p.student_led)b+=`<span class="badge student">led by ${p.student_name}</span>`;
+    if(p.student_led)b+=`<span class="badge student">led by ${esc(p.student_name)}</span>`;
     return b;
   }
   function render(){
@@ -173,12 +174,12 @@
       html+=`<div class="pubrow">
         <div class="num">${count}</div>
         <div class="body">
-          <div class="t">${p.title}</div>
-          <div class="a">${p.authors_short.replace('Fujimoto, S.','<b>Fujimoto, S.</b>')}</div>
+          <div class="t">${esc(p.title)}</div>
+          <div class="a">${esc(p.authors_short).replace('Fujimoto, S.','<b>Fujimoto, S.</b>')}</div>
           <div class="badges">${badge(p)}</div>
         </div>
         <div class="side">
-          <div class="j">${p.journal||''}${p.month?' · '+monthName(p.month):''}</div>
+          <div class="j">${esc(p.journal||'')}${p.month?' · '+monthName(p.month):''}</div>
           <div class="links">${links}</div>
           ${p.citations?`<div class="cit">${p.citations} citations</div>`:''}
         </div>

@@ -25,14 +25,23 @@ body > *{flex-shrink:0}
 #site-footer{margin-top:auto}
 h1,h2,h3,h4,h5,.brand{font-family:var(--font-display)}
 a{color:inherit}
-.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 28px}
 
-/* Legacy pages set a photo .full-bg-image — mute it into the theme. */
-.full-bg-image{
-  background:linear-gradient(180deg,#0a1020 0%,var(--bg) 100%) !important;
-  filter:none !important;
-  position:fixed;width:100%;height:100%;top:0;left:0;z-index:-10;
+/* Faint fixed photo behind everything: a dark starry observatory shot so
+   pages read as "deep sky at night" rather than flat black. */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-10;
+  background:url('../personal/maunakea.jpg') center/cover no-repeat;
+  filter:brightness(.30) saturate(.9);
 }
+body::after{
+  content:"";position:fixed;inset:0;z-index:-9;
+  background:linear-gradient(180deg,rgba(7,11,21,.72) 0%,rgba(7,11,21,.82) 100%);
+}
+/* Legacy pages carry a .full-bg-image div — let the body layers show through. */
+.full-bg-image{background:none !important;filter:none !important;
+  position:fixed;inset:0;z-index:-8;
+  background:linear-gradient(180deg,rgba(7,11,21,.1),rgba(7,11,21,.35)) !important}
 
 /* ----- shared nav (includes/header.html) ----- */
 .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(14px);
@@ -66,7 +75,7 @@ a{color:inherit}
 .sec-eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:10px}
 h1.page-title{font-size:2.7rem;font-weight:700;margin:0 0 12px}
 h2.sec-title{font-size:1.95rem;font-weight:700;margin:0 0 12px}
-.sec-lead{color:var(--muted);max-width:680px;margin:0 0 38px}
+.sec-lead{color:var(--muted);max-width:760px;margin:0 0 38px}
 
 /* ----- buttons ----- */
 .btn{display:inline-block;padding:12px 24px;border-radius:12px;font-weight:600;font-size:.92rem;
@@ -100,7 +109,7 @@ h2.sec-title{font-size:1.95rem;font-weight:700;margin:0 0 12px}
 .portrait::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px dashed rgba(103,232,249,.35)}
 
 /* ----- page header (subpages) ----- */
-.page-head{padding:120px 0 26px;background:linear-gradient(180deg,#0a1020 0%,var(--bg) 100%)}
+.page-head{padding:120px 0 26px;background:linear-gradient(180deg,rgba(10,16,32,.55) 0%,rgba(7,11,21,.15) 100%)}
 
 /* ----- generic card grids ----- */
 .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
@@ -148,8 +157,10 @@ h2.sec-title{font-size:1.95rem;font-weight:700;margin:0 0 12px}
   display:flex;align-items:flex-end;text-decoration:none;color:var(--ink);min-height:110px}
 .flag-s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.5)}
 .flag-s .pad{position:relative;padding:16px 20px}
-.flag-s h4{font-family:var(--font-display);font-size:1.05rem;margin:0}
+.flag-s h4{font-family:var(--font-display);font-size:1.05rem;margin:4px 0 0}
 .flag-s span{font-size:.78rem;color:#c3cddc}
+.flag-tag{margin-bottom:0;font-size:.6rem;padding:3px 9px}
+.flag-s span.flag-tag{color:var(--accent)}
 
 /* ----- spotlight rows (projects page) ----- */
 .spot-row{display:grid;grid-template-columns:.55fr 1fr;gap:26px;align-items:center;
@@ -159,7 +170,7 @@ h2.sec-title{font-size:1.95rem;font-weight:700;margin:0 0 12px}
 .spot-row p{color:var(--muted);font-size:.95rem;margin:0 0 14px}
 
 /* ----- program cards (collaborations) ----- */
-.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.prog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
 .prog{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center;
   display:flex;flex-direction:column;gap:8px;transition:.2s}
 .prog:hover{border-color:rgba(103,232,249,.35)}
@@ -204,8 +215,8 @@ h2.sec-title{font-size:1.95rem;font-weight:700;margin:0 0 12px}
 .pubrow{display:flex;gap:16px;padding:14px 10px;border-bottom:1px solid rgba(255,255,255,.05);align-items:flex-start;transition:.15s}
 .pubrow:hover{background:rgba(255,255,255,.03);border-radius:10px}
 .pubrow .num{color:#5a677c;font-size:.78rem;font-family:var(--font-display);min-width:26px;padding-top:3px}
-.pubrow .body{flex:1}
-.pubrow .t{font-weight:600;font-size:.95rem;line-height:1.45}
+.pubrow .body{flex:1;min-width:0}
+.pubrow .t{font-weight:600;font-size:.95rem;line-height:1.45;overflow-wrap:anywhere}
 .pubrow .a{font-size:.82rem;color:var(--muted);margin-top:2px}
 .pubrow .a b{color:#c4cfdf;font-weight:600}
 .pubrow .badges{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
@@ -245,7 +256,7 @@ h2.sec-title{font-size:1.95rem;font-weight:700;margin:0 0 12px}
 .news-row .txt a:hover{text-decoration:underline}
 
 /* ----- prose / cv lists ----- */
-.prose{max-width:860px;color:#c9d4e3;font-size:1rem;line-height:1.8}
+.prose{max-width:920px;color:#c9d4e3;font-size:1rem;line-height:1.8}
 .prose h3{margin-top:34px;font-size:1.25rem;color:var(--ink)}
 .prose a{color:var(--accent);text-decoration:none}
 .prose a:hover{text-decoration:underline}
@@ -275,7 +286,7 @@ h2.sec-title{font-size:1.95rem;font-weight:700;margin:0 0 12px}
 .map-embed iframe{width:100%;height:100%;border:0}
 
 /* ----- bands ----- */
-.band{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.band{background:rgba(12,19,34,.72);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .join-flex{display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap}
 
 /* ============================================================

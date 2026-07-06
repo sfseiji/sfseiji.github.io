@@ -65,7 +65,7 @@
     <div class="wrap">
       <div class="sec-eyebrow">Latest results</div>
       <h2 class="sec-title">From the group</h2>
-      <p class="sec-lead">Updated automatically from our publication database. First-author and student-led papers appear here as soon as they hit arXiv.</p>
+      <p class="sec-lead">Recent first-author and student-led papers from the group.</p>
       <div class="pub-strip" id="latest-pubs"></div>
       <a class="linkline" href="pages/research.html#publications">Browse all publications with filters →</a>
     </div>
@@ -85,9 +85,9 @@
             <p>The second-largest JWST program: a multi-epoch survey of 60 massive galaxy clusters, capturing the faintest galaxies, black holes, and supernovae at z ~ 4–20.</p>
           </div></a>
         <div class="flag-side">
-          <a class="flag-s" href="pages/grapes.html"><img loading="lazy" src="research_image/Cosmic_Grapes.png" alt="Cosmic Grapes"><div class="pad"><h4>Cosmic Grapes</h4><span>A z = 6.07 galaxy resolved to &lt;10 pc scales</span></div></a>
-          <a class="flag-s" href="pages/gnz7q.html"><img loading="lazy" src="research_image/gnz7q.jpeg" alt="GNz7q"><div class="pad"><h4>GNz7q</h4><span>The galaxy–quasar transition object at z = 7.19</span></div></a>
-          <a class="flag-s" href="pages/glimpsed.html"><img loading="lazy" src="research_image/glimpse.jpg" alt="GLIMPSE-D"><div class="pad"><h4>GLIMPSE-D</h4><span>The deepest JWST spectroscopy of cosmic dawn</span></div></a>
+          <a class="flag-s" href="pages/grapes.html"><img loading="lazy" src="research_image/Cosmic_Grapes.png" alt="Cosmic Grapes"><div class="pad"><span class="tag flag-tag">JWST · ALMA · MUSE PI</span><h4>Cosmic Grapes</h4><span>A z = 6.07 galaxy resolved to &lt;10 pc scales</span></div></a>
+          <a class="flag-s" href="pages/gnz7q.html"><img loading="lazy" src="research_image/gnz7q.jpeg" alt="GNz7q"><div class="pad"><span class="tag flag-tag">JWST PI</span><h4>GNz7q</h4><span>The galaxy–quasar transition object at z = 7.19</span></div></a>
+          <a class="flag-s" href="pages/glimpsed.html"><img loading="lazy" src="research_image/glimpse.jpg" alt="GLIMPSE-D"><div class="pad"><span class="tag flag-tag">JWST PI</span><h4>GLIMPSE-D</h4><span>The deepest JWST spectroscopy of cosmic dawn</span></div></a>
         </div>
       </div>
       <div style="margin-top:26px"><a class="linkline" href="pages/projects.html">All programs &amp; collaborations →</a></div>
@@ -172,19 +172,20 @@
       gallery.appendChild(img);
     });
 
-    // Latest group-led papers from the auto-updated database
+    // Latest group-led papers (some titles contain "<"/">" — escape before injecting)
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
     fetch('data/publications.json').then(r => r.json()).then(d => {
       const picks = d.papers.filter(p => p.category === 'first' || p.student_led).slice(0, 3);
       const monthName = m => m ? ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m] : '';
       document.getElementById('latest-pubs').innerHTML = picks.map(p => {
         let badge;
-        if (p.student_led) badge = `<span class="badge student">led by ${p.student_name || 'a group member'}</span>`;
+        if (p.student_led) badge = `<span class="badge student">led by ${esc(p.student_name || 'a group member')}</span>`;
         else badge = `<span class="badge first">${p.submitted ? 'first author · submitted' : 'first author'}</span>`;
         const href = p.ads_url || p.arxiv_url || 'pages/research.html#publications';
-        return `<a class="pubcard" href="${href}" ${p.ads_url ? 'target="_blank" rel="noopener"' : ''}>
+        return `<a class="pubcard" href="${esc(href)}" ${p.ads_url ? 'target="_blank" rel="noopener"' : ''}>
           ${badge}
-          <h3>${p.title}</h3>
-          <div class="meta">${p.authors_short} · ${p.journal || ''}${p.year ? ', ' + p.year : ''}${p.month ? ' ' + monthName(p.month) : ''}</div>
+          <h3>${esc(p.title)}</h3>
+          <div class="meta">${esc(p.authors_short)} · ${esc(p.journal || '')}${p.year ? ', ' + p.year : ''}${p.month ? ' ' + monthName(p.month) : ''}</div>
         </a>`;
       }).join('');
     }).catch(() => {
