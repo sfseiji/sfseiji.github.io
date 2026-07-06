@@ -2,336 +2,204 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Research themes — galaxies, star clusters, black holes, and supernovae at z > 6, traced through multi-wavelength observations from world-class telescopes including JWST, ALMA, HST, VLT, Keck, and Subaru. Fujimoto group, University of Toronto.">
-  <title>Research — Seiji Fujimoto</title>
-  <!-- CSS: Bootstrap, Devicon, Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      font-family: 'Times New Roman', Times, serif;
-    }
-    /* 固定背景画像 */
-    .full-bg-image {
-      background: url('../personal/bahareiya2.jpg') no-repeat center center fixed;
-      background-size: cover;
-      filter: brightness(50%);
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -10;
-    }
-    section {
-      padding: 100px 0;
-      color: white;
-      text-align: center;
-    }
-        .social-icons i {
-            font-size: 2em;
-        }
-        .social-icons {
-            text-align: center;
-            padding: 20px;
-        }
-        .social-icons a {
-            margin: 0 10px;
-            color: #333;
-        }
-        .social-icons a:hover {
-            color: #007bff;
-        }
-        .project-logos img {
-            width: 150px;
-            margin: 10px;
-        }
-        .project-title {
-            text-decoration: underline;
-            margin-bottom: 5px;
-        }
-        .navbar {
-          padding-top: 0.25rem !important;
-          padding-bottom: 0.25rem !important;
-           min-height: 30px; /* 好みで調整、元デフォルトは56px以上 */
-        }
-        .navbar-nav .nav-item {
-            margin-right: 20px;
-        }
-        .carousel-item {
-            height: 500px;
-        }
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    .list-group-item {
-      background-color: transparent;
-      border: none;
-      padding: 0.5rem 0;
-      color: #f1f1f1;
-    }
-    /* リンクボタンなどの色調整 */
-    .btn-info {
-      margin-bottom: 20px;
-    }
-  .lead {
-    font-size: 1rem; /* デフォルトが1.25remなどの場合、1remに下げる */
-    color: #ddd;
-  }
-    .project-title {
-      text-align: center;
-      font-size: 2.2rem;
-      font-weight: bold;
-      letter-spacing: 0.04em;
-      color: #fff;
-      text-shadow: 0 2px 12px #000, 0 0 2px #000;
-      margin: 32px 0 12px 0;
-      font-family: 'Times New Roman', serif;
-    }
-    .project-catch {
-      text-align: center;
-      font-size: 1.13rem;
-      color: #adb5bd;
-      margin-bottom: 30px;
-      letter-spacing: 0.11em;
-    }
-    .project-content {
-      max-width: 750px;
-      margin: 0 auto;
-      padding: 0 12px 52px 12px;
-      font-size: 1.07rem;
-      line-height: 1.8;
-      color: #e4e4e4;
-    }
-
-.history-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  max-width: 2000px;
-  min-width: 180px;
-  object-fit: cover;
-}
-
-    @media (max-width: 900px) {
-      .cosmicgrapes-image { width: 95%; }
-      .project-title { font-size: 1.37rem; }
-      .project-catch { font-size: 1.01rem; }
-      .project-content { font-size: 0.98rem; }
-    }
-
-.features {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 36px;
-  padding: 0;
-  list-style: none;
-  /* Break out of the 750-px .project-content parent and span (almost) the viewport */
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 95vw;
-  max-width: 1400px;
-  margin: 24px 0 36px 0;
-}
-
-.features li {
-  text-align: center;
-  flex: 1 1 0;
-  min-width: 0;
-  max-width: 320px;
-  font-size: 0.98rem;
-  line-height: 1.6;
-}
-@media (max-width: 900px) {
-  .features { flex-wrap: wrap; }
-  .features li { flex: 1 1 45%; max-width: 45%; }
-}
-@media (max-width: 540px) {
-  .features li { flex: 1 1 100%; max-width: 100%; }
-}
-
-.feature-icon {
-  display: block;
-  margin: 0 auto 10px auto;
-  width: 48px;
-  height: auto;
-  filter: invert(1) brightness(2.5);
-}
-
-.project-highlight-row {
-  box-shadow: 0 2px 18px rgba(0,0,0,0.10);
-  margin-bottom: 32px;
-  transition: box-shadow 0.2s;
-}
-.project-highlight-row:hover {
-  box-shadow: 0 8px 32px rgba(0,0,0,0.21);
-}
-@media (max-width: 900px) {
-  #highlight-details .row {
-    flex-direction: column !important;
-  }
-  #highlight-details img {
-    margin-bottom: 14px;
-    max-width: 96vw !important;
-  }
-  .project-subtitle { font-size: 1.14rem !important;}
-}
-.scroll-gallery { scrollbar-width: none; }
-.scroll-gallery::-webkit-scrollbar { display: none; }
-
-</style>
+  <meta name="description" content="Research themes and publications — galaxies, star clusters, black holes, and supernovae at z > 6, traced through multi-wavelength observations with JWST, ALMA, HST, VLT, Keck, and Subaru. Fujimoto group, University of Toronto.">
+  <title>Research &amp; Publications — Seiji Fujimoto</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="stylesheet" href="../assets/site.css">
 </head>
+<body data-root=".." data-page="research" data-updated="July 2026">
+  <div id="site-header"></div>
 
-<body data-root=".." data-page="research" data-updated="April 2026">
-    <div class="full-bg-image"></div>    
-    <div id="site-header"></div>
-
-
-<!-- メインコンテンツ -->
-<div class="container" style="max-width:1200px; margin:48px auto 0 auto; padding:0 20px;">
-    <h1 class="text-center text-white">Research</h1>
-    <p class="lead text-center" style="color:#aaa;">
-      Tracing the first billion years of the Universe with multi-wavelength observations from world-class telescopes.<br>
-    </p>
-
-
-
-  <!-- 画像：1枚だけ、横幅の7割で中央表示 -->
-  <img loading="lazy" src="../research_image/history1.jpg" alt="history" class="history-image">
-
-  <!-- 本文 -->
-  <div class="project-content">
-  <p>
-    <b>Chasing Cosmic History</b>: My research focuses on the distant universe. Since light takes time to travel, the farther we look, the further back in time we see. Ever since humanity first looked through a telescope a few hundred years ago, our view of the universe has rapidly expanded, and we’ve continued weaving a story that spans from the distant past to the present. This endeavor addresses some of the most fundamental questions — where did we come from, and where are we going — while also seeking to answer simpler, yet profound, curiosities: what did the first light, the first stars, and the first black holes in the universe actually look like?
-  </p>
-
-  <p>
-    To pursue these questions, our group conducts extensive multi-wavelength observations using some of the largest telescopes around the world. We focus on four key observational probes — galaxies, stars and star clusters, black holes, and stellar explosions — aiming to comprehensively understand the formation and evolution of early galaxies through the properties of gas, stars, and dust.
-  </p>
-
-
-<ul class="features">
-  <li>
-    <img loading="lazy" src="../research_image/icon/icon_galaxy.png" alt="Earliest galaxies icon" class="feature-icon" />
-    <h5>Galaxies</h5>
-    <p> We trace how the first galaxies formed and grew across z &gt; 6, combining JWST rest-frame optical spectroscopy with ALMA [CII] 158&mu;m and dust-continuum imaging. Our group has mapped extended [CII] halos, dusty star-forming systems, and the chemical enrichment of normal galaxies in the reionization era, building a coherent picture of the ISM and CGM in the first billion years. </p>
-  </li>
-  <li>
-    <img loading="lazy" src="../research_image/icon/icon_star.png" alt="Earliest galaxies icon" class="feature-icon" />
-    <h5>Stars & star clusters</h5>
-    <p> Strong gravitational lensing lets us resolve early galaxies down to parsec scales and, in rare cases, individual stars. We study dense star-forming clumps inside z &gt; 6 galaxies, candidate Pop III systems, and lensed stellar transients, asking how the earliest stellar populations and proto-globular clusters assembled. </p>
-  </li>
-  <li>
-    <img loading="lazy" src="../research_image/icon/icon_bh.png" alt="Earliest galaxies icon" class="feature-icon" />
-    <h5>Black holes</h5>
-    <p> JWST and our group's multi-wavelength follow-up have revealed a diverse population of high-redshift AGN at z &gt; 4, including the puzzling "Little Red Dots". We measure their black hole masses, accretion rates, and host galaxies to test super-Eddington growth scenarios and to anchor the co-evolution of supermassive black holes with their hosts at cosmic dawn. </p>
-  </li>
-  <li>
-    <img loading="lazy" src="../research_image/icon/icon_sn.png" alt="Earliest galaxies icon" class="feature-icon" />
-    <h5>Supernovae</h5>
-    <p> Lensing clusters act as natural time-domain telescopes. We use multi-epoch JWST imaging of these fields to discover gravitationally magnified supernovae at z &gt; 2 (and push toward z &gt; 10), using them to probe the high-redshift stellar initial mass function, cosmic expansion via lensing time delays, and the chemical legacy of the first stellar explosions. </p>
-  </li>
-</ul>
-
-  </div>
-</div>
-
-<div class="video-embed" style="margin: 24px auto 18px auto; width: 100%; max-width: 600px; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 28px rgba(0,0,0,0.22); background: #161616;">
-  <iframe
-    src="https://www.youtube-nocookie.com/embed/j71bw8A77Fs?rel=0&amp;showinfo=0&amp;modestbranding=1&amp;controls=1&amp;fs=0&amp;color=white"
-    title="Observation at Maunakea"
-    width="100%" height="340"
-    frameborder="0"
-    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-    style="border:none; background:#161616; display:block;">
-  </iframe>
-</div>
-
-
-<!-- 下に追加: ハイライトプロジェクト詳細セクション -->
-<section id="highlight-details" class="my-5">
-  <h2 class="section-title" style="font-size:2.1rem; font-family:'Times New Roman',serif; font-style:italic;">Project Spotlights</h2>
-  <div style="max-width:1050px;margin:34px auto 0 auto;">
-    
-    <!-- 1. VENUS -->
-    <div class="row align-items-center mb-5 project-highlight-row" style="background:rgba(255,255,255,0.08); border-radius:16px;">
-      <div class="col-md-5 text-center p-3">
-        <img loading="lazy" src="../research_image/venus_cut2.png" alt="VENUS" style="max-width:270px;width:95%;border-radius:13px;box-shadow:0 2px 16px #1118;">
-      </div>
-      <div class="col-md-7 p-3 text-md-start text-center">
-        <h3 class="project-subtitle" style="font-size:1.35rem;font-weight:bold;color:#ffe;">VENUS</h3>
-        <div style="font-size:1.05rem;color:#e2e2e2;line-height:1.7;">
-          VENUS is the second largest JWST program, a multi-epoch treasury survey led by Seiji Fujimoto (PI) and Dan Coe (co-PI), targeting 60 massive galaxy clusters to capture the faintest galaxies, black holes, and supernovae at z~4–20 with unprecedented depth and spatial resolution.
-        </div>
-        <a href="../pages/venus.html" class="btn btn-info mt-3" style="min-width:140px;">Learn More</a>
+  <header class="page-head">
+    <div class="wrap">
+      <div class="sec-eyebrow">Research</div>
+      <h1 class="page-title">The first billion years, observed.</h1>
+      <p class="sec-lead" style="margin-bottom:0">Since light takes time to travel, the farther we look, the further back in time we see. Our group traces the story of the Universe back to its very first chapters, using JWST, ALMA, HST, VLT, Keck, and Subaru.</p>
+      <div class="pillars">
+        <div class="pillar"><img src="../research_image/icon/icon_galaxy.png" alt=""><div><h4>Galaxies</h4><span>ISM &amp; CGM in the reionization era</span></div></div>
+        <div class="pillar"><img src="../research_image/icon/icon_star.png" alt=""><div><h4>Stars &amp; clusters</h4><span>Parsec-scale views via lensing</span></div></div>
+        <div class="pillar"><img src="../research_image/icon/icon_bh.png" alt=""><div><h4>Black holes</h4><span>First quasars &amp; Little Red Dots</span></div></div>
+        <div class="pillar"><img src="../research_image/icon/icon_sn.png" alt=""><div><h4>Supernovae</h4><span>Lensed transients at z &gt; 2</span></div></div>
       </div>
     </div>
+  </header>
 
-    <!-- 2. Cosmic Grapes -->
-    <div class="row align-items-center mb-5 project-highlight-row" style="background:rgba(255,255,255,0.08); border-radius:16px;">
-      <div class="col-md-5 text-center p-3">
-        <img loading="lazy" src="../research_image/Cosmic_Grapes.png" alt="Cosmic Grapes" style="max-width:270px;width:95%;border-radius:13px;box-shadow:0 2px 16px #1118;">
+  <!-- Four themes, full descriptions -->
+  <section id="themes" style="padding-top:40px;padding-bottom:30px">
+    <div class="wrap">
+      <div class="prose" style="max-width:none">
+        <p><b style="color:var(--ink)">Chasing cosmic history:</b> Ever since humanity first looked through a telescope a few hundred years ago, our view of the universe has rapidly expanded, and we have continued weaving a story that spans from the distant past to the present. This endeavor addresses some of the most fundamental questions (where did we come from, and where are we going?) while also seeking to answer simpler, yet profound, curiosities: what did the first light, the first stars, and the first black holes in the universe actually look like?</p>
       </div>
-      <div class="col-md-7 p-3 text-md-start text-center">
-        <h3 class="project-subtitle" style="font-size:1.35rem;font-weight:bold;color:#ffe;">Cosmic Grapes</h3>
-        <div style="font-size:1.05rem;color:#e2e2e2;line-height:1.7;">
-          The Cosmic Grapes is a remarkable lensed galaxy system at z=6.07, revealed by deep JWST, ALMA, and VLT/MUSE follow-up, allowing us to spatially resolve chemical enrichment, mass, and dynamics on &lt;10 pc scales at cosmic dawn.
-        </div>
-        <a href="../pages/grapes.html" class="btn btn-info mt-3" style="min-width:140px;">Learn More</a>
-      </div>
-    </div>
-
-    <!-- 3. GNz7q -->
-    <div class="row align-items-center mb-5 project-highlight-row" style="background:rgba(255,255,255,0.08); border-radius:16px;">
-      <div class="col-md-5 text-center p-3">
-        <img loading="lazy" src="../research_image/gnz7q.jpeg" alt="GNz7q" style="max-width:270px;width:95%;border-radius:13px;box-shadow:0 2px 16px #1118;">
-      </div>
-      <div class="col-md-7 p-3 text-md-start text-center">
-        <h3 class="project-subtitle" style="font-size:1.35rem;font-weight:bold;color:#ffe;">GNz7q</h3>
-        <div style="font-size:1.05rem;color:#e2e2e2;line-height:1.7;">
-          GNz7q is a rare hybrid system discovered at z=7.189 that bridges galaxies and quasars, providing the first glimpse of a growing black hole embedded in a dusty galaxy less than 800 million years after the Big Bang.
-        </div>
-        <a href="../pages/gnz7q.html" class="btn btn-info mt-3" style="min-width:140px;">Learn More</a>
+      <div class="grid4" style="margin-top:34px">
+        <div class="rcard"><img loading="lazy" src="../research_image/first_star.jpg" alt="Galaxies">
+          <div class="pad"><h3>Galaxies</h3><p>We trace how the first galaxies formed and grew across z &gt; 6, combining JWST rest-frame optical spectroscopy with ALMA [CII] 158&mu;m and dust-continuum imaging. Our group has mapped extended [CII] halos, dusty star-forming systems, and the chemical enrichment of normal galaxies in the reionization era.</p></div></div>
+        <div class="rcard"><img loading="lazy" src="../research_image/gems.jpg" alt="Stars and clusters">
+          <div class="pad"><h3>Stars &amp; star clusters</h3><p>Strong gravitational lensing lets us resolve early galaxies down to parsec scales and, in rare cases, individual stars. We study dense star-forming clumps inside z &gt; 6 galaxies, candidate Pop III systems, and lensed stellar transients.</p></div></div>
+        <div class="rcard"><img loading="lazy" src="../research_image/smbh.jpeg" alt="Black holes">
+          <div class="pad"><h3>Black holes</h3><p>JWST and our group's multi-wavelength follow-up have revealed a diverse population of high-redshift AGN at z &gt; 4, including the puzzling "Little Red Dots". We measure their black hole masses, accretion rates, and host galaxies to test super-Eddington growth scenarios.</p></div></div>
+        <div class="rcard"><img loading="lazy" src="../research_image/eta.jpeg" alt="Supernovae">
+          <div class="pad"><h3>Supernovae</h3><p>Lensing clusters act as natural time-domain telescopes. We use multi-epoch JWST imaging to discover gravitationally magnified supernovae at z &gt; 2 (and push toward z &gt; 10), probing the high-redshift IMF and lensing time delays.</p></div></div>
       </div>
     </div>
+  </section>
 
-    <!-- 4. GLIMPSE-D -->
-    <div class="row align-items-center mb-4 project-highlight-row" style="background:rgba(255,255,255,0.08); border-radius:16px;">
-      <div class="col-md-5 text-center p-3">
-        <img loading="lazy" src="../research_image/glimpse.jpg" alt="GLIMPSE-D" style="max-width:270px;width:95%;border-radius:13px;box-shadow:0 2px 16px #1118;">
-      </div>
-      <div class="col-md-7 p-3 text-md-start text-center">
-        <h3 class="project-subtitle" style="font-size:1.35rem;font-weight:bold;color:#ffe;">GLIMPSE-"D"</h3>
-        <div style="font-size:1.05rem;color:#e2e2e2;line-height:1.7;">
-          The GLIMPSE-"D" is the deep G395M follow-up program targeting a lensing cluster field, most deeply observed so far by JWST and HST to uncover the faintest and/or most distant galaxies at z&gt;6, offering a new window onto the cosmic dawn.
-        </div>
-        <a href="../pages/glimpsed.html" class="btn btn-info mt-3" style="min-width:140px;">Learn More</a>
+  <!-- Selected highlights -->
+  <section id="highlights" style="padding-top:30px">
+    <div class="wrap">
+      <h2 class="sec-title">Selected highlights</h2>
+      <p class="sec-lead">A few results we are proud of. Each card links to the paper.</p>
+      <div class="hl-grid">
+        <a class="hl" href="https://www.nature.com/articles/s41550-025-02592-w" target="_blank" rel="noopener">
+          <img loading="lazy" src="../research_image/Cosmic_Grapes_full.png" alt="Cosmic Grapes">
+          <div class="pad">
+            <span class="badge first">First author · Nature Astronomy</span>
+            <h3>Cosmic Grapes: a primordial rotating disk broken into giant clumps</h3>
+            <p>JWST + ALMA resolved a z = 6.07 lensed galaxy into 15+ dense star-forming clumps on &lt;10 pc scales, rewriting how we picture early galaxies.</p>
+            <div class="meta">Fujimoto, S., et al. 2025, Nature Astronomy</div>
+          </div>
+        </a>
+        <a class="hl" href="https://ui.adsabs.harvard.edu/abs/2025arXiv251114483N" target="_blank" rel="noopener">
+          <img loading="lazy" src="../research_image/venus_cut2.png" alt="VENUS z~11-12 galaxy">
+          <div class="pad">
+            <span class="badge student">Student-led ★</span>
+            <h3>VENUS: a strongly lensed clumpy galaxy at z ~ 11–12</h3>
+            <p>Led by PhD student Minami Nakane: a spatially-resolved galaxy just ~400 Myr after the Big Bang, found behind a VENUS lensing cluster.</p>
+            <div class="meta">Nakane, M., Kokorev, V., Fujimoto, S., et al. 2025</div>
+          </div>
+        </a>
+        <a class="hl" href="https://www.nature.com/articles/s41586-022-04454-1" target="_blank" rel="noopener">
+          <img loading="lazy" src="../research_image/gnz7q_full.jpeg" alt="GNz7q">
+          <div class="pad">
+            <span class="badge first">First author · Nature</span>
+            <h3>GNz7q: a dusty object bridging galaxies and quasars at cosmic dawn</h3>
+            <p>A rare hybrid system at z = 7.19: a growing black hole embedded in a dusty starburst, less than 800 million years after the Big Bang.</p>
+            <div class="meta">Fujimoto, S., et al. 2022, Nature</div>
+          </div>
+        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div id="site-footer"></div>
-<script src="../site-shell.js"></script>
+  <!-- Observing video -->
+  <section style="padding:30px 0 10px">
+    <div class="wrap" style="display:flex;justify-content:center">
+      <div style="width:100%;max-width:640px;border-radius:18px;overflow:hidden;box-shadow:0 4px 28px rgba(0,0,0,.4);background:#0a0f1c">
+        <iframe src="https://www.youtube-nocookie.com/embed/j71bw8A77Fs?rel=0&amp;showinfo=0&amp;modestbranding=1&amp;controls=1&amp;fs=0&amp;color=white"
+          title="Observation at Maunakea" width="100%" height="360" frameborder="0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen
+          style="border:none;display:block"></iframe>
+      </div>
+    </div>
+  </section>
 
+  <!-- Publications browser -->
+  <section id="publications" style="padding-top:40px">
+    <div class="wrap">
+      <div class="pub-head">
+        <div>
+          <h2 class="sec-title">Publications</h2>
+          <p class="sec-lead" style="margin-bottom:0">Every paper from Seiji and the group, refreshed automatically.</p>
+        </div>
+        <div class="statbar" id="statbar"></div>
+      </div>
+      <div class="controls">
+        <div class="tabs" id="tabs">
+          <button class="tab on" data-f="group">Group-led</button>
+          <button class="tab" data-f="first">First author</button>
+          <button class="tab" data-f="student">Student &amp; postdoc led</button>
+          <button class="tab" data-f="all">All</button>
+        </div>
+        <input class="search" id="q" placeholder="Search title, author, keyword…">
+      </div>
+      <div id="publist"></div>
+      <button class="showmore" id="more" style="display:none">Show more</button>
+      <p class="note">★ = paper led by a student or postdoc supervised/co-supervised by Seiji at the time of publication.
+        Data: curated ADS library + Google Scholar citations, refreshed automatically. Last update: <span id="gen"></span>.
+        PDF list: <a href="../pdf/Publication_Fujimoto.pdf" target="_blank" style="color:var(--accent)">Publication_Fujimoto.pdf</a>.</p>
+    </div>
+  </section>
 
+  <div id="site-footer"></div>
+  <script src="../site-shell.js"></script>
+  <script>
+  let DATA=null, filter='group', query='', shown=40;
+  const monthName=m=>m?['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m]:'';
+
+  fetch('../data/publications.json').then(r=>r.json()).then(d=>{DATA=d;init();}).catch(()=>{
+    document.getElementById('publist').innerHTML='<p style="color:var(--muted)">Could not load the publication database. See the <a href="../pdf/Publication_Fujimoto.pdf" style="color:var(--accent)">PDF list</a> instead.</p>';
+  });
+
+  function init(){
+    const s=DATA.stats;
+    document.getElementById('statbar').innerHTML=
+      `<div><b>${s.n_total}</b><span>papers</span></div>
+       <div><b>${s.n_first_author}</b><span>first author</span></div>
+       <div><b>${s.n_student_led}</b><span>student-led ★</span></div>
+       <div><b>${(s.total_citations||0).toLocaleString()}</b><span>citations</span></div>
+       <div><b>${s.h_index||''}</b><span>h-index</span></div>`;
+    document.getElementById('gen').textContent=DATA.generated;
+    render();
+  }
+  function match(p){
+    if(filter==='first'&&p.category!=='first')return false;
+    if(filter==='student'&&!p.student_led)return false;
+    if(filter==='group'&&!(p.category==='first'||p.student_led))return false;
+    if(query){
+      const hay=(p.title+' '+p.authors_short+' '+(p.journal||'')).toLowerCase();
+      if(!hay.includes(query))return false;
+    }
+    return true;
+  }
+  function badge(p){
+    let b='';
+    if(p.new)b+=`<span class="badge new">New</span>`;
+    if(p.category==='first')b+=`<span class="badge first">${p.submitted?'First author · Submitted':'First author'}</span>`;
+    if(p.student_led)b+=`<span class="badge student">★ Student-led · ${p.student_name}</span>`;
+    if(!b)b=`<span class="badge co">Co-author</span>`;
+    return b;
+  }
+  function render(){
+    const list=DATA.papers.filter(match);
+    const el=document.getElementById('publist');
+    let html='',year=null,count=0;
+    for(const p of list.slice(0,shown)){
+      if(p.year!==year){
+        year=p.year;
+        const ny=list.filter(x=>x.year===year).length;
+        html+=`<div class="yearhead">${year}<small>${ny} paper${ny>1?'s':''}</small></div>`;
+      }
+      count++;
+      const links=[
+        p.ads_url?`<a href="${p.ads_url}" target="_blank" rel="noopener">ADS</a>`:'',
+        p.arxiv_url?`<a href="${p.arxiv_url}" target="_blank" rel="noopener">arXiv</a>`:''
+      ].join('');
+      html+=`<div class="pubrow">
+        <div class="num">${count}</div>
+        <div class="body">
+          <div class="t">${p.title}</div>
+          <div class="a">${p.authors_short.replace('Fujimoto, S.','<b>Fujimoto, S.</b>')}</div>
+          <div class="badges">${badge(p)}</div>
+        </div>
+        <div class="side">
+          <div class="j">${p.journal||''}${p.month?' · '+monthName(p.month):''}</div>
+          <div class="links">${links}</div>
+          ${p.citations?`<div class="cit">${p.citations} citations</div>`:''}
+        </div>
+      </div>`;
+    }
+    el.innerHTML=html||'<p style="color:var(--muted);padding:30px 0">No papers match.</p>';
+    document.getElementById('more').style.display=list.length>shown?'block':'none';
+  }
+  document.getElementById('tabs').addEventListener('click',e=>{
+    if(!e.target.dataset.f)return;
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('on'));
+    e.target.classList.add('on');
+    filter=e.target.dataset.f;shown=40;render();
+  });
+  document.getElementById('q').addEventListener('input',e=>{query=e.target.value.toLowerCase();shown=40;render();});
+  document.getElementById('more').addEventListener('click',()=>{shown+=60;render();});
+  </script>
 </body>
 </html>

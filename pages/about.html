@@ -2,530 +2,124 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Seiji Fujimoto — Assistant Professor at the University of Toronto, NASA Hubble Fellow alumnus. CV, awards, publications, and contact.">
+  <meta name="description" content="About Seiji Fujimoto — biography, CV, awards, and grants. Assistant Professor of Astronomy & Astrophysics at the University of Toronto.">
   <title>About — Seiji Fujimoto</title>
-  <!-- CSS: Bootstrap, Devicon, Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      font-family: 'Times New Roman', Times, serif;
-    }
-    /* 固定背景画像 */
-    .full-bg-image {
-      background: url('../personal/bahareiya2.jpg') no-repeat center center fixed;
-      background-size: cover;
-      filter: brightness(50%);
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -10;
-    }
-    section {
-      padding: 100px 0;
-      color: white;
-      text-align: center;
-    }
-        .social-icons i {
-            font-size: 2em;
-        }
-        .social-icons {
-            text-align: center;
-            padding: 20px;
-        }
-        .social-icons a {
-            margin: 0 10px;
-            color: #333;
-        }
-        .social-icons a:hover {
-            color: #007bff;
-        }
-        .project-logos img {
-            width: 150px;
-            margin: 10px;
-        }
-        .project-title {
-            text-decoration: underline;
-            margin-bottom: 5px;
-        }
-        .navbar {
-          padding-top: 0.25rem !important;
-          padding-bottom: 0.25rem !important;
-          min-height: 30px; /* 好みで調整、元デフォルトは56px以上 */
-        }
-        .navbar-nav .nav-item {
-            margin-right: 20px;
-        }
-        .carousel-item {
-            height: 500px;
-        }
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    /* CV表示エリアのスタイル */
-    .cv-section {
-      text-align: left;
-      margin-top: 30px;
-    }
-    .cv-section h3 {
-      border-bottom: 1px solid #777;
-      padding-bottom: 5px;
-      margin-bottom: 15px;
-    }
-    .list-group-item {
-      background-color: transparent;
-      border: none;
-      padding: 0.5rem 0;
-      color: #f1f1f1;
-    }
-    /* リンクボタンなどの色調整 */
-    .btn-info {
-      margin-bottom: 20px;
-    }
-  .lead {
-    font-size: 1rem; /* デフォルトが1.25remなどの場合、1remに下げる */
-    color: #bbb; /*#ddd　*/
-    text-align: center;  /* 追加して中央揃えにする */
-  }
-  .divider {
-    margin: 10px auto;  /* 上下の余白はお好みで調整 */
-    width: 80%;         /* 横幅は必要に応じて調整 */
-    text-align: center;
-  }
-  .divider .line {
-    border: none;
-    border-top: 1px solid #ccc;  /* 薄いグレーの線 */
-    margin: 5px 0;
-  }
-.about-container {
-  max-width: 95%; /* 例として横幅を90%に設定。必要に応じて調整してください。 */
-}
-
-
-.carousel-item {
-    height: 400px; /* 縦のトリミング範囲を調整し、横に広げる */
-}
-
-.carousel-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* 画像が枠いっぱいに収まるように調整 */
-    aspect-ratio: auto; /* 画像の比率を元のまま維持 */
-}
-
-.carousel-inner {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden; /* はみ出し防止 */
-}
-
-/* 正方形の画像はそのまま */
-.square-img {
-    object-fit: contain !important;
-    aspect-ratio: 1/1; /* 正方形を維持 */
-}
-
-/* 横長の画像は適切にトリミング */
-.wide-img {
-    object-fit: cover;
-}
-
-/* インジケーター（バー）の位置を中央に */
-.carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    z-index: 15;
-    max-width: 100%;
-}
-
-/* インジケーターのボタン */
-.carousel-indicators button {
-    background-color: grey;
-    width: 20px;
-    height: 4px;
-    border-radius: 4px;
-    margin: 0 3px;
-    opacity: 0.5;
-    transition: width 0.3s ease, opacity 0.3s ease;
-    border: none;
-}
-
-/* アクティブなスライドのインジケーター */
-.carousel-indicators .active {
-    background-color: white !important;
-    opacity: 1;
-    width: 30px;
-}
-
-
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="stylesheet" href="../assets/site.css">
+  <style>
+    .bio-grid{display:grid;grid-template-columns:.65fr 1fr;gap:44px;align-items:start}
+    .slideshow{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/4.4;border:1px solid var(--line)}
+    .slideshow img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.2s}
+    .slideshow img.show{opacity:1}
+    @media(max-width:960px){.bio-grid{grid-template-columns:1fr}}
+  </style>
 </head>
+<body data-root=".." data-page="about" data-updated="July 2026">
+  <div id="site-header"></div>
 
-<body data-root=".." data-page="about" data-updated="April 2026">
-    <div class="full-bg-image"></div>    
-    <div id="site-header"></div>
+  <header class="page-head">
+    <div class="wrap">
+      <div class="sec-eyebrow">About</div>
+      <h1 class="page-title">Seiji Fujimoto</h1>
+      <p class="sec-lead" style="margin-bottom:0">Assistant Professor, David A. Dunlap Department of Astronomy &amp; Astrophysics, University of Toronto.</p>
+    </div>
+  </header>
 
-  <!-- About Me セクション：上部に写真と自己紹介 -->
-  <section id="about-me">
-    <div class="container my-4">
-      <div class="row align-items-center">
-        <!-- 左側：写真 -->
-      <div class="col-md-5 text-center">
-       　<!-- <img loading="lazy" id="slideshow" src="../self/square.jpeg" class="img-fluid rounded" alt="Seiji Fujimoto" style="max-width: 90%;"> -->
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-          <!-- インジケーター -->
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="6" aria-label="Slide 7"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="7" aria-label="Slide 8"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="8" aria-label="Slide 9"></button>
-          </div>
-
-          <!-- スライド -->
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img loading="lazy" src="../self/square.jpeg" class="d-block w-100 square-img" alt="Seiji at the University of Toronto, Bahareiya 1">
-            </div>
-            <div class="carousel-item">
-              <img loading="lazy" src="../self/austin.jpg" class="d-block w-100 square-img" alt="Seiji at UT Austin">
-            </div>
-            <div class="carousel-item">
-              <img loading="lazy" src="../self/ddcw.jpg" class="d-block w-100 wide-img" alt="Seiji at the DAWN Center, Copenhagen">
-            </div>
-            <div class="carousel-item">
-              <img loading="lazy" src="../self/austin3.jpg" class="d-block w-100 wide-img" alt="Seiji at UT Austin (group)">
-            </div>
-            <div class="carousel-item">
-              <img loading="lazy" src="../self/austin2.jpg" class="d-block w-100 wide-img" alt="Seiji at UT Austin">
-            </div>
-            <div class="carousel-item">
-              <img loading="lazy" src="../self/copen.jpg" class="d-block w-100 wide-img" alt="Seiji at the DAWN Center, Copenhagen">
-            </div>
-            <div class="carousel-item">
-              <img loading="lazy" src="../self/boston.jpg" class="d-block w-100 wide-img" alt="Seiji giving a talk in Boston">
-            </div>
-            <div class="carousel-item">
-              <img loading="lazy" src="../self/tokyo.jpeg" class="d-block w-100 wide-img" alt="Seiji portrait">
-            </div>
-            <div class="carousel-item">
-              <img loading="lazy" src="../self/tokyo.jpg" class="d-block w-100 wide-img" alt="Seiji portrait">
-            </div>            
-          </div>
-
-          <!-- ナビゲーションボタン -->
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
+  <section style="padding-top:44px">
+    <div class="wrap bio-grid">
+      <div class="slideshow" id="slideshow">
+        <img src="../self/square.jpeg" class="show" alt="Seiji Fujimoto">
+        <img src="../self/austin.jpg" alt="">
+        <img src="../self/austin2.jpg" alt="">
+        <img src="../self/austin3.jpg" alt="">
+        <img src="../self/boston.jpg" alt="">
+        <img src="../self/copen.jpg" alt="">
+        <img src="../self/ddcw.jpg" alt="">
+        <img src="../self/tokyo.jpeg" alt="">
+        <img src="../self/tokyo.jpg" alt="">
       </div>
-        <!-- 右側：自己紹介テキスト -->
-        <div class="col-md-7 text-center">
-      <h3>Short Biography</h3>
-          <p class="lead">
-            I grew up in a rural town in Kyoto, Japan, surrounded by mountains that sparked my early curiosity about the world. I played baseball passionately until elbow injuries forced me to stop at 15, after which I took up badminton and Double Dutch — eventually becoming a world champion of Double Dutch in 2014.
-          </p>
-          <p class="lead">
-            Driven by a fascination with the unknowns of the universe, I earned my PhD in astronomy from the University of Tokyo in 2019. I enjoyed my postdoc life as a DAWN Fellow in Copenhagen and a NASA Hubble Fellow in Austin before joining the University of Toronto as a faculty member in 2025. My research focuses on distant galaxies and black holes, using multi-wavelength observations from world-class telescopes such as JWST and ALMA.
-          </p>
-          <p class="lead">
-            Outside of astronomy, I enjoy traveling, playing sports, photography, camping, and board games — but above all,<br> 
-            I find joy in sharing simple good times with good people.
-          </p>
+      <div class="prose">
+        <h3 style="margin-top:0">Short biography</h3>
+        <p>I grew up in a rural town in Kyoto, Japan, surrounded by mountains that sparked my early curiosity about the world. I played baseball passionately until elbow injuries forced me to stop at 15, after which I took up badminton and Double Dutch, eventually becoming a world champion of Double Dutch in 2014.</p>
+        <p>Driven by a fascination with the unknowns of the universe, I earned my PhD in astronomy from the University of Tokyo in 2019. I enjoyed my postdoc life as a DAWN Fellow in Copenhagen and a NASA Hubble Fellow in Austin before joining the University of Toronto as a faculty member in 2025. My research focuses on distant galaxies and black holes, using multi-wavelength observations from world-class telescopes such as JWST and ALMA.</p>
+        <p>Outside of astronomy, I enjoy traveling, playing sports, photography, camping, and board games. Above all, I find joy in sharing simple good times with good people.</p>
+        <div class="cta-row" style="margin-top:20px">
+          <a class="btn btn-primary" href="../pdf/CV_Fujimoto_20260511.pdf" target="_blank">CV (PDF)</a>
+          <a class="btn btn-ghost" href="../pdf/Publication_Fujimoto_20260511.pdf" target="_blank">Publication list (PDF)</a>
+          <a class="btn btn-ghost" href="research.html#publications">Publications (interactive)</a>
         </div>
       </div>
     </div>
   </section>
 
-<!-- Divider: 2本の細い水平線 -->
-<div class="divider">
-  <hr class="line">
-  <hr class="line">
-</div>
-  
-  <!-- CV セクション：LaTeXソースをWeb表示向けに変換 -->
-  <section id="cv">
-    <div class="container my-4">
-      <h2>Curriculum Vitae</h2>
-      <p>
-        <a href="../pdf/CV_Fujimoto_20260511.pdf" target="_blank" class="btn btn-info">PDF version</a>
-      </p>
-      
-      <!-- Work Experience -->
-      <div class="cv-section">
-        <h3>Work Experience</h3>
-        <ul class="list-group">
-          <li class="list-group-item">
-            <strong>2025–present:</strong> Assistant Professor, University of Toronto, Canada
-          </li>
-          <li class="list-group-item">
-            <strong>2022–2025:</strong> NASA Hubble Fellow, UT Austin, USA
-          </li>
-          <li class="list-group-item">
-            <strong>2021–2022:</strong> Marie Skłodowska-Curie COFUND INTERACTIONS Fellow, Cosmic Dawn Center, Denmark
-          </li>
-          <li class="list-group-item">
-            <strong>2019–2022:</strong> DAWN Fellow, Cosmic Dawn Center, Denmark
-          </li>
-          <li class="list-group-item">
-            <strong>2019:</strong> ALMA Project Researcher, NAOJ / University of Waseda, Japan
-          </li>
-          <li class="list-group-item">
-            <strong>2019:</strong> ICRR Project Researcher, University of Tokyo, Japan
-          </li>
-        </ul>
-      </div>
-      
-      <!-- Education -->
-      <div class="cv-section">
-        <h3>Education</h3>
-        <ul class="list-group">
-          <li class="list-group-item">
-            <strong>2016–2019:</strong> PhD in Astronomy (University of Tokyo)<br>
-            <small>Thesis: Demographics of the cold Universe with ALMA: From Interstellar and Circumgalactic Media to Cosmic Structures (Supervisor: Prof. M. Ouchi)</small>
-          </li>
-          <li class="list-group-item">
-            <strong>2014–2016:</strong> Master of Astronomy (University of Tokyo)<br>
-            <small>Thesis: ALMA Faint-mm Sources Down to 0.02 mJy: Physical Origins and Contribution to the Extragalactic Background Light (Supervisor: Prof. M. Ouchi)</small>
-          </li>
-          <li class="list-group-item">
-            <strong>2010–2014:</strong> Bachelor of Astronomy (University of Tokyo)<br>
-            <small>Thesis: Search for Dusty Starburst Galaxies at <em>z</em> &gt; 6  (Supervisor: Prof. K. Kohno)</small>
-          </li>
-        </ul>
-      </div>
-      
-      <!-- Awards & Prizes -->
-      <div class="cv-section">
-        <h3>Award & Prize</h3>
-        <ul class="list-group">
-          <li class="list-group-item">
-            <strong>2023:</strong> The ASJ Young Astronomer Award Recipients
-          </li>
-          <li class="list-group-item">
-            <strong>2022:</strong> NASA Hubble Fellowship
-          </li>
-          <li class="list-group-item">
-            <strong>2022:</strong> Inoue Research Award for Young Scientists
-          </li>
-          <li class="list-group-item">
-            <strong>2021:</strong> Marie Skłodowska-Curie Actions (MSCA) Seal of Excellence
-          </li>
-          <li class="list-group-item">
-            <strong>2019:</strong> University of Tokyo School of Science Research Award for PhD Thesis
-          </li>
-          <li class="list-group-item">
-            <strong>2019:</strong> Springer Thesis Prize
-          </li>
-          <li class="list-group-item">
-            <strong>2016:</strong> University of Tokyo School of Science Research Award for Master Thesis
-          </li>
-          <li class="list-group-item">
-            <strong>2016:</strong> Institute for Cosmic Ray Research President's Award for Master Thesis
-          </li>
-          <li class="list-group-item">
-            <strong>2015:</strong> University of Tokyo President's Award
-          </li>
-        </ul>
-      </div>
-      
-      <!-- Grant & Funding -->
-      <div class="cv-section">
-        <h3>Grant &amp; Funding (PI)</h3>
-        <ul class="list-group">
-          <!-- <li class="list-group-item">
-            <strong>2026–2030:</strong> NSERC Discovery Grant, CAD 195,000
-          </li>
-           -->
-          <li class="list-group-item">
-            <strong>2026–2028:</strong> CSA AO JWST Cycle 4 PI Award, CAD 433,920
-          </li>
-          <li class="list-group-item">
-            <strong>2026–2028:</strong> NASA JWST Cycle5 PI Award, USD 335,792 (US admin: D. Coe)
-          </li>
-          <li class="list-group-item">
-            <strong>2025–2028:</strong> NASA JWST Cycle4 PI Award, USD 1,287,810 (US admin: D. Coe, J. Chisholm)
-          </li>
-          <li class="list-group-item">
-            <strong>2025–2027:</strong> NASA JWST Cycle3 PI Award, USD 218,086
-          </li>
-          <li class="list-group-item">
-            <strong>2024–2026:</strong> NASA JWST Cycle2 PI Award, USD 63,617
-          </li>
-          <li class="list-group-item">
-            <strong>2022–2024:</strong> NASA JWST Cycle1 PI Award, USD 85,945 (US Admin: E. Egami)
-          </li>
-          <li class="list-group-item">
-            <strong>2022–2025:</strong> NASA Hubble Fellowship, USD 417,215
-          </li>
-          <li class="list-group-item">
-            <strong>2022–2024:</strong> NASA Keck PI Awards, USD 28,725
-          </li>
-          <li class="list-group-item">
-            <strong>2021–2022:</strong> INTERACTIONS Fellowship, USD &sim;123,000
-          </li>
-        </ul>
-      </div>
-      
+  <section id="cv" style="padding-top:30px">
+    <div class="wrap">
+      <h2 class="sec-title">Curriculum Vitae</h2>
+      <div class="grid2" style="align-items:start;gap:40px">
+        <div>
+          <h3 style="font-size:1.2rem">Work experience</h3>
+          <ul class="cv-list">
+            <li><strong>2025–present:</strong> Assistant Professor, University of Toronto, Canada</li>
+            <li><strong>2022–2025:</strong> NASA Hubble Fellow, UT Austin, USA</li>
+            <li><strong>2021–2022:</strong> Marie Skłodowska-Curie COFUND INTERACTIONS Fellow, Cosmic Dawn Center, Denmark</li>
+            <li><strong>2019–2022:</strong> DAWN Fellow, Cosmic Dawn Center, Denmark</li>
+            <li><strong>2019:</strong> ALMA Project Researcher, NAOJ / University of Waseda, Japan</li>
+            <li><strong>2019:</strong> ICRR Project Researcher, University of Tokyo, Japan</li>
+          </ul>
 
-      <!-- ※必要に応じて他のセクション（Research Grants, Telescope Proposals, etc.）も同様に追加可能 -->
-      
+          <h3 style="font-size:1.2rem;margin-top:30px">Education</h3>
+          <ul class="cv-list">
+            <li><strong>2016–2019:</strong> PhD in Astronomy (University of Tokyo)<br>
+              <small>Thesis: Demographics of the cold Universe with ALMA: From Interstellar and Circumgalactic Media to Cosmic Structures (Supervisor: Prof. M. Ouchi)</small></li>
+            <li><strong>2014–2016:</strong> Master of Astronomy (University of Tokyo)<br>
+              <small>Thesis: ALMA Faint-mm Sources Down to 0.02 mJy: Physical Origins and Contribution to the Extragalactic Background Light (Supervisor: Prof. M. Ouchi)</small></li>
+            <li><strong>2010–2014:</strong> Bachelor of Astronomy (University of Tokyo)<br>
+              <small>Thesis: Search for Dusty Starburst Galaxies at <em>z</em> &gt; 6 (Supervisor: Prof. K. Kohno)</small></li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size:1.2rem">Awards &amp; prizes</h3>
+          <ul class="cv-list">
+            <li><strong>2023:</strong> The ASJ Young Astronomer Award Recipients</li>
+            <li><strong>2022:</strong> NASA Hubble Fellowship</li>
+            <li><strong>2022:</strong> Inoue Research Award for Young Scientists</li>
+            <li><strong>2021:</strong> Marie Skłodowska-Curie Actions (MSCA) Seal of Excellence</li>
+            <li><strong>2019:</strong> University of Tokyo School of Science Research Award for PhD Thesis</li>
+            <li><strong>2019:</strong> Springer Thesis Prize</li>
+            <li><strong>2016:</strong> University of Tokyo School of Science Research Award for Master Thesis</li>
+            <li><strong>2016:</strong> Institute for Cosmic Ray Research President's Award for Master Thesis</li>
+            <li><strong>2015:</strong> University of Tokyo President's Award</li>
+          </ul>
+
+          <h3 style="font-size:1.2rem;margin-top:30px">Grants &amp; funding (PI)</h3>
+          <ul class="cv-list">
+            <li><strong>2026–2028:</strong> CSA AO JWST Cycle 4 PI Award, CAD 433,920</li>
+            <li><strong>2026–2028:</strong> NASA JWST Cycle 5 PI Award, USD 335,792 (US admin: D. Coe)</li>
+            <li><strong>2025–2028:</strong> NASA JWST Cycle 4 PI Award, USD 1,287,810 (US admin: D. Coe, J. Chisholm)</li>
+            <li><strong>2025–2027:</strong> NASA JWST Cycle 3 PI Award, USD 218,086</li>
+            <li><strong>2024–2026:</strong> NASA JWST Cycle 2 PI Award, USD 63,617</li>
+            <li><strong>2022–2024:</strong> NASA JWST Cycle 1 PI Award, USD 85,945 (US admin: E. Egami)</li>
+            <li><strong>2022–2025:</strong> NASA Hubble Fellowship, USD 417,215</li>
+            <li><strong>2022–2024:</strong> NASA Keck PI Awards, USD 28,725</li>
+            <li><strong>2021–2022:</strong> INTERACTIONS Fellowship, USD ~123,000</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </section>
 
-<!-- Divider: 2本の細い水平線 -->
-<div class="divider">
-  <hr class="line">
-  <hr class="line">
-</div>
-  
-<!-- Publication セクション (CVセクションと同じフォーマット) -->
-  <section id="publications">
-  <div class="container my-4">
-  <h2>Publications</h2>
-      <p>
-        <a href="../pdf/Publication_Fujimoto_20260511.pdf" target="_blank" class="btn btn-info">PDF version</a>
-      </p>
-
-  <div class="cv-section">
-    <h3>First author </h3>
-  <ul class="list-group">
-    <li class="list-group-item">
-      <strong>Journal Article:</strong> (19 published/submitted; Full list also available from 
-      <a href="https://ui.adsabs.harvard.edu/search/filter_database_fq_database=OR&filter_database_fq_database=database%3A%22astronomy%22&format=SHORT&fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3A%22astronomy%22)&p_=0&q=author%3A(%22fujimoto%2Cseiji%22)%20AND%20pubdate%3A%5B2015-01%20TO%20*%5D&sort=score%20desc%2C%20bibcode%20desc&unprocessed_parameter=adsobj_query&unprocessed_parameter=qform" target="_blank">ADS</a> and 
-      <a href="https://scholar.google.co.jp/citations?user=lnAouJ4AAAAJ&hl=en" target="_blank">Google Scholar</a>)
-    </li>
-    <li class="list-group-item">
-      <strong>19.</strong> <u>Fujimoto, S.</u>, Fei, Q., Brammer, G., et al. 
-      (Submitted) <br>
-      <em>A tidal disruption event in a quasar at redshift 7.19</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>18.</strong> <u>Fujimoto, S.</u>, Asada, Y., Naidu, R., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2025arXiv251211790F/abstract" target="_blank">Submitted</a>) <br>
-      <em>GLIMPSE-D: An Exotic Balmer-Jump Object at z=6.20? Revisiting Photometric Selection and the Cosmic Abundance of Pop III Galaxies</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>17.</strong> <u>Fujimoto, S.</u>, Faisst, A., Tsujita, A., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2025arXiv251016116F/abstract" target="_blank">Submitted</a>) <br>
-      <em>The ALPINE-CRISTAL-JWST Survey: NIRSpec IFU Data Processing and Spatially-resolved Views of Chemical Enrichment in Normal Galaxies at z=4-6</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>16.</strong> <u>Fujimoto, S.</u>, Naidu, R., Chisholm, J., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2025arXiv250111678F/abstract" target="_blank">ApJ, 989, 49, 2025</a>) <br>
-      <em>GLIMPSE: An ultra-faint &simeq;10<sup>5</sup>M<sub>&odot;</sub> PopIII Galaxy Candidate and First Constraints on the PopIII UV Luminosity Function at z &simeq; 6–7</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>15.</strong> <u>Fujimoto, S.</u>, Ouchi, M., Kohno, K., et al. 
-      (<a href="https://www.nature.com/articles/s41550-025-02592-w" target="_blank">Nature Astronomy, 9, 1553, 2025</a>) <br>
-      <em>Primordial Rotating Disk Composed of &ge;15 Star Forming Clumps at Cosmic Dawn</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>14.</strong> <u>Fujimoto, S.</u>, Bezanson, R., Labb&eacute;, I., et al. 
-            (<a href="https://ui.adsabs.harvard.edu/abs/2023arXiv230907834F/abstract" target="_blank">ApJS, 278, 45, 2024</a>) <br>
-      <em>DUALZ -- Deep UNCOVER-ALMA Legacy High-Z Survey</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>13.</strong> <u>Fujimoto, S.</u>, Wang, B., Weaver, J., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2023arXiv230811609F/abstract" target="_blank">ApJ, 977, 2, 2024</a>) <br>
-      <em>UNCOVER: A NIRSpec Census of Lensed Galaxies at z = 8.50–13.08 Probing a High AGN Fraction and Ionized Bubbles in the Shadow</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>12.</strong> <u>Fujimoto, S.</u>, Kohno, K., Ouchi, M., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2023arXiv230301658F/abstract" target="_blank">ApJS, 275, 36, 2024</a>) <br>
-      <em>ALMA Lensing Cluster Survey: Deep 1.2 mm Number Counts and Infrared Luminosity Functions at z &simeq; 1–8</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>11.</strong> <u>Fujimoto, S.</u>, Arrabal-Haro, P., Dickinson, M., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2023ApJ...949L..25F/abstract" target="_blank">ApJL, 949, 25, 2023</a>) <br>
-      <em>CEERS Spectroscopic Confirmation of NIRCam-Selected z &gtrsim; 8 Galaxy Candidates with JWST/NIRSpec: Initial Characterization of their Properties</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>10.</strong> <u>Fujimoto, S.</u>, Ouchi, M., Nakajima, K., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2024ApJ...964..146F/abstract" target="_blank">ApJ, 964, 2, 2024</a>) <br>
-      <em>JWST and ALMA Multiple-Line Study in and around a Galaxy at z = 8.496: Optical to FIR Line Ratios and the Onset of an Outflow Promoting Ionizing Photon Escape</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>9.</strong> <u>Fujimoto, S.</u>, Finkelstein, S., Burgarella, D., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2022arXiv221103896F/abstract" target="_blank">ApJ, 955, 130, 2023</a>) <br>
-      <em>ALMA FIR View of Ultra High-redshift Galaxy Candidates at z &sim; 11–17: Blue Monsters or Low-z Red Interlopers?</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>8.</strong> <u>Fujimoto, S.</u>, Brammer, G., Watson, D., et al. 
-      (<a href="https://www.nature.com/articles/s41586-022-04454-1" target="_blank">Nature, 604, 261, 2022</a>) <br>
-      <em>A dusty, compact object bridging galaxies and quasars at cosmic dawn</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>7.</strong> <u>Fujimoto, S.</u>, Oguri, M., Brammer, G., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2021ApJ...911...99F" target="_blank">ApJ, 911, 99, 20, 2021</a>) <br>
-      <em>ALMA Lensing Cluster Survey: Bright [C II] 158 &mu;m Lines from a Multiply Imaged Sub-$L^{\star}$ Galaxy at z = 6.0719</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>6.</strong> <u>Fujimoto, S.</u>, Silverman, J. D., Bethermin, M., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2020ApJ...900....1F" target="_blank">ApJ, 900, 1, 2020</a>) <br>
-      <em>The ALPINE-ALMA [C II] Survey: Size of Individual Star-forming Galaxies at z = 4–6 and Their Extended Halo Structure</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>5.</strong> <u>Fujimoto, S.</u>, Oguri, M., Nagao, T., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2020ApJ...891...64F" target="_blank">ApJ, 891, 64, 8, 2020</a>) <br>
-      <em>Truth or Delusion? A Possible Gravitational Lensing Interpretation of the Ultraluminous Quasar SDSS J010013.02+280225.8 at z = 6.30</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>4.</strong> <u>Fujimoto, S.</u>, Ouchi, M., Ferrara, A., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2019ApJ...887..107F" target="_blank">ApJ, 887, 107, 17, 2019</a>) <br>
-      <em>First Identification of 10 kpc [C II] 158 &mu;m Halos around Star-forming Galaxies at z = 5–7</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>3.</strong> <u>Fujimoto, S.</u>, Ouchi, M., Kohno, K., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2018ApJ...861....7F" target="_blank">ApJ, 861, 7, 12, 2018</a>) <br>
-      <em>ALMA 26 Arcmin<sup>2</sup> Survey of GOODS-S at One Millimeter (ASAGAO): Average Morphology of High-z Dusty Star-forming Galaxies in an Exponential Disk (n &sime; 1)</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>2.</strong> <u>Fujimoto, S.</u>, Ouchi, M., Shibuya, T., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2017ApJ...850...83F" target="_blank">ApJ, 850, 83, 21, 2017</a>) <br>
-      <em>Demonstrating a New Census of Infrared Galaxies with ALMA (DANCING-ALMA). I. FIR Size and Luminosity Relation at z = 0–6 Revealed with 1034 ALMA Sources</em> <br>
-    </li>
-    <li class="list-group-item">
-      <strong>1.</strong> <u>Fujimoto, S.</u>, Ouchi, M., Ono, Y., et al. 
-      (<a href="https://ui.adsabs.harvard.edu/abs/2016ApJS..222....1F" target="_blank">ApJS, 222, 1, 28, 2016</a>) <br>
-      <em>ALMA Census of Faint 1.2 mm Sources Down to &sim; 0.02 mJy: Extragalactic Background Light and Dust-poor, High-z Galaxies</em> <br>
-    </li>
-
-  </ul>
-</div>
-</section>
-
-<div id="site-footer"></div>
-<script src="../site-shell.js"></script>
-
+  <div id="site-footer"></div>
+  <script src="../site-shell.js"></script>
+  <script>
+    const slides = document.querySelectorAll('#slideshow img');
+    let cur = 0;
+    setInterval(() => {
+      slides[cur].classList.remove('show');
+      cur = (cur + 1) % slides.length;
+      slides[cur].classList.add('show');
+    }, 4500);
+  </script>
 </body>
 </html>

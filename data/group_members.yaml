@@ -1,0 +1,69 @@
+# Group members used by the weekly publication auto-update
+# (.github/workflows/update-publications.yml → scripts/fetch_new_papers.py).
+#
+# ORCID iDs verified against the ORCID registry (affiliation + listed works)
+# on 2026-07-06. `since` bounds the arXiv search for member-led papers:
+# only papers published on/after this date are auto-added.
+# Removing a member stops future auto-adds (already-added entries stay until
+# the curated ADS library replaces or removes them).
+#
+# name_variants: forms that may appear as the arXiv first-author name.
+
+pi:
+  name: Seiji Fujimoto
+  orcid: 0000-0001-7201-5066
+  arxiv_query: 'au:"Fujimoto_S"'
+
+members:
+  - name: Qinyue Fei
+    orcid: 0000-0001-7232-5355
+    role: postdoc
+    since: 2025-07-01
+    name_variants: ["Qinyue Fei"]
+
+  - name: Yoshihisa Asada
+    orcid: 0000-0003-3983-5438
+    role: postdoc
+    since: 2025-09-01
+    name_variants: ["Yoshihisa Asada"]
+
+  - name: Jacqueline Antwi-Danso
+    orcid: 0000-0002-0243-6575
+    role: postdoc
+    since: 2023-09-01
+    name_variants: ["Jacqueline Antwi-Danso"]
+
+  - name: Minami Nakane
+    orcid: 0009-0000-1999-5472
+    role: phd_student
+    since: 2025-01-01
+    student_until: 2029-04-30
+    name_variants: ["Minami Nakane"]
+
+  - name: Kanako Narita
+    orcid: 0009-0000-5913-8555
+    role: phd_student
+    since: 2025-01-01
+    student_until: 2028-04-30
+    name_variants: ["Kanako Narita"]
+
+  - name: Lilian Lee
+    orcid: null   # not found in the ORCID registry as of 2026-07-06 — add when known
+    role: phd_student
+    since: 2024-01-01
+    student_until: 2026-07-31
+    name_variants: ["Lilian L. Lee", "Lilian Lee"]
+
+  - name: Gavin Farley
+    orcid: 0009-0007-2578-9238
+    role: undergrad
+    since: 2025-09-01
+    student_until: 2030-04-30
+    name_variants: ["Gavin Farley"]
+
+  - name: Ariel Broderick
+    orcid: 0009-0006-0440-2228
+    role: grad_student
+    since: 2025-09-01
+    student_until: 2030-04-30
+    name_variants: ["Ariel Broderick"]
