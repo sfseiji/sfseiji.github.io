@@ -39,6 +39,7 @@ body::before{
   content:"";position:fixed;inset:0;z-index:-2;
   background:url('/personal/maunakea.jpg') center/cover no-repeat;
 }
+body[data-page="home"]::before{background-image:url('/cover_photo/comet.jpg')}
 body[data-page="research"]::before{background-image:url('/personal/bahareiya2.jpg')}
 body[data-page="about"]::before{background-image:url('/personal/bahareiya1.jpg')}
 body[data-page="members"]::before{background-image:url('/personal/toronto.jpg')}
@@ -48,7 +49,7 @@ body[data-page="news"]::before{background-image:url('/personal/pisa.jpg')}
 body[data-page="job"]::before{background-image:url('/personal/stone.jpg')}
 body::after{
   content:"";position:fixed;inset:0;z-index:-1;
-  background:linear-gradient(180deg,rgba(7,11,21,.78) 0%,rgba(7,11,21,.88) 100%);
+  background:linear-gradient(180deg,rgba(7,11,21,.6) 0%,rgba(7,11,21,.74) 100%);
 }
 /* Legacy pages carry their own .full-bg-image div — hide it and use the body layers. */
 .full-bg-image{display:none !important}
