@@ -30,13 +30,7 @@
         <div class="eyebrow">University of Toronto · Astronomy &amp; Astrophysics</div>
         <h1>Chasing the first light<br>of the Universe.</h1>
         <p class="hero-role"><b>Seiji Fujimoto</b>, Assistant Professor, David A. Dunlap Department of Astronomy &amp; Astrophysics</p>
-        <p class="hero-mission">We use <em>JWST</em>, <em>ALMA</em>, and the world's largest telescopes to find the earliest galaxies, black holes, and stars, and to understand how everything we see today began.</p>
-        <div class="stats">
-          <div class="stat"><b>280+</b><span>publications</span></div>
-          <div class="stat"><b>23,000+</b><span>citations</span></div>
-          <div class="stat"><b>82</b><span>h-index</span></div>
-          <div class="stat"><b>VENUS</b><span>PI · 2nd-largest JWST program</span></div>
-        </div>
+        <p class="hero-mission">Venturing into unknown horizons and sharing the wonder of discovery is at the heart of my work as an observational astronomer. We study the earliest galaxies, black holes, and stars with <em>JWST</em>, <em>ALMA</em>, and other world-class telescopes.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="pages/research.html">Explore research</a>
           <a class="btn btn-ghost" href="pages/job.html">Join the group</a>
@@ -59,7 +53,7 @@
         <a class="rcard" href="pages/research.html"><img loading="lazy" src="research_image/gems.jpg" alt="Stars and clusters">
           <div class="pad"><h3>Stars &amp; clusters</h3><p>Gravitational lensing resolves early galaxies to parsec scales, down to proto-globular clusters and individual stars.</p></div></a>
         <a class="rcard" href="pages/research.html"><img loading="lazy" src="research_image/smbh.jpeg" alt="Black holes">
-          <div class="pad"><h3>Black holes</h3><p>The first quasars and the puzzling "Little Red Dots": how supermassive black holes grew so fast, so early.</p></div></a>
+          <div class="pad"><h3>Black holes</h3><p>The first quasars and the puzzling "Little Red Dots": how supermassive black holes grew so quickly in the early universe.</p></div></a>
         <a class="rcard" href="pages/research.html"><img loading="lazy" src="research_image/eta.jpeg" alt="Supernovae">
           <div class="pad"><h3>Supernovae</h3><p>Lensing clusters as time-domain telescopes: magnified supernovae at z &gt; 2 probing the first stellar explosions.</p></div></a>
       </div>
@@ -104,8 +98,8 @@
   <section class="band" id="group">
     <div class="wrap join-flex" style="padding:10px 0">
       <div style="max-width:560px">
-        <div class="sec-eyebrow">The group</div>
-        <h2 class="sec-title">People behind the discoveries</h2>
+        <div class="sec-eyebrow">People</div>
+        <h2 class="sec-title">The group</h2>
         <p style="color:var(--muted)">Postdocs, grad students, and undergrads working on JWST and ALMA data at the frontier of the observable Universe. We recruit PhD students every year and welcome postdoc fellowship applicants.</p>
         <div class="faces">
           <img src="group/qinyue.jpg" alt="Qinyue Fei"><img src="group/yoshi.png" alt="Yoshihisa Asada">
@@ -184,8 +178,8 @@
       const monthName = m => m ? ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][m] : '';
       document.getElementById('latest-pubs').innerHTML = picks.map(p => {
         let badge;
-        if (p.student_led) badge = `<span class="badge student">Student-led ★</span>`;
-        else badge = `<span class="badge first">${p.submitted ? 'First author · Submitted' : 'First author'}</span>`;
+        if (p.student_led) badge = `<span class="badge student">led by ${p.student_name || 'a group member'}</span>`;
+        else badge = `<span class="badge first">${p.submitted ? 'first author · submitted' : 'first author'}</span>`;
         const href = p.ads_url || p.arxiv_url || 'pages/research.html#publications';
         return `<a class="pubcard" href="${href}" ${p.ads_url ? 'target="_blank" rel="noopener"' : ''}>
           ${badge}

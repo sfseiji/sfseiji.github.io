@@ -15,7 +15,7 @@
   <header class="page-head">
     <div class="wrap">
       <div class="sec-eyebrow">Research</div>
-      <h1 class="page-title">The first billion years, observed.</h1>
+      <h1 class="page-title">Observing the first billion years of the Universe</h1>
       <p class="sec-lead" style="margin-bottom:0">Since light takes time to travel, the farther we look, the further back in time we see. Our group traces the story of the Universe back to its very first chapters, using JWST, ALMA, HST, VLT, Keck, and Subaru.</p>
       <div class="pillars">
         <div class="pillar"><img src="../research_image/icon/icon_galaxy.png" alt=""><div><h4>Galaxies</h4><span>ISM &amp; CGM in the reionization era</span></div></div>
@@ -54,16 +54,16 @@
         <a class="hl" href="https://www.nature.com/articles/s41550-025-02592-w" target="_blank" rel="noopener">
           <img loading="lazy" src="../research_image/Cosmic_Grapes_full.png" alt="Cosmic Grapes">
           <div class="pad">
-            <span class="badge first">First author · Nature Astronomy</span>
+            <span class="badge first">first author · Nature Astronomy</span>
             <h3>Cosmic Grapes: a primordial rotating disk broken into giant clumps</h3>
-            <p>JWST + ALMA resolved a z = 6.07 lensed galaxy into 15+ dense star-forming clumps on &lt;10 pc scales, rewriting how we picture early galaxies.</p>
+            <p>JWST + ALMA resolved a z = 6.07 lensed galaxy into 15+ dense star-forming clumps, reaching &lt;10 pc scales at cosmic dawn.</p>
             <div class="meta">Fujimoto, S., et al. 2025, Nature Astronomy</div>
           </div>
         </a>
         <a class="hl" href="https://ui.adsabs.harvard.edu/abs/2025arXiv251114483N" target="_blank" rel="noopener">
           <img loading="lazy" src="../research_image/venus_cut2.png" alt="VENUS z~11-12 galaxy">
           <div class="pad">
-            <span class="badge student">Student-led ★</span>
+            <span class="badge student">led by Minami Nakane</span>
             <h3>VENUS: a strongly lensed clumpy galaxy at z ~ 11–12</h3>
             <p>Led by PhD student Minami Nakane: a spatially-resolved galaxy just ~400 Myr after the Big Bang, found behind a VENUS lensing cluster.</p>
             <div class="meta">Nakane, M., Kokorev, V., Fujimoto, S., et al. 2025</div>
@@ -72,7 +72,7 @@
         <a class="hl" href="https://www.nature.com/articles/s41586-022-04454-1" target="_blank" rel="noopener">
           <img loading="lazy" src="../research_image/gnz7q_full.jpeg" alt="GNz7q">
           <div class="pad">
-            <span class="badge first">First author · Nature</span>
+            <span class="badge first">first author · Nature</span>
             <h3>GNz7q: a dusty object bridging galaxies and quasars at cosmic dawn</h3>
             <p>A rare hybrid system at z = 7.19: a growing black hole embedded in a dusty starburst, less than 800 million years after the Big Bang.</p>
             <div class="meta">Fujimoto, S., et al. 2022, Nature</div>
@@ -115,7 +115,7 @@
       </div>
       <div id="publist"></div>
       <button class="showmore" id="more" style="display:none">Show more</button>
-      <p class="note">★ = paper led by a student or postdoc supervised/co-supervised by Seiji at the time of publication.
+      <p class="note">"led by …" marks papers first-authored by group students and postdocs (supervised or co-supervised at the time of publication).
         Data: curated ADS library + Google Scholar citations, refreshed automatically. Last update: <span id="gen"></span>.
         PDF list: <a href="../pdf/Publication_Fujimoto.pdf" target="_blank" style="color:var(--accent)">Publication_Fujimoto.pdf</a>.</p>
     </div>
@@ -133,12 +133,8 @@
 
   function init(){
     const s=DATA.stats;
-    document.getElementById('statbar').innerHTML=
-      `<div><b>${s.n_total}</b><span>papers</span></div>
-       <div><b>${s.n_first_author}</b><span>first author</span></div>
-       <div><b>${s.n_student_led}</b><span>student-led ★</span></div>
-       <div><b>${(s.total_citations||0).toLocaleString()}</b><span>citations</span></div>
-       <div><b>${s.h_index||''}</b><span>h-index</span></div>`;
+    document.getElementById('statbar').textContent=
+      `${s.n_total} papers · ${s.n_first_author} first author · ${s.n_student_led} led by students & postdocs`;
     document.getElementById('gen').textContent=DATA.generated;
     render();
   }
@@ -154,10 +150,9 @@
   }
   function badge(p){
     let b='';
-    if(p.new)b+=`<span class="badge new">New</span>`;
-    if(p.category==='first')b+=`<span class="badge first">${p.submitted?'First author · Submitted':'First author'}</span>`;
-    if(p.student_led)b+=`<span class="badge student">★ Student-led · ${p.student_name}</span>`;
-    if(!b)b=`<span class="badge co">Co-author</span>`;
+    if(p.new)b+=`<span class="badge new">new</span>`;
+    if(p.category==='first')b+=`<span class="badge first">${p.submitted?'first author · submitted':'first author'}</span>`;
+    if(p.student_led)b+=`<span class="badge student">led by ${p.student_name}</span>`;
     return b;
   }
   function render(){
