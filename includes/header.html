@@ -1,52 +1,21 @@
-<nav class="navbar navbar-dark navbar-expand-lg bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{{ROOT}}/index.html">Seiji Fujimoto</a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-      data-bs-target="#navbarTogglerShared" aria-controls="navbarTogglerShared"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarTogglerShared">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" data-page="news" href="{{ROOT}}/pages/news.html">News</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-page="about" href="{{ROOT}}/pages/about.html">About Me</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-page="members" href="{{ROOT}}/pages/members.html">Members</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-page="research" href="{{ROOT}}/pages/research.html">Research</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-page="projects" href="{{ROOT}}/pages/projects.html">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-page="teaching" href="{{ROOT}}/pages/teaching.html">Teaching</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-page="events" href="{{ROOT}}/pages/events.html">Events</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-page="job" href="{{ROOT}}/pages/job.html">Job Opportunity</a>
-        </li>
-      </ul>
-
-      <div class="social-icons">
-        <a href="https://x.com/sfseiji" target="_blank" rel="noopener noreferrer" title="X (formerly Twitter)">
-          <i class="fab fa-x-twitter"></i>
-        </a>
-        <a href="https://scholar.google.co.jp/citations?user=lnAouJ4AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar">
-          <i class="fas fa-graduation-cap"></i>
-        </a>
-        <a href="https://ui.adsabs.harvard.edu/search/filter_database_fq_database=OR&filter_database_fq_database=database%3A%22astronomy%22&format=SHORT&fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3A%22astronomy%22)&q=author%3A(%22fujimoto%2Cseiji%22)%20AND%20pubdate%3A%5B2015-01%20TO%20*%5D&sort=score%20desc%2C%20bibcode%20desc&unprocessed_parameter=adsobj_query&unprocessed_parameter=qform&p_=0" target="_blank" rel="noopener noreferrer" title="Publications on ADS">
-          <i class="fas fa-book"></i>
-        </a>
+<nav class="site-nav">
+  <div class="nav-in">
+    <a class="brand" href="{{ROOT}}/index.html">Seiji Fujimoto <span>· Cosmic Dawn</span></a>
+    <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    <div class="nav-links" id="nav-links">
+      <a class="nav-link" data-page="about" href="{{ROOT}}/pages/about.html">About</a>
+      <a class="nav-link" data-page="research" href="{{ROOT}}/pages/research.html">Research</a>
+      <a class="nav-link" data-page="publications" href="{{ROOT}}/pages/research.html#publications">Publications</a>
+      <a class="nav-link" data-page="projects" href="{{ROOT}}/pages/projects.html">Projects</a>
+      <a class="nav-link" data-page="members" href="{{ROOT}}/pages/members.html">Group</a>
+      <a class="nav-link" data-page="teaching" href="{{ROOT}}/pages/teaching.html">Teaching</a>
+      <a class="nav-link" data-page="news" href="{{ROOT}}/pages/news.html">News</a>
+      <div class="nav-socials">
+        <a href="https://x.com/sfseiji" target="_blank" rel="noopener noreferrer" title="X (formerly Twitter)"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://scholar.google.co.jp/citations?user=lnAouJ4AAAAJ&hl=en" target="_blank" rel="noopener noreferrer" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+        <a href="https://ui.adsabs.harvard.edu/search/q=author%3A(%22fujimoto%2Cseiji%22)%20AND%20pubdate%3A%5B2015-01%20TO%20*%5D&sort=date%20desc" target="_blank" rel="noopener noreferrer" title="Publications on ADS"><i class="fas fa-book"></i></a>
       </div>
+      <a class="nav-cta" data-page="job" href="{{ROOT}}/pages/job.html">Join us</a>
     </div>
   </div>
 </nav>

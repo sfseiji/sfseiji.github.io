@@ -2,502 +2,206 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Active and ongoing observational projects led by Seiji Fujimoto with JWST, ALMA, HST, and ground-based facilities.">
+  <meta name="description" content="Flagship programs and international collaborations — VENUS, Cosmic Grapes, GNz7q, GLIMPSE-D, and 15+ JWST/ALMA programs. Fujimoto group, University of Toronto.">
   <title>Projects — Seiji Fujimoto</title>
-  <!-- CSS: Bootstrap, Devicon, Font Awesome -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <!-- JavaScript Libraries -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-  <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      font-family: 'Times New Roman', Times, serif;
-    }
-    /* 固定背景画像 */
-    .full-bg-image {
-      /* background: url('../personal/onsen.jpg') no-repeat center center fixed; */
-      background: url('../personal/bahareiya2.jpg') no-repeat center center fixed;
-      background-size: cover;
-      filter: brightness(50%);
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      z-index: -10;
-    }
-    section {
-      padding: 100px 0;
-      color: white;
-      text-align: center;
-    }
-        .social-icons i {
-            font-size: 2em;
-        }
-        .social-icons {
-            text-align: center;
-            padding: 20px;
-        }
-        .social-icons a {
-            margin: 0 10px;
-            color: #333;
-        }
-        .social-icons a:hover {
-            color: #007bff;
-        }
-        .project-logos img {
-            width: 150px;
-            margin: 10px;
-        }
-        .project-title {
-            text-decoration: underline;
-            margin-bottom: 5px;
-        }
-        .navbar {
-          padding-top: 0.25rem !important;
-          padding-bottom: 0.25rem !important;
-          min-height: 30px; /* 好みで調整、元デフォルトは56px以上 */
-        }
-        .navbar-nav .nav-item {
-            margin-right: 20px;
-        }
-        .carousel-item {
-            height: 500px;
-        }
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    .list-group-item {
-      background-color: transparent;
-      border: none;
-      padding: 0.5rem 0;
-      color: #f1f1f1;
-    }
-    /* リンクボタンなどの色調整 */
-    .btn-info {
-      margin-bottom: 20px;
-    }
-  .lead {
-    font-size: 1rem; /* デフォルトが1.25remなどの場合、1remに下げる */
-    color: #ddd;
-  }
-  .card-text.justify {
-    text-align: justify;
-  }
-
-  </style>
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="stylesheet" href="../assets/site.css">
 </head>
+<body data-root=".." data-page="projects" data-updated="July 2026">
+  <div id="site-header"></div>
 
-<body data-root=".." data-page="projects" data-updated="April 2026">
-    <div class="full-bg-image"></div>    
-    <div id="site-header"></div>
-
-
-  <div class="container my-4">
-    <h1 class="text-center text-white">Programs & Collaborations</h1>
-    <p class="lead text-center">
-     Our group has also been actively working on a large variety of international large programs with friendly collaborators across the world. <br>
-    </p>
-
-    <h3 class="text-center text-white mb-4 mt-5" style="font-family:'Times New Roman',serif;font-style:italic;"> JWST Projects </h3>
-    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-
-    <!-- VENUS -->
-    <div class="col">
-      <div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-        <img loading="lazy" src="../project_logo/jwst/venus.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="VENUS">
-        <div class="card-body">
-          <h5 class="card-title">VENUS (Cycle4-5)</h5>
-          <p class="card-text mb-1"><strong>PI:</strong> S. Fujimoto, D. Coe</p>
-          <p class="card-text justify" style="font-size:0.97em;">
-            Large program of JWST's first wide lensing cluster survey to explore the earliest galaxies, AGNs, stars and their explosions.
-          </p>
-        </div>
-        <div class="card-footer bg-transparent border-0">
-          <a href="https://jwst-venus.github.io/" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-        </div>
-      </div>
+  <header class="page-head">
+    <div class="wrap">
+      <div class="sec-eyebrow">Projects</div>
+      <h1 class="page-title">Programs &amp; collaborations</h1>
+      <p class="sec-lead" style="margin-bottom:0">Flagship programs designed and led from Toronto, and a large variety of international programs with friendly collaborators across the world.</p>
     </div>
+  </header>
 
-    <!-- MINERVA -->
-    <div class="col">
-      <div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-        <img loading="lazy" src="../project_logo/jwst/minerva.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="MINERVA">
-        <div class="card-body">
-          <h5 class="card-title">MINERVA (Cycle4)</h5>
-          <p class="card-text mb-1"><strong>PIs:</strong> A. Muzzin, D. Marchesini, K. Suess</p>
-          <p class="card-text justify" style="font-size:0.97em;">
-            Large program to perform monogeneous NIRCam medium-band imaging for JWST legacy fields of CEERS, PRIMER-UDS & COSMOS, and GOODS-N.
-          </p>
-        </div>
-        <div class="card-footer bg-transparent border-0">
-          <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=7814" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-        </div>
-      </div>
-    </div>
+  <!-- Project Spotlights (moved here from Research) -->
+  <section id="spotlights" style="padding-top:44px">
+    <div class="wrap">
+      <h2 class="sec-title">Project Spotlights</h2>
+      <p class="sec-lead">The programs and discoveries that define our group's science.</p>
 
-
-    <!-- CAPERS -->
-    <div class="col">
-      <div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-        <img loading="lazy" src="../project_logo/jwst/caper.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="CAPERS">
-        <div class="card-body">
-          <h5 class="card-title">CAPERS (Cycle3)</h5>
-          <p class="card-text mb-1"><strong>PI:</strong> M. Dickinson</p>
-          <p class="card-text justify" style="font-size:0.97em;">
-            Large program to perform NIRSpec MSA prism spectroscopy of hundreds z>9 galaxies in legacy CANDELS fields.
-          </p>
-        </div>
-        <div class="card-footer bg-transparent border-0">
-          <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=6368" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- COSMOS‑3D -->
-  <div class="col"><div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-    <img loading="lazy" src="../project_logo/jwst/cosmos3d.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="COSMOS-3D">
-    <div class="card-body">
-      <h5 class="card-title">COSMOS‑3D (Cycle3)</h5>
-      <p class="card-text mb-1"><strong>PIs:</strong> K. Kakiichi, X. Fan, F. Wang, E. Egami, J. Lyu</p>
-      <p class="card-text justify" style="font-size:0.97em;"> 
-      Large program to perform NIRCam imaging and slitless spectroscopy over the COSMOS‑Web field to study early galaxies, AGNs, and cosmic reionization. </p>
-    </div>
-    <div class="card-footer bg-transparent border-0">
-      <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=5893" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-    </div>
-  </div></div>
-
-
-    <!-- POPPIES -->
-    <div class="col">
-      <div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-        <img loading="lazy" src="../project_logo/jwst/poppies.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="POPPIES">
-        <div class="card-body">
-          <h5 class="card-title">POPPIES (Cycle3, Pure Parallel)</h5>
-          <p class="card-text mb-1"><strong>PIs:</strong> J. Kartaltepe & M. Rafelski</p>
-          <p class="card-text justify" style="font-size:0.97em;">
-            Wide‑field pure-parallel NIRCam slitless spectroscopy survey (~1455arcmin²) probing emission‑line galaxies in blank fields.
-          </p>
-        </div>
-        <div class="card-footer bg-transparent border-0">
-          <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=5398" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-        </div>
-      </div>
-    </div>
-
-
-  <!-- MEOW -->
-  <div class="col"><div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-    <img loading="lazy" src="../project_logo/jwst/meow.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="MEOW">
-    <div class="card-body">
-      <h5 class="card-title">MEOW (Cycle3)</h5>
-      <p class="card-text mb-1"><strong>PIs:</strong> G. Leung, S. Finkelstein, R. Endsley</p>
-      <p class="card-text justify" style="font-size:0.97em;">
-       Medium program to perform MIRI imaging survey searching for obscured AGNs in the early universe. </p>
-    </div>
-    <div class="card-footer bg-transparent border-0">
-      <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=5407" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-    </div>
-  </div></div>
-
-  <!-- GLIMPSE -->
-  <div class="col"><div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-    <img loading="lazy" src="../project_logo/jwst/glimpse2.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="GLIMPSE">
-    <div class="card-body">
-      <h5 class="card-title">GLIMPSE (Cycle2)</h5>
-      <p class="card-text mb-1"><strong>PIs:</strong> H. Atek & J. Chisholm</p>
-      <p class="card-text justify" style="font-size:0.97em;">
-        Large program to perform the deepest NIRCam survey by gaining >100hrs exposure for a sinlge lensing cluster field. </p>
-    </div>
-    <div class="card-footer bg-transparent border-0">
-      <a href="http://www.jwst-glimpse.com/" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-    </div>
-  </div></div>
-
-  <!-- MAGNIF -->
-  <div class="col"><div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-    <img loading="lazy" src="../project_logo/jwst/magnif.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="MAGNIF">
-    <div class="card-body">
-      <h5 class="card-title">MAGNIF (Cycle2)</h5>
-      <p class="card-text mb-1"><strong>PI:</strong> F. Sun</p>
-      <p class="card-text justify" style="font-size:0.97em;">
-      Medium program to perform NIRCam slitless spectroscopy using medium band filters towards the best-studied Hubble Frontier Field lensing clusters. </p>
-    </div>
-    <div class="card-footer bg-transparent border-0">
-      <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=2883" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-    </div>
-  </div></div>
-
-  <!-- MegaScience -->
-  <div class="col"><div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-    <img loading="lazy" src="../project_logo/jwst/megascience.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="MegaScience">
-    <div class="card-body">
-      <h5 class="card-title">MegaScience (Cycle2)</h5>
-      <p class="card-text mb-1"><strong>PI:</strong> K. Suess</p>
-      <p class="card-text justify" style="font-size:0.97em;">
-      Medium program to perform NIRCam imaging using all meidum-band filters for lensed ~50,000 galaxies over z~0.3–12 to study galaxy evolution statistically. </p>
-    </div>
-    <div class="card-footer bg-transparent border-0">
-      <a href="https://jwst-uncover.github.io/megascience/" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-    </div>
-  </div></div>
-
-
-  <!-- UNCOVER -->
-  <div class="col"><div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-    <img loading="lazy" src="../project_logo/jwst/UNCOVER.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="UNCOVER">
-    <div class="card-body">
-      <h5 class="card-title">UNCOVER (Cycle1)</h5>
-      <p class="card-text mb-1"><strong>PIs:</strong> I. Labbe & R. Bezanson</p>
-      <p class="card-text justify" style="font-size:0.97em;">
-      Treasury program to achieve an efficient, strategetic NIRCam + NIRSpec survey towards the best studied lensing cluster field, Abell 2744. </p>
-    </div>
-    <div class="card-footer bg-transparent border-0">
-      <a href="https://jwst-uncover.github.io/" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-    </div>
-  </div></div>
-
-  <!-- NGDEEP -->
-  <div class="col">
-    <div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-      <img loading="lazy" src="../project_logo/jwst/ngdeep.jpg" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="NGDEEP">
-      <div class="card-body">
-        <h5 class="card-title">NGDEEP (Cycle1)</h5>
-        <p class="card-text mb-1"><strong>PIs:</strong> S. Finkelstein, C. Papovich, N. Pirzkal</p>
-        <p class="card-text justify" style="font-size:0.97em;">
-      Large program to perform the deepest blank-field NIRCam survey, coordinated with NIRISS slit-less spectroscopy. </p>
-      </div>
-      <div class="card-footer bg-transparent border-0">
-        <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=2079" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- COSMOS‑Web -->
-  <div class="col"><div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-    <img loading="lazy" src="../project_logo/jwst/cosmos-web2.jpg" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="COSMOS‑Web">
-    <div class="card-body">
-      <h5 class="card-title">COSMOS‑Web (Cycle1)</h5>
-      <p class="card-text mb-1"><strong>PIs:</strong> J. Kartaltepe & C. Casey</p>
-      <p class="card-text justify" style="font-size:0.97em;">
-      Large program to perform the large-area (~0.5deg²) homogeneous NIRCam mapping to unveil the early structure formation in the COSMOS field.
-
-    </p>
-    </div>
-    <div class="card-footer bg-transparent border-0">
-      <a href="https://cosmos.astro.caltech.edu/page/cosmosweb" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-    </div>
-  </div></div>
-
-
-  <!-- FRESCO -->
-  <div class="col"><div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-    <img loading="lazy" src="../project_logo/jwst/FRESCO.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="FRESCO">
-    <div class="card-body">
-      <h5 class="card-title">FRESCO (Cycle 1)</h5>
-      <p class="card-text mb-1"><strong>PI:</strong> P. Oesch</p>
-      <p class="card-text justify" style="font-size:0.97em;">
-    Treasury program to perform slitless NIRCam spectroscopic survey towards the GOODS-N and GOOD-S fields. </p>
-    </div>
-    <div class="card-footer bg-transparent border-0">
-      <a href="https://jwst-fresco.astro.unige.ch/" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-    </div>
-  </div></div>
-
-  <!-- CANUCS -->
-  <div class="col"><div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-    <img loading="lazy" src="../project_logo/jwst/canucs.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="CANUCS">
-    <div class="card-body">
-      <h5 class="card-title">CANUCS (GTO)</h5>
-      <p class="card-text mb-1"><strong>PI:</strong> C. Willott</p>
-      <p class="card-text justify" style="font-size:0.97em;">
-      JWST GTO survey using cluster lensing to study faint galaxies and early galaxy evolution.  </p>
-    </div>
-    <div class="card-footer bg-transparent border-0">
-      <a href="https://niriss.github.io/" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-    </div>
-  </div></div>
-
-  <!-- CEERS -->
-  <div class="col">
-    <div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-      <img loading="lazy" src="../project_logo/jwst/CEERS.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="CEERS">
-      <div class="card-body">
-        <h5 class="card-title">CEERS (ERS)</h5>
-        <p class="card-text mb-1"><strong>PI:</strong> S. Finkelstein</p>
-        <p class="card-text justify" style="font-size:0.97em;">
-        Early Release Science survey using NIRCam, MIRI, NIRSpec to chart galaxy formation and evolution in the early Universe. </p>
-      </div>
-      <div class="card-footer bg-transparent border-0">
-        <a href="https://ceers.github.io/" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- DJA -->
-  <div class="col"><div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-    <img loading="lazy" src="../project_logo/jwst/dja.png" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="DJA">
-    <div class="card-body">
-      <h5 class="card-title">DJA (Archival survey)</h5>
-      <p class="card-text mb-1"><strong>PI:</strong> G. Brammer</p>
-      <p class="card-text justify" style="font-size:0.97em;">
-      Releasing public archive resources to the community via automated processing of JWST imaging and spectroscopic data taken in major extragalactic surveys.</p>
-    </div>
-    <div class="card-footer bg-transparent border-0">
-      <a href="https://dawn-cph.github.io/dja/" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-    </div>
-  </div></div>
-
-
-    </div>
-
-    <!-- ALMA Projects Section -->
-    <h3 class="text-center text-white mb-4 mt-5" style="font-family:'Times New Roman',serif;font-style:italic;"> ALMA Projects </h3>
-    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
-
-
-      <!-- CRISTAL -->
-      <div class="col">
-        <div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-          <img loading="lazy" src="../project_logo/alma/cristal.jpeg" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="CRISTAL">
-          <div class="card-body">
-            <h5 class="card-title">CRISTAL (Cycle8)</h5>
-            <p class="card-text mb-1"><strong>PI:</strong> R. Herrera-Camus</p>
-            <p class="card-text justify" style="font-size:0.97em;">Large program to study resolved ISM in distant star-forming galaxies by peforming high-resolution deep follow-up for 18 ALPINE galaxies. </p>
-          </div>
-          <div class="card-footer bg-transparent border-0">
-            <a href="https://sites.google.com/view/alma-cristal" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-          </div>
+      <div class="spot-row">
+        <img loading="lazy" src="../research_image/venus_cut2.png" alt="VENUS">
+        <div>
+          <span class="tag">JWST Treasury · PI</span>
+          <h3>VENUS</h3>
+          <p>VENUS is the second largest JWST program, a multi-epoch treasury survey led by Seiji Fujimoto (PI) and Dan Coe (co-PI), targeting 60 massive galaxy clusters to capture the faintest galaxies, black holes, and supernovae at z~4–20 with unprecedented depth and spatial resolution.</p>
+          <a href="venus.html" class="btn btn-ghost btn-sm">Learn more</a>
         </div>
       </div>
 
-
-      <!-- ALCS -->
-      <div class="col">
-        <div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-          <img loading="lazy" src="../project_logo/alma/alcs.jpg" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="ALPINE">
-          <div class="card-body">
-            <h5 class="card-title">ALCS (Cycle6)</h5>
-            <p class="card-text mb-1"><strong>PI:</strong> K. Kohno</p>
-            <p class="card-text justify" style="font-size:0.97em;">Large program to 1-mm homogeneous mapping for 33 massive lensing clusters to investigate dust and gas in distant galaxies. </p>
-          </div>
-          <div class="card-footer bg-transparent border-0">
-            <a href="https://www.ioa.s.u-tokyo.ac.jp/ALCS/" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-          </div>
+      <div class="spot-row">
+        <img loading="lazy" src="../research_image/Cosmic_Grapes.png" alt="Cosmic Grapes">
+        <div>
+          <span class="tag">JWST + ALMA + VLT</span>
+          <h3>Cosmic Grapes</h3>
+          <p>The Cosmic Grapes is a remarkable lensed galaxy system at z=6.07, revealed by deep JWST, ALMA, and VLT/MUSE follow-up, allowing us to spatially resolve chemical enrichment, mass, and dynamics on &lt;10 pc scales at cosmic dawn.</p>
+          <a href="grapes.html" class="btn btn-ghost btn-sm">Learn more</a>
         </div>
       </div>
 
-
-      <!-- ALPINE -->
-      <div class="col">
-        <div class="card h-100 text-center" style="background:rgba(0,0,0,0.7); color:#dee2e6;">
-          <img loading="lazy" src="../project_logo/alma/alpine.jpg" class="card-img-top mx-auto" style="width:120px; margin-top:20px;" alt="ALPINE">
-          <div class="card-body">
-            <h5 class="card-title">ALPINE (Cycle5)</h5>
-            <p class="card-text mb-1"><strong>PI:</strong> O. Le Fèvre</p>
-            <p class="card-text justify" style="font-size:0.97em;">Large Program to investigate [CII] and dust emission in the early universe, targeting 118 main-sequence galaxies at z~4-6.</p>
-          </div>
-          <div class="card-footer bg-transparent border-0">
-            <a href="https://data.lam.fr/a2c2s/" class="btn btn-sm btn-info" target="_blank">Learn more</a>
-          </div>
+      <div class="spot-row">
+        <img loading="lazy" src="../research_image/gnz7q.jpeg" alt="GNz7q">
+        <div>
+          <span class="tag">Nature 2022</span>
+          <h3>GNz7q</h3>
+          <p>GNz7q is a rare hybrid system discovered at z=7.189 that bridges galaxies and quasars, providing the first glimpse of a growing black hole embedded in a dusty galaxy less than 800 million years after the Big Bang.</p>
+          <a href="gnz7q.html" class="btn btn-ghost btn-sm">Learn more</a>
         </div>
       </div>
-      <!-- ...他のカードも繰り返し... -->
+
+      <div class="spot-row">
+        <img loading="lazy" src="../research_image/glimpse.jpg" alt="GLIMPSE-D">
+        <div>
+          <span class="tag">JWST Deep Spectroscopy</span>
+          <h3>GLIMPSE-"D"</h3>
+          <p>The GLIMPSE-"D" is the deep G395M follow-up program targeting a lensing cluster field, most deeply observed so far by JWST and HST to uncover the faintest and/or most distant galaxies at z&gt;6, offering a new window onto the cosmic dawn.</p>
+          <a href="glimpsed.html" class="btn btn-ghost btn-sm">Learn more</a>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 
+  <!-- JWST collaborations -->
+  <section id="jwst" style="padding-top:20px">
+    <div class="wrap">
+      <h2 class="sec-title">JWST programs</h2>
+      <div class="prog-grid">
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/venus.png" alt="VENUS">
+          <h4>VENUS (Cycle 4–5)</h4><div class="pis">PI: S. Fujimoto, D. Coe</div>
+          <p>Large program of JWST's first wide lensing cluster survey to explore the earliest galaxies, AGNs, stars and their explosions.</p>
+          <a href="https://jwst-venus.github.io/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/minerva.png" alt="MINERVA">
+          <h4>MINERVA (Cycle 4)</h4><div class="pis">PIs: A. Muzzin, D. Marchesini, K. Suess</div>
+          <p>Large program to perform homogeneous NIRCam medium-band imaging for JWST legacy fields of CEERS, PRIMER-UDS &amp; COSMOS, and GOODS-N.</p>
+          <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=7814" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/caper.png" alt="CAPERS">
+          <h4>CAPERS (Cycle 3)</h4><div class="pis">PI: M. Dickinson</div>
+          <p>Large program to perform NIRSpec MSA prism spectroscopy of hundreds of z&gt;9 galaxies in legacy CANDELS fields.</p>
+          <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=6368" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/cosmos3d.png" alt="COSMOS-3D">
+          <h4>COSMOS-3D (Cycle 3)</h4><div class="pis">PIs: K. Kakiichi, X. Fan, F. Wang, E. Egami, J. Lyu</div>
+          <p>Large program to perform NIRCam imaging and slitless spectroscopy over the COSMOS-Web field to study early galaxies, AGNs, and cosmic reionization.</p>
+          <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=5893" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/poppies.png" alt="POPPIES">
+          <h4>POPPIES (Cycle 3, Pure Parallel)</h4><div class="pis">PIs: J. Kartaltepe &amp; M. Rafelski</div>
+          <p>Wide-field pure-parallel NIRCam slitless spectroscopy survey (~1455 arcmin²) probing emission-line galaxies in blank fields.</p>
+          <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=5398" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/meow.png" alt="MEOW">
+          <h4>MEOW (Cycle 3)</h4><div class="pis">PIs: G. Leung, S. Finkelstein, R. Endsley</div>
+          <p>Medium program to perform MIRI imaging survey searching for obscured AGNs in the early universe.</p>
+          <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=5407" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/glimpse2.png" alt="GLIMPSE">
+          <h4>GLIMPSE (Cycle 2)</h4><div class="pis">PIs: H. Atek &amp; J. Chisholm</div>
+          <p>Large program to perform the deepest NIRCam survey by gaining &gt;100 hrs exposure for a single lensing cluster field.</p>
+          <a href="http://www.jwst-glimpse.com/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/magnif.png" alt="MAGNIF">
+          <h4>MAGNIF (Cycle 2)</h4><div class="pis">PI: F. Sun</div>
+          <p>Medium program to perform NIRCam slitless spectroscopy using medium band filters towards the best-studied Hubble Frontier Field lensing clusters.</p>
+          <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=2883" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/megascience.png" alt="MegaScience">
+          <h4>MegaScience (Cycle 2)</h4><div class="pis">PI: K. Suess</div>
+          <p>Medium program to perform NIRCam imaging using all medium-band filters for lensed ~50,000 galaxies over z~0.3–12 to study galaxy evolution statistically.</p>
+          <a href="https://jwst-uncover.github.io/megascience/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/UNCOVER.png" alt="UNCOVER">
+          <h4>UNCOVER (Cycle 1)</h4><div class="pis">PIs: I. Labbe &amp; R. Bezanson</div>
+          <p>Treasury program to achieve an efficient, strategic NIRCam + NIRSpec survey towards the best studied lensing cluster field, Abell 2744.</p>
+          <a href="https://jwst-uncover.github.io/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/ngdeep.jpg" alt="NGDEEP">
+          <h4>NGDEEP (Cycle 1)</h4><div class="pis">PIs: S. Finkelstein, C. Papovich, N. Pirzkal</div>
+          <p>Large program to perform the deepest blank-field NIRCam survey, coordinated with NIRISS slitless spectroscopy.</p>
+          <a href="https://www.stsci.edu/jwst/science-execution/program-information?id=2079" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/cosmos-web2.jpg" alt="COSMOS-Web">
+          <h4>COSMOS-Web (Cycle 1)</h4><div class="pis">PIs: J. Kartaltepe &amp; C. Casey</div>
+          <p>Large program to perform the large-area (~0.5 deg²) homogeneous NIRCam mapping to unveil the early structure formation in the COSMOS field.</p>
+          <a href="https://cosmos.astro.caltech.edu/page/cosmosweb" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/FRESCO.png" alt="FRESCO">
+          <h4>FRESCO (Cycle 1)</h4><div class="pis">PI: P. Oesch</div>
+          <p>Treasury program to perform slitless NIRCam spectroscopic survey towards the GOODS-N and GOODS-S fields.</p>
+          <a href="https://jwst-fresco.astro.unige.ch/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/canucs.png" alt="CANUCS">
+          <h4>CANUCS (GTO)</h4><div class="pis">PI: C. Willott</div>
+          <p>JWST GTO survey using cluster lensing to study faint galaxies and early galaxy evolution.</p>
+          <a href="https://niriss.github.io/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/CEERS.png" alt="CEERS">
+          <h4>CEERS (ERS)</h4><div class="pis">PI: S. Finkelstein</div>
+          <p>Early Release Science survey using NIRCam, MIRI, NIRSpec to chart galaxy formation and evolution in the early Universe.</p>
+          <a href="https://ceers.github.io/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/jwst/dja.png" alt="DJA">
+          <h4>DJA (Archival survey)</h4><div class="pis">PI: G. Brammer</div>
+          <p>Releasing public archive resources to the community via automated processing of JWST imaging and spectroscopic data taken in major extragalactic surveys.</p>
+          <a href="https://dawn-cph.github.io/dja/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+      </div>
+    </div>
+  </section>
 
-<!-- Collaboration Network Header and Description -->
-<div class="container mt-6 mb-4">
-  <h3 class="text-center text-white" style="font-family:'Times New Roman', Times, serif; font-style:italic;">
-    Collaboration Network
-  </h3>
-  <p class="lead text-center" style="color:#dee2e6;">
-    Global distribution of our close collaborators/institutes involved in the past 5 years.
-  </p>
-</div>
- 
-<div class="container mb-5">
-  <div id="collabMap" style="width:100%; height:560px; border-radius:12px; overflow:hidden;"></div>
-</div>
+  <!-- ALMA collaborations -->
+  <section id="alma" style="padding-top:20px">
+    <div class="wrap">
+      <h2 class="sec-title">ALMA programs</h2>
+      <div class="prog-grid">
+        <div class="prog"><img loading="lazy" src="../project_logo/alma/cristal.jpeg" alt="CRISTAL">
+          <h4>CRISTAL (Cycle 8)</h4><div class="pis">PI: R. Herrera-Camus</div>
+          <p>Large program to study resolved ISM in distant star-forming galaxies by performing high-resolution deep follow-up for 18 ALPINE galaxies.</p>
+          <a href="https://sites.google.com/view/alma-cristal" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/alma/alcs.jpg" alt="ALCS">
+          <h4>ALCS (Cycle 6)</h4><div class="pis">PI: K. Kohno</div>
+          <p>Large program to 1-mm homogeneous mapping for 33 massive lensing clusters to investigate dust and gas in distant galaxies.</p>
+          <a href="https://www.ioa.s.u-tokyo.ac.jp/ALCS/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+        <div class="prog"><img loading="lazy" src="../project_logo/alma/alpine.jpg" alt="ALPINE">
+          <h4>ALPINE (Cycle 5)</h4><div class="pis">PI: O. Le Fèvre</div>
+          <p>Large Program to investigate [CII] and dust emission in the early universe, targeting 118 main-sequence galaxies at z~4–6.</p>
+          <a href="https://data.lam.fr/a2c2s/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener">Learn more</a></div>
+      </div>
+    </div>
+  </section>
 
-<!-- Collaboration Map (Leaflet + OpenStreetMap) -->
-<script>
-async function initCollabMap() {
-  const mapElement = document.getElementById('collabMap');
-  if (!mapElement) return;
+  <!-- Collaboration network -->
+  <section id="network" style="padding-top:20px">
+    <div class="wrap">
+      <h2 class="sec-title">Collaboration network</h2>
+      <p class="sec-lead">Global distribution of our close collaborators and institutes involved in the past 5 years.</p>
+      <div id="collabMap" style="width:100%;height:520px;border-radius:14px;overflow:hidden;border:1px solid var(--line)"></div>
+    </div>
+  </section>
 
-  const map = L.map(mapElement, {
-    center: [20, 0],
-    zoom: 2,
-    minZoom: 2,
-    maxZoom: 8
-  });
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(map);
-
-  try {
-    const response = await fetch('../collaborator_locations.json', { cache: 'no-cache' });
-    if (!response.ok) throw new Error(`Failed to load collaborator_locations.json: ${response.status}`);
-
-    const locations = await response.json();
-    if (!Array.isArray(locations) || locations.length === 0) throw new Error('Location JSON is empty or invalid.');
-
-    const bounds = [];
-
-    locations.forEach((item) => {
-      if (!item || typeof item.lat !== 'number' || typeof item.lng !== 'number' || typeof item.name !== 'string') return;
-
-      L.marker([item.lat, item.lng])
-        .addTo(map)
-        .bindPopup(`<div style="font-family: serif; font-size: 14px;">${item.name}</div>`);
-
-      bounds.push([item.lat, item.lng]);
-    });
-
-    if (bounds.length > 0) {
-      map.fitBounds(bounds, { padding: [40, 40], maxZoom: 3 });
+  <div id="site-footer"></div>
+  <script src="../site-shell.js"></script>
+  <script>
+  async function initCollabMap() {
+    const mapElement = document.getElementById('collabMap');
+    if (!mapElement) return;
+    const map = L.map(mapElement, { center: [20, 0], zoom: 2, minZoom: 2, maxZoom: 8 });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    }).addTo(map);
+    try {
+      const response = await fetch('../collaborator_locations.json', { cache: 'no-cache' });
+      if (!response.ok) throw new Error(`Failed to load collaborator_locations.json: ${response.status}`);
+      const locations = await response.json();
+      if (!Array.isArray(locations) || locations.length === 0) throw new Error('Location JSON is empty or invalid.');
+      const bounds = [];
+      locations.forEach((item) => {
+        if (!item || typeof item.lat !== 'number' || typeof item.lng !== 'number' || typeof item.name !== 'string') return;
+        L.marker([item.lat, item.lng]).addTo(map)
+          .bindPopup(`<div style="font-size:13px;">${item.name}</div>`);
+        bounds.push([item.lat, item.lng]);
+      });
+      if (bounds.length > 0) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 3 });
+    } catch (error) {
+      console.error('Error while initializing collaboration map:', error);
+      mapElement.innerHTML = '<div style="padding:1.5em;text-align:center;font-size:.95em;">Failed to load collaboration map data.</div>';
     }
-
-  } catch (error) {
-    console.error('Error while initializing collaboration map:', error);
-    mapElement.innerHTML = `
-      <div style="padding: 1.5em; text-align: center; font-size: 0.95em;">
-        Failed to load collaboration map data.
-      </div>
-    `;
   }
-}
-
-document.addEventListener('DOMContentLoaded', initCollabMap);
-</script>
-
-
-    <!-- JavaScript: Above <body> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
-  <div style="width:100%; height: 48px;"></div>
-
-
-<div id="site-footer"></div>
-<script src="../site-shell.js"></script>
-
+  document.addEventListener('DOMContentLoaded', initCollabMap);
+  </script>
 </body>
 </html>

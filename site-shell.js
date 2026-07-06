@@ -17,6 +17,19 @@ async function loadSharedFragment(targetId, filePath, replacements = {}) {
   target.innerHTML = html;
 }
 
+function initNavToggle() {
+  const toggle = document.querySelector('#site-header .nav-toggle');
+  const links = document.querySelector('#site-header .nav-links');
+  if (!toggle || !links) return;
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  // close the menu after a navigation tap
+  links.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => links.classList.remove('open')));
+}
+
 function setActiveNav() {
   const currentPage = document.body.dataset.page;
   if (!currentPage) return;
@@ -79,6 +92,7 @@ async function initSiteShell() {
     await loadSharedFragment("site-header", `${root}/includes/header.html`, replacements);
     await loadSharedFragment("site-footer", `${root}/includes/footer.html`, replacements);
     setActiveNav();
+    initNavToggle();
     setFooterMeta();
   } catch (error) {
     console.error("Error loading shared site shell:", error);

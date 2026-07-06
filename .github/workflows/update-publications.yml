@@ -1,0 +1,36 @@
+name: Update publications
+
+on:
+  schedule:
+    - cron: '0 6 * * 6'   # Saturdays 06:00 UTC (~01:00/02:00 Toronto)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: pip install pyyaml
+
+      - name: Scan arXiv for new papers
+        run: python scripts/fetch_new_papers.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "publications-bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/publications.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "Auto-update publications (weekly arXiv scan)"
+            git push
+          fi
