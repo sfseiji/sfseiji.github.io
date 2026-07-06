@@ -14,6 +14,7 @@
 }
 
 /* ----- base ----- */
+*,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;height:auto;scroll-padding-top:70px}
 body{
   display:flex;flex-direction:column;height:auto;min-height:100vh;margin:0;
