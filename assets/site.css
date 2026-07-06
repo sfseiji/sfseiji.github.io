@@ -15,10 +15,12 @@
 
 /* ----- base ----- */
 *,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;height:auto;scroll-padding-top:70px}
+/* Base color lives on <html> so the fixed photo layers below always show
+   (a solid color on <body> would paint over negative-z-index pseudos). */
+html{scroll-behavior:smooth;height:auto;scroll-padding-top:70px;background:var(--bg)}
 body{
   display:flex;flex-direction:column;height:auto;min-height:100vh;margin:0;
-  background:var(--bg);color:var(--ink);
+  background:transparent;color:var(--ink);
   font-family:var(--font-body) !important;line-height:1.65;font-size:15.5px;
 }
 body > *{flex-shrink:0}
@@ -30,12 +32,12 @@ p,.sec-lead,.note,.pillar span,.rcard p,.hl p,.prog p{text-wrap:pretty}
 a{color:inherit}
 .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
 
-/* Faint fixed photo behind everything, a different personal shot per page
-   (selected via body[data-page]); dark enough to stay in the background. */
+/* Faint fixed photo behind everything, a different personal shot per page.
+   ::before = the photo, ::after = a dark veil that keeps text readable while
+   still letting the image read through. */
 body::before{
-  content:"";position:fixed;inset:0;z-index:-10;
+  content:"";position:fixed;inset:0;z-index:-2;
   background:url('/personal/maunakea.jpg') center/cover no-repeat;
-  filter:brightness(.32) saturate(.9);
 }
 body[data-page="research"]::before{background-image:url('/personal/bahareiya2.jpg')}
 body[data-page="about"]::before{background-image:url('/personal/bahareiya1.jpg')}
@@ -45,13 +47,11 @@ body[data-page="teaching"]::before{background-image:url('/personal/uto.png')}
 body[data-page="news"]::before{background-image:url('/personal/pisa.jpg')}
 body[data-page="job"]::before{background-image:url('/personal/stone.jpg')}
 body::after{
-  content:"";position:fixed;inset:0;z-index:-9;
-  background:linear-gradient(180deg,rgba(7,11,21,.72) 0%,rgba(7,11,21,.82) 100%);
+  content:"";position:fixed;inset:0;z-index:-1;
+  background:linear-gradient(180deg,rgba(7,11,21,.78) 0%,rgba(7,11,21,.88) 100%);
 }
-/* Legacy pages carry a .full-bg-image div — let the body layers show through. */
-.full-bg-image{background:none !important;filter:none !important;
-  position:fixed;inset:0;z-index:-8;
-  background:linear-gradient(180deg,rgba(7,11,21,.1),rgba(7,11,21,.35)) !important}
+/* Legacy pages carry their own .full-bg-image div — hide it and use the body layers. */
+.full-bg-image{display:none !important}
 
 /* ----- shared nav (includes/header.html) ----- */
 .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(14px);
