@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>CELPIP Trainer — Personal Practice</title>
+<link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{
+  --bg:#070b15; --bg2:#0c1322; --card:#111a2d; --card2:#15203a;
+  --ink:#e8eef7; --muted:#96a3b8; --accent:#67e8f9; --accent2:#818cf8; --gold:#fbbf24;
+  --good:#34d399; --bad:#f87171;
+  --line:rgba(255,255,255,.09);
+  --font-display:'Space Grotesk',sans-serif; --font-body:'Inter',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth}
+body{
+  margin:0;color:var(--ink);font-family:var(--font-body);line-height:1.6;font-size:15.5px;
+  min-height:100vh;
+  background:
+    radial-gradient(1100px 700px at 15% -10%, rgba(129,140,248,.18), transparent 60%),
+    radial-gradient(900px 600px at 100% 0%, rgba(103,232,249,.14), transparent 55%),
+    var(--bg);
+}
+/* faint starfield */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+    radial-gradient(1px 1px at 70% 20%, #cfe8ff, transparent),
+    radial-gradient(1px 1px at 40% 70%, #fff, transparent),
+    radial-gradient(1px 1px at 85% 60%, #bcd7ff, transparent),
+    radial-gradient(1px 1px at 55% 45%, #fff, transparent),
+    radial-gradient(1px 1px at 10% 80%, #cfe8ff, transparent);
+  background-repeat:no-repeat;}
+h1,h2,h3,h4,.brand{font-family:var(--font-display);text-wrap:balance}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* appbar */
+.appbar{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+  background:rgba(7,11,21,.8);border-bottom:1px solid var(--line)}
+.appbar .in{max-width:1080px;margin:0 auto;padding:11px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.brand{font-weight:700;font-size:1.02rem;letter-spacing:.01em;text-decoration:none;white-space:nowrap;cursor:pointer}
+.brand .dot{color:var(--accent)}
+.appnav{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
+.appnav a{color:var(--muted);text-decoration:none;font-size:.86rem;padding:6px 11px;border-radius:9px}
+.appnav a:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+.appnav a.on{color:var(--accent);background:rgba(103,232,249,.12)}
+.appnav .home{border:1px solid var(--line)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:12px;font-weight:600;
+  font-size:.92rem;text-decoration:none;cursor:pointer;border:none;font-family:var(--font-body);transition:.18s}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#04121b}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(255,255,255,.22);color:var(--ink);background:none}
+.btn-ghost:hover{background:rgba(255,255,255,.07)}
+.btn-sm{padding:8px 14px;font-size:.84rem;border-radius:10px}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+/* generic cards */
+.section{padding:34px 0}
+.eyebrow{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
+.h-title{font-size:2rem;margin:0 0 8px}
+.lead{color:var(--muted);max-width:680px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px}
+.grid{display:grid;gap:16px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.muted{color:var(--muted)}
+.pill{display:inline-block;font-size:.72rem;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.divider{height:1px;background:var(--line);margin:26px 0}
+
+/* skill tiles (home) */
+.tile{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--ink);
+  background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;transition:.2s;cursor:pointer}
+.tile:hover{transform:translateY(-4px);border-color:rgba(103,232,249,.4);box-shadow:0 16px 40px rgba(0,0,0,.4)}
+.tile .ico{font-size:1.7rem}
+.tile h3{margin:0;font-size:1.15rem}
+.tile .sub{font-size:.83rem;color:var(--muted)}
+.bar{height:7px;border-radius:99px;background:rgba(255,255,255,.08);overflow:hidden;margin-top:auto}
+.bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.statline{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted)}
+.statline b{color:var(--ink);font-family:var(--font-display)}
+
+/* stat cards */
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;text-align:center}
+.stat b{display:block;font-family:var(--font-display);font-size:1.5rem;color:var(--accent)}
+.stat span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+
+/* part list */
+.part{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);
+  border-radius:14px;padding:16px 18px;cursor:pointer;transition:.18s;text-decoration:none;color:var(--ink)}
+.part:hover{border-color:rgba(103,232,249,.4);background:var(--card2)}
+.part .num{font-family:var(--font-display);color:var(--accent);font-size:1.05rem;min-width:54px}
+.part .body{flex:1;min-width:0}
+.part .body h4{margin:0 0 2px;font-size:1rem}
+.part .body p{margin:0;font-size:.83rem;color:var(--muted)}
+.part .go{color:var(--muted);font-size:1.3rem}
+
+/* quiz */
+.passage{white-space:pre-wrap;background:var(--bg2);border:1px solid var(--line);border-radius:14px;
+  padding:20px 22px;font-size:.95rem;line-height:1.7;overflow-x:auto}
+.qcard{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:14px}
+.qcard .qq{font-weight:600;margin-bottom:12px}
+.opt{display:flex;gap:11px;align-items:flex-start;padding:10px 12px;border:1px solid var(--line);border-radius:10px;
+  margin-bottom:8px;cursor:pointer;transition:.15s}
+.opt:hover{background:rgba(255,255,255,.04)}
+.opt input{margin-top:3px;accent-color:var(--accent);flex-shrink:0}
+.opt.correct{border-color:var(--good);background:rgba(52,211,153,.1)}
+.opt.wrong{border-color:var(--bad);background:rgba(248,113,113,.1)}
+.opt.locked{cursor:default}
+.expl{font-size:.85rem;color:var(--muted);margin-top:8px;padding-left:2px;display:none}
+.expl.show{display:block}
+.expl b{color:var(--accent)}
+.scorebox{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:16px 0;text-align:center}
+.scorebox .big{font-family:var(--font-display);font-size:2rem;color:var(--accent)}
+
+/* audio panel */
+.audio{background:var(--card2);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:16px}
+.audio .disc{width:74px;height:74px;border-radius:50%;background:
+   radial-gradient(circle at 50% 50%, #1b2740 0 30%, #24406b 31% 33%, #1b2740 34% 100%);
+   border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 12px;transition:transform .8s linear}
+.audio .disc.spin{animation:spin 3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.slider{display:flex;align-items:center;gap:10px;font-size:.8rem;color:var(--muted);margin-top:12px;justify-content:center}
+input[type=range]{accent-color:var(--accent)}
+.transcript{display:none;margin-top:14px}
+.transcript.show{display:block}
+.tline{padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.9rem}
+.tline b{color:var(--accent2);font-family:var(--font-display);font-weight:600;margin-right:8px}
+
+/* writing */
+.timer{font-family:var(--font-display);font-size:2rem;color:var(--ink)}
+.timer.warn{color:var(--gold)}
+.timer.over{color:var(--bad)}
+textarea.compose{width:100%;min-height:280px;background:var(--bg2);border:1px solid var(--line);border-radius:14px;
+  padding:16px;color:var(--ink);font-family:var(--font-body);font-size:.98rem;line-height:1.7;resize:vertical;outline:none}
+textarea.compose:focus{border-color:rgba(103,232,249,.5)}
+.wc{font-size:.85rem;color:var(--muted)}
+.wc b{font-family:var(--font-display)}
+.wc.good b{color:var(--good)} .wc.low b{color:var(--gold)} .wc.high b{color:var(--bad)}
+.checklist{list-style:none;padding:0;margin:0}
+.checklist li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.9rem;display:flex;gap:10px}
+.checklist li::before{content:"✓";color:var(--accent);font-weight:700}
+.bullets{list-style:none;padding:0;margin:10px 0 0}
+.bullets li{padding:7px 0 7px 26px;position:relative;font-size:.92rem}
+.bullets li::before{content:"";position:absolute;left:6px;top:14px;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.model{background:var(--bg2);border:1px solid var(--line);border-left:3px solid var(--accent2);border-radius:12px;
+  padding:16px 18px;white-space:pre-wrap;font-size:.93rem;line-height:1.7}
+
+/* speaking */
+.phase{text-align:center;padding:10px 0}
+.phase .label{font-size:.8rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.phase .big{font-family:var(--font-display);font-size:3rem;line-height:1.1;margin:4px 0}
+.phase.prep .big{color:var(--gold)} .phase.speak .big{color:var(--good)}
+.reclabel{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;color:var(--bad)}
+.reclabel .rd{width:10px;height:10px;border-radius:50%;background:var(--bad);animation:pulse 1s infinite}
+@keyframes pulse{50%{opacity:.3}}
+audio{width:100%;margin-top:10px;filter:invert(.9) hue-rotate(180deg)}
+.note{font-size:.8rem;color:#6b7891;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-top:10px}
+
+.footer{color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);margin-top:40px;padding:24px 0 40px}
+.footer a{color:var(--accent);text-decoration:none}
+
+@media (max-width:820px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .grid-2{grid-template-columns:1fr}
+  .h-title{font-size:1.6rem}
+}
+@media (max-width:520px){
+  .grid-4{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="appbar">
+  <div class="in">
+    <a class="brand" data-nav="#/home"><span class="dot">◆</span> CELPIP&nbsp;Trainer</a>
+    <nav class="appnav" id="appnav">
+      <a data-nav="#/reading">Reading</a>
+      <a data-nav="#/listening">Listening</a>
+      <a data-nav="#/writing">Writing</a>
+      <a data-nav="#/speaking">Speaking</a>
+      <a class="home" href="../index.html">← Site</a>
+    </nav>
+  </div>
+</div>
+
+<main id="app" class="wrap"></main>
+
+<div class="footer wrap">
+  Personal CELPIP-General practice tool · not affiliated with Paragon Testing Enterprises.
+  Built for exam familiarity — <a href="../index.html">back to main site</a>.
+</div>
+
+<script src="bank.seed.js"></script>
+<script src="bank.gen.js"></script>
+<script>
+(function(){
+  "use strict";
+  var app = document.getElementById('app');
+
+  /* ---------- metadata ---------- */
+  var SKILLS = {
+    reading:{ name:'Reading', icon:'📖', tag:'55–60 min · auto-scored',
+      parts:[
+        {key:'correspondence', num:'Part 1', label:'Reading Correspondence', desc:'Read an email or letter and answer questions.'},
+        {key:'diagram',        num:'Part 2', label:'Reading to Apply a Diagram', desc:'Match a person’s needs to a schedule or notice.'},
+        {key:'information',     num:'Part 3', label:'Reading for Information', desc:'Find which paragraph gives each piece of information.'},
+        {key:'viewpoints',     num:'Part 4', label:'Reading for Viewpoints', desc:'Read an opinion article and answer questions.'}
+      ]},
+    listening:{ name:'Listening', icon:'🎧', tag:'47–55 min · read aloud by your browser',
+      parts:[
+        {key:'problemSolving', num:'Part 1', label:'Problem Solving', desc:'A conversation about solving a problem.'},
+        {key:'conversation',   num:'Part 2', label:'Daily Life Conversation', desc:'A casual everyday conversation.'},
+        {key:'information',     num:'Part 3', label:'Listening for Information', desc:'An informative explanation full of facts.'},
+        {key:'news',           num:'Part 4', label:'News Item', desc:'A short local news report.'},
+        {key:'discussion',     num:'Part 5', label:'Discussion', desc:'Three people discussing a plan.'},
+        {key:'viewpoints',     num:'Part 6', label:'Viewpoints', desc:'A longer segment presenting viewpoints.'}
+      ]},
+    writing:{ name:'Writing', icon:'✍️', tag:'53–60 min · timed, with model answers',
+      parts:[
+        {key:'email',  num:'Task 1', label:'Writing an Email', desc:'27 min · 150–200 words.'},
+        {key:'survey', num:'Task 2', label:'Responding to Survey Questions', desc:'26 min · 150–200 words.'}
+      ]},
+    speaking:{ name:'Speaking', icon:'🎤', tag:'15–20 min · prep + speak timers, mic recording',
+      parts:[
+        {key:'t1', num:'Task 1', label:'Giving Advice', desc:'30s prep · 90s speak'},
+        {key:'t2', num:'Task 2', label:'Personal Experience', desc:'30s prep · 60s speak'},
+        {key:'t3', num:'Task 3', label:'Describing a Scene', desc:'30s prep · 60s speak'},
+        {key:'t4', num:'Task 4', label:'Making Predictions', desc:'30s prep · 60s speak'},
+        {key:'t5', num:'Task 5', label:'Comparing & Persuading', desc:'60s prep · 60s speak'},
+        {key:'t6', num:'Task 6', label:'Difficult Situation', desc:'60s prep · 60s speak'},
+        {key:'t7', num:'Task 7', label:'Expressing Opinions', desc:'30s prep · 90s speak'},
+        {key:'t8', num:'Task 8', label:'Unusual Situation', desc:'30s prep · 60s speak'}
+      ]}
+  };
+  var SKILL_ORDER = ['reading','listening','writing','speaking'];
+
+  /* ---------- bank merge ---------- */
+  var BANK = {};
+  function mergeBanks(){
+    var seed = window.CELPIP_BANK_SEED || {}, gen = window.CELPIP_BANK_GEN || {};
+    var out = {};
+    SKILL_ORDER.forEach(function(s){
+      out[s] = {};
+      var keys = {};
+      Object.keys(seed[s]||{}).forEach(function(k){keys[k]=1;});
+      Object.keys(gen[s]||{}).forEach(function(k){keys[k]=1;});
+      Object.keys(keys).forEach(function(k){
+        out[s][k] = (seed[s]&&seed[s][k]||[]).concat(gen[s]&&gen[s][k]||[]);
+      });
+    });
+    return out;
+  }
+  function itemsFor(skill,key){ return (BANK[skill] && BANK[skill][key]) || []; }
+  function totalItems(skill){ var t=0; (SKILLS[skill].parts||[]).forEach(function(p){ t+=itemsFor(skill,p.key).length; }); return t; }
+
+  /* ---------- progress ---------- */
+  var PKEY='celpip_progress_v2';
+  function loadProg(){
+    var p; try{ p=JSON.parse(localStorage.getItem(PKEY)); }catch(e){}
+    if(!p||typeof p!=='object') p={};
+    p.skills = p.skills || {};
+    SKILL_ORDER.forEach(function(s){ p.skills[s] = p.skills[s] || {items:0,correct:0,questions:0,best:0,last:null}; });
+    p.drafts = p.drafts || {};
+    p.done = p.done || {};
+    p.dates = p.dates || [];
+    p.answered = p.answered || 0;
+    p.testDate = p.testDate || null;
+    return p;
+  }
+  var PROG = loadProg();
+  function saveProg(){ try{ localStorage.setItem(PKEY, JSON.stringify(PROG)); }catch(e){} }
+  function todayStr(){ var d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); }
+  function markPracticed(skill){
+    PROG.skills[skill].last = new Date().toISOString();
+    var t=todayStr(); if(PROG.dates.indexOf(t)<0) PROG.dates.push(t);
+  }
+  function streak(){
+    if(!PROG.dates.length) return 0;
+    var set={}; PROG.dates.forEach(function(d){set[d]=1;});
+    var n=0, d=new Date();
+    for(;;){ var k=d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); if(set[k]){n++; d.setDate(d.getDate()-1);} else break; }
+    return n;
+  }
+
+  /* ---------- teardown of live things ---------- */
+  var timers=[], stream=null, recorder=null, recog=null;
+  function teardown(){
+    timers.forEach(function(t){clearInterval(t);}); timers=[];
+    try{ window.speechSynthesis && speechSynthesis.cancel(); }catch(e){}
+    try{ if(recorder && recorder.state!=='inactive') recorder.stop(); }catch(e){}
+    recorder=null;
+    if(stream){ stream.getTracks().forEach(function(t){t.stop();}); stream=null; }
+    try{ if(recog) recog.stop(); }catch(e){} recog=null;
+  }
+
+  /* ---------- helpers ---------- */
+  function esc(s){ return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+  function el(id){ return document.getElementById(id); }
+  function pct(a,b){ return b>0? Math.round(100*a/b):0; }
+  function daysUntil(iso){ var d=new Date(iso+'T00:00:00'); var now=new Date(); now.setHours(0,0,0,0); return Math.round((d-now)/86400000); }
+  function setNav(skill){
+    document.querySelectorAll('#appnav a[data-nav]').forEach(function(a){
+      a.classList.toggle('on', a.getAttribute('data-nav')==='#/'+skill);
+    });
+  }
+
+  /* ---------- router ---------- */
+  function route(){
+    var h=(location.hash||'').replace(/^#\//,'');
+    var skill=h.split('/')[0];
+    window.scrollTo(0,0);
+    if(!skill || skill==='home' || !SKILLS[skill]){ setNav(''); return renderHome(); }
+    setNav(skill);
+    renderSkill(skill);
+  }
+
+  /* ---------- HOME / dashboard ---------- */
+  function renderHome(){
+    var totalAns=PROG.answered;
+    var tests=(function(){
+      // count started items for R/L via items counter, plus done for W/S
+      return PROG.skills.reading.items+PROG.skills.listening.items+Object.keys(PROG.done).length;
+    })();
+    var td = PROG.testDate ? daysUntil(PROG.testDate) : null;
+    var tilesHtml = SKILL_ORDER.map(function(s){
+      var sk=SKILLS[s], pr=PROG.skills[s], total=totalItems(s);
+      var progressPct, statHtml;
+      if(s==='reading'||s==='listening'){
+        progressPct = pr.questions? pct(pr.correct,pr.questions):0;
+        statHtml = '<span>accuracy <b>'+progressPct+'%</b></span><span>sets done <b>'+pr.items+'</b></span><span>best <b>'+pr.best+'%</b></span>';
+      } else {
+        var doneCount=(SKILLS[s].parts||[]).reduce(function(a,p){ return a+itemsFor(s,p.key).filter(function(it){return PROG.done[it.id];}).length; },0);
+        progressPct = total? pct(doneCount,total):0;
+        statHtml = '<span>completed <b>'+doneCount+'/'+total+'</b></span>';
+      }
+      return '<div class="tile" data-nav="#/'+s+'">'
+        + '<div class="ico">'+sk.icon+'</div>'
+        + '<h3>'+sk.name+'</h3>'
+        + '<div class="sub">'+esc(sk.tag)+'</div>'
+        + '<div class="statline">'+statHtml+'</div>'
+        + '<div class="bar"><i style="width:'+progressPct+'%"></i></div>'
+        + '</div>';
+    }).join('');
+
+    app.innerHTML =
+      '<section class="section">'
+      + '<div class="eyebrow">Permanent Residence · English Test Prep</div>'
+      + '<h1 class="h-title">CELPIP-General Trainer</h1>'
+      + '<p class="lead">Practice every task type the way it appears on test day — Reading &amp; Listening are auto-scored with explanations, Writing is timed with model answers, and Speaking runs real prep/speak timers with mic recording. Your progress is saved on this device.</p>'
+      + '<div class="grid grid-4" style="margin:22px 0">'
+        + '<div class="stat"><b>'+totalAns+'</b><span>questions answered</span></div>'
+        + '<div class="stat"><b>'+streak()+'</b><span>day streak</span></div>'
+        + '<div class="stat"><b>'+tests+'</b><span>tasks practiced</span></div>'
+        + '<div class="stat"><b>'+(td!==null?(td<0?'—':td):'—')+'</b><span>'+(td!==null&&td>=0?'days to test':'set test date')+'</span></div>'
+      + '</div>'
+      + '<div class="grid grid-4">'+tilesHtml+'</div>'
+      + '<div class="divider"></div>'
+      + '<div class="row" style="justify-content:space-between">'
+        + '<div class="row">'
+          + '<button class="btn btn-primary" id="rand">🎲 Random question</button>'
+          + '<label class="pill" style="display:inline-flex;align-items:center;gap:8px;padding:8px 12px">Test date '
+            + '<input type="date" id="testdate" value="'+(PROG.testDate||'')+'" style="background:var(--bg2);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:4px 8px;font-family:inherit"></label>'
+        + '</div>'
+        + '<button class="btn btn-ghost btn-sm" id="reset">Reset progress</button>'
+      + '</div>'
+      + '</section>';
+
+    bindNav();
+    el('rand').onclick=function(){
+      var s=SKILL_ORDER[Math.floor(Math.random()*SKILL_ORDER.length)];
+      var parts=SKILLS[s].parts.filter(function(p){return itemsFor(s,p.key).length;});
+      if(!parts.length){ location.hash='#/'+s; return; }
+      var p=parts[Math.floor(Math.random()*parts.length)];
+      var i=Math.floor(Math.random()*itemsFor(s,p.key).length);
+      openSession(s,p.key,i);
+    };
+    el('testdate').onchange=function(e){ PROG.testDate=e.target.value||null; saveProg(); route(); };
+    el('reset').onclick=function(){
+      if(confirm('Reset all saved progress and drafts on this device?')){
+        localStorage.removeItem(PKEY); PROG=loadProg(); route();
+      }
+    };
+  }
+
+  /* ---------- SKILL page ---------- */
+  function renderSkill(skill){
+    var sk=SKILLS[skill];
+    var partsHtml = sk.parts.map(function(p){
+      var n=itemsFor(skill,p.key).length;
+      var extra='';
+      if(skill==='reading'||skill==='listening'){ extra=''; }
+      return '<a class="part" data-open="'+skill+'|'+p.key+'">'
+        + '<div class="num">'+p.num+'</div>'
+        + '<div class="body"><h4>'+esc(p.label)+'</h4><p>'+esc(p.desc)+'</p></div>'
+        + '<div class="muted" style="font-size:.8rem;text-align:right;min-width:70px">'+n+' item'+(n===1?'':'s')+'</div>'
+        + '<div class="go">›</div>'
+        + '</a>';
+    }).join('');
+    app.innerHTML =
+      '<section class="section">'
+      + '<a class="pill" data-nav="#/home" style="cursor:pointer">← Dashboard</a>'
+      + '<div class="eyebrow" style="margin-top:16px">'+sk.icon+' '+esc(sk.name)+'</div>'
+      + '<h1 class="h-title">'+esc(sk.name)+' practice</h1>'
+      + '<p class="lead">'+esc(sk.tag)+'. Choose a task type below.</p>'
+      + '<div class="grid" style="margin-top:20px">'+partsHtml+'</div>'
+      + '</section>';
+    bindNav();
+    app.querySelectorAll('[data-open]').forEach(function(a){
+      a.onclick=function(){ var v=a.getAttribute('data-open').split('|'); openSession(v[0],v[1],0); };
+    });
+  }
+
+  /* ---------- session dispatch ---------- */
+  function openSession(skill,key,i){
+    teardown();
+    var list=itemsFor(skill,key);
+    if(!list.length){
+      app.innerHTML='<section class="section"><a class="pill" data-nav="#/'+skill+'">← Back</a>'
+        +'<p class="lead" style="margin-top:20px">No items here yet — more are being generated. Try another task type.</p></section>';
+      bindNav(); return;
+    }
+    i=((i%list.length)+list.length)%list.length;
+    window.scrollTo(0,0);
+    if(skill==='reading'||skill==='listening') renderQuiz(skill,key,list,i);
+    else if(skill==='writing') renderWriting(skill,key,list,i);
+    else renderSpeaking(skill,key,list,i);
+  }
+
+  function sessionHeader(skill,key,list,i,partLabel){
+    return '<div class="row" style="justify-content:space-between;margin-bottom:14px">'
+      + '<a class="pill" data-nav="#/'+skill+'" style="cursor:pointer">← '+esc(SKILLS[skill].name)+'</a>'
+      + '<span class="pill">'+esc(partLabel)+' · '+(i+1)+' / '+list.length+'</span>'
+      + '</div>';
+  }
+  function navButtons(skill,key,i,total){
+    return '<div class="row" style="justify-content:space-between;margin-top:22px">'
+      + '<button class="btn btn-ghost btn-sm" data-jump="'+(i-1)+'">‹ Prev</button>'
+      + '<button class="btn btn-primary btn-sm" data-jump="'+(i+1)+'">Next task ›</button>'
+      + '</div>';
+  }
+  function bindSessionNav(skill,key,i,total){
+    app.querySelectorAll('[data-jump]').forEach(function(b){
+      b.onclick=function(){ openSession(skill,key,parseInt(b.getAttribute('data-jump'),10)); };
+    });
+  }
+
+  /* ---------- READING / LISTENING quiz ---------- */
+  function partLabelOf(skill,key){ var p=SKILLS[skill].parts.filter(function(x){return x.key===key;})[0]; return p?(p.num+' · '+p.label):key; }
+
+  function renderQuiz(skill,key,list,i){
+    var item=list[i];
+    var isListen=(skill==='listening');
+    var qHtml=item.questions.map(function(q,qi){
+      var opts=q.options.map(function(o,oi){
+        return '<label class="opt" data-q="'+qi+'" data-o="'+oi+'">'
+          +'<input type="radio" name="q'+qi+'" value="'+oi+'"><span>'+esc(o)+'</span></label>';
+      }).join('');
+      return '<div class="qcard" id="qc'+qi+'"><div class="qq">'+(qi+1)+'. '+esc(q.q)+'</div>'+opts
+        +'<div class="expl" id="ex'+qi+'"></div></div>';
+    }).join('');
+
+    var top = sessionHeader(skill,key,list,i,partLabelOf(skill,key))
+      + '<h2 class="h-title" style="font-size:1.4rem">'+esc(item.title||partLabelOf(skill,key))+'</h2>'
+      + '<p class="muted" style="margin-top:0">'+esc(item.instructions||'')+'</p>';
+
+    var body;
+    if(isListen){
+      body = '<div class="audio">'
+        + '<div class="disc" id="disc">🎧</div>'
+        + '<p class="muted" style="text-align:center;margin:0 0 10px">'+esc(item.setup||'Listen carefully — you can replay before answering.')+'</p>'
+        + '<div class="row" style="justify-content:center">'
+          + '<button class="btn btn-primary btn-sm" id="play">▶ Play audio</button>'
+          + '<button class="btn btn-ghost btn-sm" id="pause" disabled>⏸ Pause</button>'
+          + '<button class="btn btn-ghost btn-sm" id="stop" disabled>⏹ Stop</button>'
+        + '</div>'
+        + '<div class="slider">Speed <input type="range" id="rate" min="0.7" max="1.1" step="0.05" value="0.95"><span id="ratev">0.95×</span></div>'
+        + '<div class="note" id="ttsnote"></div>'
+        + '<div class="transcript" id="transcript"></div>'
+        + '</div>';
+    } else {
+      body = '<div class="passage">'+esc(item.passage||'')+'</div>';
+    }
+
+    app.innerHTML = '<section class="section">'+top+body
+      + '<div style="margin-top:18px">'+qHtml+'</div>'
+      + '<div id="result"></div>'
+      + '<div class="row" style="margin-top:16px">'
+        + '<button class="btn btn-primary" id="check">Check answers</button>'
+        + (isListen?'<button class="btn btn-ghost" id="reveal">Show transcript</button>':'')
+      + '</div>'
+      + navButtons(skill,key,i,list.length)
+      + '</section>';
+
+    bindNav(); bindSessionNav(skill,key,i,list.length);
+
+    // option click selects radio
+    app.querySelectorAll('.opt').forEach(function(l){
+      l.addEventListener('click',function(){ var r=l.querySelector('input'); if(r && !r.disabled) r.checked=true; });
+    });
+
+    if(isListen) setupAudio(item);
+
+    var checked=false;
+    el('check').onclick=function(){
+      if(checked) return;
+      var correct=0;
+      item.questions.forEach(function(q,qi){
+        var sel=app.querySelector('input[name="q'+qi+'"]:checked');
+        var chosen=sel?parseInt(sel.value,10):-1;
+        app.querySelectorAll('.opt[data-q="'+qi+'"]').forEach(function(l){
+          l.classList.add('locked');
+          l.querySelectorAll('input').forEach(function(inp){inp.disabled=true;});
+          var oi=parseInt(l.getAttribute('data-o'),10);
+          if(oi===q.answer) l.classList.add('correct');
+          else if(oi===chosen) l.classList.add('wrong');
+        });
+        if(chosen===q.answer) correct++;
+        var ex=el('ex'+qi);
+        ex.innerHTML='<b>'+(chosen===q.answer?'Correct.':'Answer: '+esc(q.options[q.answer])+'.')+'</b> '+esc(q.explanation||'');
+        ex.classList.add('show');
+      });
+      var n=item.questions.length, p=pct(correct,n);
+      el('result').innerHTML='<div class="scorebox"><div class="big">'+correct+' / '+n+'</div><div class="muted">'+p+'% correct'
+        +(p>=80?' — great work!':p>=60?' — solid, review the misses.':' — review the explanations and retry.')+'</div></div>';
+      el('result').scrollIntoView({behavior:'smooth',block:'center'});
+      // progress
+      var pr=PROG.skills[skill]; pr.items++; pr.questions+=n; pr.correct+=correct; pr.best=Math.max(pr.best,p);
+      PROG.answered+=n; markPracticed(skill); saveProg();
+      checked=true; el('check').disabled=true;
+      if(isListen){ el('reveal').textContent='Transcript shown'; el('transcript').classList.add('show'); }
+    };
+
+    if(isListen){
+      el('reveal').onclick=function(){ el('transcript').classList.toggle('show');
+        el('reveal').textContent = el('transcript').classList.contains('show')?'Hide transcript':'Show transcript'; };
+    }
+  }
+
+  function setupAudio(item){
+    var tEl=el('transcript');
+    tEl.innerHTML=item.transcript.map(function(t){ return '<div class="tline"><b>'+esc(t.speaker)+'</b>'+esc(t.line)+'</div>'; }).join('');
+    var rate=0.95, disc=el('disc');
+    var supported = 'speechSynthesis' in window;
+    var note=el('ttsnote');
+    if(!supported){ note.textContent='Your browser can’t read audio aloud. Use “Show transcript” and read it as practice.'; }
+    else { note.textContent='Audio is read aloud by your browser’s voices. Tip: attempt the questions after one listen, like the real test.'; }
+    el('rate').oninput=function(e){ rate=parseFloat(e.target.value); el('ratev').textContent=rate.toFixed(2)+'×'; };
+
+    function voices(){ var v=(supported?speechSynthesis.getVoices():[])||[]; var en=v.filter(function(x){return /^en/i.test(x.lang);}); return en.length?en:v; }
+    function play(){
+      if(!supported) return;
+      speechSynthesis.cancel();
+      var vs=voices();
+      var speakers=[]; item.transcript.forEach(function(t){ if(speakers.indexOf(t.speaker)<0) speakers.push(t.speaker); });
+      item.transcript.forEach(function(t,idx){
+        var u=new SpeechSynthesisUtterance(t.line);
+        u.rate=rate;
+        var si=speakers.indexOf(t.speaker);
+        if(vs.length) u.voice=vs[si%vs.length];
+        u.pitch = 1 + (si%2? -0.12:0.12);
+        if(idx===item.transcript.length-1){ u.onend=function(){ disc.classList.remove('spin'); el('pause').disabled=true; el('stop').disabled=true; }; }
+        speechSynthesis.speak(u);
+      });
+      disc.classList.add('spin'); el('pause').disabled=false; el('stop').disabled=false; el('pause').textContent='⏸ Pause';
+    }
+    el('play').onclick=play;
+    el('pause').onclick=function(){
+      if(!supported) return;
+      if(speechSynthesis.paused){ speechSynthesis.resume(); el('pause').textContent='⏸ Pause'; disc.classList.add('spin'); }
+      else { speechSynthesis.pause(); el('pause').textContent='▶ Resume'; disc.classList.remove('spin'); }
+    };
+    el('stop').onclick=function(){ if(supported) speechSynthesis.cancel(); disc.classList.remove('spin'); el('pause').disabled=true; el('stop').disabled=true; };
+    // warm up voices list
+    if(supported && speechSynthesis.getVoices().length===0){ speechSynthesis.onvoiceschanged=function(){}; }
+  }
+
+  /* ---------- WRITING ---------- */
+  function renderWriting(skill,key,list,i){
+    var item=list[i];
+    var bulletsHtml=(item.bullets||[]).map(function(b){return '<li>'+esc(b)+'</li>';}).join('');
+    var m=(item.wordRange||'150-200').split('-'); var wmin=parseInt(m[0],10)||150, wmax=parseInt(m[1],10)||200;
+    var draftKey=item.id;
+    var saved=PROG.drafts[draftKey]||'';
+
+    app.innerHTML='<section class="section">'
+      + sessionHeader(skill,key,list,i,partLabelOf(skill,key))
+      + '<h2 class="h-title" style="font-size:1.4rem">'+esc(item.title||('Task — '+partLabelOf(skill,key)))+'</h2>'
+      + '<div class="card"><div class="row" style="justify-content:space-between"><span class="pill">⏱ '+item.timeMin+' min</span><span class="pill">📝 '+esc(item.wordRange||'150-200')+' words</span></div>'
+        + '<p style="margin:14px 0 0">'+esc(item.prompt)+'</p>'
+        + '<ul class="bullets">'+bulletsHtml+'</ul></div>'
+      + '<div class="card" style="margin-top:16px">'
+        + '<div class="row" style="justify-content:space-between;align-items:center">'
+          + '<div class="timer" id="timer">'+item.timeMin+':00</div>'
+          + '<div class="row"><button class="btn btn-primary btn-sm" id="startt">▶ Start timer</button>'
+          + '<button class="btn btn-ghost btn-sm" id="rt" disabled>Reset</button></div>'
+        + '</div>'
+        + '<textarea class="compose" id="compose" placeholder="Type your response here...">'+esc(saved)+'</textarea>'
+        + '<div class="row" style="justify-content:space-between;margin-top:8px">'
+          + '<span class="wc" id="wc">Words: <b>0</b></span>'
+          + '<div class="row"><button class="btn btn-ghost btn-sm" id="save">Save draft</button>'
+          + '<button class="btn btn-primary btn-sm" id="finish">Finish &amp; see model answer</button></div>'
+        + '</div>'
+      + '</div>'
+      + '<div id="model"></div>'
+      + navButtons(skill,key,i,list.length)
+      + '</section>';
+
+    bindNav(); bindSessionNav(skill,key,i,list.length);
+
+    var ta=el('compose'), wc=el('wc');
+    function countWords(){ var t=ta.value.trim(); return t?t.split(/\s+/).length:0; }
+    function updateWC(){ var n=countWords(); var cls=n<wmin?'low':(n>wmax?'high':'good');
+      wc.className='wc '+cls; wc.innerHTML='Words: <b>'+n+'</b> <span class="muted">(target '+wmin+'–'+wmax+')</span>'; }
+    ta.addEventListener('input',updateWC); updateWC();
+
+    // timer
+    var remain=item.timeMin*60, tick=null, tEl=el('timer');
+    function fmt(s){ var m=Math.floor(Math.abs(s)/60), ss=Math.abs(s)%60; return (s<0?'-':'')+m+':'+(ss<10?'0':'')+ss; }
+    function render(){ tEl.textContent=fmt(remain); tEl.className='timer'+(remain<=0?' over':(remain<=60?' warn':'')); }
+    el('startt').onclick=function(){
+      if(tick){ clearInterval(tick); tick=null; el('startt').textContent='▶ Start timer'; return; }
+      el('startt').textContent='⏸ Pause'; el('rt').disabled=false;
+      tick=setInterval(function(){ remain--; render(); if(remain<=0 && remain>-2){ try{beep();}catch(e){} } },1000);
+      timers.push(tick);
+    };
+    el('rt').onclick=function(){ if(tick){clearInterval(tick);tick=null;} remain=item.timeMin*60; render(); el('startt').textContent='▶ Start timer'; };
+    render();
+
+    el('save').onclick=function(){ PROG.drafts[draftKey]=ta.value; saveProg(); el('save').textContent='Saved ✓'; setTimeout(function(){var b=el('save'); if(b) b.textContent='Save draft';},1500); };
+
+    el('finish').onclick=function(){
+      if(tick){clearInterval(tick);tick=null;}
+      PROG.drafts[draftKey]=ta.value; PROG.done[item.id]=true; markPracticed('writing'); saveProg();
+      var tips=(item.rubricTips||[]).map(function(t){return '<li>'+esc(t)+'</li>';}).join('');
+      var n=countWords();
+      el('model').innerHTML='<div class="divider"></div>'
+        + '<div class="scorebox"><div class="muted">You wrote <b style="color:var(--ink)">'+n+'</b> words'
+          +(n<wmin?' — a bit short; aim for '+wmin+'+.':(n>wmax?' — a bit long; tighten toward '+wmax+'.':' — right in the target range. Nice.'))+'</div></div>'
+        + '<h3 style="margin-top:10px">How to score well</h3><ul class="checklist">'+tips+'</ul>'
+        + '<h3 style="margin-top:20px">Model answer</h3><div class="model">'+esc(item.modelAnswer||'')+'</div>'
+        + '<p class="note">Compare your response against the model: did you address all the bullet points, keep a consistent tone, and use linking words? Rewrite once more if you have time.</p>';
+      el('model').scrollIntoView({behavior:'smooth',block:'start'});
+    };
+  }
+
+  /* ---------- SPEAKING ---------- */
+  function renderSpeaking(skill,key,list,i){
+    var item=list[i];
+    app.innerHTML='<section class="section">'
+      + sessionHeader(skill,key,list,i,partLabelOf(skill,key))
+      + '<h2 class="h-title" style="font-size:1.4rem">'+esc(item.type||partLabelOf(skill,key))+'</h2>'
+      + '<div class="card"><div class="row" style="justify-content:space-between"><span class="pill">🧠 Prep '+item.prepSec+'s</span><span class="pill">🎙 Speak '+item.speakSec+'s</span></div>'
+        + '<p style="margin:14px 0 0">'+esc(item.prompt)+'</p></div>'
+      + '<div class="card" style="margin-top:16px" id="stage">'
+        + '<div class="phase" id="phase"><div class="label">Ready when you are</div><div class="big">🎤</div></div>'
+        + '<div class="row" style="justify-content:center"><button class="btn btn-primary" id="go">▶ Start (prep '+item.prepSec+'s → speak '+item.speakSec+'s)</button>'
+        + '<button class="btn btn-ghost" id="skip" disabled>Skip to speaking</button>'
+        + '<button class="btn btn-ghost" id="stopspk" disabled>⏹ Stop</button></div>'
+        + '<div id="rec"></div>'
+        + '<div class="note" id="micnote"></div>'
+      + '</div>'
+      + '<div id="reveal"></div>'
+      + '<div class="row" style="margin-top:16px"><button class="btn btn-ghost" id="model">Reveal model answer &amp; template</button></div>'
+      + navButtons(skill,key,i,list.length)
+      + '</section>';
+
+    bindNav(); bindSessionNav(skill,key,i,list.length);
+
+    var phase=el('phase'), micnote=el('micnote');
+    var canRec = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
+    micnote.textContent = canRec ? 'Tip: allow microphone access to record and play back your answer.'
+      : 'Recording isn’t available here (needs https + mic). The timers still work — speak aloud and self-assess.';
+
+    var chunks=[], phTimer=null, ended=false;
+    function setBig(v){ var big=phase && phase.querySelector('.big'); if(big) big.textContent=v; }
+    function setPhase(cls,label,big){ if(!phase) return; phase.className='phase '+cls; phase.innerHTML='<div class="label">'+label+'</div><div class="big">'+big+'</div>'; }
+    function countdown(sec,cls,label,onDone){
+      var r=sec; setPhase(cls,label,r+'s');
+      phTimer=setInterval(function(){ r--; if(r<=0){ clearInterval(phTimer); setBig('0s'); onDone(); }
+        else { setBig(r+'s'); if(r<=3){try{beep();}catch(e){}} } },1000);
+      timers.push(phTimer);
+    }
+    function startSpeaking(){
+      if(ended) return;
+      var skipB=el('skip'), stopB=el('stopspk');
+      if(skipB) skipB.disabled=true;
+      if(stopB) stopB.disabled=false;
+      if(canRec){
+        navigator.mediaDevices.getUserMedia({audio:true}).then(function(s){
+          if(ended){ s.getTracks().forEach(function(t){t.stop();}); return; }
+          stream=s; chunks=[];
+          recorder=new MediaRecorder(s);
+          recorder.ondataavailable=function(e){ if(e.data.size) chunks.push(e.data); };
+          recorder.onstop=function(){
+            var rec=el('rec'); if(!rec) return;
+            var blob=new Blob(chunks,{type:chunks[0]?chunks[0].type:'audio/webm'});
+            var url=URL.createObjectURL(blob);
+            rec.innerHTML='<div class="divider"></div><h3 style="margin:0 0 6px">Your recording</h3><audio controls src="'+url+'"></audio>';
+          };
+          recorder.start();
+          var rec=el('rec'); if(rec) rec.innerHTML='<div class="reclabel" style="justify-content:center;margin-top:12px"><span class="rd"></span> Recording…</div>';
+          runSpeakTimer();
+        }).catch(function(){ if(micnote) micnote.textContent='Microphone blocked — no recording, but keep speaking for the timer.'; runSpeakTimer(); });
+      } else { runSpeakTimer(); }
+    }
+    function runSpeakTimer(){
+      if(ended) return;
+      countdown(item.speakSec,'speak','Speak now',function(){ endSpeaking(); });
+    }
+    function endSpeaking(){
+      if(ended) return; ended=true;
+      if(phTimer) clearInterval(phTimer);
+      var stopB=el('stopspk'), goB=el('go');
+      if(stopB) stopB.disabled=true;
+      if(goB){ goB.disabled=false; goB.textContent='▶ Try again'; }
+      setPhase('','Done — nice work','✅');
+      if(recorder && recorder.state!=='inactive'){ try{recorder.stop();}catch(e){} }
+      if(stream){ stream.getTracks().forEach(function(t){t.stop();}); stream=null; }
+      PROG.done[item.id]=true; markPracticed('speaking'); saveProg();
+    }
+    el('go').onclick=function(){
+      teardownTimersOnly(); ended=false;
+      var rec=el('rec'); if(rec) rec.innerHTML='';
+      el('go').disabled=true; var skipB=el('skip'); if(skipB) skipB.disabled=false;
+      countdown(item.prepSec,'prep','Prepare',function(){ startSpeaking(); });
+    };
+    el('skip').onclick=function(){ if(phTimer)clearInterval(phTimer); startSpeaking(); };
+    el('stopspk').onclick=function(){ endSpeaking(); };
+
+    function teardownTimersOnly(){ timers.forEach(function(t){clearInterval(t);}); timers=[]; }
+
+    el('model').onclick=function(){
+      var tmpl=(item.template||[]).map(function(t){return '<li>'+esc(t)+'</li>';}).join('');
+      var tips=(item.tips||[]).map(function(t){return '<li>'+esc(t)+'</li>';}).join('');
+      el('reveal').innerHTML='<div class="divider"></div>'
+        + '<h3 style="margin-top:0">Answer structure</h3><ul class="bullets">'+tmpl+'</ul>'
+        + '<h3 style="margin-top:18px">Model answer <span class="muted" style="font-size:.8rem;font-weight:400">(say it aloud, then compare)</span></h3>'
+        + '<div class="model">'+esc(item.modelAnswer||'')+'</div>'
+        + '<h3 style="margin-top:18px">Tips</h3><ul class="checklist">'+tips+'</ul>';
+      el('reveal').scrollIntoView({behavior:'smooth',block:'start'});
+    };
+  }
+
+  /* ---------- shared: beep ---------- */
+  var actx=null;
+  function beep(){
+    try{
+      actx=actx||new (window.AudioContext||window.webkitAudioContext)();
+      var o=actx.createOscillator(), g=actx.createGain();
+      o.frequency.value=660; o.connect(g); g.connect(actx.destination);
+      g.gain.setValueAtTime(0.08,actx.currentTime); g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+0.18);
+      o.start(); o.stop(actx.currentTime+0.18);
+    }catch(e){}
+  }
+
+  /* ---------- nav binding ---------- */
+  function bindNav(){
+    document.querySelectorAll('[data-nav]').forEach(function(a){
+      a.onclick=function(e){ e.preventDefault(); location.hash=a.getAttribute('data-nav'); };
+    });
+  }
+
+  window.addEventListener('hashchange', function(){ teardown(); route(); });
+
+  /* ---------- boot ---------- */
+  function boot(){
+    BANK=mergeBanks();
+    if(window.speechSynthesis){ try{speechSynthesis.getVoices();}catch(e){} }
+    route();
+  }
+  boot();
+})();
+</script>
+</body>
+</html>
