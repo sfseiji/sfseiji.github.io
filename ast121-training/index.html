@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AST121 Script Trainer</title>
+<style>
+  :root {
+    --bg: #0f1218;
+    --panel: #171c26;
+    --panel2: #1e2432;
+    --line: #2a3245;
+    --text: #e8ecf4;
+    --dim: #93a0b8;
+    --accent: #5b8cff;
+    --accent2: #34c9a3;
+    --warn: #f2b84b;
+    --bad: #ef6a6a;
+    --good: #4fc47f;
+    --close: #d9b64a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+    line-height: 1.6; padding-bottom: 60px;
+  }
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: #12151d;
+    border-bottom: 1px solid var(--line); padding: 10px 16px 0;
+  }
+  .hrow { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  h1 { font-size: 17px; margin: 0; font-weight: 700; letter-spacing: .02em; }
+  #countdown { color: var(--warn); font-size: 13px; font-variant-numeric: tabular-nums; }
+  #headerStats { color: var(--dim); font-size: 12px; margin-top: 2px; }
+  #headerStats b { color: var(--text); font-weight: 600; }
+  nav { display: flex; gap: 4px; margin-top: 8px; overflow-x: auto; padding-bottom: 0; }
+  nav button {
+    background: none; border: none; color: var(--dim); font-size: 13.5px; font-weight: 600;
+    padding: 8px 12px 10px; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap;
+    font-family: inherit;
+  }
+  nav button.active { color: var(--text); border-bottom-color: var(--accent); }
+  main { max-width: 860px; margin: 0 auto; padding: 16px; }
+  section[id^="tab-"] { display: none; }
+  section.active { display: block; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+    padding: 14px 16px; margin-bottom: 14px;
+  }
+  .card h3 { margin: 0 0 6px; font-size: 14px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .badge {
+    font-size: 10.5px; font-weight: 700; letter-spacing: .04em; border-radius: 5px;
+    padding: 1px 7px; text-transform: uppercase;
+  }
+  .badge.cam { background: #3b2f4f; color: #c9a6ff; }
+  .badge.vo  { background: #22374b; color: #7fc4ff; }
+  .badge.cue { background: var(--panel2); color: var(--dim); text-transform: none; letter-spacing: 0; font-weight: 500; }
+  .ptext { font-size: 17px; line-height: 1.85; }
+  .sent { cursor: pointer; border-radius: 4px; }
+  .sent:hover { background: rgba(91,140,255,.12); }
+  .sent.speaking { background: rgba(91,140,255,.22); }
+  .hw { border-bottom: 1.5px dotted var(--warn); cursor: pointer; }
+  .hw:hover { color: var(--warn); }
+  .controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 12px; }
+  .controls label { color: var(--dim); font-size: 12.5px; }
+  button.btn {
+    background: var(--panel2); color: var(--text); border: 1px solid var(--line);
+    border-radius: 8px; padding: 7px 14px; font-size: 13.5px; cursor: pointer; font-family: inherit; font-weight: 600;
+  }
+  button.btn:hover { border-color: var(--accent); }
+  button.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  button.btn.rec { background: var(--bad); border-color: var(--bad); color: #fff; }
+  button.btn.small { padding: 3px 10px; font-size: 12px; font-weight: 500; }
+  button.btn:disabled { opacity: .45; cursor: default; }
+  select, input[type="range"] {
+    background: var(--panel2); color: var(--text); border: 1px solid var(--line);
+    border-radius: 8px; padding: 6px 8px; font-size: 13px; font-family: inherit;
+  }
+  input[type="range"] { padding: 0; height: 26px; }
+  .senrow { display: flex; gap: 8px; align-items: flex-start; padding: 5px 0; border-top: 1px dashed var(--line); }
+  .senrow:first-child { border-top: none; }
+  .senrow .stext { flex: 1; font-size: 15px; color: var(--text); }
+  .mask {
+    background: var(--panel2); border-radius: 4px; cursor: pointer; color: var(--dim);
+    padding: 0 2px; letter-spacing: 1px;
+  }
+  .mask.revealed { background: rgba(79,196,127,.15); color: var(--text); letter-spacing: normal; }
+  .modes { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+  .modes button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .grade { display: flex; gap: 6px; margin-left: auto; }
+  .grade button { font-size: 12px; padding: 2px 9px; }
+  .grade button.sel-ok { background: rgba(79,196,127,.25); border-color: var(--good); }
+  .grade button.sel-mid { background: rgba(242,184,75,.25); border-color: var(--warn); }
+  .grade button.sel-ng { background: rgba(239,106,106,.25); border-color: var(--bad); }
+  .live {
+    min-height: 54px; background: var(--panel2); border: 1px dashed var(--line);
+    border-radius: 8px; padding: 10px 12px; font-size: 14px; color: var(--dim); margin: 10px 0;
+  }
+  .live .fin { color: var(--text); }
+  .result-words { font-size: 16.5px; line-height: 1.9; margin-top: 10px; }
+  .w-match { color: var(--good); }
+  .w-close { color: var(--close); border-bottom: 1px dotted var(--close); }
+  .w-miss  { color: var(--bad); background: rgba(239,106,106,.12); border-radius: 3px; padding: 0 2px; }
+  .w-extra { color: var(--dim); text-decoration: line-through; }
+  .scorebar { display: flex; gap: 18px; flex-wrap: wrap; align-items: baseline; margin-top: 12px; }
+  .scorebar .big { font-size: 30px; font-weight: 800; }
+  .scorebar .lbl { color: var(--dim); font-size: 12px; }
+  table.hist { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-top: 8px; }
+  table.hist td, table.hist th { padding: 4px 8px; border-bottom: 1px solid var(--line); text-align: left; color: var(--dim); }
+  table.hist td.sc { color: var(--text); font-weight: 700; }
+  .drillgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+  .dcard { background: var(--panel2); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  .dcard .w { font-size: 17px; font-weight: 700; }
+  .dcard .ipa { color: var(--accent); font-size: 14px; margin-left: 8px; }
+  .dcard .stress { color: var(--dim); font-size: 12px; margin: 2px 0 6px; }
+  .dcard .tip { font-size: 12.5px; color: var(--text); opacity: .9; margin-bottom: 8px; }
+  .dcard .heard { font-size: 12px; margin-top: 6px; min-height: 16px; }
+  .heard.ok { color: var(--good); } .heard.ng { color: var(--bad); } .heard.wait { color: var(--warn); }
+  .cathead { margin: 18px 0 8px; font-size: 13px; font-weight: 700; color: var(--dim); letter-spacing: .05em; }
+  #prompterBox {
+    height: 62vh; overflow: hidden; position: relative; background: #000;
+    border-radius: 12px; border: 1px solid var(--line); padding: 0 26px;
+  }
+  #prompterInner { position: absolute; left: 26px; right: 26px; top: 0; transition: none; }
+  #prompterInner p { font-weight: 600; line-height: 1.7; margin: 1em 0; }
+  #prompterPad { height: 30vh; }
+  .pstat { color: var(--dim); font-size: 13px; font-variant-numeric: tabular-nums; }
+  #wordpop {
+    position: fixed; z-index: 100; background: var(--panel2); border: 1px solid var(--accent);
+    border-radius: 10px; padding: 10px 14px; max-width: 320px; box-shadow: 0 8px 30px rgba(0,0,0,.5);
+    font-size: 13px;
+  }
+  #wordpop .w { font-size: 17px; font-weight: 700; }
+  #wordpop .ipa { color: var(--accent); margin-left: 8px; }
+  #wordpop .stress { color: var(--dim); font-size: 12px; margin: 2px 0 4px; }
+  #wordpop .tip { margin-bottom: 8px; }
+  .note { color: var(--dim); font-size: 12.5px; }
+  .warnbox { background: rgba(242,184,75,.12); border: 1px solid rgba(242,184,75,.4); border-radius: 8px; padding: 8px 12px; font-size: 12.5px; margin-bottom: 12px; }
+  details.plan { margin-bottom: 14px; }
+  details.plan summary { cursor: pointer; font-weight: 700; font-size: 13.5px; color: var(--accent2); }
+  details.plan .card { margin-top: 10px; font-size: 13.5px; }
+  details.plan li { margin: 3px 0; }
+  .changelist { font-size: 13px; }
+  .changelist td { padding: 3px 8px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .changelist .old { color: var(--bad); text-decoration: line-through; }
+  .changelist .new { color: var(--good); }
+  .takes .take { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-top: 1px dashed var(--line); }
+  .takes audio { height: 32px; flex: 1; }
+  @media (max-width: 600px) {
+    .ptext { font-size: 16px; }
+    main { padding: 10px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="hrow">
+    <h1>AST121 Script Trainer</h1>
+    <div id="countdown"></div>
+  </div>
+  <div id="headerStats"></div>
+  <nav id="tabs"></nav>
+</header>
+<main>
+  <section id="tab-script"></section>
+  <section id="tab-listen"></section>
+  <section id="tab-memorize"></section>
+  <section id="tab-recite"></section>
+  <section id="tab-drills"></section>
+  <section id="tab-prompter"></section>
+</main>
+<div id="wordpop" hidden></div>
+
+<script src="data.js"></script>
+<script>
+'use strict';
+const D = window.TRAINER_DATA;
+const $ = s => document.querySelector(s);
+const el = (tag, attrs = {}, html = '') => {
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === 'class') e.className = v; else if (k.startsWith('on')) e[k] = v; else e.setAttribute(k, v);
+  }
+  if (html) e.innerHTML = html;
+  return e;
+};
+const store = {
+  get(k, d) { try { const v = localStorage.getItem('ast121.' + k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v) { localStorage.setItem('ast121.' + k, JSON.stringify(v)); },
+};
+const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+// ---------- text utilities ----------
+const normWord = w => w.toLowerCase().replace(/[’]/g, "'").replace(/[^a-z0-9']/g, '');
+function tokenizeDisplay(text) {
+  return text.split(/\s+/).filter(Boolean).map(t => ({ disp: t, norm: normWord(t) })).filter(t => t.norm);
+}
+const fullText = () => D.paragraphs.map(p => p.text).join('\n\n');
+const totalWords = tokenizeDisplay(fullText()).length;
+
+// lenient words: proper nouns the recognizer will butcher
+const LENIENT = new Set(['seiji', 'fujimoto', 'kyoto', 'ast121', 'ast', '121', 'webb']);
+// merge rules for spoken tokens (recognizer variants)
+function preprocessSpoken(tokens) {
+  const out = [];
+  for (let i = 0; i < tokens.length; i++) {
+    const t = tokens[i];
+    if (t === 'ast' && tokens[i + 1] === '121') { out.push('ast121'); i++; continue; }
+    if (t === 'a' && tokens[i + 1] === 's' && tokens[i + 2] === 't') { out.push('ast121'); i += 2; if (tokens[i + 1] === '121') i++; continue; }
+    out.push(t);
+  }
+  return out;
+}
+function lev(a, b) {
+  const m = a.length, n = b.length;
+  if (!m) return n; if (!n) return m;
+  let prev = Array.from({ length: n + 1 }, (_, j) => j);
+  for (let i = 1; i <= m; i++) {
+    const cur = [i];
+    for (let j = 1; j <= n; j++) {
+      cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    prev = cur;
+  }
+  return prev[n];
+}
+function wordSim(a, b) {
+  if (a === b) return 'match';
+  const d = lev(a, b), L = Math.max(a.length, b.length);
+  if (L >= 4 && d <= (L >= 7 ? 2 : 1)) return 'close';
+  return null;
+}
+// alignment: target tokens vs spoken tokens
+function alignWords(target, spoken) {
+  const m = target.length, n = spoken.length;
+  const COST = { match: 0, close: 0.35, sub: 1, gap: 1 };
+  const dp = Array.from({ length: m + 1 }, () => new Float32Array(n + 1));
+  const bt = Array.from({ length: m + 1 }, () => new Uint8Array(n + 1)); // 1=diag 2=up(del) 3=left(ins)
+  for (let i = 1; i <= m; i++) { dp[i][0] = i; bt[i][0] = 2; }
+  for (let j = 1; j <= n; j++) { dp[0][j] = j; bt[0][j] = 3; }
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      const sim = wordSim(target[i - 1], spoken[j - 1]);
+      const dCost = dp[i - 1][j - 1] + (sim === 'match' ? COST.match : sim === 'close' ? COST.close : COST.sub);
+      const uCost = dp[i - 1][j] + COST.gap;
+      const lCost = dp[i][j - 1] + COST.gap;
+      const best = Math.min(dCost, uCost, lCost);
+      dp[i][j] = best; bt[i][j] = best === dCost ? 1 : best === uCost ? 2 : 3;
+    }
+  }
+  const ops = [];
+  let i = m, j = n;
+  while (i > 0 || j > 0) {
+    const b = bt[i][j];
+    if (i > 0 && j > 0 && b === 1) {
+      const sim = wordSim(target[i - 1], spoken[j - 1]);
+      let type = sim || 'sub';
+      if (type === 'sub' && LENIENT.has(target[i - 1])) type = 'close';
+      ops.push({ type, ti: i - 1, si: j - 1 }); i--; j--;
+    } else if (i > 0 && (j === 0 || b === 2)) { ops.push({ type: 'del', ti: i - 1 }); i--; }
+    else { ops.push({ type: 'ins', si: j - 1 }); j--; }
+  }
+  ops.reverse();
+  const exact = ops.filter(o => o.type === 'match').length;
+  const close = ops.filter(o => o.type === 'close').length;
+  const score = Math.round((exact + 0.5 * close) / m * 100);
+  return { ops, score, exact, close };
+}
+
+// ---------- TTS ----------
+let voiceSel, rateInput;
+let currentVoice = null;
+let speakQueue = [], speaking = false;
+function enVoices() {
+  return speechSynthesis.getVoices().filter(v => /^en(-|_)/i.test(v.lang) || v.lang === 'en');
+}
+function pickDefaultVoice(vs) {
+  const prefs = ['Samantha', 'Google US English', 'Ava', 'Allison', 'Karen', 'Daniel', 'Alex'];
+  const saved = store.get('voice', null);
+  if (saved) { const f = vs.find(v => v.name === saved); if (f) return f; }
+  for (const p of prefs) { const f = vs.find(v => v.name.includes(p)); if (f) return f; }
+  return vs.find(v => v.lang.startsWith('en-US')) || vs[0] || null;
+}
+function refreshVoices() {
+  const vs = enVoices();
+  if (!vs.length || !voiceSel) return;
+  currentVoice = pickDefaultVoice(vs);
+  voiceSel.innerHTML = '';
+  vs.forEach(v => {
+    const o = el('option', { value: v.name }, esc(v.name + ' (' + v.lang + ')'));
+    if (currentVoice && v.name === currentVoice.name) o.selected = true;
+    voiceSel.appendChild(o);
+  });
+}
+function getRate() { return parseFloat(store.get('rate', 0.92)); }
+function speakText(text, { rate, onend } = {}) {
+  const u = new SpeechSynthesisUtterance(text);
+  if (currentVoice) u.voice = currentVoice;
+  u.lang = currentVoice ? currentVoice.lang : 'en-US';
+  u.rate = rate ?? getRate();
+  if (onend) u.onend = onend;
+  u.onerror = () => { if (onend) onend(); };
+  speechSynthesis.speak(u);
+  return u;
+}
+function stopAllSpeech() {
+  speakQueue = []; speaking = false;
+  speechSynthesis.cancel();
+  document.querySelectorAll('.sent.speaking').forEach(e => e.classList.remove('speaking'));
+}
+// speak a list of {text, elId?, gapMs?} sequentially
+function speakSeq(items, opts = {}) {
+  stopAllSpeech();
+  speakQueue = items.slice(); speaking = true;
+  const next = () => {
+    document.querySelectorAll('.sent.speaking').forEach(e => e.classList.remove('speaking'));
+    if (!speaking || !speakQueue.length) { speaking = false; if (opts.ondone) opts.ondone(); return; }
+    const it = speakQueue.shift();
+    if (it.elId) { const e = document.getElementById(it.elId); if (e) { e.classList.add('speaking'); e.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } }
+    speakText(it.text, {
+      rate: it.rate ?? opts.rate,
+      onend: () => { const gap = it.gapMs ?? opts.gapMs ?? 150; setTimeout(next, gap); },
+    });
+  };
+  next();
+}
+function estSpeakMs(text, rate) {
+  const w = tokenizeDisplay(text).length;
+  return w / (150 * (rate || getRate())) * 60000;
+}
+
+// ---------- header ----------
+let headerTimerStarted = false;
+function renderHeader() {
+  const cd = () => {
+    const t = new Date(D.meta.shoot) - new Date();
+    if (t <= 0) { $('#countdown').textContent = '本番当日'; return; }
+    const h = Math.floor(t / 3600000), m = Math.floor(t % 3600000 / 60000);
+    $('#countdown').textContent = `本番まで ${h}時間${String(m).padStart(2, '0')}分 (7/16 19:00)`;
+  };
+  cd();
+  if (!headerTimerStarted) { headerTimerStarted = true; setInterval(cd, 30000); }
+  const attempts = store.get('attempts', []);
+  const best = attempts.filter(a => a.scope === 'all').reduce((b, a) => Math.max(b, a.score), 0);
+  $('#headerStats').innerHTML =
+    `<b>${totalWords}語</b> ・ 目標 <b>${D.meta.targetSecondsMin}–${D.meta.targetSecondsMax}秒</b>` +
+    ` ・ 通し暗唱ベスト <b>${best ? best + '%' : 'まだ'}</b> ・ ${esc(D.meta.location)}`;
+}
+
+// ---------- tabs ----------
+const TABS = [
+  ['script', '台本'], ['listen', '聞く・シャドー'], ['memorize', '暗記'],
+  ['recite', '暗唱テスト'], ['drills', '発音ドリル'], ['prompter', '本番モード'],
+];
+function switchTab(key) {
+  document.querySelectorAll('section[id^="tab-"]').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.toggle('active', b.dataset.k === key));
+  $('#tab-' + key).classList.add('active');
+  store.set('tab', key);
+  stopAllSpeech();
+}
+function renderTabs() {
+  const nav = $('#tabs');
+  TABS.forEach(([k, label]) => nav.appendChild(el('button', { 'data-k': k, onclick: () => switchTab(k) }, esc(label))));
+}
+
+// ---------- hard word popup ----------
+function hardWordInfo(norm) { return D.hardWords[norm] || null; }
+function wrapHardWords(text) {
+  return text.split(/(\s+)/).map(part => {
+    if (/^\s+$/.test(part) || !part) return esc(part);
+    const n = normWord(part);
+    if (hardWordInfo(n)) return `<span class="hw" data-w="${n}">${esc(part)}</span>`;
+    return esc(part);
+  }).join('');
+}
+function showWordPop(norm, x, y) {
+  const info = hardWordInfo(norm); if (!info) return;
+  const pop = $('#wordpop');
+  pop.innerHTML =
+    `<div><span class="w">${esc(info.word || norm)}</span><span class="ipa">${esc(info.ipa || '')}</span></div>` +
+    `<div class="stress">${esc(info.stress || '')}</div>` +
+    `<div class="tip">${esc(info.tip || '')}</div>` +
+    `<button class="btn small" id="wpNormal">▶ 等速</button> <button class="btn small" id="wpSlow">▶ ゆっくり</button> <button class="btn small" id="wpClose">閉じる</button>`;
+  pop.hidden = false;
+  const r = pop.getBoundingClientRect();
+  pop.style.left = Math.min(x, innerWidth - r.width - 12) + 'px';
+  pop.style.top = Math.min(y + 14, innerHeight - r.height - 12) + 'px';
+  $('#wpNormal').onclick = e => { e.stopPropagation(); speechSynthesis.cancel(); speakText(info.word || norm, { rate: 0.9 }); };
+  $('#wpSlow').onclick = e => { e.stopPropagation(); speechSynthesis.cancel(); speakText(info.word || norm, { rate: 0.5 }); };
+  $('#wpClose').onclick = () => { pop.hidden = true; };
+}
+document.addEventListener('click', e => {
+  const hw = e.target.closest('.hw');
+  if (hw) { e.stopPropagation(); showWordPop(hw.dataset.w, e.clientX, e.clientY); return; }
+  if (!e.target.closest('#wordpop')) $('#wordpop').hidden = true;
+});
+
+// ---------- Script tab ----------
+function renderScript() {
+  const sec = $('#tab-script');
+  sec.innerHTML = '';
+  // practice plan
+  const plan = el('details', { class: 'plan', open: '' });
+  plan.appendChild(el('summary', {}, '練習プラン（今夜 → 明日19:00 本番）'));
+  const planCard = el('div', { class: 'card' });
+  planCard.innerHTML = D.planHtml;
+  plan.appendChild(planCard);
+  sec.appendChild(plan);
+  // changes vs emailed version
+  if (D.changes && D.changes.length) {
+    const c = el('div', { class: 'card' });
+    c.innerHTML = `<h3>Philip に送った版からの微修正（発音・話しやすさ最適化）</h3>` +
+      `<table class="changelist">` +
+      D.changes.map(ch => `<tr><td class="old">${esc(ch.original)}</td><td class="new">${esc(ch.replacement)}</td><td class="note">${esc(ch.why)}</td></tr>`).join('') +
+      `</table><div class="note" style="margin-top:6px">内容・構成・尺は不変。voiceover を暗唱する形式なので、この程度の言い回し差は問題になりません。</div>`;
+    sec.appendChild(c);
+  }
+  const hint = el('div', { class: 'note', style: 'margin-bottom:10px' },
+    '文をクリック → 読み上げ。<span class="hw" style="pointer-events:none">点線の語</span> をクリック → 発音カード。');
+  sec.appendChild(hint);
+  D.paragraphs.forEach((p, pi) => {
+    const c = el('div', { class: 'card' });
+    const camBadge = p.camera === 'on'
+      ? '<span class="badge cam">ON CAMERA</span>'
+      : '<span class="badge vo">VOICEOVER</span>';
+    c.innerHTML = `<h3>P${pi + 1} ${esc(p.label)} ${camBadge} <span class="badge cue">${esc(p.visual)}</span></h3>`;
+    const pt = el('div', { class: 'ptext' });
+    p.sentences.forEach((s, si) => {
+      const span = el('span', { class: 'sent', id: `sc-${pi}-${si}` });
+      span.innerHTML = wrapHardWords(s) + ' ';
+      span.onclick = e => {
+        if (e.target.closest('.hw')) return;
+        stopAllSpeech();
+        span.classList.add('speaking');
+        speakText(s, { onend: () => span.classList.remove('speaking') });
+      };
+      pt.appendChild(span);
+    });
+    c.appendChild(pt);
+    if (p.deliveryNote) c.appendChild(el('div', { class: 'note', style: 'margin-top:8px' }, '話し方: ' + esc(p.deliveryNote)));
+    sec.appendChild(c);
+  });
+}
+
+// ---------- Listen tab ----------
+function renderListen() {
+  const sec = $('#tab-listen');
+  sec.innerHTML = '';
+  const ctrl = el('div', { class: 'card' });
+  ctrl.innerHTML = `<div class="controls">
+      <label>声</label><select id="voiceSel"></select>
+      <label>速さ <span id="rateVal"></span></label>
+      <input type="range" id="rateInput" min="0.5" max="1.15" step="0.05" style="width:130px">
+      <button class="btn" id="stopSpeak">■ 停止</button>
+    </div>
+    <div class="controls">
+      <button class="btn primary" id="playAll">▶ 全編を聞く</button>
+      <button class="btn" id="shadowAll">シャドーイング（1文ずつ→間）</button>
+    </div>
+    <div class="note">シャドーイング: 1文流れたあと同じ長さの間が空くので、そこで真似して言う。0.8x から始めて等速へ。</div>`;
+  sec.appendChild(ctrl);
+  voiceSel = ctrl.querySelector('#voiceSel');
+  rateInput = ctrl.querySelector('#rateInput');
+  rateInput.value = getRate();
+  const rateVal = ctrl.querySelector('#rateVal');
+  const showRate = () => rateVal.textContent = parseFloat(rateInput.value).toFixed(2) + 'x';
+  showRate();
+  rateInput.oninput = () => { store.set('rate', parseFloat(rateInput.value)); showRate(); };
+  voiceSel.onchange = () => {
+    const v = enVoices().find(v => v.name === voiceSel.value);
+    if (v) { currentVoice = v; store.set('voice', v.name); }
+  };
+  refreshVoices();
+  speechSynthesis.onvoiceschanged = refreshVoices;
+  ctrl.querySelector('#stopSpeak').onclick = stopAllSpeech;
+
+  const allItems = (shadow) => {
+    const items = [];
+    D.paragraphs.forEach((p, pi) => p.sentences.forEach((s, si) => {
+      items.push({ text: s, elId: `ls-${pi}-${si}`, gapMs: shadow ? estSpeakMs(s) + 400 : 220 });
+    }));
+    return items;
+  };
+  ctrl.querySelector('#playAll').onclick = () => speakSeq(allItems(false));
+  ctrl.querySelector('#shadowAll').onclick = () => speakSeq(allItems(true));
+
+  D.paragraphs.forEach((p, pi) => {
+    const c = el('div', { class: 'card' });
+    c.innerHTML = `<h3>P${pi + 1} ${esc(p.label)}
+        <button class="btn small" data-a="para">▶ 段落</button>
+        <button class="btn small" data-a="shadow">シャドー</button></h3>`;
+    c.querySelector('[data-a=para]').onclick = () =>
+      speakSeq(p.sentences.map((s, si) => ({ text: s, elId: `ls-${pi}-${si}`, gapMs: 220 })));
+    c.querySelector('[data-a=shadow]').onclick = () =>
+      speakSeq(p.sentences.map((s, si) => ({ text: s, elId: `ls-${pi}-${si}`, gapMs: estSpeakMs(s) + 400 })));
+    p.sentences.forEach((s, si) => {
+      const row = el('div', { class: 'senrow' });
+      row.innerHTML = `<button class="btn small">▶</button><button class="btn small">x3</button>
+        <span class="stext sent" id="ls-${pi}-${si}">${esc(s)}</span>`;
+      const [b1, b3] = row.querySelectorAll('button');
+      b1.onclick = () => speakSeq([{ text: s, elId: `ls-${pi}-${si}` }]);
+      b3.onclick = () => speakSeq([1, 2, 3].map(() => ({ text: s, elId: `ls-${pi}-${si}`, gapMs: 700 })));
+      c.appendChild(row);
+    });
+    sec.appendChild(c);
+  });
+}
+
+// ---------- Memorize tab ----------
+const FUNC_WORDS = new Set(['the','a','an','of','and','or','to','for','that','who','we','i',"i'm","i've",'it','its',"it's",'is','are','was','be','us','me','my','you','with','at','in','on','from','where','how','did','do',"don't","won't",'will','just','even','ever','have','most','what','if','come','so','by','up','out','as','now']);
+let memMode = store.get('memMode', 'full');
+function maskToken(tok, mode) {
+  const n = tok.norm;
+  if (mode === 'full') return esc(tok.disp);
+  if (mode === 'content') {
+    if (FUNC_WORDS.has(n)) return null; // mask
+    return esc(tok.disp);
+  }
+  if (mode === 'first') return null;
+  if (mode === 'blank') return null;
+  return esc(tok.disp);
+}
+function maskedHtml(tok, mode) {
+  if (mode === 'first') {
+    const first = tok.disp[0];
+    return esc(first) + '·'.repeat(Math.max(1, Math.min(tok.norm.length - 1, 7)));
+  }
+  return '␣␣␣';
+}
+function renderMemorize() {
+  const sec = $('#tab-memorize');
+  sec.innerHTML = '';
+  const modes = [['full', '全文'], ['content', '小語を隠す'], ['first', '頭文字だけ'], ['blank', '全部隠す']];
+  const bar = el('div', { class: 'modes' });
+  modes.forEach(([k, label]) => {
+    const b = el('button', { class: 'btn' + (memMode === k ? ' on' : ''), onclick: () => { memMode = k; store.set('memMode', k); renderMemorize(); } }, esc(label));
+    bar.appendChild(b);
+  });
+  sec.appendChild(bar);
+  sec.appendChild(el('div', { class: 'note', style: 'margin-bottom:10px' },
+    'おすすめ順: 全文 → 小語を隠す → 頭文字だけ → 全部隠す。隠れた語はクリックで確認（もう一度で再び隠す）。段落ごとに自己評価を付けると弱点が見える。'));
+  const grades = store.get('grades', {});
+  D.paragraphs.forEach((p, pi) => {
+    const c = el('div', { class: 'card' });
+    const g = grades[pi] || '';
+    c.innerHTML = `<h3>P${pi + 1} ${esc(p.label)} <span class="badge cue">${esc(p.cue)}</span>
+      <span class="grade">
+        <button class="btn small ${g === 'ok' ? 'sel-ok' : ''}" data-g="ok">◎</button>
+        <button class="btn small ${g === 'mid' ? 'sel-mid' : ''}" data-g="mid">△</button>
+        <button class="btn small ${g === 'ng' ? 'sel-ng' : ''}" data-g="ng">✕</button>
+      </span></h3>`;
+    c.querySelectorAll('.grade button').forEach(b => b.onclick = () => {
+      const gs = store.get('grades', {}); gs[pi] = b.dataset.g; store.set('grades', gs); renderMemorize();
+    });
+    const pt = el('div', { class: 'ptext' });
+    tokenizeDisplay(p.text).forEach(tok => {
+      const visible = maskToken(tok, memMode);
+      if (visible !== null) {
+        pt.appendChild(el('span', {}, visible + ' '));
+      } else {
+        const span = el('span', { class: 'mask' }, maskedHtml(tok, memMode));
+        span.onclick = () => {
+          if (span.classList.contains('revealed')) {
+            span.classList.remove('revealed'); span.innerHTML = maskedHtml(tok, memMode);
+          } else {
+            span.classList.add('revealed'); span.textContent = tok.disp;
+          }
+        };
+        pt.appendChild(span);
+        pt.appendChild(document.createTextNode(' '));
+      }
+    });
+    c.appendChild(pt);
+    const tools = el('div', { class: 'controls', style: 'margin-top:8px;margin-bottom:0' });
+    const revealBtn = el('button', { class: 'btn small' }, 'すべて表示/隠す');
+    let shown = false;
+    revealBtn.onclick = () => {
+      shown = !shown;
+      c.querySelectorAll('.mask').forEach(m => {
+        const isRev = m.classList.contains('revealed');
+        if (shown && !isRev) m.click();
+        if (!shown && isRev) m.click();
+      });
+    };
+    tools.appendChild(revealBtn);
+    const hearBtn = el('button', { class: 'btn small' }, '▶ この段落を聞く');
+    hearBtn.onclick = () => speakSeq(p.sentences.map(s => ({ text: s, gapMs: 220 })));
+    tools.appendChild(hearBtn);
+    c.appendChild(tools);
+    sec.appendChild(c);
+  });
+}
+
+// ---------- Recite tab ----------
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+let recog = null, recogActive = false, recogFinal = '', recogStartTs = 0;
+let mediaRecorder = null, mediaChunks = [], takes = [];
+function renderRecite() {
+  const sec = $('#tab-recite');
+  sec.innerHTML = '';
+  if (!SR) {
+    sec.appendChild(el('div', { class: 'warnbox' },
+      'このブラウザは音声認識 (Web Speech API) 非対応です。<b>Google Chrome</b> で開くと自動採点が使えます。録音モードは使えます。'));
+  }
+  const c = el('div', { class: 'card' });
+  c.innerHTML = `
+    <div class="controls">
+      <label>範囲</label>
+      <select id="reciteScope">
+        <option value="all">全編（通し）</option>
+        ${D.paragraphs.map((p, i) => `<option value="${i}">P${i + 1} ${esc(p.label)}</option>`).join('')}
+      </select>
+      <button class="btn primary" id="srStart" ${SR ? '' : 'disabled'}>● 暗唱スタート（採点）</button>
+      <button class="btn" id="srStop" disabled>■ 終了して採点</button>
+      <span class="pstat" id="srTimer"></span>
+    </div>
+    <div class="note">マイクに向かって暗唱 → 終了を押すと単語レベルで採点。<span style="color:var(--good)">緑=一致</span> / <span style="color:var(--close)">黄=惜しい・固有名詞</span> / <span style="color:var(--bad)">赤=抜け</span> / <s style="color:var(--dim)">灰=余計</s></div>
+    <div class="live" id="srLive">（ここに認識結果が出ます）</div>
+    <div id="srResult"></div>`;
+  sec.appendChild(c);
+
+  const rc = el('div', { class: 'card' });
+  rc.innerHTML = `<h3>録音して聞き返す（自分の声 vs お手本）</h3>
+    <div class="controls">
+      <button class="btn" id="recStart">● 録音開始</button>
+      <button class="btn" id="recStop" disabled>■ 録音停止</button>
+      <span class="note">録音はページを閉じると消えます</span>
+    </div>
+    <div class="takes" id="takesList"></div>`;
+  sec.appendChild(rc);
+
+  const hc = el('div', { class: 'card' });
+  hc.innerHTML = `<h3>採点履歴</h3><div id="histBox"></div>`;
+  sec.appendChild(hc);
+  renderHistory();
+
+  let timerIv = null;
+  const timerEl = c.querySelector('#srTimer');
+  const liveEl = c.querySelector('#srLive');
+  const startBtn = c.querySelector('#srStart');
+  const stopBtn = c.querySelector('#srStop');
+
+  function targetTextForScope() {
+    const v = c.querySelector('#reciteScope').value;
+    return v === 'all' ? fullText() : D.paragraphs[+v].text;
+  }
+  startBtn.onclick = () => {
+    if (!SR) return;
+    recogFinal = ''; liveEl.innerHTML = '…listening…';
+    c.querySelector('#srResult').innerHTML = '';
+    recog = new SR();
+    recog.lang = 'en-US'; recog.continuous = true; recog.interimResults = true;
+    recogActive = true; recogStartTs = Date.now();
+    recog.onresult = ev => {
+      let interim = '';
+      for (let i = ev.resultIndex; i < ev.results.length; i++) {
+        const r = ev.results[i];
+        if (r.isFinal) recogFinal += r[0].transcript + ' ';
+        else interim += r[0].transcript;
+      }
+      liveEl.innerHTML = `<span class="fin">${esc(recogFinal)}</span><span>${esc(interim)}</span>`;
+    };
+    recog.onend = () => { if (recogActive) { try { recog.start(); } catch {} } };
+    recog.onerror = e => {
+      if (e.error === 'not-allowed' || e.error === 'service-not-allowed') {
+        recogActive = false;
+        liveEl.innerHTML = '<span style="color:var(--bad)">マイクが使えません。Chrome で開き、マイク許可を確認してください。</span>';
+        startBtn.disabled = false; stopBtn.disabled = true;
+        clearInterval(timerIv);
+      }
+    };
+    try { recog.start(); } catch {}
+    startBtn.disabled = true; stopBtn.disabled = false;
+    timerIv = setInterval(() => {
+      timerEl.textContent = ((Date.now() - recogStartTs) / 1000).toFixed(0) + '秒';
+    }, 500);
+  };
+  stopBtn.onclick = () => {
+    recogActive = false;
+    try { recog.stop(); } catch {}
+    clearInterval(timerIv);
+    startBtn.disabled = false; stopBtn.disabled = true;
+    const durS = (Date.now() - recogStartTs) / 1000;
+    // slight delay so final results flush
+    setTimeout(() => scoreRecitation(targetTextForScope(), recogFinal, durS, c.querySelector('#reciteScope').value), 600);
+  };
+
+  function scoreRecitation(targetText, spokenText, durS, scope) {
+    const target = tokenizeDisplay(targetText);
+    const spokenTokens = preprocessSpoken(spokenText.toLowerCase().split(/\s+/).map(normWord).filter(Boolean));
+    if (!spokenTokens.length) {
+      c.querySelector('#srResult').innerHTML = '<div class="warnbox">音声を認識できませんでした。もう一度試すか、Chrome/マイク設定を確認してください。</div>';
+      return;
+    }
+    const { ops, score } = alignWords(target.map(t => t.norm), spokenTokens);
+    let html = '<div class="result-words">';
+    for (const op of ops) {
+      if (op.type === 'match') html += `<span class="w-match">${esc(target[op.ti].disp)}</span> `;
+      else if (op.type === 'close') html += `<span class="w-close">${esc(target[op.ti].disp)}</span> `;
+      else if (op.type === 'sub') html += `<span class="w-miss">${esc(target[op.ti].disp)}</span><span class="w-extra">(${esc(spokenTokens[op.si])})</span> `;
+      else if (op.type === 'del') html += `<span class="w-miss">${esc(target[op.ti].disp)}</span> `;
+      else if (op.type === 'ins') html += `<span class="w-extra">${esc(spokenTokens[op.si])}</span> `;
+    }
+    html += '</div>';
+    const wpm = Math.round(spokenTokens.length / durS * 60);
+    const durNote = scope === 'all'
+      ? (durS < D.meta.targetSecondsMin ? '（少し速い。もっとゆっくりでOK）' : durS > D.meta.targetSecondsMax + 10 ? '（少し長い）' : '（良いペース）')
+      : '';
+    html = `<div class="scorebar">
+        <span><span class="big" style="color:${score >= 95 ? 'var(--good)' : score >= 80 ? 'var(--close)' : 'var(--bad)'}">${score}%</span><div class="lbl">一致率</div></span>
+        <span><span class="big">${durS.toFixed(0)}s</span><div class="lbl">所要 ${durNote}</div></span>
+        <span><span class="big">${wpm}</span><div class="lbl">語/分（目安 125–145）</div></span>
+      </div>` + html;
+    c.querySelector('#srResult').innerHTML = html;
+    const attempts = store.get('attempts', []);
+    attempts.push({ ts: Date.now(), scope, score, dur: Math.round(durS), wpm });
+    store.set('attempts', attempts.slice(-100));
+    renderHistory(); renderHeader();
+  }
+
+  function renderHistory() {
+    const attempts = store.get('attempts', []).slice().reverse().slice(0, 12);
+    const box = sec.querySelector('#histBox');
+    if (!box) return;
+    if (!attempts.length) { box.innerHTML = '<div class="note">まだ記録なし</div>'; return; }
+    box.innerHTML = `<table class="hist"><tr><th>時刻</th><th>範囲</th><th>一致率</th><th>所要</th><th>語/分</th></tr>` +
+      attempts.map(a => {
+        const t = new Date(a.ts);
+        const scopeLbl = a.scope === 'all' ? '通し' : 'P' + (+a.scope + 1);
+        return `<tr><td>${t.getMonth() + 1}/${t.getDate()} ${String(t.getHours()).padStart(2, '0')}:${String(t.getMinutes()).padStart(2, '0')}</td>
+          <td>${scopeLbl}</td><td class="sc">${a.score}%</td><td>${a.dur}s</td><td>${a.wpm}</td></tr>`;
+      }).join('') + '</table>';
+  }
+
+  // recorder
+  const recStart = rc.querySelector('#recStart'), recStop = rc.querySelector('#recStop');
+  recStart.onclick = async () => {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      mediaChunks = [];
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = e => mediaChunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(mediaChunks, { type: mediaRecorder.mimeType });
+        takes.push({ url: URL.createObjectURL(blob), ts: new Date() });
+        stream.getTracks().forEach(t => t.stop());
+        renderTakes();
+      };
+      mediaRecorder.start();
+      recStart.disabled = true; recStop.disabled = false;
+      recStart.textContent = '● 録音中…';
+    } catch (e) {
+      rc.querySelector('#takesList').innerHTML = '<div class="warnbox">マイクにアクセスできません: ' + esc(String(e)) + '</div>';
+    }
+  };
+  recStop.onclick = () => {
+    if (mediaRecorder && mediaRecorder.state !== 'inactive') mediaRecorder.stop();
+    recStart.disabled = false; recStop.disabled = true;
+    recStart.textContent = '● 録音開始';
+  };
+  function renderTakes() {
+    const box = rc.querySelector('#takesList');
+    box.innerHTML = takes.map((t, i) =>
+      `<div class="take"><span class="note">Take ${i + 1} (${String(t.ts.getHours()).padStart(2, '0')}:${String(t.ts.getMinutes()).padStart(2, '0')})</span><audio controls src="${t.url}"></audio></div>`
+    ).join('');
+  }
+}
+
+// ---------- Drills tab ----------
+function renderDrills() {
+  const sec = $('#tab-drills');
+  sec.innerHTML = '';
+  if (!D.drills || !D.drills.words) { sec.innerHTML = '<div class="note">ドリルデータ読み込み中…</div>'; return; }
+  sec.appendChild(el('div', { class: 'note', style: 'margin-bottom:6px' },
+    '各カード: ▶で手本 → 自分で言う → 「チェック」でマイク判定（Chrome）。判定はあくまで目安。手本の直後に真似するのが一番効く。'));
+  const cats = {};
+  D.drills.words.forEach(w => { (cats[w.category] = cats[w.category] || []).push(w); });
+  const CAT_LABELS = { 'R/L': 'R と L', 'TH': 'TH', 'V/W/F': 'V・W・F', 'cluster': '子音クラスター', 'stress': '強勢・リズム', 'vowel': '母音', 'final-consonant': '語末の子音' };
+  for (const [cat, words] of Object.entries(cats)) {
+    sec.appendChild(el('div', { class: 'cathead' }, esc(CAT_LABELS[cat] || cat)));
+    const grid = el('div', { class: 'drillgrid' });
+    words.forEach(w => grid.appendChild(drillCard(w.word, w.ipa, w.stress, w.tip_ja)));
+    sec.appendChild(grid);
+  }
+  if (D.drills.phrases && D.drills.phrases.length) {
+    sec.appendChild(el('div', { class: 'cathead' }, 'フレーズ（リンキング・リズム）'));
+    const grid = el('div', { class: 'drillgrid', style: 'grid-template-columns:repeat(auto-fill,minmax(320px,1fr))' });
+    D.drills.phrases.forEach(p => grid.appendChild(drillCard(p.text, '', p.focus, p.tip_ja)));
+    sec.appendChild(grid);
+  }
+}
+function drillCard(text, ipa, sub, tip) {
+  const card = el('div', { class: 'dcard' });
+  card.innerHTML = `<div><span class="w">${esc(text)}</span><span class="ipa">${esc(ipa || '')}</span></div>
+    <div class="stress">${esc(sub || '')}</div>
+    <div class="tip">${esc(tip || '')}</div>
+    <button class="btn small" data-a="play">▶</button>
+    <button class="btn small" data-a="slow">▶ ゆっくり</button>
+    ${SR ? '<button class="btn small" data-a="check">チェック</button>' : ''}
+    <div class="heard"></div>`;
+  card.querySelector('[data-a=play]').onclick = () => { stopAllSpeech(); speakText(text, { rate: 0.9 }); };
+  card.querySelector('[data-a=slow]').onclick = () => { stopAllSpeech(); speakText(text, { rate: 0.5 }); };
+  const checkBtn = card.querySelector('[data-a=check]');
+  if (checkBtn) checkBtn.onclick = () => {
+    const heardEl = card.querySelector('.heard');
+    heardEl.className = 'heard wait'; heardEl.textContent = '…どうぞ（話してください）';
+    const r = new SR();
+    r.lang = 'en-US'; r.interimResults = false; r.maxAlternatives = 5;
+    r.onresult = ev => {
+      const alts = Array.from(ev.results[0]).map(a => a.transcript.toLowerCase().trim());
+      const targetNorm = text.toLowerCase().split(/\s+/).map(normWord).filter(Boolean).join(' ');
+      const hit = alts.some(a => {
+        const an = a.split(/\s+/).map(normWord).filter(Boolean).join(' ');
+        return an === targetNorm || wordSim(an.replace(/ /g, ''), targetNorm.replace(/ /g, '')) !== null;
+      });
+      heardEl.className = 'heard ' + (hit ? 'ok' : 'ng');
+      heardEl.textContent = (hit ? 'OK: ' : '認識: ') + '"' + alts[0] + '"' + (hit ? '' : ' ←もう一度');
+    };
+    r.onerror = () => { heardEl.className = 'heard ng'; heardEl.textContent = 'マイクエラー（Chrome推奨）'; };
+    r.onend = () => { if (heardEl.classList.contains('wait')) { heardEl.className = 'heard ng'; heardEl.textContent = '聞き取れませんでした'; } };
+    try { r.start(); } catch {}
+  };
+  return card;
+}
+
+// ---------- Prompter tab ----------
+let prompterRunning = false, prompterIv = null, prompterStartTs = 0, prompterPausedAt = 0;
+function renderPrompter() {
+  const sec = $('#tab-prompter');
+  sec.innerHTML = '';
+  const c = el('div', { class: 'card' });
+  c.innerHTML = `
+    <div class="controls">
+      <label>文字サイズ</label><input type="range" id="pFont" min="20" max="48" step="2" style="width:110px">
+      <label>ペース</label><input type="range" id="pWpm" min="100" max="160" step="5" style="width:110px">
+      <span class="pstat" id="pWpmVal"></span>
+      <button class="btn primary" id="pStart">▶ スタート</button>
+      <button class="btn" id="pReset">リセット</button>
+      <span class="pstat" id="pElapsed"></span>
+    </div>
+    <div class="note" style="margin-bottom:8px">本番は歩きながらなので、最終的にはこれを見ずに言えるように。スペースキーで開始/一時停止。想定尺: <span id="pDur"></span></div>
+    <div id="prompterBox"><div id="prompterInner"></div></div>`;
+  sec.appendChild(c);
+  const inner = c.querySelector('#prompterInner');
+  inner.innerHTML = '<div id="prompterLead" style="height:28vh"></div>' +
+    D.paragraphs.map(p => `<p>${esc(p.text)}</p>`).join('') +
+    '<div id="prompterPad"></div>';
+  const fontR = c.querySelector('#pFont'), wpmR = c.querySelector('#pWpm');
+  fontR.value = store.get('pFont', 30); wpmR.value = store.get('pWpm', 130);
+  const applyFont = () => { inner.style.fontSize = fontR.value + 'px'; store.set('pFont', +fontR.value); };
+  const showWpm = () => {
+    c.querySelector('#pWpmVal').textContent = wpmR.value + ' 語/分';
+    c.querySelector('#pDur').textContent = Math.round(totalWords / +wpmR.value * 60) + '秒';
+    store.set('pWpm', +wpmR.value);
+  };
+  applyFont(); showWpm();
+  fontR.oninput = applyFont; wpmR.oninput = showWpm;
+
+  const box = c.querySelector('#prompterBox');
+  let offset = 0;
+  const totalDist = () => inner.scrollHeight - box.clientHeight * 0.55;
+  function tick() {
+    if (!prompterRunning) return;
+    const durMs = totalWords / +wpmR.value * 60000;
+    const elapsed = Date.now() - prompterStartTs;
+    offset = Math.min(totalDist(), totalDist() * elapsed / durMs);
+    inner.style.top = -offset + 'px';
+    c.querySelector('#pElapsed').textContent = (elapsed / 1000).toFixed(0) + 's';
+    if (offset >= totalDist()) {
+      prompterRunning = false; clearInterval(prompterIv);
+      c.querySelector('#pStart').textContent = '▶ スタート';
+    }
+  }
+  const startBtn = c.querySelector('#pStart');
+  startBtn.onclick = () => {
+    if (prompterRunning) {
+      prompterRunning = false; prompterPausedAt = Date.now();
+      clearInterval(prompterIv);
+      startBtn.textContent = '▶ 再開';
+    } else {
+      if (prompterPausedAt) prompterStartTs += Date.now() - prompterPausedAt;
+      else prompterStartTs = Date.now();
+      prompterPausedAt = 0; prompterRunning = true;
+      startBtn.textContent = '‖ 一時停止';
+      clearInterval(prompterIv);
+      prompterIv = setInterval(tick, 40);
+      tick();
+    }
+  };
+  c.querySelector('#pReset').onclick = () => {
+    prompterRunning = false; prompterPausedAt = 0; clearInterval(prompterIv);
+    offset = 0; inner.style.top = '0px';
+    startBtn.textContent = '▶ スタート';
+    c.querySelector('#pElapsed').textContent = '';
+  };
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space' && $('#tab-prompter').classList.contains('active') && !/input|select|textarea/i.test(e.target.tagName)) {
+      e.preventDefault(); startBtn.click();
+    }
+  });
+}
+
+// ---------- init ----------
+renderTabs();
+renderHeader();
+// fixed header: reserve its height
+function padForHeader() { document.body.style.paddingTop = document.querySelector('header').offsetHeight + 6 + 'px'; }
+padForHeader();
+window.addEventListener('resize', padForHeader);
+renderScript();
+renderListen();
+renderMemorize();
+renderRecite();
+renderDrills();
+renderPrompter();
+switchTab(store.get('tab', 'script'));
+</script>
+</body>
+</html>
