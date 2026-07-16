@@ -176,6 +176,23 @@ window.TRAINER_DATA = {
     ],
   },
 
+  // Expression / 抑揚ガイド: どこを強く(emph=太字)、どう上げ下げ・間を取るか(arc)。
+  // 機械音声の平坦さを抜けて「パッションが伝わる」抑揚を自分で乗せるための手本メモ。
+  expression: {
+    '0_0': { emph: ['Where', 'Universe', 'come'], arc: 'ゆっくり低めに入る。wh疑問なので文末は ↘。Universe を少し長く。' },
+    '0_1': { emph: ['galaxies', 'stars', 'life', 'emerge'], arc: 'galaxies ／ stars ／ life と区切って ↗、emerge で ↘ 着地。開幕の余韻を残す。' },
+    '1_0': { emph: ['Seiji Fujimoto', 'Toronto', 'countryside', 'curiosity'], arc: '名乗りは笑顔で明るく ↗。Toronto, で／ひと呼吸。後半 curiosity got the better of me は茶目っ気を込めて軽く ↘。' },
+    '2_0': { emph: ['believe', 'curiosity', 'human'], arc: '確信を込めて。most human を強くゆっくり ↘ で言い切る。' },
+    '2_1': { emph: ["don't", 'comfort', 'efficiency', 'move', 'wonder'], arc: '前半 comfort or efficiency は突き放して ↘。; の後は温かく ↗。move us と wonder を立て、wonder で余韻。' },
+    '2_2': { emph: ['Double', 'Dutch', 'champion', 'chasing', 'lit'], arc: '誇らしげに、少し笑って。world champion で ↗ ピーク。chasing whatever lit me up inside は勢いよく畳みかける。' },
+    '2_3': { emph: ['spark', 'first', 'galaxies', 'James', 'Webb'], arc: 'spark を受けて加速 ↗。first galaxies を高く、James Webb Space Telescope は1語ずつ叩いて ↘ 決める。' },
+    '3_0': { emph: ['AST121', 'Twinkle', 'Sparkle', 'Brilliant', 'really'], arc: 'カメラ目線で誇らしく。タイトルは／間を取り1語ずつ、Brilliant Sky ↗、really about で ↘。' },
+    '3_1': { emph: ["won't", 'memorize'], arc: 'きっぱり短く ↘。次の文との対比なので低めに置く。' },
+    '3_2': { emph: ['explore', 'questions', 'Bang', 'matter', 'waves', 'galaxies', 'life'], arc: 'explore で ↗ 開く。: の後は列挙、1つずつ／等間隔で少し上げ、search for life で ↘ 締める。' },
+    '4_0': { emph: ['curious', 'first-year', 'whole'], arc: '落ち着いて温かく。curious を優しく、the Universe as a whole は ↘ ゆっくり。' },
+    '5_0': { emph: ['wondered', 'everything', 'find', 'us'], arc: 'ひと呼吸おいて始める。前半は ↗ 誘いかけ、come find out with us は笑顔でゆっくり ↘ 言い切る。' },
+  },
+
   // Word popups in the Script tab. Built from drills.words below; extras added manually.
   hardWords: {},
 };

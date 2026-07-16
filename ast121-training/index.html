@@ -21,6 +21,7 @@
     --close: #d9b64a;
   }
   * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
   html, body { margin: 0; padding: 0; }
   body {
     background: var(--bg); color: var(--text);
@@ -84,6 +85,10 @@
   .senrow { display: flex; gap: 8px; align-items: flex-start; padding: 5px 0; border-top: 1px dashed var(--line); }
   .senrow:first-child { border-top: none; }
   .senrow .stext { flex: 1; font-size: 15px; color: var(--text); }
+  .expr { margin-top: 4px; font-size: 12px; }
+  .expr .arc { color: var(--accent2); }
+  b.emw { color: #ffd479; font-weight: 700; }
+  #robotCtrl label { display: inline-flex; align-items: center; gap: 4px; }
   .mask {
     background: var(--panel2); border-radius: 4px; cursor: pointer; color: var(--dim);
     padding: 0 2px; letter-spacing: 1px;
@@ -310,6 +315,7 @@ function speakText(text, { rate, onend } = {}) {
 function stopAllSpeech() {
   speakQueue = []; speaking = false;
   speechSynthesis.cancel();
+  stopAudio();
   document.querySelectorAll('.sent.speaking').forEach(e => e.classList.remove('speaking'));
 }
 // speak a list of {text, elId?, gapMs?} sequentially
@@ -331,6 +337,62 @@ function speakSeq(items, opts = {}) {
 function estSpeakMs(text, rate) {
   const w = tokenizeDisplay(text).length;
   return w / (150 * (rate || getRate())) * 60000;
+}
+
+// ---------- natural-voice audio (Kokoro-generated clips) ----------
+const AUDIO = { ready: false, manifest: null, voice: store.get('avoice', 'michael'), slow: false, cur: null, tok: null };
+const VOICE_LABELS = { michael: '男性（自然）', heart: '女性（自然）', robot: 'ロボット（内蔵）' };
+async function loadAudioManifest() {
+  try {
+    const r = await fetch('audio/manifest.json', { cache: 'no-cache' });
+    if (!r.ok) return;
+    AUDIO.manifest = await r.json();
+    AUDIO.ready = true;
+    if (AUDIO.voice !== 'robot' && !AUDIO.manifest.voices[AUDIO.voice]) AUDIO.voice = AUDIO.manifest.primary || 'michael';
+  } catch { /* no audio bundle: app falls back to built-in TTS */ }
+}
+function naturalOn() { return AUDIO.ready && AUDIO.voice !== 'robot'; }
+function hasSlow() { return naturalOn() && AUDIO.manifest.voices[AUDIO.voice].durations.slow && Object.keys(AUDIO.manifest.voices[AUDIO.voice].durations.slow).length > 0; }
+function clipUrl(kind, key, slow) {
+  const v = AUDIO.voice;
+  if (kind === 'full') return `audio/${v}/full.m4a`;
+  if (kind === 'p') return `audio/${v}/p${key}.m4a`;
+  if (kind === 's') return `audio/${v}/s${key}${slow ? '_slow' : ''}.m4a`;
+  return '';
+}
+function clipDurSec(key, slow) {
+  const d = AUDIO.manifest.voices[AUDIO.voice].durations;
+  if (slow && d.slow[key] != null) return d.slow[key];
+  return d.sentences[key] != null ? d.sentences[key] : 3;
+}
+function stopAudio() {
+  AUDIO.tok = null;
+  if (AUDIO.cur) { try { AUDIO.cur.pause(); } catch {} AUDIO.cur.onended = null; AUDIO.cur.onerror = null; AUDIO.cur = null; }
+}
+// play a sequence of {url, elId?, gapMs?}
+function playAudioSeq(items, opts = {}) {
+  stopAllSpeech();
+  const seq = items.slice();
+  const token = {}; AUDIO.tok = token;
+  const next = () => {
+    if (AUDIO.tok !== token) return;
+    document.querySelectorAll('.sent.speaking').forEach(e => e.classList.remove('speaking'));
+    if (!seq.length) { if (opts.ondone) opts.ondone(); return; }
+    const it = seq.shift();
+    if (it.elId) { const e = document.getElementById(it.elId); if (e) { e.classList.add('speaking'); e.scrollIntoView({ block: 'nearest', behavior: 'smooth' }); } }
+    const a = new Audio(it.url); AUDIO.cur = a;
+    const advance = () => { if (AUDIO.tok !== token) return; const gap = it.gapMs ?? opts.gapMs ?? 150; setTimeout(() => { if (AUDIO.tok === token) next(); }, gap); };
+    a.onended = advance;
+    a.onerror = advance;
+    a.play().catch(advance);
+  };
+  next();
+}
+// sentence-index list for a scope: [{pi,si,elId,text}]
+function sentenceList(elPrefix) {
+  const out = [];
+  D.paragraphs.forEach((p, pi) => p.sentences.forEach((s, si) => out.push({ pi, si, key: `${pi}_${si}`, elId: `${elPrefix}-${pi}-${si}`, text: s })));
+  return out;
 }
 
 // ---------- header ----------
@@ -436,8 +498,12 @@ function renderScript() {
       span.onclick = e => {
         if (e.target.closest('.hw')) return;
         stopAllSpeech();
-        span.classList.add('speaking');
-        speakText(s, { onend: () => span.classList.remove('speaking') });
+        if (naturalOn()) {
+          playAudioSeq([{ url: clipUrl('s', `${pi}_${si}`, false), elId: `sc-${pi}-${si}` }]);
+        } else {
+          span.classList.add('speaking');
+          speakText(s, { onend: () => span.classList.remove('speaking') });
+        }
       };
       pt.appendChild(span);
     });
@@ -448,63 +514,128 @@ function renderScript() {
 }
 
 // ---------- Listen tab ----------
+// unified playback that routes to natural audio clips or built-in TTS
+function playSentence(key, elId, text, { slow = false, times = 1 } = {}) {
+  if (naturalOn()) {
+    const useSlow = (slow || AUDIO.slow) && hasSlow();
+    playAudioSeq(Array.from({ length: times }, () => ({ url: clipUrl('s', key, useSlow), elId, gapMs: 600 })));
+  } else {
+    speakSeq(Array.from({ length: times }, () => ({ text, elId, gapMs: 600 })));
+  }
+}
+function playSentenceSeq(list, { shadow = false } = {}) {
+  // list: [{key, elId, text}]
+  if (naturalOn()) {
+    const slow = AUDIO.slow && hasSlow();
+    const items = list.map((it, idx) => {
+      let gap;
+      if (shadow) gap = clipDurSec(it.key, slow) * 1000 + 550;
+      else {
+        const diffPara = idx < list.length - 1 && list[idx + 1].key.split('_')[0] !== it.key.split('_')[0];
+        gap = diffPara ? 680 : 260;
+      }
+      return { url: clipUrl('s', it.key, slow), elId: it.elId, gapMs: gap };
+    });
+    playAudioSeq(items);
+  } else {
+    speakSeq(list.map(it => ({ text: it.text, elId: it.elId, gapMs: shadow ? estSpeakMs(it.text) + 500 : 240 })));
+  }
+}
+function exprHtml(key) {
+  const e = D.expression && D.expression[key];
+  if (!e) return '';
+  return `<div class="expr"><span class="arc">${esc(e.arc)}</span></div>`;
+}
+// bold the emphasis words inside a sentence (for the expression view)
+function withEmphasis(text, key) {
+  const e = D.expression && D.expression[key];
+  if (!e || !e.emph || !e.emph.length) return esc(text);
+  let html = esc(text);
+  e.emph.forEach(w => {
+    const re = new RegExp('(^|[^A-Za-z])(' + w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')(?=[^A-Za-z]|$)', 'i');
+    html = html.replace(re, (m, a, b) => a + '<b class="emw">' + b + '</b>');
+  });
+  return html;
+}
+
 function renderListen() {
   const sec = $('#tab-listen');
   sec.innerHTML = '';
   const ctrl = el('div', { class: 'card' });
+  const voiceOpts = (AUDIO.ready ? Object.keys(AUDIO.manifest.voices) : []).concat(['robot']);
   ctrl.innerHTML = `<div class="controls">
-      <label>声</label><select id="voiceSel"></select>
-      <label>速さ <span id="rateVal"></span></label>
-      <input type="range" id="rateInput" min="0.5" max="1.15" step="0.05" style="width:130px">
+      <label>手本の声</label>
+      <select id="aVoice">${voiceOpts.map(v => `<option value="${v}"${v === AUDIO.voice ? ' selected' : ''}>${esc(VOICE_LABELS[v] || v)}</option>`).join('')}</select>
+      <label id="slowWrap" ${hasSlow() ? '' : 'hidden'}><input type="checkbox" id="aSlow"${AUDIO.slow ? ' checked' : ''}> ゆっくり</label>
+      <label id="exprWrap"><input type="checkbox" id="aExpr"${store.get('showExpr', true) ? ' checked' : ''}> 抑揚ガイド</label>
       <button class="btn" id="stopSpeak">■ 停止</button>
+    </div>
+    <div class="controls" id="robotCtrl" ${naturalOn() ? 'hidden' : ''}>
+      <label>内蔵ボイス</label><select id="voiceSel"></select>
+      <label>速さ <span id="rateVal"></span></label>
+      <input type="range" id="rateInput" min="0.5" max="1.15" step="0.05" style="width:120px">
     </div>
     <div class="controls">
       <button class="btn primary" id="playAll">▶ 全編を聞く</button>
       <button class="btn" id="shadowAll">シャドーイング（1文ずつ→間）</button>
     </div>
-    <div class="note">シャドーイング: 1文流れたあと同じ長さの間が空くので、そこで真似して言う。0.8x から始めて等速へ。</div>`;
+    <div class="note" id="voiceNote"></div>`;
   sec.appendChild(ctrl);
-  voiceSel = ctrl.querySelector('#voiceSel');
-  rateInput = ctrl.querySelector('#rateInput');
-  rateInput.value = getRate();
-  const rateVal = ctrl.querySelector('#rateVal');
-  const showRate = () => rateVal.textContent = parseFloat(rateInput.value).toFixed(2) + 'x';
-  showRate();
-  rateInput.oninput = () => { store.set('rate', parseFloat(rateInput.value)); showRate(); };
-  voiceSel.onchange = () => {
-    const v = enVoices().find(v => v.name === voiceSel.value);
-    if (v) { currentVoice = v; store.set('voice', v.name); }
+
+  const noteEl = ctrl.querySelector('#voiceNote');
+  const setNote = () => {
+    noteEl.innerHTML = naturalOn()
+      ? 'この声は実録に近い <b>Kokoro 音声</b>（Seiji の声域に合わせるなら男性）。抑揚ガイドの<b class="emw">太字</b>を強く、矢印(↗↘)と「／」の間を意識して真似ると、平坦さが抜けてパッションが乗る。仕上げは自分の抑揚を足す。シャドーは 0.8x「ゆっくり」→ 等速へ。'
+      : 'ロボット（ブラウザ内蔵）は平坦です。上の「手本の声」を <b>男性/女性（自然）</b> にすると自然な抑揚の手本になります。';
   };
-  refreshVoices();
-  speechSynthesis.onvoiceschanged = refreshVoices;
+  setNote();
+
+  ctrl.querySelector('#aVoice').onchange = e => {
+    AUDIO.voice = e.target.value; store.set('avoice', AUDIO.voice);
+    renderListen();
+  };
+  const slowBox = ctrl.querySelector('#aSlow');
+  if (slowBox) slowBox.onchange = e => { AUDIO.slow = e.target.checked; };
+  AUDIO.slow = hasSlow() ? (slowBox ? slowBox.checked : false) : false;
+  ctrl.querySelector('#aExpr').onchange = e => { store.set('showExpr', e.target.checked); renderListen(); };
+  const showExpr = store.get('showExpr', true);
+
+  // built-in TTS controls (only when robot)
+  if (!naturalOn()) {
+    voiceSel = ctrl.querySelector('#voiceSel');
+    rateInput = ctrl.querySelector('#rateInput');
+    rateInput.value = getRate();
+    const rateVal = ctrl.querySelector('#rateVal');
+    const showRate = () => rateVal.textContent = parseFloat(rateInput.value).toFixed(2) + 'x';
+    showRate();
+    rateInput.oninput = () => { store.set('rate', parseFloat(rateInput.value)); showRate(); };
+    voiceSel.onchange = () => { const v = enVoices().find(v => v.name === voiceSel.value); if (v) { currentVoice = v; store.set('voice', v.name); } };
+    refreshVoices();
+    speechSynthesis.onvoiceschanged = refreshVoices;
+  } else { voiceSel = null; }
   ctrl.querySelector('#stopSpeak').onclick = stopAllSpeech;
 
-  const allItems = (shadow) => {
-    const items = [];
-    D.paragraphs.forEach((p, pi) => p.sentences.forEach((s, si) => {
-      items.push({ text: s, elId: `ls-${pi}-${si}`, gapMs: shadow ? estSpeakMs(s) + 400 : 220 });
-    }));
-    return items;
-  };
-  ctrl.querySelector('#playAll').onclick = () => speakSeq(allItems(false));
-  ctrl.querySelector('#shadowAll').onclick = () => speakSeq(allItems(true));
+  const fullList = sentenceList('ls');
+  ctrl.querySelector('#playAll').onclick = () => playSentenceSeq(fullList, { shadow: false });
+  ctrl.querySelector('#shadowAll').onclick = () => playSentenceSeq(fullList, { shadow: true });
 
   D.paragraphs.forEach((p, pi) => {
     const c = el('div', { class: 'card' });
     c.innerHTML = `<h3>P${pi + 1} ${esc(p.label)}
         <button class="btn small" data-a="para">▶ 段落</button>
         <button class="btn small" data-a="shadow">シャドー</button></h3>`;
-    c.querySelector('[data-a=para]').onclick = () =>
-      speakSeq(p.sentences.map((s, si) => ({ text: s, elId: `ls-${pi}-${si}`, gapMs: 220 })));
-    c.querySelector('[data-a=shadow]').onclick = () =>
-      speakSeq(p.sentences.map((s, si) => ({ text: s, elId: `ls-${pi}-${si}`, gapMs: estSpeakMs(s) + 400 })));
+    const list = p.sentences.map((s, si) => ({ key: `${pi}_${si}`, elId: `ls-${pi}-${si}`, text: s }));
+    c.querySelector('[data-a=para]').onclick = () => playSentenceSeq(list, { shadow: false });
+    c.querySelector('[data-a=shadow]').onclick = () => playSentenceSeq(list, { shadow: true });
     p.sentences.forEach((s, si) => {
+      const key = `${pi}_${si}`;
       const row = el('div', { class: 'senrow' });
+      const stext = showExpr ? withEmphasis(s, key) : esc(s);
       row.innerHTML = `<button class="btn small">▶</button><button class="btn small">x3</button>
-        <span class="stext sent" id="ls-${pi}-${si}">${esc(s)}</span>`;
+        <span class="stext sent" id="ls-${pi}-${si}">${stext}${showExpr ? exprHtml(key) : ''}</span>`;
       const [b1, b3] = row.querySelectorAll('button');
-      b1.onclick = () => speakSeq([{ text: s, elId: `ls-${pi}-${si}` }]);
-      b3.onclick = () => speakSeq([1, 2, 3].map(() => ({ text: s, elId: `ls-${pi}-${si}`, gapMs: 700 })));
+      b1.onclick = () => playSentence(key, `ls-${pi}-${si}`, s, { times: 1 });
+      b3.onclick = () => playSentence(key, `ls-${pi}-${si}`, s, { times: 3 });
       c.appendChild(row);
     });
     sec.appendChild(c);
@@ -919,6 +1050,10 @@ renderRecite();
 renderDrills();
 renderPrompter();
 switchTab(store.get('tab', 'script'));
+// load natural-voice clips (async): re-render the tabs that use them once ready
+loadAudioManifest().then(() => {
+  if (AUDIO.ready) { renderScript(); renderListen(); padForHeader(); }
+});
 </script>
 </body>
 </html>
