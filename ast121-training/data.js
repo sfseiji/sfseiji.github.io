@@ -15,7 +15,7 @@ window.TRAINER_DATA = {
   <ol>
     <li>台本タブで修正点とカット割り（映像の流れ＝記憶の地図）を確認</li>
     <li>聞く: 通し2回（等速）→ シャドーイング1回（0.85x）</li>
-    <li>暗記: 段落ごとに 全文 → 小語を隠す → 頭文字 まで上げる（P3 が最長・最優先）</li>
+    <li>暗記: 段落ごとに 全文 → 小語を隠す → 頭文字 まで上げる（P5 のピッチが最長・最優先）</li>
     <li>暗唱テスト: 段落ごとに採点 → 90% 超えたら通しを1回</li>
     <li>寝る直前に通しを1回（睡眠で定着する）</li>
   </ol>
@@ -29,7 +29,7 @@ window.TRAINER_DATA = {
   <ul>
     <li>ペースはゆっくりで OK。Philip は「15〜20秒伸びても大丈夫、むしろ間を取れる」と明言済み</li>
     <li>複数テイク前提。噛んだら止まらず、その文の頭から言い直せば編集で切れる</li>
-    <li>カメラ目線が要るのは3箇所だけ: 名乗り (P2)・コースのピッチ (P4)・締め (P6)。ここは笑顔＋目線</li>
+    <li>カメラ目線が要るのは3箇所だけ: 名乗り (P2)・コースのピッチ (P5)・締め (P7)。ここは笑顔＋目線</li>
     <li>script の微修正（rural → countryside など）は撮影前に Philip へ一言伝えると安全（この行で京都の映像にカットする計画のため。内容・カット割りは不変）</li>
     <li>天候・煙の最終確認は Philip がメールスレッドに返信（当日はテキスト/WhatsApp で連絡）</li>
   </ul>`,
@@ -85,6 +85,21 @@ window.TRAINER_DATA = {
       replacement: "let's find out together.",
       why: '締めとしてこなれた言い方。発音の罠がなく、笑顔で言い切れる。冒頭の問いに find out で答える構造は維持。',
     },
+    {
+      original: 'a new faculty member at the University of Toronto, and I grew up…',
+      replacement: 'a new faculty member at U of T. I grew up…',
+      why: '30語の1文を2文に分割。歩きながら一息で言える長さになり、Philip の絵コンテ（名乗りで顔出し → 京都映像にカット）とも切れ目が一致する。U of T は口語として自然で、Toronto の強勢の罠も回避。',
+    },
+    {
+      original: 'the mountains of the Kyoto countryside',
+      replacement: 'the mountains of the Kyoto countryside in Japan',
+      why: '海外の視聴者に地理が伝わる。京都の映像に入る導入としても明確。',
+    },
+    {
+      original: 'Curiosity 段落（4文）',
+      replacement: '「信条」＋「Double Dutch → JWST」の2段落に分割',
+      why: '暗記の単位が短くなり、映像の切り替わり（Double Dutch 素材の開始点）とも一致する。文言自体は無変更。',
+    },
   ],
 
   paragraphs: [
@@ -100,21 +115,30 @@ window.TRAINER_DATA = {
     },
     {
       label: '自己紹介（名前・京都）', cue: "I'm Seiji…", camera: 'on',
-      visual: '歩いて登場（名乗り）→ 京都の山里の映像へ',
-      deliveryNote: '名乗りはカメラ目線＋笑顔。ここが第一印象。"Toronto," のコンマで小さく息継ぎしてから I grew up へ。',
-      text: "I'm Seiji Fujimoto, a new faculty member at the University of Toronto, and I grew up among the mountains of the Kyoto countryside, where curiosity got the better of me early on.",
+      visual: '歩いて登場（名乗り）→ 2文目から京都の山里の映像へ',
+      deliveryNote: '名乗りはカメラ目線＋笑顔。ここが第一印象。U of T で一度言い切り、しっかり間を置いてから2文目へ（ここで映像が京都に切り替わる）。',
+      text: "I'm Seiji Fujimoto, a new faculty member at U of T. I grew up among the mountains of the Kyoto countryside in Japan, where curiosity got the better of me early on.",
       sentences: [
-        "I'm Seiji Fujimoto, a new faculty member at the University of Toronto, and I grew up among the mountains of the Kyoto countryside, where curiosity got the better of me early on.",
+        "I'm Seiji Fujimoto, a new faculty member at U of T.",
+        'I grew up among the mountains of the Kyoto countryside in Japan, where curiosity got the better of me early on.',
       ],
     },
     {
-      label: 'Curiosity（核心段落）', cue: "I've come to believe…", camera: 'vo',
-      visual: '京都 → Double Dutch 映像 → JWST',
-      deliveryNote: '一番熱を込める段落。"move us" と "wonder" を立てる。champion で少し笑って良い。最後の文は少しゆっくり。',
-      text: "I've come to believe curiosity is one of the things that makes us most human. We don't live for comfort or efficiency; we live for the things that move us, the things that make us wonder. That same curiosity once made me a Double Dutch world champion, just by chasing whatever lit me up inside. And that same spark now sends me chasing the first galaxies with the James Webb Space Telescope.",
+      label: 'Curiosity（信条）', cue: "I've come to believe…", camera: 'vo',
+      visual: '京都の余韻 → 語りに合わせたイメージ',
+      deliveryNote: '一番の信条を述べる段落。ゆっくり、確信を込めて。"move us" と "wonder" を立て、wonder で余韻を残す。',
+      text: "I've come to believe curiosity is one of the things that makes us most human. We don't live for comfort or efficiency; we live for the things that move us, the things that make us wonder.",
       sentences: [
         "I've come to believe curiosity is one of the things that makes us most human.",
         "We don't live for comfort or efficiency; we live for the things that move us, the things that make us wonder.",
+      ],
+    },
+    {
+      label: 'Double Dutch → JWST', cue: 'That same curiosity…', camera: 'vo',
+      visual: 'Double Dutch 映像 → JWST の画像',
+      deliveryNote: '誇らしげに、少し笑って。world champion で山。後半は加速し、James Webb Space Telescope を1語ずつ叩いて決める。',
+      text: 'That same curiosity once made me a Double Dutch world champion, just by chasing whatever lit me up inside. And that same spark now sends me chasing the first galaxies with the James Webb Space Telescope.',
+      sentences: [
         'That same curiosity once made me a Double Dutch world champion, just by chasing whatever lit me up inside.',
         'And that same spark now sends me chasing the first galaxies with the James Webb Space Telescope.',
       ],
@@ -157,7 +181,7 @@ window.TRAINER_DATA = {
       { word: 'galaxies', ipa: '/ˈɡæləksiz/', stress: 'GA-la-xies', category: 'cluster', tip_ja: '「ギャラクシーズ」だと拍が多すぎる。3音節で GA だけ強く。/æ/ は「ガ」と「ギャ」の中間で口を横に開く。/ks/ の間に母音を入れず、語尾 /siz/ は弱く一気に。' },
       { word: 'emerge', ipa: '/ɪˈmɝdʒ/', stress: 'e-MERGE', category: 'vowel', tip_ja: '強勢は2音節目。「イマージ」ではなく /mɝdʒ/：舌を巻いた r 色母音のまま /dʒ/ で終える。最後に「ジー」と母音を足さない。頭の e は弱い /ɪ/ で軽く。' },
       { word: 'faculty', ipa: '/ˈfækəlti/', stress: 'FA-cul-ty', category: 'cluster', tip_ja: '「ファカルティ」の「ル」を母音化しない。/kəl/ は舌先を歯茎に付けるだけの暗いLで、すぐ /ti/ へ。3音節で FA だけ立てる。f は下唇+上歯。' },
-      { word: 'Toronto', ipa: '/təˈrɑntoʊ/', stress: 'to-RON-to', category: 'stress', tip_ja: '強勢は真ん中の RON。第1音節は曖昧母音で「タ」程度に潰す。現地発音は2つ目の t が落ちて「トゥラーノ」に近い。「トロント」と3拍平板に言うと一発で非ネイティブに聞こえる。' },
+      { word: 'Japan', ipa: '/dʒəˈpæn/', stress: 'ja-PAN', category: 'stress', tip_ja: '「ジャパン」と頭を強く言うのが最大の罠。強勢は後ろの PAN で、/æ/ は口を横に開く。頭の ja は曖昧母音で軽く /dʒə/。文の切れ目に来るので、PAN を上げてから間を取る。' },
       { word: 'curiosity', ipa: '/ˌkjʊriˈɑsəti/', stress: 'cu-ri-OS-i-ty', category: 'stress', tip_ja: '5音節で山は OS だけ。「キュリオシティ」と全拍均等にせず、OS を高く長く、前後は転がす。/ɑ/ は口を大きく開ける。t はフラップ（軽いラ行の d）でOK。この script の主役の語なので特に反復を。' },
       { word: 'mountains', ipa: '/ˈmaʊntənz/', stress: 'MOUN-tains', category: 'vowel', tip_ja: '「マウンテンズ」の「テ」は無い。GAでは t が喉で止まる音になり「マウンʔンズ」。2音節目は曖昧母音+n で弱く。二重母音 /aʊ/ をしっかり「アゥ」と動かす。' },
       { word: 'countryside', ipa: '/ˈkʌntriˌsaɪd/', stress: 'COUN-try-side', category: 'stress', tip_ja: '今回の修正で入った語（rural の代わり）。「カントリーサイド」7拍→3音節に圧縮。COUN に主強勢、-side は二重母音 /aɪ/ で締め、d の後に母音を足さない。' },
@@ -196,7 +220,7 @@ window.TRAINER_DATA = {
       { text: 'Double Dutch world champion', focus: 'cluster', tip_ja: 'DOU-ble DUTCH は D の頭韻をはっきり2発。world は1音節 /wɝld/ のまま champion へ：「ワールドチャンピオン」の9拍を 1+3音節に圧縮。world の d は軽く止めるだけで、すぐ /tʃ/ に移ると自然に繋がる。' },
       { text: 'first-year science students', focus: 'cluster', tip_ja: '/st/ の連発地帯：fir-ST / STu-dents。science と students は s 同士を繋げて SCI-ence‿STU-dents、間に母音を挟まない。first-year は複合語として両方立てる。students の語尾 /nts/ も「ツ」と母音を足さず止める。' },
       { text: 'through its biggest open questions', focus: 'cluster', tip_ja: 'through は /θru/：舌先を歯に軽く挟んで息→すぐ舌を引いて r へ（「スルー」禁止）。its biggest は ts→b を止めてから弾む。山は BIG-gest / O-pen / QUES-tions。questions は /ˈkwɛstʃənz/ で「クエスチョンズ」と平板にしない。' },
-      { text: 'a new faculty member at the University of Toronto', focus: 'rhythm', tip_ja: '機能語 a / at the / of は全部弱形（ə / ət-ðə / əv）。University of Toronto は「ユニヴァーサティアヴ・タラーノ」と一続きに（U-ni-VER-si-ty‿əv‿tə-RON-to）。山は NEW / FA- / MEM- / -VER- / -RON-。自己紹介文なので暗唱レベルまで。' },
+      { text: 'a new faculty member at U of T', focus: 'rhythm', tip_ja: '機能語 a / at は弱形（ə / ət）。U of T は /ˌju əv ˈti/：「ユー・オブ・ティー」と3拍均等にせず of を潰して「ユーァ・ティー」、最後の T に山を置いて言い切る。山は NEW / FA- / MEM- / TEE。第一印象の一文なので暗唱レベルまで。' },
       { text: 'Where did the Universe come from?', focus: 'rhythm', tip_ja: '冒頭の一文。wh疑問文なので文末は下げ調で終える（上げない）。did the は「ディダ」と潰し、山は WHERE / U-niverse / COME。from は文末でも弱形 /frəm/ のまま低く着地。開幕なのでゆっくり・低めに始めると映像映えする。' },
     ],
   },
@@ -206,16 +230,17 @@ window.TRAINER_DATA = {
   expression: {
     '0_0': { emph: ['Where', 'Universe', 'come'], arc: 'ゆっくり低めに入る。wh疑問なので文末は ↘。Universe を少し長く。' },
     '0_1': { emph: ['galaxies', 'stars', 'life', 'emerge'], arc: 'galaxies ／ stars ／ life と区切って ↗、emerge で ↘ 着地。開幕の余韻を残す。' },
-    '1_0': { emph: ['Seiji Fujimoto', 'Toronto', 'countryside', 'curiosity'], arc: '名乗りは笑顔で明るく ↗。Toronto, で／ひと呼吸。後半 curiosity got the better of me は茶目っ気を込めて軽く ↘。' },
+    '1_0': { emph: ['Seiji Fujimoto', 'U of T'], arc: '笑顔でカメラ目線 ↗。短い文なので急がず、U of T の T を上げて言い切り、しっかり間を取る。' },
+    '1_1': { emph: ['mountains', 'Kyoto', 'Japan', 'curiosity'], arc: '語り口調に落として。Japan, で／ひと呼吸。後半 curiosity got the better of me は茶目っ気を込めて軽く ↘。' },
     '2_0': { emph: ['believe', 'curiosity', 'human'], arc: '確信を込めて。most human を強くゆっくり ↘ で言い切る。' },
     '2_1': { emph: ["don't", 'comfort', 'efficiency', 'move', 'wonder'], arc: '前半 comfort or efficiency は突き放して ↘。; の後は温かく ↗。move us と wonder を立て、wonder で余韻。' },
-    '2_2': { emph: ['Double', 'Dutch', 'champion', 'chasing', 'lit'], arc: '誇らしげに、少し笑って。world champion で ↗ ピーク。chasing whatever lit me up inside は勢いよく畳みかける。' },
-    '2_3': { emph: ['spark', 'first', 'galaxies', 'James', 'Webb'], arc: 'spark を受けて加速 ↗。first galaxies を高く、James Webb Space Telescope は1語ずつ叩いて ↘ 決める。' },
-    '3_0': { emph: ['AST121', 'Twinkle', 'Sparkle', 'Brilliant', 'really'], arc: 'カメラ目線で誇らしく。タイトルは／間を取り1語ずつ、Brilliant Sky ↗、really about で ↘。' },
-    '3_1': { emph: ['not', 'memorize'], arc: 'not を強く叩いて ↘。次の We will explore と「will not ／ will」の対句になるので、not に山を置くと決まる。' },
-    '3_2': { emph: ['explore', 'questions', 'Bang', 'matter', 'holes', 'galaxies', 'life'], arc: 'explore で ↗ 開く。: の後は列挙、1つずつ／等間隔で少し上げ、search for life で ↘ 締める。' },
-    '4_0': { emph: ['first-year', 'curious', 'everything'], arc: '落ち着いて温かく。students の後で軽く／間、curious about everything を一息で。everything を少し伸ばして ↘。' },
-    '5_0': { emph: ['wondered', 'everything', 'find', 'together'], arc: 'ひと呼吸おいて始める。前半は ↗ 誘いかけ、let\'s find out together は笑顔でゆっくり ↘ 言い切る。' },
+    '3_0': { emph: ['Double', 'Dutch', 'champion', 'chasing', 'lit'], arc: '誇らしげに、少し笑って。world champion で ↗ ピーク。chasing whatever lit me up inside は勢いよく畳みかける。' },
+    '3_1': { emph: ['spark', 'first', 'galaxies', 'James', 'Webb'], arc: 'spark を受けて加速 ↗。first galaxies を高く、James Webb Space Telescope は1語ずつ叩いて ↘ 決める。' },
+    '4_0': { emph: ['AST121', 'Twinkle', 'Sparkle', 'Brilliant', 'really'], arc: 'カメラ目線で誇らしく。タイトルは／間を取り1語ずつ、Brilliant Sky ↗、really about で ↘。' },
+    '4_1': { emph: ['not', 'memorize'], arc: 'not を強く叩いて ↘。次の We will explore と「will not ／ will」の対句になるので、not に山を置くと決まる。' },
+    '4_2': { emph: ['explore', 'questions', 'Bang', 'matter', 'holes', 'galaxies', 'life'], arc: 'explore で ↗ 開く。: の後は列挙、1つずつ／等間隔で少し上げ、search for life で ↘ 締める。' },
+    '5_0': { emph: ['first-year', 'curious', 'everything'], arc: '落ち着いて温かく。students の後で軽く／間、curious about everything を一息で。everything を少し伸ばして ↘。' },
+    '6_0': { emph: ['wondered', 'everything', 'find', 'together'], arc: 'ひと呼吸おいて始める。前半は ↗ 誘いかけ、let\'s find out together は笑顔でゆっくり ↘ 言い切る。' },
   },
 
   // Word popups in the Script tab. Built from drills.words below; extras added manually.
