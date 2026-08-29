@@ -4,9 +4,15 @@
 Finds papers not yet in the curated database and appends them with
 ``"new": true`` (rendered with a "New" badge on the website):
 
-1. arXiv query au:"Fujimoto_S" — any new paper with Seiji Fujimoto as author.
-2. Per-member arXiv queries — member-led (first-author) papers even when
+1. arXiv query au:"Fujimoto, Seiji" for any new paper with Seiji Fujimoto
+   as author (full-name form; the old au:"Fujimoto_S" form missed most
+   papers). The flag applied to these follows the site-wide student/
+   postdoc-led rule: postdoc first author counts always, student first
+   author only when Seiji is 2nd or 3rd author.
+2. Per-member arXiv queries for member-led (first-author) papers, even when
    Seiji is not a co-author. Members and date bounds: data/group_members.yaml.
+   These are flagged student_led=True (led by a current group member by
+   definition).
 
 The curated side (publist_auto on Seiji's Mac, driven by the ADS library
 export) regenerates the full file and replaces auto-added entries once a
@@ -33,6 +39,7 @@ MEMBERS_YAML = ROOT / "data" / "group_members.yaml"
 ATOM = "{http://www.w3.org/2005/Atom}"
 ARXIV_API = "http://export.arxiv.org/api/query"
 PI_NAME = "Seiji Fujimoto"
+STUDENT_ROLES = {"phd_student", "grad_student", "undergrad"}
 
 
 def title_norm(t):
@@ -62,6 +69,22 @@ def arxiv_query(search_query, max_results=50):
         })
     time.sleep(3)  # arXiv API courtesy rate limit
     return out
+
+
+def member_query(m):
+    """arXiv author query for a member: full-name 'au:"Last, First"' forms
+    built from the member name and every name variant, OR-ed together.
+    (The old '{last}_{initial}' form matched only a fraction of papers.)"""
+    forms = []
+    for v in [m["name"]] + list(m.get("name_variants") or []):
+        parts = v.split()
+        if len(parts) >= 2:
+            form = f'{parts[-1]}, {" ".join(parts[:-1])}'
+            if form not in forms:
+                forms.append(form)
+    if not forms:
+        forms = [m["name"]]
+    return " OR ".join(f'au:"{f}"' for f in forms)
 
 
 def short_author(full):
@@ -131,8 +154,11 @@ def main():
 
     added = []
 
-    # 1) Papers with Seiji Fujimoto as any author
-    for e in arxiv_query(conf["pi"].get("arxiv_query", 'au:"Fujimoto_S"')):
+    # 1) Papers with Seiji Fujimoto as any author.
+    # student_led follows the site rule: postdoc first author counts in any
+    # Seiji position; student first author only when Seiji is 2nd/3rd author
+    # (and, for student roles, while still within student_until).
+    for e in arxiv_query(conf["pi"].get("arxiv_query", 'au:"Fujimoto, Seiji"')):
         if PI_NAME not in e["authors"] or is_known(e):
             continue
         pos = e["authors"].index(PI_NAME) + 1
@@ -141,15 +167,20 @@ def main():
             cat, stud, sname = "first", False, None
         else:
             cat = "second_third" if pos <= 3 else "coauthor"
-            stud, sname = (True, m["name"]) if m else (False, None)
+            stud, sname = False, None
+            if m:
+                if m.get("role") == "postdoc":
+                    stud, sname = True, m["name"]
+                elif (m.get("role") in STUDENT_ROLES and pos <= 3
+                      and e["published"] <= str(m.get("student_until", "9999-12-31"))):
+                    stud, sname = True, m["name"]
         added.append(make_entry(e, cat, stud, sname, fuji_pos=pos))
         known_titles.add(title_norm(e["title"]))
 
-    # 2) Member-led papers where Seiji is not a co-author
+    # 2) Member-led papers where Seiji is not a co-author. These stay
+    # student_led=True: led by a current group member by definition.
     for m in members:
-        last = m["name"].split()[-1]
-        first_initial = m["name"].split()[0][0]
-        for e in arxiv_query(f'au:"{last}_{first_initial}"', max_results=25):
+        for e in arxiv_query(member_query(m), max_results=25):
             if not e["authors"] or is_known(e):
                 continue
             if e["authors"][0] not in (m.get("name_variants") or [m["name"]]):

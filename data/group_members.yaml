@@ -8,11 +8,17 @@
 # the curated ADS library replaces or removes them).
 #
 # name_variants: forms that may appear as the arXiv first-author name.
+#
+# 2026-08-29: removed Minami Nakane, Kanako Narita, and Lilian Lee (not
+# directly supervised). Their papers are no longer auto-added by the weekly
+# member-led query, and the website no longer flags them as group-led.
+# 2026-08-29: PI arxiv_query switched from the weak 'au:"Fujimoto_S"' form
+# (75 matches, stale since 2026-06) to the full-name form (239 matches).
 
 pi:
   name: Seiji Fujimoto
   orcid: 0000-0001-7201-5066
-  arxiv_query: 'au:"Fujimoto_S"'
+  arxiv_query: 'au:"Fujimoto, Seiji"'
 
 members:
   - name: Qinyue Fei
@@ -32,27 +38,6 @@ members:
     role: postdoc
     since: 2023-09-01
     name_variants: ["Jacqueline Antwi-Danso"]
-
-  - name: Minami Nakane
-    orcid: 0009-0000-1999-5472
-    role: phd_student
-    since: 2025-01-01
-    student_until: 2029-04-30
-    name_variants: ["Minami Nakane"]
-
-  - name: Kanako Narita
-    orcid: 0009-0000-5913-8555
-    role: phd_student
-    since: 2025-01-01
-    student_until: 2028-04-30
-    name_variants: ["Kanako Narita"]
-
-  - name: Lilian Lee
-    orcid: null   # not found in the ORCID registry as of 2026-07-06 — add when known
-    role: phd_student
-    since: 2024-01-01
-    student_until: 2026-07-31
-    name_variants: ["Lilian L. Lee", "Lilian Lee"]
 
   - name: Gavin Farley
     orcid: 0009-0007-2578-9238
