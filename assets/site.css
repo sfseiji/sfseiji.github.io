@@ -275,6 +275,11 @@ h2.sec-title{font-size:1.95rem;font-weight:700;margin:0 0 12px}
 .prose h3{margin-top:34px;font-size:1.25rem;color:var(--ink)}
 .prose a{color:var(--accent);text-decoration:none}
 .prose a:hover{text-decoration:underline}
+/* .prose a outranks .btn-* (0-1-1 vs 0-1-0), which painted the primary
+   button's text accent-on-accent (invisible until hover) — re-assert. */
+.prose a.btn-primary{color:#1a1408}
+.prose a.btn-ghost{color:var(--ink)}
+.prose a.btn:hover{text-decoration:none}
 .cv-list{list-style:none;padding:0;margin:0 0 10px}
 .cv-list li{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);color:#c9d4e3;font-size:.93rem}
 .cv-list li b,.cv-list li strong{color:var(--ink)}
