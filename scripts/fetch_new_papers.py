@@ -139,9 +139,12 @@ def main():
             if m:
                 known_arxiv.add(m.group(1))
 
+    excluded = {str(x) for x in (conf.get("exclude_arxiv_ids") or [])}
+
     def is_known(e):
         aid = arxiv_id_of(e["id"])
-        return (aid in known_arxiv) or (title_norm(e["title"]) in known_titles)
+        return (aid in known_arxiv) or (aid in excluded) \
+            or (title_norm(e["title"]) in known_titles)
 
     members = conf.get("members", [])
 

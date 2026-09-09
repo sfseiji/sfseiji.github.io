@@ -15,6 +15,11 @@
 # 2026-08-29: PI arxiv_query switched from the weak 'au:"Fujimoto_S"' form
 # (75 matches, stale since 2026-06) to the full-name form (239 matches).
 
+# arXiv IDs never to auto-add: same-name authors who are not group members.
+# The member queries match on author name, so a namesake elsewhere can slip in.
+exclude_arxiv_ids:
+  - "2607.06777"   # Gavin Farley, University of Utah (TDE radio); not our Gavin Farley
+
 pi:
   name: Seiji Fujimoto
   orcid: 0000-0001-7201-5066
