@@ -44,6 +44,12 @@ members:
     since: 2023-09-01
     name_variants: ["Jacqueline Antwi-Danso"]
 
+  - name: Ava Polzin
+    orcid: 0000-0002-5283-933X   # ORCID record + dissertation copyright page, checked 2026-10-02
+    role: postdoc
+    since: 2026-09-01            # ORCID employment start (Dunlap Postdoctoral Fellow)
+    name_variants: ["Ava Polzin"]
+
   - name: Gavin Farley
     orcid: 0009-0007-2578-9238
     role: undergrad
