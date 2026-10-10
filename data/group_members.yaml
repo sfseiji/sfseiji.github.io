@@ -18,11 +18,13 @@
 # 2026-10-10: the scan moved from the arXiv API to OpenAlex (the arXiv API
 # rate-limits GitHub runners). arxiv_query is no longer used and was removed.
 
-# arXiv IDs never to auto-add: same-name authors who are not group members.
+# arXiv IDs never to auto-add: namesakes who are not group members, and
+# preprints already listed under a journal record that carries no arXiv id.
 # Name queries can match a namesake; one with an ORCID or outside astronomy is
 # rejected automatically, and this list catches the rest.
 exclude_arxiv_ids:
   - "2607.06777"   # Gavin Farley, University of Utah (TDE radio); not our Gavin Farley
+  - "2601.10573"   # Asada+ LRD envelopes: listed as ApJL 1005, L22, whose record carries no arXiv id
 
 pi:
   name: Seiji Fujimoto

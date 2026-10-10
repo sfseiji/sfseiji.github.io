@@ -5,8 +5,14 @@ on:
     - cron: '0 6 * * 6'   # Saturdays 06:00 UTC (~01:00/02:00 Toronto)
   workflow_dispatch: {}
 
+# one run at a time, so two runs cannot post the same candidates or race on push
+concurrency:
+  group: update-publications
+  cancel-in-progress: false
+
 permissions:
   contents: write
+  issues: write      # candidate papers for the project pages are reported as an issue
 
 jobs:
   update:
@@ -29,18 +35,32 @@ jobs:
           OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
         run: python -u scripts/fetch_new_papers.py   # -u: retry lines show live
 
-      # Runs even when the scan step exits 1 (some OpenAlex query failed after
-      # retries), so papers found by the other queries are still committed.
+      # Project pages (venus/glimpsed/grapes/gnz7q): rebuild the paper lists
+      # from data/projects.yaml and report new candidates as an issue. Runs
+      # after the scan even if the scan failed, so it sees this week's papers.
+      - name: Rebuild project-page paper lists
+        id: projects
+        timeout-minutes: 20   # leaves time for the commit step within the job limit
+        if: ${{ !cancelled() && (steps.scan.outcome == 'success' || steps.scan.outcome == 'failure') }}
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python -u scripts/build_project_papers.py
+
+      # Runs even when a step above exits 1 (some OpenAlex query failed after
+      # retries), so whatever the other queries found is still committed.
       # Skipped when the scan never ran (checkout or setup failed).
       - name: Commit and push if changed
         if: ${{ !cancelled() && (steps.scan.outcome == 'success' || steps.scan.outcome == 'failure') }}
         run: |
           git config user.name "publications-bot"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/publications.json
+          git add -A data pages   # the scripts write only under data/ and pages/
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "Auto-update publications (weekly OpenAlex scan)"
+            git commit -m "Auto-update publications and project paper lists (weekly OpenAlex scan)"
+            # the monthly curated update or a manual edit may have landed meanwhile
+            git pull --rebase origin main || { git rebase --abort; exit 1; }
             git push
           fi

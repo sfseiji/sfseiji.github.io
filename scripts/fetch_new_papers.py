@@ -118,8 +118,8 @@ def describe_http_error(err):
     return f"url={err.url} headers={dict(err.headers or {})} body={body!r}"
 
 
-def fetch_json(url):
-    """GET an OpenAlex list response, retrying transient failures."""
+def fetch_json(url, expect_list=True):
+    """GET an OpenAlex response (a list, or one entity), retrying transient failures."""
     headers = {"User-Agent": USER_AGENT, "Accept": "application/json"}
     key = os.environ.get("OPENALEX_API_KEY", "").strip()
     if key:
@@ -131,8 +131,10 @@ def fetch_json(url):
         try:
             with urllib.request.urlopen(req, timeout=60) as r:
                 doc = json.load(r)
-            if not isinstance(doc, dict) or not isinstance(doc.get("results"), list):
-                raise ValueError("response is not an OpenAlex list")
+            if not isinstance(doc, dict) or (
+                    not isinstance(doc.get("results"), list) if expect_list else not doc.get("id")):
+                raise ValueError("response is not an OpenAlex list" if expect_list
+                                 else "response is not an OpenAlex entity")
             return doc
         except urllib.error.HTTPError as err:   # before OSError: HTTPError subclasses it
             if attempt == 0 or last or err.code not in RETRY_STATUS:
@@ -188,10 +190,19 @@ ARXIV_NEW = r"\d{4}\.\d{4,5}"
 ARXIV_OLD = r"[a-z\-]+(?:\.[A-Z]{2})?/\d{7}"
 
 
+# markup that publishers put in titles; anything else between < and > is
+# text ("4<z<6 ... >") and must survive
+TITLE_TAGS = re.compile(r"</?(?:i|b|em|strong|sup|sub|sc|scp|span|mml:[a-z]+|inline-formula|tex-math)\b[^>]*>", re.I)
+
+
 def clean_title(t):
-    """Display form: tags and entities removed, whitespace collapsed."""
+    """Display form: markup tags and entities removed, whitespace collapsed.
+    Superscripts and subscripts become ^{..} and _{..}, so "10<sup>5</sup>"
+    does not turn into "105" (the project pages render them back)."""
     t = html.unescape(t or "")
-    t = re.sub(r"<[^>]+>", " ", t)
+    t = re.sub(r"<sup\b[^>]*>(.*?)</sup>", r"^{\1}", t, flags=re.I | re.S)
+    t = re.sub(r"<sub\b[^>]*>(.*?)</sub>", r"_{\1}", t, flags=re.I | re.S)
+    t = TITLE_TAGS.sub("", t)
     return re.sub(r"\s+", " ", t).strip()
 
 
@@ -257,18 +268,41 @@ def name_key(name):
     return " ".join(sorted(name_tokens(name)))
 
 
+PARTICLES = {"de", "da", "di", "do", "dos", "das", "del", "della", "der", "den", "du", "la", "le",
+             "van", "von", "ter", "ten", "zu", "y", "bin", "al", "el"}
+SUFFIXES = {"jr", "jr.", "sr", "sr.", "ii", "iii", "iv"}
+CJK = re.compile(r"[\u2e80-\u9fff\u3040-\u30ff\uac00-\ud7af\uf900-\ufaff\uff00-\uffef]+")
+
+
 def short_author(full):
     # "Rohan P. Naidu" or "Naidu, Rohan P." -> "Naidu, R. P."
-    full = re.sub(r"\s+", " ", full or "").strip()
+    orig = unicodedata.normalize("NFC", full or "").strip()
+    full = re.sub(r"[\u2019\u02bc\u2018`]", "'", orig)            # Abdurro’uf -> Abdurro'uf
+    full = re.sub(r"[\u2010\u2011\u2012\u2013\u2212]", "-", full)  # typographic hyphens
+    full = re.sub(r"\([^)]*\)", " ", full)                     # nicknames in brackets
+    full = CJK.sub(" ", full)                                   # CJK renderings of the name
+    full = re.sub(r"\s+", " ", full).strip(" ,")
+    if not full:
+        return orig                         # a name written only in CJK: keep it
     if "," in full:
-        last, first = (s.strip() for s in full.split(",", 1))
-        parts = first.split()
+        last, first = (x.strip() for x in full.split(",", 1))
+        parts = [x for x in first.replace(",", " ").split() if x.lower() not in SUFFIXES]
+        if not parts and last:
+            return last
+        if not last:
+            return first
     else:
-        parts = full.split()
+        parts = [x for x in full.split() if x.lower() not in SUFFIXES]
         if len(parts) < 2:
-            return full
-        last, parts = parts[-1], parts[:-1]
-    return f"{last}, " + " ".join(p[0] + "." for p in parts) if parts else last
+            return " ".join(parts)
+        # surname particles stay with the surname: "Arjen van der Wel" -> "van der Wel"
+        i = len(parts) - 1
+        while i > 1 and parts[i - 1].lower() in PARTICLES:
+            i -= 1
+        last, parts = " ".join(parts[i:]), parts[:i]
+    # hyphenated given names keep the hyphen, as ADS does: "Yu-Yang" -> "Y.-Y."
+    initials = [".-".join(x[0] for x in p.split("-") if x) + "." for p in parts if p.strip("-.")]
+    return f"{last}, " + " ".join(initials) if initials else last
 
 
 def authors_short(authors, max_show=3):
@@ -601,7 +635,9 @@ def main():
 
     if added:
         data["papers"].extend(added)
-        data["papers"].sort(key=lambda p: (p["year"] or 0, p["month"] or 0), reverse=True)
+        # newest first; within a month by arXiv id (posting order), as publist_auto does
+        data["papers"].sort(key=lambda p: (p["year"] or 0, p["month"] or 0,
+                                           re.sub(r".*/abs/", "", p.get("arxiv_url") or "")), reverse=True)
         data["stats"]["n_total"] = len(data["papers"])
         data["stats"]["n_student_led"] = sum(1 for p in data["papers"] if p.get("student_led"))
         data["stats"]["n_first_author"] = sum(1 for p in data["papers"] if p.get("category") == "first")

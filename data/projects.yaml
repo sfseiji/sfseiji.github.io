@@ -1,0 +1,140 @@
+# Paper lists on the project pages, rebuilt weekly by
+# scripts/build_project_papers.py (.github/workflows/update-publications.yml).
+#
+# `papers` is the approved list and the only thing that decides what a page
+# shows. Each item needs one id (arxiv, doi, or bibcode); the comment is for
+# people. Titles, authors, venue, and links are filled in automatically:
+# from data/publications.json when the paper is there (journal versions
+# replace arXiv versions after the monthly curated update), otherwise from
+# OpenAlex. Order on the page is newest first.
+#
+# New papers are never added automatically. The weekly scan looks for
+# candidates and posts them to one GitHub issue, "Project paper candidates"
+# (a comment on it when it is open, a new issue otherwise; the issue is
+# public like the repository). To approve one, add its id under `papers`; to
+# dismiss it, add it under `exclude`. A candidate is posted once as new, then
+# listed under "Still waiting for a decision" in later posts for 180 days.
+# Ids must be quoted strings ("2601.10000"); an unquoted id is read as a
+# number and rejected.
+#
+# Candidate sources (OpenAlex only; no ADS, no arXiv API):
+# - `search`: one title/abstract search covering every project (10 OpenAlex
+#   credits); each hit is assigned to projects by their `match` rules, which
+#   are case-sensitive where the word collides (the planet Venus, the word
+#   "glimpse", the Spitzer GLIMPSE survey).
+# - `fulltext`: per-project full-text search for program IDs (10 credits
+#   each). OpenAlex has full text for only part of recent preprints. Bare
+#   "ID 6882"-style phrases are left out: they collide with catalog IDs.
+# - `feeds`: paper lists already published by the team sites.
+# Measured on 2026-10-10 against the lists below: title/abstract search
+# found VENUS 7/10, GLIMPSE-D 9/9, Grapes 4/5, GNz7q 3/3; full text added
+# SN Eos (2601.04156); the VENUS site feed covers the last two VENUS papers
+# (2512.05180, 2512.08054), which name VENUS in neither title nor abstract.
+#
+# 2026-10-10: lists taken over from the hand-written pages, plus Asada+
+# 2607.14355, SN Helios 2609.30440, and Pan+ 2609.28474 (VENUS), Hsiao+
+# 2605.06770 (GLIMPSE-D), and the GNz7q TDE paper 2609.30441, approved by
+# Seiji.
+
+detect:
+  search_days: 60
+  fulltext_days: 90
+  search: >-
+    (VENUS AND (JWST OR NIRCam OR NIRSpec OR MIRI OR "James Webb" OR lensing OR lensed))
+    OR (GLIMPSE AND (JWST OR NIRCam OR NIRSpec OR MIRI OR "James Webb" OR lensing OR lensed
+    OR "Abell S1063" OR AS1063))
+    OR "Cosmic Grapes" OR RXCJ0600 OR "RXC J0600" OR MACS0600 OR MACSJ0600 OR "MACS J0600"
+    OR "6.072" OR "6.0719" OR GNz7q OR "GN-z7q"
+
+projects:
+  venus:
+    name: VENUS
+    page: pages/venus.html
+    papers:
+      - arxiv: "2609.30440"   # Fujimoto+ SN Helios
+      - arxiv: "2609.28474"   # Pan+ multiply imaged quiescent galaxy at z~5
+      - arxiv: "2607.14355"   # Asada+ host of the z=5.13 Type II SN
+      - arxiv: "2602.14074"   # Allingham+ MACS J1931 lens model
+      - arxiv: "2601.06015"   # Yanagisawa+ two faint LRDs
+      - arxiv: "2601.04156"   # Coulter+ Type II SN at z=5.13
+      - arxiv: "2512.08054"   # Abdurro'uf+ Cosmic Spear clusters
+      - arxiv: "2512.05180"   # Zhang+ LRD variability
+      - arxiv: "2512.02117"   # Golubchik+ LRD in Abell 383
+      - arxiv: "2511.14483"   # Nakane+ clumpy galaxy at z~11-12
+    exclude: []
+    detect:
+      match:
+        - pattern: '\bVENUS\b'
+          require: '(?i)\b(JWST|NIRCam|NIRSpec|MIRI|NIRISS|James Webb)\b|lens(ed|ing)\b'
+          why: title/abstract mentions VENUS
+      fulltext: '"GO 6882" OR "PID 6882" OR "program 6882" OR "programme 6882" OR "GO 12581" OR "PID 12581" OR "program 12581" OR "programme 12581"'
+      feeds:
+        - url: https://jwst-venus.github.io/pubs/pubs.json
+          why: listed on the VENUS team site
+
+  glimpsed:
+    name: GLIMPSE-D
+    page: pages/glimpsed.html
+    papers:
+      - arxiv: "2605.06770"   # Hsiao+ direct-method MZR
+      - arxiv: "2604.08687"   # Korber+
+      - arxiv: "2601.20045"   # Asada+
+      - arxiv: "2601.19989"   # Korber+ metallicity
+      - arxiv: "2512.11790"   # Fujimoto+
+      - arxiv: "2511.13591"   # Berg+
+      - arxiv: "2511.07515"   # Kokorev+ gas cocoon
+      - arxiv: "2509.20452"   # Fei+
+      - arxiv: "2501.11678"   # Fujimoto+ ApJ 989, 46 (kept from the hand-written list)
+    exclude:   # dropped on 2026-08-29 (commit 6520f2a): GO 3293 imaging only
+      - arxiv: "2510.04771"   # Korber+ 2026A&A...708A..43K
+      - arxiv: "2509.24881"   # Chemerynska+ 2026MNRAS.546f2267C
+      - arxiv: "2601.16281"   # Claeyssens+
+      - arxiv: "2601.19995"   # Jecmen+
+      - arxiv: "2511.07542"   # Atek+ survey overview
+      - arxiv: "2411.13640"   # Kokorev+ 2025ApJ...983L..22K
+    detect:
+      match:
+        - pattern: '\bGLIMPSE(-D|D|-DDT)\b'
+          why: title/abstract mentions GLIMPSE-D
+        - pattern: '\bGLIMPSE\b'
+          require: '(?i)NIRSpec|spectroscop|\bspectr(a|um)\b|G395M|\bprism\b'
+          reject: '(?i)Spitzer|galactic (plane|legacy)|mid-?plane'
+          why: title/abstract mentions GLIMPSE and spectroscopy
+        - pattern: '\bGLIMPSE\b'
+          require: '(?i)\b(JWST|NIRCam|MIRI|James Webb)\b|lens|Abell S1063|AS1063'
+          reject: '(?i)Spitzer|galactic (plane|legacy)|mid-?plane'
+          why: title/abstract mentions GLIMPSE (possibly GO 3293 imaging only)
+      fulltext: '"DD 9223" OR "DDT 9223" OR "PID 9223" OR "program 9223" OR "programme 9223"'
+      feeds:
+        - url: https://jwst-glimpse.github.io/pubs/pubs.json
+          why: listed on the GLIMPSE team site (GO 3293 or DD 9223; check for PID 9223 data)
+
+  grapes:
+    name: Cosmic Grapes
+    page: pages/grapes.html
+    papers:
+      - arxiv: "2402.18543"   # Fujimoto+ Nature Astronomy
+      - arxiv: "2402.17875"   # Gimenez-Arteaga+
+      - arxiv: "2402.17845"   # Valentino+
+      - arxiv: "2101.01937"   # Fujimoto+ 2021
+      - arxiv: "2101.01740"   # Laporte+ 2021
+    exclude: []
+    detect:
+      match:
+        - pattern: '(?i)Cosmic Grapes|RXC ?J0600|MACS ?J?0600|\b6\.07(2|19)\b'
+          why: title/abstract mentions the Cosmic Grapes or RXCJ0600
+      fulltext: '"GO 1567" OR "PID 1567" OR "program 1567" OR "programme 1567" OR "GO 4573" OR "PID 4573" OR "program 4573" OR "programme 4573" OR "GO 6796" OR "PID 6796" OR "program 6796" OR "programme 6796"'
+
+  gnz7q:
+    name: GNz7q
+    page: pages/gnz7q.html
+    papers:
+      - arxiv: "2609.30441"   # Fujimoto+ TDE in a quasar at z=7.19
+      - arxiv: "2602.12325"   # Fei+
+      - arxiv: "2204.06393"   # Fujimoto+ 2022 Nature discovery paper
+    exclude: []
+    detect:
+      match:
+        - pattern: '(?i)GN-?z7q'
+          why: title/abstract mentions GNz7q
+      fulltext: '"GO 4762" OR "PID 4762" OR "program 4762" OR "programme 4762"'

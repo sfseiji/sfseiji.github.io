@@ -1,0 +1,446 @@
+{
+ "projects": {
+  "glimpsed": [
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2026arXiv260506770H",
+    "arxiv": "2605.06770",
+    "authors": [
+     "Hsiao, T. Y. Y.",
+     "Chisholm, J.",
+     "Berg, D. A.",
+     "Finkelstein, S. L."
+    ],
+    "doi": "10.48550/arXiv.2605.06770",
+    "journal": "arXiv:2605.06770",
+    "key": "2605.06770",
+    "n_authors": 25,
+    "title": "A Glimpse of the Low-Mass End of the Direct Mass-Metallicity Relation at z~6-8",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2026arXiv260408687K",
+    "arxiv": "2604.08687",
+    "authors": [
+     "Korber, D.",
+     "Marques-Chaves, R.",
+     "Schaerer, D.",
+     "Brammer, G."
+    ],
+    "doi": "10.48550/arXiv.2604.08687",
+    "journal": "arXiv:2604.08687",
+    "key": "2604.08687",
+    "n_authors": 18,
+    "title": "GLIMPSED: Direct evidence for a fast AGN-driven outflow from a z=6.64 Little Red Dot host galaxy",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2026arXiv260120045A",
+    "arxiv": "2601.20045",
+    "authors": [
+     "Asada, Y.",
+     "Fujimoto, S.",
+     "Chisholm, J.",
+     "Naidu, R. P."
+    ],
+    "doi": "10.48550/arXiv.2601.20045",
+    "journal": "arXiv:2601.20045",
+    "key": "2601.20045",
+    "n_authors": 19,
+    "title": "GLIMPSE-DDT spectroscopic properties of faint-end galaxies at z~6: Towards first metal enrichment, dust production, and ionizing photon production",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2026A&A...710L..15K",
+    "arxiv": "2601.19989",
+    "authors": [
+     "Korber, D.",
+     "Schaerer, D.",
+     "Marques-Chaves, R.",
+     "Adamo, A."
+    ],
+    "doi": "10.1051/0004-6361/202659018",
+    "journal": "A&A, 710, L15",
+    "key": "2601.19989",
+    "n_authors": 16,
+    "title": "GLIMPSE-D: Metallicity decline in faint galaxies: Implications for [O III]+Hβ luminosity function and re-ionisation budget",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2025arXiv251211790F",
+    "arxiv": "2512.11790",
+    "authors": [
+     "Fujimoto, S.",
+     "Asada, Y.",
+     "Naidu, R. P.",
+     "Chisholm, J."
+    ],
+    "doi": "10.48550/arXiv.2512.11790",
+    "journal": "arXiv:2512.11790",
+    "key": "2512.11790",
+    "n_authors": 22,
+    "title": "GLIMPSE-D: An Exotic Balmer-Jump Object at z=6.20? Revisiting Photometric Selection and the Cosmic Abundance of Pop III Galaxies",
+    "year": 2025
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2026ApJ..1003..112B",
+    "arxiv": "2511.13591",
+    "authors": [
+     "Berg, D. A.",
+     "Naidu, R. P.",
+     "Chisholm, J.",
+     "Atek, H."
+    ],
+    "doi": "10.3847/1538-4357/ae5e4c",
+    "journal": "ApJ, 1003, 112",
+    "key": "2511.13591",
+    "n_authors": 22,
+    "title": "A Fleeting GLIMPSE of N/O Enrichment at Cosmic Dawn: Evidence for Wolf Rayet N Stars in a z = 6.1 Galaxy",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2026ApJ..1004..153K",
+    "arxiv": "2511.07515",
+    "authors": [
+     "Kokorev, V.",
+     "Chisholm, J.",
+     "Naidu, R. P.",
+     "Fujimoto, S."
+    ],
+    "doi": "10.3847/1538-4357/ae4ed7",
+    "journal": "ApJ, 1004, 153",
+    "key": "2511.07515",
+    "n_authors": 22,
+    "title": "The Deepest GLIMPSE of a Dense Gas Cocoon Enshrouding a Little Red Dot",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2026ApJ..1003..244F",
+    "arxiv": "2509.20452",
+    "authors": [
+     "Fei, Q.",
+     "Fujimoto, S.",
+     "Naidu, R. P.",
+     "Chisholm, J."
+    ],
+    "doi": "10.3847/1538-4357/ae6248",
+    "journal": "ApJ, 1003, 244",
+    "key": "2509.20452",
+    "n_authors": 22,
+    "title": "A GLIMPSE of Intermediate Mass Black Holes in the Epoch of Reionization: Witnessing the Descendants of Direct Collapse?",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2025ApJ...989...46F",
+    "arxiv": "2501.11678",
+    "authors": [
+     "Fujimoto, S.",
+     "Naidu, R. P.",
+     "Chisholm, J.",
+     "Atek, H."
+    ],
+    "doi": "10.3847/1538-4357/ade9a1",
+    "journal": "ApJ, 989, 46",
+    "key": "2501.11678",
+    "n_authors": 36,
+    "title": "GLIMPSE: An Ultrafaint ≃10^5 M_⊙ Pop III Galaxy Candidate and First Constraints on the Pop III UV Luminosity Function at z ≃ 6–7",
+    "year": 2025
+   }
+  ],
+  "gnz7q": [
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.30441",
+    "arxiv": "2609.30441",
+    "authors": [
+     "Fujimoto, S.",
+     "Fei, Q.",
+     "Brammer, G.",
+     "Inayoshi, K."
+    ],
+    "doi": null,
+    "journal": "Submitted",
+    "key": "2609.30441",
+    "n_authors": 44,
+    "title": "A tidal disruption event in a quasar at redshift 7.19",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2026arXiv260212325F",
+    "arxiv": "2602.12325",
+    "authors": [
+     "Fei, Q.",
+     "Fujimoto, S.",
+     "Brammer, G.",
+     "Li, R."
+    ],
+    "doi": "10.48550/arXiv.2602.12325",
+    "journal": "arXiv:2602.12325",
+    "key": "2602.12325",
+    "n_authors": 27,
+    "title": "Direct pathway to the Early Supermassive Black Holes: A Red Super-Eddington Quasar in a Massive Starburst Host at z=7.2",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2022Natur.604..261F",
+    "arxiv": "2204.06393",
+    "authors": [
+     "Fujimoto, S.",
+     "Brammer, G. B.",
+     "Watson, D.",
+     "Magdis, G. E."
+    ],
+    "doi": "10.1038/s41586-022-04454-1",
+    "journal": "Nature, 604, 261",
+    "key": "2204.06393",
+    "n_authors": 21,
+    "title": "A dusty compact object bridging galaxies and quasars at cosmic dawn",
+    "year": 2022
+   }
+  ],
+  "grapes": [
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2025NatAs...9.1553F",
+    "arxiv": "2402.18543",
+    "authors": [
+     "Fujimoto, S.",
+     "Ouchi, M.",
+     "Kohno, K.",
+     "Valentino, F."
+    ],
+    "doi": "10.1038/s41550-025-02592-w",
+    "journal": "Nature Astronomy, 9, 1553",
+    "key": "2402.18543",
+    "n_authors": 46,
+    "title": "Primordial rotating disk composed of at least 15 dense star-forming clumps at cosmic dawn",
+    "year": 2025
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2024A&A...686A..63G",
+    "arxiv": "2402.17875",
+    "authors": [
+     "Giménez-Arteaga, C.",
+     "Fujimoto, S.",
+     "Valentino, F.",
+     "Brammer, G. B."
+    ],
+    "doi": "10.1051/0004-6361/202349135",
+    "journal": "A&A, 686, A63",
+    "key": "2402.17875",
+    "n_authors": 22,
+    "title": "Outshining in the spatially resolved analysis of a strongly lensed galaxy at z = 6.072 with JWST NIRCam",
+    "year": 2024
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2024A&A...685A.138V",
+    "arxiv": "2402.17845",
+    "authors": [
+     "Valentino, F.",
+     "Fujimoto, S.",
+     "Giménez-Arteaga, C.",
+     "Brammer, G."
+    ],
+    "doi": "10.1051/0004-6361/202348128",
+    "journal": "A&A, 685, A138",
+    "key": "2402.17845",
+    "n_authors": 24,
+    "title": "The cold interstellar medium of a normal sub-L^\\star galaxy at the end of reionization",
+    "year": 2024
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2021ApJ...911...99F",
+    "arxiv": "2101.01937",
+    "authors": [
+     "Fujimoto, S.",
+     "Oguri, M.",
+     "Brammer, G.",
+     "Yoshimura, Y."
+    ],
+    "doi": "10.3847/1538-4357/abd7ec",
+    "journal": "ApJ, 911, 99",
+    "key": "2101.01937",
+    "n_authors": 34,
+    "title": "ALMA Lensing Cluster Survey: Bright [C II] 158 \\mum Lines from a Multiply Imaged Sub-L^\\star Galaxy at z = 6.0719",
+    "year": 2021
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2021MNRAS.505.4838L",
+    "arxiv": "2101.01740",
+    "authors": [
+     "Laporte, N.",
+     "Zitrin, A.",
+     "Ellis, R. S.",
+     "Fujimoto, S."
+    ],
+    "doi": "10.1093/mnras/stab191",
+    "journal": "MNRAS, 505, 4838",
+    "key": "2101.01740",
+    "n_authors": 23,
+    "title": "ALMA Lensing Cluster Survey: a strongly lensed multiply imaged dusty system at z ≥ 6",
+    "year": 2021
+   }
+  ],
+  "venus": [
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.30440",
+    "arxiv": "2609.30440",
+    "authors": [
+     "Fujimoto, S.",
+     "Larison, C.",
+     "Pierel, J. D. R.",
+     "Furtak, L. J."
+    ],
+    "doi": null,
+    "journal": "arXiv:2609.30440",
+    "key": "2609.30440",
+    "n_authors": 67,
+    "title": "SN Helios: A Multiply Imaged Type II Supernova Opening Time-Delay Cosmography beyond redshift of 3",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.28474",
+    "arxiv": "2609.28474",
+    "authors": [
+     "Pan, R.",
+     "Marchesini, D.",
+     "Allingham, J. F. V.",
+     "Fujimoto, S."
+    ],
+    "doi": null,
+    "journal": "arXiv:2609.28474",
+    "key": "2609.28474",
+    "n_authors": 37,
+    "title": "A sub-100 pc view at z~5 of a Multiply-Imaged Massive Quiescent Galaxy",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2026arXiv260714355A",
+    "arxiv": "2607.14355",
+    "authors": [
+     "Asada, Y.",
+     "Fujimoto, S.",
+     "Allingham, J. F. V.",
+     "Coulter, D. A."
+    ],
+    "doi": "10.48550/arXiv.2607.14355",
+    "journal": "arXiv:2607.14355",
+    "key": "2607.14355",
+    "n_authors": 53,
+    "title": "VENUS: an ultra-faint galaxy hosting the metal-poor type II supernova at z=5.13 Witnessing the initial metal enrichment with extremely frequent core-collapse supernovae?",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2026ApJ..1005..215A",
+    "arxiv": "2602.14074",
+    "authors": [
+     "Allingham, J. F. V.",
+     "Zitrin, A.",
+     "Kokorev, V.",
+     "Yanagisawa, H."
+    ],
+    "doi": "10.3847/1538-4357/ae7a59",
+    "journal": "ApJ, 1005, 215",
+    "key": "2602.14074",
+    "n_authors": 45,
+    "title": "VENUS: Strong-lensing Model of MACS J1931.8-2635: Revealing the Farthest Multiply Imaged Supernova",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2026arXiv260106015Y",
+    "arxiv": "2601.06015",
+    "authors": [
+     "Yanagisawa, H.",
+     "Ouchi, M.",
+     "Golubchik, M.",
+     "Oguri, M."
+    ],
+    "doi": "10.48550/arXiv.2601.06015",
+    "journal": "arXiv:2601.06015",
+    "key": "2601.06015",
+    "n_authors": 50,
+    "title": "VENUS: Two Faint Little Red Dots Separated by ~70\\,\\mathrmpc Hidden in a Single Lensed Galaxy at z~7",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2026arXiv260104156C",
+    "arxiv": "2601.04156",
+    "authors": [
+     "Coulter, D. A.",
+     "Larison, C.",
+     "Pierel, J. D. R.",
+     "Fujimoto, S."
+    ],
+    "doi": "10.48550/arXiv.2601.04156",
+    "journal": "arXiv:2601.04156",
+    "key": "2601.04156",
+    "n_authors": 91,
+    "title": "A spectroscopically confirmed, strongly lensed, metal-poor Type II supernova at z = 5.13",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2025arXiv251208054A",
+    "arxiv": "2512.08054",
+    "authors": [
+     "Abdurro'uf",
+     "Coe, D.",
+     "Resseguier, T.",
+     "Murphy, C."
+    ],
+    "doi": "10.48550/arXiv.2512.08054",
+    "journal": "arXiv:2512.08054",
+    "key": "2512.08054",
+    "n_authors": 52,
+    "title": "Spatially Resolved Physical Properties of Young Star Clusters and Star-forming Clumps in the Brightest z>6 Galaxy, the Strongly Lensed Cosmic Spear at z=6.2",
+    "year": 2025
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2025arXiv251205180Z",
+    "arxiv": "2512.05180",
+    "authors": [
+     "Zhang, Z.",
+     "Li, M.",
+     "Oguri, M.",
+     "Lin, X."
+    ],
+    "doi": "10.48550/arXiv.2512.05180",
+    "journal": "arXiv:2512.05180",
+    "key": "2512.05180",
+    "n_authors": 82,
+    "title": "Little red dot variability over a century reveals black hole envelope via a giant Einstein cross",
+    "year": 2025
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2026A&A...710A.226G",
+    "arxiv": "2512.02117",
+    "authors": [
+     "Golubchik, M.",
+     "Furtak, L. J.",
+     "Allingham, J. F. V.",
+     "Zitrin, A."
+    ],
+    "doi": "10.1051/0004-6361/202558407",
+    "journal": "A&A, 710, A226",
+    "key": "2512.02117",
+    "n_authors": 53,
+    "title": "VENUS: When red meets blue: A multiply imaged little red dot with an apparent blue companion behind the galaxy cluster Abell 383",
+    "year": 2026
+   },
+   {
+    "ads_url": "https://ui.adsabs.harvard.edu/abs/2025arXiv251114483N",
+    "arxiv": "2511.14483",
+    "authors": [
+     "Nakane, M.",
+     "Kokorev, V.",
+     "Fujimoto, S.",
+     "Ouchi, M."
+    ],
+    "doi": "10.48550/arXiv.2511.14483",
+    "journal": "arXiv:2511.14483",
+    "key": "2511.14483",
+    "n_authors": 78,
+    "title": "VENUS: A Strongly Lensed Clumpy Galaxy at z~11-12 behind the Galaxy Cluster MACS J0257.1-2325",
+    "year": 2025
+   }
+  ]
+ },
+ "reported": {},
+ "updated": "2026-10-10"
+}
