@@ -1,7 +1,7 @@
 {
  "generated": "2026-10-03",
  "stats": {
-  "n_total": 304,
+  "n_total": 305,
   "n_first_author": 20,
   "n_student_led": 17,
   "total_citations": 24730,
@@ -194,6 +194,27 @@
    "category": "second_third",
    "student_led": true,
    "student_name": "Qinyue Fei",
+   "preprint": true,
+   "new": true,
+   "unverified": true
+  },
+  {
+   "bibcode": null,
+   "title": "The Ashes of Supermassive Stars: Globular Cluster-like Aluminum Enhancement in Little Red Dots",
+   "authors_short": "Kokorev, V., Chisholm, J., Naidu, R. P., et al.",
+   "first_author": "Kokorev, V.",
+   "fujimoto_position": 9,
+   "n_authors": 19,
+   "journal": "arXiv:2609.09271",
+   "year": 2026,
+   "month": 9,
+   "ads_url": "https://ui.adsabs.harvard.edu/abs/arXiv:2609.09271",
+   "arxiv_url": "https://arxiv.org/abs/2609.09271",
+   "doi": null,
+   "citations": null,
+   "category": "coauthor",
+   "student_led": false,
+   "student_name": null,
    "preprint": true,
    "new": true,
    "unverified": true
