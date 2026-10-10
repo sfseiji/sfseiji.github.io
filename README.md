@@ -19,10 +19,14 @@ Personal + group website of Seiji Fujimoto (University of Toronto), served by Gi
    Overleaf publication list, the PDF, **and `data/publications.json`**, then commits + pushes here.
    Student/postdoc-led flags come from `publist_auto/students.yaml`.
 2. **Weekly scan (this repo)** — `.github/workflows/update-publications.yml` (Saturdays 06:00 UTC)
-   runs `scripts/fetch_new_papers.py`: arXiv queries for papers with Seiji as author and for
-   member-led (first-author) papers listed in `data/group_members.yaml`. Anything not yet in the
+   runs `scripts/fetch_new_papers.py`: OpenAlex queries (by ORCID and by name, last 180 days) for
+   papers with Seiji as author and for member-led (first-author) papers listed in
+   `data/group_members.yaml`. Only papers with an arXiv id are added. Anything not yet in the
    database is appended with `"new": true` (shown with a "New" badge). When the paper later enters
    the curated ADS library, the curated entry replaces it; unmatched new entries are carried over.
+   The source moved from the arXiv API to OpenAlex on 2026-10-10 because the arXiv API
+   rate-limits GitHub runners (HTTP 429). An optional free OpenAlex key can be stored as the
+   repository secret `OPENALEX_API_KEY`; without it the anonymous daily budget is used.
 
 To add/remove a group member from the auto-scan, edit `data/group_members.yaml`.
 ORCID iDs there were verified against the ORCID registry (2026-07-06).

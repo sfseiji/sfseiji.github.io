@@ -2,28 +2,31 @@
 # (.github/workflows/update-publications.yml → scripts/fetch_new_papers.py).
 #
 # ORCID iDs verified against the ORCID registry (affiliation + listed works)
-# on 2026-07-06. `since` bounds the arXiv search for member-led papers:
-# only papers published on/after this date are auto-added.
+# on 2026-07-06. The scan queries OpenAlex by ORCID and by name. `since`
+# bounds member-led papers: only papers published on/after this date are
+# auto-added.
 # Removing a member stops future auto-adds (already-added entries stay until
 # the curated ADS library replaces or removes them).
 #
-# name_variants: forms that may appear as the arXiv first-author name.
+# name_variants: extra name forms to search for (the main name is always used).
 #
 # 2026-08-29: removed Minami Nakane, Kanako Narita, and Lilian Lee (not
 # directly supervised). Their papers are no longer auto-added by the weekly
 # member-led query, and the website no longer flags them as group-led.
 # 2026-08-29: PI arxiv_query switched from the weak 'au:"Fujimoto_S"' form
 # (75 matches, stale since 2026-06) to the full-name form (239 matches).
+# 2026-10-10: the scan moved from the arXiv API to OpenAlex (the arXiv API
+# rate-limits GitHub runners). arxiv_query is no longer used and was removed.
 
 # arXiv IDs never to auto-add: same-name authors who are not group members.
-# The member queries match on author name, so a namesake elsewhere can slip in.
+# Name queries can match a namesake; one with an ORCID or outside astronomy is
+# rejected automatically, and this list catches the rest.
 exclude_arxiv_ids:
   - "2607.06777"   # Gavin Farley, University of Utah (TDE radio); not our Gavin Farley
 
 pi:
   name: Seiji Fujimoto
   orcid: 0000-0001-7201-5066
-  arxiv_query: 'au:"Fujimoto, Seiji"'
 
 members:
   - name: Qinyue Fei

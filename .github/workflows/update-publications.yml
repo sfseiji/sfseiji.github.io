@@ -11,6 +11,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    timeout-minutes: 60   # the scan stops itself after 2 failed queries in a row
     steps:
       - uses: actions/checkout@v4
 
@@ -20,11 +21,15 @@ jobs:
 
       - run: pip install pyyaml
 
-      - name: Scan arXiv for new papers
+      # Source is OpenAlex (the arXiv API rate-limits GitHub runners).
+      # OPENALEX_API_KEY is optional: unset, the anonymous daily budget applies.
+      - name: Scan OpenAlex for new papers
         id: scan
+        env:
+          OPENALEX_API_KEY: ${{ secrets.OPENALEX_API_KEY }}
         run: python -u scripts/fetch_new_papers.py   # -u: retry lines show live
 
-      # Runs even when the scan step exits 1 (some arXiv query failed after
+      # Runs even when the scan step exits 1 (some OpenAlex query failed after
       # retries), so papers found by the other queries are still committed.
       # Skipped when the scan never ran (checkout or setup failed).
       - name: Commit and push if changed
@@ -36,6 +41,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "Auto-update publications (weekly arXiv scan)"
+            git commit -m "Auto-update publications (weekly OpenAlex scan)"
             git push
           fi
