@@ -21,9 +21,14 @@ jobs:
       - run: pip install pyyaml
 
       - name: Scan arXiv for new papers
-        run: python scripts/fetch_new_papers.py
+        id: scan
+        run: python -u scripts/fetch_new_papers.py   # -u: retry lines show live
 
+      # Runs even when the scan step exits 1 (some arXiv query failed after
+      # retries), so papers found by the other queries are still committed.
+      # Skipped when the scan never ran (checkout or setup failed).
       - name: Commit and push if changed
+        if: ${{ !cancelled() && (steps.scan.outcome == 'success' || steps.scan.outcome == 'failure') }}
         run: |
           git config user.name "publications-bot"
           git config user.email "github-actions[bot]@users.noreply.github.com"

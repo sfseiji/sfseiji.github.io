@@ -18,13 +18,25 @@ The curated side (publist_auto on Seiji's Mac, driven by the ADS library
 export) regenerates the full file and replaces auto-added entries once a
 paper enters the library; unmatched "new" entries are carried over.
 
+Each arXiv request is retried on 406/429/5xx, dropped connections, and
+empty or non-Atom responses, because the API intermittently rejects CI
+runners (the 2026-09-19 and 09-26 runs died on an HTTP 406 at the first
+query; the cause is unknown and the same code succeeded on 10-03). A query
+that still fails is skipped so the others go through; the script then exits
+1 so the run shows as failed, and the workflow still commits whatever the
+other queries found.
+
 No API keys required (arXiv Atom API). Stdlib + PyYAML only.
 """
+import email.utils
+import http.client
 import json
+import os
 import re
 import sys
 import time
 import datetime
+import urllib.error
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
@@ -37,7 +49,14 @@ PUB_JSON = ROOT / "data" / "publications.json"
 MEMBERS_YAML = ROOT / "data" / "group_members.yaml"
 
 ATOM = "{http://www.w3.org/2005/Atom}"
-ARXIV_API = "http://export.arxiv.org/api/query"
+# https directly to skip the http -> https redirect. Not a proven fix: urllib
+# carries the same headers across the redirect, so the 406s are unexplained.
+ARXIV_API = "https://export.arxiv.org/api/query"
+USER_AGENT = "sfseiji-publication-bot/1.1 (+https://sfseiji.github.io)"
+ACCEPT = "application/atom+xml, application/xml;q=0.9, */*;q=0.8"
+COURTESY_SLEEP = 3                 # arXiv asks for >= 3 s between requests
+RETRY_WAITS = (15, 45, 120)        # seconds before attempts 2, 3, 4
+RETRY_STATUS = {406, 429, 500, 502, 503, 504}
 PI_NAME = "Seiji Fujimoto"
 STUDENT_ROLES = {"phd_student", "grad_student", "undergrad"}
 
@@ -52,12 +71,70 @@ def arxiv_id_of(entry_id):
     return m.group(1) if m else None
 
 
-def arxiv_query(search_query, max_results=50):
+def retry_after_seconds(headers):
+    """Seconds from a Retry-After header (delta-seconds or HTTP-date), else None."""
+    raw = str((headers or {}).get("Retry-After", "") or "").strip()
+    try:
+        if re.fullmatch(r"[0-9]+", raw):
+            return int(raw)
+        if raw:
+            when = email.utils.parsedate_to_datetime(raw)
+            return max(0, int((when - datetime.datetime.now(when.tzinfo)).total_seconds()))
+    except (TypeError, ValueError, OverflowError):
+        pass
+    return None
+
+
+def describe_http_error(err):
+    try:
+        body = err.read(300)
+    except Exception:
+        body = b""
+    return f"url={err.url} headers={dict(err.headers or {})} body={body!r}"
+
+
+def fetch_atom(url, min_entries=0):
+    """GET an arXiv Atom feed, retrying the transient failures seen on CI.
+
+    A response that is not an Atom feed, or has fewer than ``min_entries``
+    entries, is treated like a transient failure and retried.
+    """
+    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": ACCEPT})
+    for attempt in range(len(RETRY_WAITS) + 1):
+        last = attempt == len(RETRY_WAITS)
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                tree = ET.parse(r)
+            root = tree.getroot()
+            if root.tag != f"{ATOM}feed":
+                raise ET.ParseError(f"not an Atom feed (root <{root.tag}>)")
+            if len(root.findall(f"{ATOM}entry")) < min_entries:
+                raise ET.ParseError(f"feed has fewer than {min_entries} entries")
+            return tree
+        except urllib.error.HTTPError as err:   # before OSError: HTTPError subclasses it
+            if attempt == 0 or last or err.code not in RETRY_STATUS:
+                print(f"  HTTP {err.code}: {describe_http_error(err)}")
+            if err.code not in RETRY_STATUS or last:
+                raise
+            wait = RETRY_WAITS[attempt]
+            ra = retry_after_seconds(err.headers)
+            if ra is not None:
+                wait = min(max(wait, ra), 300)
+            print(f"  HTTP {err.code}; retry {attempt + 1}/{len(RETRY_WAITS)} in {wait}s")
+        except (OSError, http.client.HTTPException, ET.ParseError) as err:
+            # OSError covers URLError, timeouts, resets, and TLS errors;
+            # HTTPException covers RemoteDisconnected and IncompleteRead.
+            if last:
+                raise
+            wait = RETRY_WAITS[attempt]
+            print(f"  {type(err).__name__}: {err}; retry {attempt + 1}/{len(RETRY_WAITS)} in {wait}s")
+        time.sleep(wait)
+
+
+def arxiv_query(search_query, max_results=50, min_entries=0):
     url = (f"{ARXIV_API}?search_query={urllib.parse.quote(search_query)}"
            f"&sortBy=submittedDate&sortOrder=descending&max_results={max_results}")
-    req = urllib.request.Request(url, headers={"User-Agent": "sfseiji-publication-bot/1.0"})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        tree = ET.parse(r)
+    tree = fetch_atom(url, min_entries=min_entries)
     out = []
     for e in tree.getroot().findall(f"{ATOM}entry"):
         authors = [a.findtext(f"{ATOM}name", "").strip() for a in e.findall(f"{ATOM}author")]
@@ -67,7 +144,6 @@ def arxiv_query(search_query, max_results=50):
             "authors": authors,
             "published": e.findtext(f"{ATOM}published", "")[:10],
         })
-    time.sleep(3)  # arXiv API courtesy rate limit
     return out
 
 
@@ -156,12 +232,27 @@ def main():
         return None
 
     added = []
+    failed = []
+
+    def run_query(label, search_query, max_results=50, min_entries=0):
+        # One query failing must not drop the results of the others.
+        try:
+            return arxiv_query(search_query, max_results=max_results, min_entries=min_entries)
+        except Exception as err:
+            print(f"::warning::arXiv query for {label} failed: {type(err).__name__}: {err}")
+            failed.append(label)
+            return []
+        finally:
+            time.sleep(COURTESY_SLEEP)   # also after a failure, so the next query is spaced
 
     # 1) Papers with Seiji Fujimoto as any author.
     # student_led follows the site rule: postdoc first author counts in any
     # Seiji position; student first author only when Seiji is 2nd/3rd author
     # (and, for student roles, while still within student_until).
-    for e in arxiv_query(conf["pi"].get("arxiv_query", 'au:"Fujimoto, Seiji"')):
+    # The PI query returns the latest 50 papers regardless of date, so an empty
+    # feed means something went wrong (min_entries=1 makes it retry).
+    for e in run_query(PI_NAME, conf["pi"].get("arxiv_query", 'au:"Fujimoto, Seiji"'),
+                       min_entries=1):
         if PI_NAME not in e["authors"] or is_known(e):
             continue
         pos = e["authors"].index(PI_NAME) + 1
@@ -183,7 +274,7 @@ def main():
     # 2) Member-led papers where Seiji is not a co-author. These stay
     # student_led=True: led by a current group member by definition.
     for m in members:
-        for e in arxiv_query(member_query(m), max_results=25):
+        for e in run_query(m["name"], member_query(m), max_results=25):
             if not e["authors"] or is_known(e):
                 continue
             if e["authors"][0] not in (m.get("name_variants") or [m["name"]]):
@@ -195,21 +286,30 @@ def main():
             added.append(make_entry(e, "member_led", True, m["name"], fuji_pos=None))
             known_titles.add(title_norm(e["title"]))
 
-    if not added:
+    if added:
+        data["papers"].extend(added)
+        data["papers"].sort(key=lambda p: (p["year"] or 0, p["month"] or 0), reverse=True)
+        data["stats"]["n_total"] = len(data["papers"])
+        data["stats"]["n_student_led"] = sum(1 for p in data["papers"] if p.get("student_led"))
+        data["stats"]["n_first_author"] = sum(1 for p in data["papers"] if p.get("category") == "first")
+        data["generated"] = datetime.date.today().isoformat()
+
+        # Write via a temp file so a crash mid-write cannot leave a truncated
+        # JSON for the commit step to push.
+        tmp = PUB_JSON.with_name(PUB_JSON.name + ".tmp")
+        tmp.write_text(json.dumps(data, indent=1, ensure_ascii=False))
+        os.replace(tmp, PUB_JSON)
+        print(f"Added {len(added)} new paper(s):")
+        for p in added:
+            print(f"  - [{p['category']}] {p['title'][:80]}")
+    else:
         print("No new papers found.")
-        return
 
-    data["papers"].extend(added)
-    data["papers"].sort(key=lambda p: (p["year"] or 0, p["month"] or 0), reverse=True)
-    data["stats"]["n_total"] = len(data["papers"])
-    data["stats"]["n_student_led"] = sum(1 for p in data["papers"] if p.get("student_led"))
-    data["stats"]["n_first_author"] = sum(1 for p in data["papers"] if p.get("category") == "first")
-    data["generated"] = datetime.date.today().isoformat()
-
-    PUB_JSON.write_text(json.dumps(data, indent=1, ensure_ascii=False))
-    print(f"Added {len(added)} new paper(s):")
-    for p in added:
-        print(f"  - [{p['category']}] {p['title'][:80]}")
+    if failed:
+        print(f"::error::{len(failed)} arXiv query(ies) failed: "
+              f"{', '.join(failed)}. Results from the other queries were kept.")
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
