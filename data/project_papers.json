@@ -157,7 +157,7 @@
      "Inayoshi, K."
     ],
     "doi": null,
-    "journal": "Submitted",
+    "journal": "arXiv:2609.30441",
     "key": "2609.30441",
     "n_authors": 44,
     "title": "A tidal disruption event in a quasar at redshift 7.19",
@@ -441,6 +441,105 @@
    }
   ]
  },
- "reported": {},
+ "reported": {
+  "glimpsed": {
+   "2604.18696": {
+    "date": "2026-10-10",
+    "ids": [
+     "10.48550/arxiv.2604.18696",
+     "2026arXiv260418696F",
+     "2604.18696"
+    ],
+    "title": "Other red dots: A possible GLIMPSE of normal AGB stars at Cosmic Noon through extreme lensing"
+   },
+   "2604.23823": {
+    "date": "2026-10-10",
+    "ids": [
+     "10.33232/001c.166816",
+     "2026OJAp....966816A",
+     "2604.23823"
+    ],
+    "title": "A GLIMPSE of the 99%: a census of the faintest galaxies during the epoch of reionization and its implications for galaxy formation models"
+   },
+   "2607.15515": {
+    "date": "2026-10-10",
+    "ids": [
+     "2607.15515"
+    ],
+    "title": "Gas-Phase Metallicity and Nitrogen Abundances in Low-Mass Galaxies Down to $M_\\star\\simeq10^{5.7}\\,M_\\odot$ at $z\\simeq4.5$--$10.1$ from JWST Lensing Cluster Surveys"
+   },
+   "2607.26269": {
+    "date": "2026-10-10",
+    "ids": [
+     "2607.26269"
+    ],
+    "title": "ATLAS. II. Extremely High Incidence of Balmer Line Absorption with Predominant Blueshifts in LRDs: Statistical Insights through Comparison with Type 1 AGNs"
+   }
+  },
+  "gnz7q": {
+   "2604.05022": {
+    "date": "2026-10-10",
+    "ids": [
+     "10.5281/zenodo.22132641",
+     "2604.05022"
+    ],
+    "title": "PANORAMIC: massive quiescent galaxy catalogues at z > 3"
+   },
+   "2607.26269": {
+    "date": "2026-10-10",
+    "ids": [
+     "2607.26269"
+    ],
+    "title": "ATLAS. II. Extremely High Incidence of Balmer Line Absorption with Predominant Blueshifts in LRDs: Statistical Insights through Comparison with Type 1 AGNs"
+   },
+   "2609.11094": {
+    "date": "2026-10-10",
+    "ids": [
+     "2609.11094"
+    ],
+    "title": "SPURS: An Ultra-deep View Inside the Compact, Nitrogen-Enriched Nuclei of Little Red Dots"
+   },
+   "2609.17680": {
+    "date": "2026-10-10",
+    "ids": [
+     "2609.17680"
+    ],
+    "title": "A dense, metal-rich absorber driven by a heavily dust-obscured galaxy: The direct evidence of CGM enrichment at $z\\sim7$"
+   },
+   "2609.35526": {
+    "date": "2026-10-10",
+    "ids": [
+     "2609.35526"
+    ],
+    "title": "Precise C-N-O Abundances of Individual Galaxies in the First Billion Years from Ultra-Deep, Rest-UV-to-Optical JWST Spectroscopy"
+   }
+  },
+  "grapes": {
+   "2606.10483": {
+    "date": "2026-10-10",
+    "ids": [
+     "10.1051/0004-6361/202660997",
+     "2606.10483"
+    ],
+    "title": "The dynamics of the Anglerfish cluster"
+   }
+  },
+  "venus": {
+   "2609.32347": {
+    "date": "2026-10-10",
+    "ids": [
+     "2609.32347"
+    ],
+    "title": "Observing population III stars in the pristine region"
+   },
+   "2609.38373": {
+    "date": "2026-10-10",
+    "ids": [
+     "2609.38373"
+    ],
+    "title": "NEXUS: Discovery of a Luminous Young Transient at $z=5$"
+   }
+  }
+ },
  "updated": "2026-10-10"
 }
