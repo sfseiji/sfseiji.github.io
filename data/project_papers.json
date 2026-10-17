@@ -538,8 +538,15 @@
      "2609.38373"
     ],
     "title": "NEXUS: Discovery of a Luminous Young Transient at $z=5$"
+   },
+   "2610.09014": {
+    "date": "2026-10-17",
+    "ids": [
+     "2610.09014"
+    ],
+    "title": "(Monty Python and the) HoliGRALE: A Hybrid GRALE Lens Inversion Methodology Diagnostically Evaluated with Synthetic and Real Data"
    }
   }
  },
- "updated": "2026-10-10"
+ "updated": "2026-10-17"
 }
