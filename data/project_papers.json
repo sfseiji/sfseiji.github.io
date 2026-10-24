@@ -525,6 +525,14 @@
    }
   },
   "venus": {
+   "2604.11882": {
+    "date": "2026-10-24",
+    "ids": [
+     "10.3847/1538-4357/ae9606",
+     "2604.11882"
+    ],
+    "title": "SN 2022riv in RX J2129: Discovery, Spectroscopic Classification, and Microlensing of a Strongly Lensed Type Ia Supernova from JWST and HST Observations"
+   },
    "2609.32347": {
     "date": "2026-10-10",
     "ids": [
@@ -545,8 +553,15 @@
      "2610.09014"
     ],
     "title": "(Monty Python and the) HoliGRALE: A Hybrid GRALE Lens Inversion Methodology Diagnostically Evaluated with Synthetic and Real Data"
+   },
+   "2610.26560": {
+    "date": "2026-10-24",
+    "ids": [
+     "2610.26560"
+    ],
+    "title": "PRISMS/U13151. A Glimpse into the Earliest Phases of Galaxy Formation through an Ultra-Faint System $\\approx$ 500 Myr after the Big Bang"
    }
   }
  },
- "updated": "2026-10-17"
+ "updated": "2026-10-24"
 }
