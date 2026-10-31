@@ -1,7 +1,7 @@
 {
- "generated": "2026-10-24",
+ "generated": "2026-10-31",
  "stats": {
-  "n_total": 310,
+  "n_total": 312,
   "n_first_author": 20,
   "n_student_led": 16,
   "total_citations": 24730,
@@ -9,6 +9,48 @@
   "scholar_fetched": "2026-08-29"
  },
  "papers": [
+  {
+   "bibcode": null,
+   "title": "Little Red Dots with Broad H$β$ Lines Reveal the Black Hole Mass Function at 7<z<9.5",
+   "authors_short": "Taylor, A. J., Finkelstein, S. L., Akins, H. B., et al.",
+   "first_author": "Taylor, A. J.",
+   "fujimoto_position": 16,
+   "n_authors": 32,
+   "journal": "arXiv:2610.37564",
+   "year": 2026,
+   "month": 10,
+   "ads_url": "https://ui.adsabs.harvard.edu/abs/arXiv:2610.37564",
+   "arxiv_url": "https://arxiv.org/abs/2610.37564",
+   "doi": null,
+   "citations": null,
+   "category": "coauthor",
+   "student_led": false,
+   "student_name": null,
+   "preprint": true,
+   "new": true,
+   "unverified": true
+  },
+  {
+   "bibcode": null,
+   "title": "SN Ares: A Strongly Lensed Type IIb Supernova at $\\mathbf{z=1.276}$ with a Predicted 70-Year Time Delay",
+   "authors_short": "Larison, C., Pierel, J. D. R., Siebert, M., et al.",
+   "first_author": "Larison, C.",
+   "fujimoto_position": 18,
+   "n_authors": 72,
+   "journal": "arXiv:2610.33161",
+   "year": 2026,
+   "month": 10,
+   "ads_url": "https://ui.adsabs.harvard.edu/abs/arXiv:2610.33161",
+   "arxiv_url": "https://arxiv.org/abs/2610.33161",
+   "doi": null,
+   "citations": null,
+   "category": "coauthor",
+   "student_led": false,
+   "student_name": null,
+   "preprint": true,
+   "new": true,
+   "unverified": true
+  },
   {
    "bibcode": null,
    "title": "PRISMS/U13151. A Glimpse into the Earliest Phases of Galaxy Formation through an Ultra-Faint System $\\approx$ 500 Myr after the Big Bang",

@@ -442,6 +442,16 @@
   ]
  },
  "reported": {
+  "_unassigned": {
+   "2603.20445": {
+    "date": "2026-10-31",
+    "ids": [
+     "10.1038/s41550-026-03002-5",
+     "2603.20445"
+    ],
+    "title": "An enriched methane D/H ratio in the interstellar object 3I/ATLAS"
+   }
+  },
   "glimpsed": {
    "2604.18696": {
     "date": "2026-10-10",
@@ -560,8 +570,15 @@
      "2610.26560"
     ],
     "title": "PRISMS/U13151. A Glimpse into the Earliest Phases of Galaxy Formation through an Ultra-Faint System $\\approx$ 500 Myr after the Big Bang"
+   },
+   "2610.33161": {
+    "date": "2026-10-31",
+    "ids": [
+     "2610.33161"
+    ],
+    "title": "SN Ares: A Strongly Lensed Type IIb Supernova at $\\mathbf{z=1.276}$ with a Predicted 70-Year Time Delay"
    }
   }
  },
- "updated": "2026-10-24"
+ "updated": "2026-10-31"
 }
