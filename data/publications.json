@@ -1,7 +1,7 @@
 {
- "generated": "2026-10-31",
+ "generated": "2026-11-07",
  "stats": {
-  "n_total": 312,
+  "n_total": 314,
   "n_first_author": 20,
   "n_student_led": 16,
   "total_citations": 24730,
@@ -9,6 +9,48 @@
   "scholar_fetched": "2026-08-29"
  },
  "papers": [
+  {
+   "bibcode": null,
+   "title": "EMBER: A Little Red Dot Candidate at $z_{\\rm spec}=10.36$ in the Seed Black Hole Era",
+   "authors_short": "Tanaka, T. S., Akins, H. B., Silverman, J. D., et al.",
+   "first_author": "Tanaka, T. S.",
+   "fujimoto_position": 12,
+   "n_authors": 61,
+   "journal": "arXiv:2611.00195",
+   "year": 2026,
+   "month": 10,
+   "ads_url": "https://ui.adsabs.harvard.edu/abs/arXiv:2611.00195",
+   "arxiv_url": "https://arxiv.org/abs/2611.00195",
+   "doi": null,
+   "citations": null,
+   "category": "coauthor",
+   "student_led": false,
+   "student_name": null,
+   "preprint": true,
+   "new": true,
+   "unverified": true
+  },
+  {
+   "bibcode": null,
+   "title": "A GLIMPSE of Dark Matter: JWST Constraints on Early Structure Formation",
+   "authors_short": "Muñoz, J. B., Chisholm, J., Fujimoto, S., et al.",
+   "first_author": "Muñoz, J. B.",
+   "fujimoto_position": 3,
+   "n_authors": 16,
+   "journal": "arXiv:2610.37751",
+   "year": 2026,
+   "month": 10,
+   "ads_url": "https://ui.adsabs.harvard.edu/abs/arXiv:2610.37751",
+   "arxiv_url": "https://arxiv.org/abs/2610.37751",
+   "doi": null,
+   "citations": null,
+   "category": "second_third",
+   "student_led": false,
+   "student_name": null,
+   "preprint": true,
+   "new": true,
+   "unverified": true
+  },
   {
    "bibcode": null,
    "title": "Little Red Dots with Broad H$β$ Lines Reveal the Black Hole Mass Function at 7<z<9.5",

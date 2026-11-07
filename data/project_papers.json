@@ -484,6 +484,13 @@
      "2607.26269"
     ],
     "title": "ATLAS. II. Extremely High Incidence of Balmer Line Absorption with Predominant Blueshifts in LRDs: Statistical Insights through Comparison with Type 1 AGNs"
+   },
+   "2610.37751": {
+    "date": "2026-11-07",
+    "ids": [
+     "2610.37751"
+    ],
+    "title": "A GLIMPSE of Dark Matter: JWST Constraints on Early Structure Formation"
    }
   },
   "gnz7q": {
@@ -535,6 +542,14 @@
    }
   },
   "venus": {
+   "2601.11466": {
+    "date": "2026-11-07",
+    "ids": [
+     "10.3847/1538-4357/ae80b9",
+     "2601.11466"
+    ],
+    "title": "Pseudo Little Red Dot: An Active Black Hole Embedded in a Dense and Dusty, Metal-poor Starburst Galaxy at z = 5.96"
+   },
    "2604.11882": {
     "date": "2026-10-24",
     "ids": [
@@ -571,6 +586,13 @@
     ],
     "title": "PRISMS/U13151. A Glimpse into the Earliest Phases of Galaxy Formation through an Ultra-Faint System $\\approx$ 500 Myr after the Big Bang"
    },
+   "2610.32307": {
+    "date": "2026-11-07",
+    "ids": [
+     "2610.32307"
+    ],
+    "title": "Galaxy Luminosity Functions at z~7-10 from Four Years of JWST Observations"
+   },
    "2610.33161": {
     "date": "2026-10-31",
     "ids": [
@@ -580,5 +602,5 @@
    }
   }
  },
- "updated": "2026-10-31"
+ "updated": "2026-11-07"
 }
