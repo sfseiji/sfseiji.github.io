@@ -1,7 +1,7 @@
 {
- "generated": "2026-11-07",
+ "generated": "2026-11-14",
  "stats": {
-  "n_total": 314,
+  "n_total": 316,
   "n_first_author": 20,
   "n_student_led": 16,
   "total_citations": 24730,
@@ -9,6 +9,48 @@
   "scholar_fetched": "2026-08-29"
  },
  "papers": [
+  {
+   "bibcode": null,
+   "title": "VENUS: Strong Lens Mass Models and Einstein Radii of 60 Galaxy Clusters",
+   "authors_short": "Oguri, M., Kokorev, V., Nishida, S., et al.",
+   "first_author": "Oguri, M.",
+   "fujimoto_position": 5,
+   "n_authors": 28,
+   "journal": "arXiv:2611.08630",
+   "year": 2026,
+   "month": 11,
+   "ads_url": "https://ui.adsabs.harvard.edu/abs/arXiv:2611.08630",
+   "arxiv_url": "https://arxiv.org/abs/2611.08630",
+   "doi": null,
+   "citations": null,
+   "category": "coauthor",
+   "student_led": false,
+   "student_name": null,
+   "preprint": true,
+   "new": true,
+   "unverified": true
+  },
+  {
+   "bibcode": null,
+   "title": "The ALPINE-CRISTAL-JWST Survey: The Tully-Fisher Relation at $z = 4-6$",
+   "authors_short": "Gómez-Espinoza, D. A., Molina, J., Ibar, E., et al.",
+   "first_author": "Gómez-Espinoza, D. A.",
+   "fujimoto_position": 13,
+   "n_authors": 30,
+   "journal": "arXiv:2611.07064",
+   "year": 2026,
+   "month": 11,
+   "ads_url": "https://ui.adsabs.harvard.edu/abs/arXiv:2611.07064",
+   "arxiv_url": "https://arxiv.org/abs/2611.07064",
+   "doi": null,
+   "citations": null,
+   "category": "coauthor",
+   "student_led": false,
+   "student_name": null,
+   "preprint": true,
+   "new": true,
+   "unverified": true
+  },
   {
    "bibcode": null,
    "title": "EMBER: A Little Red Dot Candidate at $z_{\\rm spec}=10.36$ in the Seed Black Hole Era",

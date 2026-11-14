@@ -539,6 +539,13 @@
      "2606.10483"
     ],
     "title": "The dynamics of the Anglerfish cluster"
+   },
+   "2611.08630": {
+    "date": "2026-11-14",
+    "ids": [
+     "2611.08630"
+    ],
+    "title": "VENUS: Strong Lens Mass Models and Einstein Radii of 60 Galaxy Clusters"
    }
   },
   "venus": {
@@ -599,8 +606,15 @@
      "2610.33161"
     ],
     "title": "SN Ares: A Strongly Lensed Type IIb Supernova at $\\mathbf{z=1.276}$ with a Predicted 70-Year Time Delay"
+   },
+   "2611.08630": {
+    "date": "2026-11-14",
+    "ids": [
+     "2611.08630"
+    ],
+    "title": "VENUS: Strong Lens Mass Models and Einstein Radii of 60 Galaxy Clusters"
    }
   }
  },
- "updated": "2026-11-07"
+ "updated": "2026-11-14"
 }
