@@ -25,6 +25,7 @@
 exclude_arxiv_ids:
   - "2607.06777"   # Gavin Farley, University of Utah (TDE radio); not our Gavin Farley
   - "2601.10573"   # Asada+ LRD envelopes: listed as ApJL 1005, L22, whose record carries no arXiv id
+  - "2611.16127"   # Kubota+ Aquila X-1 rp-process (Suzaku): S. Fujimoto here is the nuclear-astrophysics namesake; not on Seiji's Scholar profile
 
 pi:
   name: Seiji Fujimoto

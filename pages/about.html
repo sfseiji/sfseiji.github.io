@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Seiji Fujimoto — biography, CV, awards, and grants. Assistant Professor of Astronomy & Astrophysics at the University of Toronto.">
+  <meta name="description" content="About Seiji Fujimoto: biography, CV, and awards. Assistant Professor of Astronomy & Astrophysics at the University of Toronto.">
   <title>About — Seiji Fujimoto</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" href="../assets/favicon.ico" sizes="any">
@@ -25,7 +25,7 @@
     }
   </style>
 </head>
-<body data-root=".." data-page="about" data-updated="August 2026">
+<body data-root=".." data-page="about" data-updated="November 2026">
   <div id="site-header"></div>
 
   <header class="page-head">
@@ -55,8 +55,8 @@
         <p>Driven by a fascination with the unknowns of the universe, I earned my PhD in astronomy from the University of Tokyo in 2019. I enjoyed my postdoc life as a DAWN Fellow in Copenhagen and a NASA Hubble Fellow in Austin before joining the University of Toronto as a faculty member in 2025. My research focuses on distant galaxies and black holes, using multi-wavelength observations with JWST, ALMA, and observatories around the world.</p>
         <p>Outside of astronomy, I enjoy traveling, playing sports, photography, camping, and board games. Above all, I find joy in sharing simple good times with good people.</p>
         <div class="cta-row" style="margin-top:34px">
-          <a class="btn btn-primary" href="../pdf/CV_Fujimoto_20260824.pdf" target="_blank">CV (PDF)</a>
-          <a class="btn btn-ghost" href="../pdf/Publication_Fujimoto_20260829.pdf" target="_blank">Publication list (PDF)</a>
+          <a class="btn btn-primary" href="../pdf/CV_Fujimoto_20261121.pdf" target="_blank">CV (PDF)</a>
+          <a class="btn btn-ghost" href="../pdf/Publication_Fujimoto_20261121.pdf" target="_blank">Publication list (PDF)</a>
           <a class="btn btn-ghost" href="research.html#publications">Publications (interactive)</a>
         </div>
         <p id="pub-stats" style="font-size:.82rem;color:var(--muted);margin-top:24px"></p>
@@ -75,7 +75,7 @@
             <li><strong>2022–2025:</strong> NASA Hubble Fellow, UT Austin, USA</li>
             <li><strong>2021–2022:</strong> Marie Skłodowska-Curie COFUND INTERACTIONS Fellow, Cosmic Dawn Center, Denmark</li>
             <li><strong>2019–2022:</strong> DAWN Fellow, Cosmic Dawn Center, Denmark</li>
-            <li><strong>2019:</strong> ALMA Project Researcher, NAOJ / University of Waseda, Japan</li>
+            <li><strong>2019:</strong> ALMA Project Researcher, NAOJ / Waseda University, Japan</li>
             <li><strong>2019:</strong> ICRR Project Researcher, University of Tokyo, Japan</li>
           </ul>
 
@@ -102,20 +102,6 @@
             <li><strong>2016:</strong> Institute for Cosmic Ray Research President's Award for Master Thesis</li>
             <li><strong>2015:</strong> University of Tokyo President's Award</li>
           </ul>
-
-          <h3 style="font-size:1.2rem;margin-top:30px">Grants &amp; funding (PI)</h3>
-          <ul class="cv-list">
-            <li><strong>2026–2030:</strong> NSERC Discovery Grant, CAD 207,000</li>
-            <li><strong>2026–2028:</strong> CSA AO JWST Cycle 4 PI Award, CAD 433,920</li>
-            <li><strong>2026–2028:</strong> NASA JWST Cycle 5 PI Award, USD 333,792 (US admin: D. Coe)</li>
-            <li><strong>2025–2027:</strong> NASA JWST Cycle 4 PI Award, USD 1,287,810 (US admin: D. Coe, J. Chisholm)</li>
-            <li><strong>2025–2027:</strong> NASA JWST Cycle 3 PI Award, USD 218,086</li>
-            <li><strong>2024–2026:</strong> NASA JWST Cycle 2 PI Award, USD 63,617</li>
-            <li><strong>2022–2024:</strong> NASA JWST Cycle 1 PI Award, USD 85,945 (US admin: E. Egami)</li>
-            <li><strong>2022–2025:</strong> NASA Hubble Fellowship, USD 417,215</li>
-            <li><strong>2022–2024:</strong> NASA Keck PI Awards, USD 28,725</li>
-            <li><strong>2021–2022:</strong> INTERACTIONS Fellowship, USD ~123,000</li>
-          </ul>
         </div>
       </div>
     </div>
@@ -127,7 +113,7 @@
     fetch('../data/publications.json').then(r => r.json()).then(d => {
       const s = d.stats;
       document.getElementById('pub-stats').textContent =
-        `${s.n_total} papers · ${(s.total_citations || 0).toLocaleString()} citations · h-index ${s.h_index} (Google Scholar, as of ${s.scholar_fetched})`;
+        `${s.n_total} papers · ${(s.total_citations || 0).toLocaleString()} citations and h-index ${s.h_index} on Google Scholar (as of ${s.scholar_fetched})`;
     }).catch(() => {});
 
     const slides = document.querySelectorAll('#slideshow img');
