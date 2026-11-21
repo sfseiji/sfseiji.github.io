@@ -1,7 +1,7 @@
 {
- "generated": "2026-11-14",
+ "generated": "2026-11-21",
  "stats": {
-  "n_total": 316,
+  "n_total": 317,
   "n_first_author": 20,
   "n_student_led": 16,
   "total_citations": 24730,
@@ -9,6 +9,27 @@
   "scholar_fetched": "2026-08-29"
  },
  "papers": [
+  {
+   "bibcode": null,
+   "title": "Hump around 30 keV in Suzaku spectra of Aquila X-1 -- Possible evidence of strong rapid-proton capture process --",
+   "authors_short": "Kubota, M., Dohi, A., Tamagawa, T., et al.",
+   "first_author": "Kubota, M.",
+   "fujimoto_position": 5,
+   "n_authors": 5,
+   "journal": "arXiv:2611.16127",
+   "year": 2026,
+   "month": 11,
+   "ads_url": "https://ui.adsabs.harvard.edu/abs/arXiv:2611.16127",
+   "arxiv_url": "https://arxiv.org/abs/2611.16127",
+   "doi": null,
+   "citations": null,
+   "category": "coauthor",
+   "student_led": false,
+   "student_name": null,
+   "preprint": true,
+   "new": true,
+   "unverified": true
+  },
   {
    "bibcode": null,
    "title": "VENUS: Strong Lens Mass Models and Einstein Radii of 60 Galaxy Clusters",
