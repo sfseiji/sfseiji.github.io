@@ -291,7 +291,7 @@
     "doi": null,
     "journal": "arXiv:2609.30440",
     "key": "2609.30440",
-    "n_authors": 67,
+    "n_authors": 66,
     "title": "SN Helios: A Multiply Imaged Type II Supernova Opening Time-Delay Cosmography beyond redshift of 3",
     "year": 2026
    },
@@ -471,6 +471,14 @@
     ],
     "title": "A GLIMPSE of the 99%: a census of the faintest galaxies during the epoch of reionization and its implications for galaxy formation models"
    },
+   "2605.05327": {
+    "date": "2026-11-28",
+    "ids": [
+     "10.1051/0004-6361/202660477",
+     "2605.05327"
+    ],
+    "title": "Shape of the direct-method mass-metallicity relation with JWST: Fast-track nitrogen and helium enrichment"
+   },
    "2607.15515": {
     "date": "2026-10-10",
     "ids": [
@@ -491,6 +499,13 @@
      "2610.37751"
     ],
     "title": "A GLIMPSE of Dark Matter: JWST Constraints on Early Structure Formation"
+   },
+   "2611.34743": {
+    "date": "2026-11-28",
+    "ids": [
+     "2611.34743"
+    ],
+    "title": "Black holes in little red and blue dots drive no superwinds in the first 1.5 billion years"
    }
   },
   "gnz7q": {
@@ -501,6 +516,14 @@
      "2604.05022"
     ],
     "title": "PANORAMIC: massive quiescent galaxy catalogues at z > 3"
+   },
+   "2605.05327": {
+    "date": "2026-11-28",
+    "ids": [
+     "10.1051/0004-6361/202660477",
+     "2605.05327"
+    ],
+    "title": "Shape of the direct-method mass-metallicity relation with JWST: Fast-track nitrogen and helium enrichment"
    },
    "2607.26269": {
     "date": "2026-10-10",
@@ -546,6 +569,13 @@
      "2611.08630"
     ],
     "title": "VENUS: Strong Lens Mass Models and Einstein Radii of 60 Galaxy Clusters"
+   },
+   "2611.33142": {
+    "date": "2026-11-28",
+    "ids": [
+     "2611.33142"
+    ],
+    "title": "VENUS: A Census of Strong Lensing in a 60-Cluster JWST Survey"
    }
   },
   "venus": {
@@ -556,6 +586,16 @@
      "2601.11466"
     ],
     "title": "Pseudo Little Red Dot: An Active Black Hole Embedded in a Dense and Dusty, Metal-poor Starburst Galaxy at z = 5.96"
+   },
+   "2602.20247": {
+    "date": "2026-11-28",
+    "ids": [
+     "10.3847/1538-4357/aeb37e",
+     "10.48550/arxiv.2602.20247",
+     "2026arXiv260220247P",
+     "2602.20247"
+    ],
+    "title": "Little Red Dots: One Photometric Tag Concealing Diverse Spectroscopic Flavors of Massive Star Formation and Black Hole Activity"
    },
    "2604.11882": {
     "date": "2026-10-24",
@@ -613,8 +653,15 @@
      "2611.08630"
     ],
     "title": "VENUS: Strong Lens Mass Models and Einstein Radii of 60 Galaxy Clusters"
+   },
+   "2611.33142": {
+    "date": "2026-11-28",
+    "ids": [
+     "2611.33142"
+    ],
+    "title": "VENUS: A Census of Strong Lensing in a 60-Cluster JWST Survey"
    }
   }
  },
- "updated": "2026-11-14"
+ "updated": "2026-11-28"
 }
